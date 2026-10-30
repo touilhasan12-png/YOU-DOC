@@ -5,15 +5,15 @@ on:
     inputs:
       composition:
         description: "Composition id"
-        default: "TestShot"
+        default: "Film"
         required: true
       concurrency:
         description: "Remotion concurrency"
-        default: "2"
+        default: "4"
         required: false
       frame:
         description: "still frame"
-        default: "45"
+        default: "80"
         required: false
 
 permissions:
