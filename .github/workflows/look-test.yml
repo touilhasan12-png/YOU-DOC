@@ -1,0 +1,40 @@
+name: look-test
+
+# Renders THREE STILLS ONLY -- the new visual language, for approval.
+# Nothing else is rendered here: no video, no audio, no film.
+on:
+  workflow_dispatch:
+
+jobs:
+  stills:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Chromium system libraries
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 \
+            libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 \
+            libpango-1.0-0 libcairo2 libasound2t64 || sudo apt-get install -y -qq libasound2
+      - run: npm ci
+      - name: Ensure headless browser
+        run: npx remotion browser ensure
+      - name: Typecheck
+        run: npx tsc --noEmit
+      - name: Three stills
+        run: |
+          mkdir -p out
+          for FR in 0 1 2; do
+            npx remotion still src/index.ts Look out/look_${FR}.png --frame=${FR} --gl=swangle
+          done
+          ls -la out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: look-test
+          path: out/look_*.png
+          retention-days: 14
