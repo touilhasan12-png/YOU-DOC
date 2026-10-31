@@ -1,0 +1,50 @@
+name: render-vertical
+
+# Reproducible render of the 1080x1920 film.
+# Workflow dispatch only: nothing renders by accident.
+on:
+  workflow_dispatch:
+    inputs:
+      frames:
+        description: 'Frame range, e.g. 0-1997 (empty = whole film)'
+        required: false
+        default: ''
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Install chromium dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 \
+            libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 \
+            libgbm1 libpango-1.0-0 libcairo2 fonts-liberation
+      - run: npm ci
+      - name: Build the timeline from the real voice-over durations
+        run: python3 scripts/build_timeline.py
+      - name: Rebuild the mastered audio (VO + music + sfx)
+        run: |
+          pip install numpy
+          python3 scripts/build_audio.py
+      - name: Typecheck
+        run: npx tsc --noEmit
+      - name: Render
+        run: |
+          RANGE="${{ github.event.inputs.frames }}"
+          if [ -n "$RANGE" ]; then EXTRA="--frames=$RANGE"; else EXTRA=""; fi
+          npx remotion render src/index.ts Vertical out/The_Locked_Countries_1080x1920.mp4 \
+            --gl=swangle --concurrency=4 --crf=17 --audio-bitrate=192k $EXTRA
+      - name: QA
+        run: python3 scripts/check_film.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vertical-film
+          path: out/The_Locked_Countries_1080x1920.mp4
+          retention-days: 7
