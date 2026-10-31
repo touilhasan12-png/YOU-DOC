@@ -1,0 +1,43 @@
+name: look2
+
+# Four stills + one 3-second motion clip. Stills cannot show a camera move,
+# so the tilt, the flag drop and the object entrance are proved in motion.
+on:
+  workflow_dispatch:
+
+jobs:
+  look2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Chromium system libraries
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 \
+            libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 \
+            libpango-1.0-0 libcairo2 libasound2t64 || sudo apt-get install -y -qq libasound2
+      - run: npm ci
+      - run: npx remotion browser ensure
+      - run: npx tsc --noEmit
+      - name: Four stills
+        run: |
+          mkdir -p out
+          for FR in 0 1 2 3; do
+            npx remotion still src/index.ts Look2 out/l2_${FR}.png --frame=${FR} --gl=swangle
+          done
+      - name: Three-second motion clip
+        run: npx remotion render src/index.ts Motion out/l2_motion.mp4 --gl=swangle --concurrency=4 --crf=18 --frames=0-89
+      - name: Package the motion clip for the phone
+        run: ffmpeg -y -loglevel error -i out/l2_motion.mp4 -vf "scale=720:-2" -c:v libx264 -crf 24 -pix_fmt yuv420p out/l2_motion_small.mp4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: look2
+          path: |
+            out/l2_*.png
+            out/l2_motion*.mp4
+          retention-days: 14

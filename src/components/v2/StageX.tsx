@@ -41,6 +41,31 @@ export type FlagPin = {
   anchor?: 'centre' | 'above';
 };
 
+/** the flag that falls onto a country and fills it to its borders */
+export type FlagFillSpec = {
+  iso2: string;
+  /** absolute frame the flag starts falling */
+  from: number;
+  /** absolute frame it starts fading back to the halo (omit = holds to the end) */
+  until?: number;
+  /** 'fill' stretches the flag across the country's bounding box (no gaps),
+   *  'tile' repeats it at 4:3 (keeps the flag's proportions) */
+  mode?: 'fill' | 'tile';
+};
+
+/** bounding box of an SVG path, read straight out of its numbers */
+const bboxOf = (d: string): [number, number, number, number] => {
+  const re = /(-?\d+(?:\.\d+)?)[,\s](-?\d+(?:\.\d+)?)/g;
+  let m: RegExpExecArray | null;
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  while ((m = re.exec(d))) {
+    const x = +m[1], y = +m[2];
+    if (x < x0) x0 = x; if (x > x1) x1 = x;
+    if (y < y0) y0 = y; if (y > y1) y1 = y;
+  }
+  return [x0, y0, Math.max(1, x1 - x0), Math.max(1, y1 - y0)];
+};
+
 export type FXFill = {
   /** fill colour */
   color: string;
@@ -64,6 +89,7 @@ export const StageX: React.FC<{
   tx?: number;
   ty?: number;
   fills?: Record<string, FXFill>;
+  flagFills?: FlagFillSpec[];
   flags?: FlagPin[];
   vignette?: number;
   grain?: boolean;
@@ -82,6 +108,7 @@ export const StageX: React.FC<{
   tx = 0,
   ty = 0,
   fills,
+  flagFills,
   flags,
   vignette = 0.38,
   grain = true,
@@ -100,6 +127,13 @@ export const StageX: React.FC<{
   );
 
   const planeTransform = `translate(${tx}px, ${ty}px) scale(${s}) rotateX(${tilt}deg) rotateZ(${rz}deg)`;
+
+  /** a country wearing its flag is not also wearing the halo */
+  const wearing = new Set(
+    (flagFills ?? [])
+      .filter((ff) => frame >= ff.from && (ff.until === undefined || frame < ff.until + 6))
+      .map((ff) => ff.iso2),
+  );
 
   return (
     <AbsoluteFill style={{backgroundColor: '#0A1A2A', overflow: 'hidden'}}>
@@ -144,6 +178,57 @@ export const StageX: React.FC<{
             );
           })}
 
+          {/* THE FLAG THAT WEARS THE COUNTRY.
+              The country's own outline is the clip; the flag is the texture
+              inside it, so the flag fills the state exactly to its borders.
+              It falls from above, holds while the narrator is on it, then fades
+              back to the neon halo underneath. */}
+          {(flagFills ?? []).map((ff) => {
+            const d = c.shapes[ff.iso2];
+            if (!d || frame < ff.from) return null;
+            const [bx, by, bw, bh] = bboxOf(d);
+            const drop = Math.max(1, Math.min(14, (ff.until ?? ff.from + 40) - ff.from > 0 ? 12 : 12));
+            const t = Math.min(1, (frame - ff.from) / drop);
+            const e = 1 - Math.pow(1 - t, 3);
+            const dy = -(1 - e) * (bh + bw * 0.25);
+            const out = ff.until === undefined ? 0 : Math.min(1, Math.max(0, (frame - ff.until) / 8));
+            const fade = 1 - out;
+            if (fade <= 0.001) return null;
+            return (
+              <div
+                key={`ff-${ff.iso2}`}
+                style={{position: 'absolute', inset: 0, clipPath: `path("${d}")`, opacity: fade, pointerEvents: 'none'}}
+              >
+                <Img
+                  src={staticFile(`flags/${ff.iso2}.svg`)}
+                  style={{
+                    position: 'absolute',
+                    left: bx,
+                    top: by + dy,
+                    width: bw,
+                    height: bh,
+                    objectFit: ff.mode === 'tile' ? 'none' : 'fill',
+                    ...(ff.mode === 'tile'
+                      ? {backgroundImage: `url(${staticFile(`flags/${ff.iso2}.svg`)})`, backgroundSize: `${bh * 1.333}px ${bh}px`}
+                      : {}),
+                  }}
+                />
+                {/* a shade so the flag sits in the scene rather than on top of it */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: bx,
+                    top: by,
+                    width: bw,
+                    height: bh,
+                    background:
+                      'linear-gradient(160deg, rgba(255,255,255,0.16) 0%, rgba(0,0,0,0) 38%, rgba(0,0,0,0.28) 100%)',
+                  }}
+                />
+              </div>
+            );
+          })}
+
           <svg width={pw} height={ph} viewBox={`0 0 ${pw} ${ph}`} style={{position: 'absolute', left: 0, top: 0}}>
             <defs>
               <filter id="xHalo" x="-45%" y="-45%" width="190%" height="190%">
@@ -176,7 +261,7 @@ export const StageX: React.FC<{
                 <g filter="url(#xHaloWide)">
                   {Object.entries(fills).map(([iso, sp]) => {
                     const d = c.shapes[iso];
-                    if (!d) return null;
+                    if (!d || wearing.has(iso)) return null;
                     const k = Math.max(0, Math.min(1, (frame - (sp.from ?? -9999)) / 10));
                     if (k <= 0) return null;
                     return (
@@ -195,7 +280,7 @@ export const StageX: React.FC<{
                 <g filter="url(#xHalo)">
                   {Object.entries(fills).map(([iso, sp]) => {
                     const d = c.shapes[iso];
-                    if (!d) return null;
+                    if (!d || wearing.has(iso)) return null;
                     const k = Math.max(0, Math.min(1, (frame - (sp.from ?? -9999)) / 10));
                     if (k <= 0) return null;
                     return (
