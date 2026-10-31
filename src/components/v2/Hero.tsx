@@ -1,5 +1,6 @@
 import React from 'react';
 import {C, F, appear, eo} from '../../config/vertical';
+import {useAbs} from './frame';
 
 /**
  * HERO TYPE -- the references' voice: a very heavy grotesque, centred over the
@@ -31,7 +32,8 @@ export const Hero: React.FC<{
   lineHeight?: number;
   style?: React.CSSProperties;
 }> = ({lines, at, size = 108, top, align = 'center', lineHeight = 0.95, style}) => {
-  const f = at < 0 ? 10_000 : at; // stills pass at=-1: render the settled state
+  const cur = useAbs(); // absolute film frame (Sequence offsets handled)
+  const f = at < 0 ? 10_000 : cur; // at=-1 means "settled", used by stills
   return (
     <div
       style={{
@@ -50,7 +52,7 @@ export const Hero: React.FC<{
     >
       {lines.map((l, i) => {
         const start = at < 0 ? -1 : at + i * 5;
-        const t = at < 0 ? 1 : appear(f, start, 12);
+        const t = at < 0 ? 1 : appear(f, start, 10);
         const s = size * (l.scale ?? 1);
         return (
           <div
@@ -82,7 +84,8 @@ export const Tag: React.FC<{
   color?: string;
   align?: 'left' | 'center';
 }> = ({children, at = -1, top = 130, left = 60, color = C.amber, align = 'left'}) => {
-  const f = at < 0 ? 10_000 : at;
+  const cur = useAbs();
+  const f = at < 0 ? 10_000 : cur;
   return (
     <div
       style={{
@@ -131,7 +134,8 @@ export const Lede: React.FC<{children: React.ReactNode; at?: number; bottom?: nu
   bottom = 168,
   size = 40,
 }) => {
-  const f = at < 0 ? 10_000 : at;
+  const cur = useAbs();
+  const f = at < 0 ? 10_000 : cur;
   return (
     <div
       style={{
