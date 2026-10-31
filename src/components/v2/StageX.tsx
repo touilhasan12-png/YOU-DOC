@@ -1,5 +1,5 @@
-import React, {useMemo} from 'react';
-import {AbsoluteFill, Img, staticFile} from 'remotion';
+import React, {useMemo, useState, useEffect} from 'react';
+import {AbsoluteFill, Img, staticFile, delayRender, continueRender} from 'remotion';
 import {carto, type Cam, type Carto} from '../../lib/plate';
 import {landFC} from '../../lib/world';
 import {V, C, eo, clamp01} from '../../config/vertical';
@@ -128,6 +128,29 @@ export const StageX: React.FC<{
 
   const planeTransform = `translate(${tx}px, ${ty}px) scale(${s}) rotateX(${tilt}deg) rotateZ(${rz}deg)`;
 
+  // an svg <image> is clipped correctly (a foreignObject is not), but remotion
+  // does not know when it is decoded -- so it is loaded by hand and the frame waits.
+  const flagList = (flagFills ?? []).map((f) => f.iso2).join(',');
+  const [handle] = useState(() => delayRender('flag fills'));
+  useEffect(() => {
+    const list = flagList ? flagList.split(',') : [];
+    if (!list.length) {
+      continueRender(handle);
+      return;
+    }
+    let left = list.length;
+    const done = () => {
+      left -= 1;
+      if (left === 0) continueRender(handle);
+    };
+    list.forEach((iso) => {
+      const im = new Image();
+      im.onload = done;
+      im.onerror = done;
+      im.src = staticFile(`flags/${iso}.svg`);
+    });
+  }, [flagList, handle]);
+
   /** a country wearing its flag is not also wearing the halo */
   const wearing = new Set(
     (flagFills ?? [])
@@ -217,12 +240,15 @@ export const StageX: React.FC<{
               if (fade <= 0.001) return null;
               return (
                 <g key={`ff-${ff.iso2}`} clipPath={`url(#cpf-${ff.iso2})`} opacity={fade}>
-                  <foreignObject x={bx} y={by + dy} width={bw} height={bh}>
-                    <Img
-                      src={staticFile(`flags/${ff.iso2}.svg`)}
-                      style={{width: '100%', height: '100%', display: 'block', objectFit: 'fill'}}
-                    />
-                  </foreignObject>
+                  <image
+                    href={staticFile(`flags/${ff.iso2}.svg`)}
+                    x={bx}
+                    y={by + dy}
+                    width={bw}
+                    height={bh}
+                    preserveAspectRatio="none"
+                  />
+                  <rect x={bx} y={by} width={bw} height={bh} fill="rgba(0,0,0,0.16)" />
                 </g>
               );
             })}
