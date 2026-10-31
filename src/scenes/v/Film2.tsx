@@ -6,6 +6,7 @@ import {Hero, Tag, Mark, Lede} from '../../components/v2/Hero';
 import {Prop} from '../../components/v2/Prop';
 import {REGION_OF, type Cam} from '../../lib/plate';
 import {C} from '../../config/vertical';
+import {FrameOffset} from '../../components/v2/frame';
 
 /**
  * THE LOCKED COUNTRIES -- film v2, fast cut.
@@ -496,7 +497,11 @@ export const Film2: React.FC = () => (
     <Audio src={staticFile('audio/master.wav')} />
     {SHOTS.map((s) => (
       <Sequence key={s.id} from={s.from} durationInFrames={s.to - s.from} name={s.id}>
-        <Inner shot={s} />
+        {/* every cue in the table is an ABSOLUTE film frame, so the offset has to
+            be published or Hero/Lede fade in at the wrong time -- invisibly. */}
+        <FrameOffset.Provider value={s.from}>
+          <Inner shot={s} />
+        </FrameOffset.Provider>
       </Sequence>
     ))}
   </AbsoluteFill>

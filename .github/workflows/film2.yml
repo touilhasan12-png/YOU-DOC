@@ -29,7 +29,7 @@ jobs:
       - name: Stills at the cuts
         run: |
           mkdir -p out
-          for FR in 40 90 150 220 280 350 410 470 540 620 760 840 990 1075 1150 1240 1320 1420 1500 1600 1670 1760 1850 1950; do
+          for FR in 45 105 165 230 295 355 420 480 560 660 740 840 900 990 1080 1170 1245 1330 1420 1500 1590 1670 1750 1850 1950; do
             npx remotion still src/index.ts Film2 out/f2_${FR}.png --frame=${FR} --gl=swangle
           done
       - name: Tilt clip, 3.7 s, straight through two cuts
