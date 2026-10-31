@@ -148,7 +148,7 @@ const SHOTS: Shot[] = [
     fills: fillRegion(africa),
     flagFills: wear(africa, 255),
     tag: {text: 'AFRICA', top: 120},
-    hero: {lines: [{t: '16'}], top: 620, size: 300},
+    hero: {lines: [{t: '16'}], top: 430, size: 300},
     lede: {text: 'of 54 African states have no coast', bottom: 180},
   },
   {
@@ -163,7 +163,7 @@ const SHOTS: Shot[] = [
     fills: fillRegion(europe),
     flagFills: wear(europe, 318),
     tag: {text: 'EUROPE', top: 120},
-    hero: {lines: [{t: '14'}], top: 620, size: 300},
+    hero: {lines: [{t: '14'}], top: 430, size: 300},
     lede: {text: 'the densest cluster on Earth', bottom: 180},
   },
   {
@@ -178,7 +178,7 @@ const SHOTS: Shot[] = [
     fills: fillRegion(asia),
     flagFills: wear(asia, 380),
     tag: {text: 'ASIA', top: 120},
-    hero: {lines: [{t: '12'}], top: 620, size: 300},
+    hero: {lines: [{t: '12'}], top: 430, size: 300},
     lede: {text: 'including the largest of them all', bottom: 180},
   },
   {
@@ -431,7 +431,7 @@ const SHOTS: Shot[] = [
     flagFills: wear(africa, 1712),
     flagFills: wear(ALL, 1714),
     tag: {text: 'EVERY ONE OF THEM', top: 120},
-    hero: {lines: [{t: '44 countries'}], top: 640, size: 150},
+    hero: {lines: [{t: '44 countries'}], top: 430, size: 150},
   },
   {
     id: 's24',
@@ -490,7 +490,7 @@ const Inner: React.FC<{shot: Shot}> = ({shot}) => {
         frame={abs}
         s={shot.s ?? 1.34}
         tilt={shot.tilt ?? 20}
-        persp={shot.persp ?? 1500}
+        persp={shot.persp ?? 1000}
         rz={(shot.rz ?? 0) + 0.9 * p}
         allBorders={shot.allBorders}
         fills={shot.fills}
