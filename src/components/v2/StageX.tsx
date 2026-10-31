@@ -85,6 +85,8 @@ export const StageX: React.FC<{
   /** plane scale; >= V.OVERSCAN (1.26) is full bleed. Default 1.34 */
   s?: number;
   tilt?: number;
+  /** CSS perspective distance. Lower = the tilt reads harder on screen. */
+  persp?: number;
   rz?: number;
   tx?: number;
   ty?: number;
@@ -104,6 +106,7 @@ export const StageX: React.FC<{
   frame,
   s = 1.34,
   tilt = 8,
+  persp = V.PERSPECTIVE,
   rz = 0,
   tx = 0,
   ty = 0,
@@ -169,7 +172,7 @@ export const StageX: React.FC<{
       </AbsoluteFill>
 
       {/* 2. the tilted plate */}
-      <AbsoluteFill style={{perspective: V.PERSPECTIVE, perspectiveOrigin: '50% 50%'}}>
+      <AbsoluteFill style={{perspective: persp, perspectiveOrigin: '50% 50%'}}>
         <div
           style={{
             position: 'absolute',

@@ -45,9 +45,16 @@ type Shot = {
   tilt?: number;
   s?: number;
   rz?: number;
+  /** how far the camera slides / pushes during the cut */
+  dLng?: number;
+  dLat?: number;
+  push?: number;
+  /** perspective strength: lower = the tilt reads harder */
+  persp?: number;
   allBorders?: boolean;
   fills?: Record<string, FXFill>;
-  flagFills?: Omit<FlagFillSpec, 'from' | 'until'>[] | FlagFillSpec[];
+  /** flags that wear their countries: 'until' defaults to the end of the cut */
+  flagFills?: {iso2: string; from: number; until?: number; mode?: 'fill' | 'tile'}[];
   flags?: FlagPin[];
   props?: PropSpec[];
   tag?: {text: string; color?: string; top?: number};
@@ -65,8 +72,10 @@ const ALL = [...africa, ...europe, ...asia, ...samerica];
 const fillRegion = (list: string[], color = RED, halo = RED_HALO, opacity = 0.46): Record<string, FXFill> =>
   Object.fromEntries(list.map((iso) => [iso, {color, halo, opacity}]));
 
-const pinRegion = (list: string[], from: number, w = 64): FlagPin[] =>
-  list.map((iso2, i) => ({iso2, at: from + 4 + i * 2, w, anchor: 'centre' as const}));
+/** every named country wears its own flag, dropped onto it in a quick stagger.
+ *  No badges, no pins: the flag IS the country's area, clipped by its border. */
+const wear = (list: string[], from: number, until?: number): FlagFillSpec[] =>
+  list.map((iso2, i) => ({iso2, from: from + i * 2, ...(until === undefined ? {} : {until})}));
 
 /** the shot table: 26 cuts */
 const SHOTS: Shot[] = [
@@ -131,7 +140,7 @@ const SHOTS: Shot[] = [
     tilt: 20,
     allBorders: true,
     fills: fillRegion(africa),
-    flags: pinRegion(africa, 255, 68),
+    flagFills: wear(africa, 255),
     tag: {text: 'AFRICA', top: 120},
     hero: {lines: [{t: '16'}], top: 620, size: 300},
     lede: {text: 'of 54 African states have no coast', bottom: 180},
@@ -145,7 +154,7 @@ const SHOTS: Shot[] = [
     rz: -1,
     allBorders: true,
     fills: fillRegion(europe),
-    flags: pinRegion(europe, 318, 66),
+    flagFills: wear(europe, 318),
     tag: {text: 'EUROPE', top: 120},
     hero: {lines: [{t: '14'}], top: 620, size: 300},
     lede: {text: 'the densest cluster on Earth', bottom: 180},
@@ -159,7 +168,7 @@ const SHOTS: Shot[] = [
     rz: 1,
     allBorders: true,
     fills: fillRegion(asia),
-    flags: pinRegion(asia, 380, 64),
+    flagFills: wear(asia, 380),
     tag: {text: 'ASIA', top: 120},
     hero: {lines: [{t: '12'}], top: 620, size: 300},
     lede: {text: 'including the largest of them all', bottom: 180},
@@ -172,7 +181,7 @@ const SHOTS: Shot[] = [
     tilt: 20,
     allBorders: true,
     fills: fillRegion(samerica),
-    flags: pinRegion(samerica, 442, 110),
+    flagFills: wear(samerica, 442),
     tag: {text: 'SOUTH AMERICA', top: 120},
     hero: {lines: [{t: '2'}], top: 620, size: 300},
     lede: {text: 'Bolivia and Paraguay', bottom: 180},
@@ -250,6 +259,7 @@ const SHOTS: Shot[] = [
       li: {color: AMBER, opacity: 0.6, halo: AMBER_HALO},
       ...fillRegion(ALL, RED, RED_HALO, 0.26),
     },
+    flagFills: wear(['uz', 'li'], 886),
     tag: {text: 'THE RAREST CASE', top: 124, color: AMBER},
     hero: {lines: [{t: 'only two'}, {t: 'on earth.', glow: 'rgba(255,176,32,0.8)'}], top: 700, size: 140},
   },
@@ -336,6 +346,7 @@ const SHOTS: Shot[] = [
     tilt: 20,
     allBorders: true,
     fills: {et: {color: AMBER, opacity: 0.42, halo: AMBER_HALO}, dj: {color: RED, opacity: 0.4, halo: RED_HALO}},
+    flagFills: wear(['et', 'dj'], 1376),
     tag: {text: '776 KILOMETRES TO A PORT', top: 124, color: AMBER},
     hero: {lines: [{t: 'everything'}, {t: 'crosses a border.', glow: 'rgba(255,70,50,0.85)'}], top: 690, size: 110},
   },
@@ -366,6 +377,7 @@ const SHOTS: Shot[] = [
     rz: 1,
     allBorders: true,
     fills: {bo: {color: AMBER, opacity: 0.4, halo: AMBER_HALO}, cl: {color: RED, opacity: 0.55, halo: RED_HALO}},
+    flagFills: wear(['bo', 'cl'], 1546),
     tag: {text: 'THE WAR OF THE PACIFIC', top: 124, color: AMBER},
     hero: {lines: [{t: '1884'}], top: 640, size: 260},
     lede: {text: 'Chile took the coast; Bolivia kept the claim', bottom: 184},
@@ -392,7 +404,8 @@ const SHOTS: Shot[] = [
     tilt: 20,
     allBorders: true,
     fills: fillRegion(ALL, RED, RED_HALO, 0.3),
-    flags: pinRegion(africa, 1712, 66),
+    flagFills: wear(africa, 1712),
+    flagFills: wear(ALL, 1714),
     tag: {text: 'EVERY ONE OF THEM', top: 120},
     hero: {lines: [{t: '44 countries'}], top: 640, size: 150},
   },
@@ -431,19 +444,31 @@ const SHOTS: Shot[] = [
 const Inner: React.FC<{shot: Shot}> = ({shot}) => {
   const local = useCurrentFrame();
   const abs = shot.from + local;
+  // the camera never sits still: it pushes in and slides for the whole cut
+  const p = Math.min(1, Math.max(0, local / Math.max(1, shot.to - shot.from)));
+  const cam = {
+    lng: shot.cam.lng + (shot.dLng ?? 1.1) * p,
+    lat: shot.cam.lat + (shot.dLat ?? 0.35) * p,
+    across: shot.cam.across * (1 - (shot.push ?? 0.07) * p),
+  };
+  // a flag that is not given an end holds to the end of its own cut
+  const flagFills = (shot.flagFills ?? []).map((f) => ({
+    ...f,
+    until: f.until ?? shot.to - 4,
+  }));
   return (
     <>
       <StageX
-        cam={shot.cam}
+        cam={cam}
         plates={shot.plates ?? ['p_world']}
         frame={abs}
         s={shot.s ?? 1.34}
         tilt={shot.tilt ?? 20}
-        rz={shot.rz ?? 0}
+        persp={shot.persp ?? 1500}
+        rz={(shot.rz ?? 0) + 0.9 * p}
         allBorders={shot.allBorders}
         fills={shot.fills}
-        flagFills={shot.flagFills as FlagFillSpec[]}
-        flags={shot.flags}
+        flagFills={flagFills}
       />
       {(shot.props ?? []).map((p, i) => (
         <Prop key={i} src={p.src} x={p.x} y={p.y} w={p.w} rotate={p.rotate} motion={p.motion} from={p.at} until={p.until} dur={p.dur ?? 8} frame={abs} />
