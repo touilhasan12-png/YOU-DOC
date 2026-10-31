@@ -186,7 +186,8 @@ export const StageX: React.FC<{
           {(flagFills ?? []).map((ff) => {
             const d = c.shapes[ff.iso2];
             if (!d || frame < ff.from) return null;
-            const [bx, by, bw, bh] = bboxOf(d);
+            const box = c.boxes[ff.iso2];
+            const [bx, by, bw, bh] = box ?? bboxOf(d);
             const drop = Math.max(1, Math.min(14, (ff.until ?? ff.from + 40) - ff.from > 0 ? 12 : 12));
             const t = Math.min(1, (frame - ff.from) / drop);
             const e = 1 - Math.pow(1 - t, 3);

@@ -124,6 +124,9 @@ export type Carto = {
   ptsTrue: Record<string, [number, number]>;
   /** plate id -> {x,y,w,h} in svg px */
   rects: Record<string, {x: number; y: number; w: number; h: number}>;
+  /** iso2 -> exact projected bounding box [x, y, w, h], from the projection itself
+   *  (never parsed out of path text: that mis-pairs arc parameters) */
+  boxes: Record<string, [number, number, number, number]>;
 };
 
 const cartoCache = new Map<string, Carto>();
@@ -152,6 +155,15 @@ export function carto(cam: Cam, frameW: number, offset: [number, number], plateI
     if (d) shapes[iso] = d;
   }
 
+  const boxes: Record<string, [number, number, number, number]> = {};
+  for (const feat of landFC.features) {
+    const iso = numToIso.get(Number((feat as {id?: string}).id));
+    if (!iso) continue;
+    const b = gp.bounds(feat as never);
+    if (!b) continue;
+    boxes[iso] = [b[0][0], b[0][1], b[1][0] - b[0][0], b[1][1] - b[0][1]];
+  }
+
   const pts: Record<string, [number, number]> = {};
   const ptsTrue: Record<string, [number, number]> = {};
   for (const c of CL) {
@@ -174,7 +186,7 @@ export function carto(cam: Cam, frameW: number, offset: [number, number], plateI
     rects[id] = {x: a[0], y: a[1], w: b[0] - a[0], h: b[1] - a[1]};
   }
 
-  const out: Carto = {proj, path, graticule: path(geoGraticule10()), shapes, pts, ptsTrue, rects};
+  const out: Carto = {proj, path, graticule: path(geoGraticule10()), shapes, pts, ptsTrue, rects, boxes};
   cartoCache.set(key, out);
   return out;
 }
