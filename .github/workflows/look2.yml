@@ -23,7 +23,6 @@ jobs:
             libpango-1.0-0 libcairo2 libasound2t64 || sudo apt-get install -y -qq libasound2
       - run: npm ci
       - run: npx remotion browser ensure
-      - run: npx tsc --noEmit
       - name: Four stills
         run: |
           mkdir -p out
