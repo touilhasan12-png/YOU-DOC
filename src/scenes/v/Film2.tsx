@@ -86,7 +86,7 @@ const SHOTS: Shot[] = [
     from: 0,
     to: 66,
     cam: {lng: 18, lat: 4, across: 54},
-    plates: ['p_africa'],
+    plates: ['p_world', 'p_africa'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 20,
     rz: -1.5,
     allBorders: true,
@@ -100,7 +100,7 @@ const SHOTS: Shot[] = [
     from: 66,
     to: 122,
     cam: {lng: 20, lat: 2, across: 44},
-    plates: ['p_africa'],
+    plates: ['p_world', 'p_africa'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 22,
     allBorders: true,
     fills: fillRegion(ALL),
@@ -113,7 +113,7 @@ const SHOTS: Shot[] = [
     from: 122,
     to: 182,
     cam: {lng: 20, lat: 2, across: 50},
-    plates: ['p_africa'],
+    plates: ['p_world', 'p_africa'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 20,
     allBorders: true,
     fills: fillRegion(ALL),
@@ -126,7 +126,7 @@ const SHOTS: Shot[] = [
     from: 182,
     to: 249,
     cam: {lng: 22, lat: 2, across: 46},
-    plates: ['p_africa'],
+    plates: ['p_world', 'p_africa'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 24,
     rz: 1.5,
     allBorders: true,
@@ -142,7 +142,7 @@ const SHOTS: Shot[] = [
     from: 249,
     to: 312,
     cam: {lng: 20, lat: 2, across: 50},
-    plates: ['p_africa'],
+    plates: ['p_world', 'p_africa'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 20,
     allBorders: true,
     fills: fillRegion(africa),
@@ -156,7 +156,7 @@ const SHOTS: Shot[] = [
     from: 312,
     to: 374,
     cam: {lng: 15, lat: 50, across: 34},
-    plates: ['p_europe'],
+    plates: ['p_world', 'p_europe'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 20,
     rz: -1,
     allBorders: true,
@@ -171,7 +171,7 @@ const SHOTS: Shot[] = [
     from: 374,
     to: 436,
     cam: {lng: 78, lat: 44, across: 62},
-    plates: ['p_asia'],
+    plates: ['p_world', 'p_asia'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 20,
     rz: 1,
     allBorders: true,
@@ -186,7 +186,7 @@ const SHOTS: Shot[] = [
     from: 436,
     to: 496,
     cam: {lng: -61, lat: -19, across: 26},
-    plates: ['p_bolivia','p_samerica'],
+    plates: ['p_world', 'p_samerica', 'p_bolivia'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 20,
     allBorders: true,
     fills: fillRegion(samerica),
@@ -202,7 +202,7 @@ const SHOTS: Shot[] = [
     from: 496,
     to: 600,
     cam: {lng: 12, lat: 18, across: 82},
-    plates: ['p_world'],
+    plates: ['p_world'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 18,
     allBorders: true,
     fills: fillRegion(ALL),
@@ -215,7 +215,7 @@ const SHOTS: Shot[] = [
     from: 600,
     to: 719,
     cam: {lng: 12, lat: 12, across: 86},
-    plates: ['p_world'],
+    plates: ['p_world'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 20,
     rz: -1,
     allBorders: true,
@@ -231,7 +231,7 @@ const SHOTS: Shot[] = [
     from: 719,
     to: 800,
     cam: {lng: 64, lat: 41.5, across: 30},
-    plates: ['p_casia'],
+    plates: ['p_world', 'p_casia'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 24,
     allBorders: true,
     fills: {
@@ -248,7 +248,7 @@ const SHOTS: Shot[] = [
     from: 800,
     to: 880,
     cam: {lng: 9.6, lat: 47.1, across: 11},
-    plates: ['p_alps'],
+    plates: ['p_world', 'p_alps'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 22,
     allBorders: true,
     fills: {
@@ -265,7 +265,7 @@ const SHOTS: Shot[] = [
     from: 880,
     to: 951,
     cam: {lng: 22, lat: 34, across: 84},
-    plates: ['p_world'],
+    plates: ['p_world'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 18,
     allBorders: true,
     fills: {
@@ -284,7 +284,7 @@ const SHOTS: Shot[] = [
     from: 951,
     to: 1030,
     cam: {lng: 68, lat: 48, across: 44},
-    plates: ['p_casia'],
+    plates: ['p_world', 'p_casia'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 24,
     rz: 1.5,
     allBorders: true,
@@ -302,7 +302,7 @@ const SHOTS: Shot[] = [
     from: 1030,
     to: 1120,
     cam: {lng: 68, lat: 48, across: 38},
-    plates: ['p_casia'],
+    plates: ['p_world', 'p_casia'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 22,
     allBorders: true,
     fills: {kz: {color: AMBER, opacity: 0.42, halo: AMBER_HALO}},
@@ -316,7 +316,7 @@ const SHOTS: Shot[] = [
     from: 1120,
     to: 1198,
     cam: {lng: 68, lat: 48, across: 44},
-    plates: ['p_casia'],
+    plates: ['p_world', 'p_casia'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 24,
     allBorders: true,
     fills: {kz: {color: AMBER, opacity: 0.5, halo: AMBER_HALO}},
@@ -330,7 +330,7 @@ const SHOTS: Shot[] = [
     from: 1198,
     to: 1280,
     cam: {lng: 39, lat: 9, across: 26},
-    plates: ['p_ethiopia'],
+    plates: ['p_world', 'p_africa', 'p_ethiopia'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 22,
     allBorders: true,
     fills: {
@@ -347,7 +347,7 @@ const SHOTS: Shot[] = [
     from: 1280,
     to: 1370,
     cam: {lng: 39, lat: 9, across: 30},
-    plates: ['p_ethiopia'],
+    plates: ['p_world', 'p_africa', 'p_ethiopia'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 24,
     rz: -1,
     allBorders: true,
@@ -362,7 +362,7 @@ const SHOTS: Shot[] = [
     from: 1370,
     to: 1459,
     cam: {lng: 42, lat: 9, across: 22},
-    plates: ['p_ethiopia'],
+    plates: ['p_world', 'p_africa', 'p_ethiopia'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 20,
     allBorders: true,
     fills: {et: {color: AMBER, opacity: 0.42, halo: AMBER_HALO}, dj: {color: RED, opacity: 0.4, halo: RED_HALO}},
@@ -377,7 +377,7 @@ const SHOTS: Shot[] = [
     from: 1459,
     to: 1540,
     cam: {lng: -64, lat: -17, across: 24},
-    plates: ['p_bolivia'],
+    plates: ['p_world', 'p_samerica', 'p_bolivia'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 22,
     allBorders: true,
     fills: {
@@ -394,7 +394,7 @@ const SHOTS: Shot[] = [
     from: 1540,
     to: 1630,
     cam: {lng: -70, lat: -20, across: 20},
-    plates: ['p_bolivia','p_samerica'],
+    plates: ['p_world', 'p_samerica', 'p_bolivia'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 24,
     rz: 1,
     allBorders: true,
@@ -409,7 +409,7 @@ const SHOTS: Shot[] = [
     from: 1630,
     to: 1708,
     cam: {lng: -69, lat: -16, across: 9},
-    plates: ['p_bolivia'],
+    plates: ['p_world', 'p_samerica', 'p_bolivia'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 20,
     allBorders: true,
     fills: {bo: {color: AMBER, opacity: 0.34, halo: AMBER_HALO}},
@@ -424,7 +424,7 @@ const SHOTS: Shot[] = [
     from: 1708,
     to: 1790,
     cam: {lng: 20, lat: 2, across: 50},
-    plates: ['p_africa'],
+    plates: ['p_world', 'p_africa'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 20,
     allBorders: true,
     fills: fillRegion(ALL, RED, RED_HALO, 0.3),
@@ -438,7 +438,7 @@ const SHOTS: Shot[] = [
     from: 1790,
     to: 1880,
     cam: {lng: 12, lat: 16, across: 84},
-    plates: ['p_world'],
+    plates: ['p_world'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 18,
     allBorders: true,
     fills: fillRegion(ALL, RED, RED_HALO, 0.34),
@@ -450,7 +450,7 @@ const SHOTS: Shot[] = [
     from: 1880,
     to: 1998,
     cam: {lng: 20, lat: 2, across: 48},
-    plates: ['p_africa'],
+    plates: ['p_world', 'p_africa'],   // p_world first = the base that fills the plane, then the detail plate on top
     tilt: 22,
     rz: -1,
     allBorders: true,
