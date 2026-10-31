@@ -12,6 +12,9 @@ export type FlagSpec = {
   tone?: 'white' | 'amber' | 'red';
   /** seconds of tumble-in (frames); 11 is crisp, 20 is soft */
   dur?: number;
+  /** 'above' plants the flag over the point on a pin; 'centre' puts the flag
+   *  ON the country (used when the flag itself is the subject) */
+  anchor?: 'above' | 'centre';
 };
 
 const TONE: Record<string, string> = {
@@ -70,8 +73,11 @@ export const FlagCard: React.FC<{
           position: 'absolute',
           left: pt[0],
           top: pt[1],
-          transform: `translate(-50%,-100%) translateY(${dropY}px) rotateX(${-tilt}deg) scale(${sc})`,
-          transformOrigin: '50% 100%',
+          transform:
+            spec.anchor === 'centre'
+              ? `translate(-50%,-50%) translateY(${dropY * 0.35}px) rotateX(${-tilt}deg) scale(${sc})`
+              : `translate(-50%,-100%) translateY(${dropY}px) rotateX(${-tilt}deg) scale(${sc})`,
+          transformOrigin: spec.anchor === 'centre' ? '50% 50%' : '50% 100%',
           opacity: Math.min(1, t * 3.5),
           width: w,
         }}
@@ -92,19 +98,21 @@ export const FlagCard: React.FC<{
             style={{width: '100%', height: '100%', display: 'block'}}
           />
         </div>
-        {/* pin */}
-        <div
-          style={{
-            position: 'absolute',
-            left: '50%',
-            bottom: -5,
-            width: 2.5,
-            height: 7,
-            marginLeft: -1.25,
-            background: tone,
-            boxShadow: '0 0 4px rgba(0,0,0,0.8)',
-          }}
-        />
+        {/* pin -- only when the flag is planted above the point */}
+        {spec.anchor === 'centre' ? null : (
+          <div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              bottom: -5,
+              width: 2.5,
+              height: 7,
+              marginLeft: -1.25,
+              background: tone,
+              boxShadow: '0 0 4px rgba(0,0,0,0.8)',
+            }}
+          />
+        )}
         {spec.label ? (
           <div
             style={{

@@ -37,6 +37,7 @@ const Hook: React.FC = () => (
       frame={SETTLED}
       s={1.34}
       tilt={8}
+      allBorders
       fills={Object.fromEntries(
         [...REGION_OF.africa, ...REGION_OF.europe, ...REGION_OF.asia, ...(REGION_OF.samerica ?? [])].map((iso) => [
           iso,
@@ -64,21 +65,19 @@ const Hook: React.FC = () => (
 const Flags: React.FC = () => (
   <>
     <StageX
-      cam={{lng: 20, lat: 2, across: 46}}
+      cam={{lng: 20, lat: 2, across: 50}}
       plates={['p_world']}
       frame={SETTLED}
       s={1.34}
       tilt={9}
+      allBorders
       fills={Object.fromEntries(REGION_OF.africa.map((iso) => [iso, {color: RED, opacity: 0.46, halo: RED_HALO}]))}
-      flags={REGION_OF.africa.map((iso) => ({iso2: iso, at: -900, w: 62}))}
+      flags={REGION_OF.africa.map((iso) => ({iso2: iso, at: -900, w: 92, anchor: 'centre' as const}))}
     />
-    <Tag top={132} align="center">
+    <Tag top={104} align="center">
       AFRICA
     </Tag>
-    <Hero top={186} at={-1} size={150} lines={[{t: '16 states'}, {t: 'with no coast', glow: 'rgba(255,70,50,0.9)'}]} />
-    <Lede bottom={196} size={38}>
-      Every one of them carries its own flag.
-    </Lede>
+    <Hero top={150} at={-1} size={104} lines={[{t: '16 states with no coast', glow: 'rgba(255,70,50,0.9)'}]} />
     <Mark />
   </>
 );
@@ -87,21 +86,22 @@ const Flags: React.FC = () => (
 const Doubly: React.FC = () => (
   <>
     <StageX
-      cam={{lng: 66, lat: 42, across: 26}}
+      cam={{lng: 64, lat: 40, across: 36}}
       plates={['p_world', 'p_casia']}
       frame={SETTLED}
       s={1.34}
       tilt={10}
+      allBorders
       fills={{
         uz: {color: AMBER, opacity: 0.62, halo: AMBER_HALO},
         ...Object.fromEntries(UZ_NEIGHBOURS.map((iso) => [iso, {color: RED, opacity: 0.40, halo: RED_HALO}])),
       }}
-      flags={[{iso2: 'uz', at: -900, w: 84, tone: 'amber'}]}
+      flags={[{iso2: 'uz', at: -900, w: 110, tone: 'amber', anchor: 'centre'}]}
     />
-    <Tag top={700} align="center" color={AMBER}>
+    <Tag top={742} align="center" color={AMBER}>
       DOUBLY LANDLOCKED
     </Tag>
-    <Hero top={760} at={-1} size={116} lines={[{t: 'Uzbekistan', glow: 'rgba(255,176,32,0.85)'}]} />
+    <Hero top={796} at={-1} size={104} lines={[{t: 'Uzbekistan', glow: 'rgba(255,176,32,0.85)'}]} />
     <Lede bottom={210} size={40}>
       All five of its neighbours are landlocked too.
     </Lede>

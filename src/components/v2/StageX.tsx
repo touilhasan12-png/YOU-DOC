@@ -1,6 +1,7 @@
 import React, {useMemo} from 'react';
 import {AbsoluteFill, Img, staticFile} from 'remotion';
 import {carto, type Cam, type Carto} from '../../lib/plate';
+import {landFC} from '../../lib/world';
 import {V} from '../../config/vertical';
 import {FlagCard, type FlagSpec} from './FlagCard';
 
@@ -26,6 +27,8 @@ import {FlagCard, type FlagSpec} from './FlagCard';
  * Geometry is unchanged from Stage: one camera model, k = frameW/(across*rad),
  * across degrees span the frame width when s == OVERSCAN (1.26).
  */
+
+const landFeats = landFC.features;
 
 export type FXFill = {
   /** fill colour */
@@ -53,6 +56,9 @@ export const StageX: React.FC<{
   flags?: FlagSpec[];
   vignette?: number;
   grain?: boolean;
+  /** draw every country border, not only the landlocked ones (the references
+   *  always show the full border web; it is what makes a region read as a place) */
+  allBorders?: boolean;
   planeSvg?: (c: Carto) => React.ReactNode;
   children?: React.ReactNode;
 }> = ({
@@ -68,6 +74,7 @@ export const StageX: React.FC<{
   flags,
   vignette = 0.38,
   grain = true,
+  allBorders = false,
   planeSvg,
   children,
 }) => {
@@ -135,6 +142,15 @@ export const StageX: React.FC<{
                 <feGaussianBlur stdDeviation="26" />
               </filter>
             </defs>
+
+            {allBorders ? (
+              <g fill="none" stroke="rgba(255,255,255,0.16)" strokeWidth={0.8} strokeLinejoin="round">
+                {landFeats.map((ft, i) => {
+                  const d = c.path(ft);
+                  return d ? <path key={`ab-${i}`} d={d} /> : null;
+                })}
+              </g>
+            ) : null}
 
             {/* borders: thin, white, everywhere -- the reference's constant */}
             <g fill="none" stroke="rgba(255,255,255,0.30)" strokeWidth={0.9} strokeLinejoin="round">
