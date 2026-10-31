@@ -89,8 +89,8 @@ export const ANCHOR_NUDGE: Record<string, [number, number]> = {
   md: [1.7, 0.6],
   by: [-1.0, 1.4],
   // Africa micro/close pairs
-  rw: [-3.1, -0.7],
-  bi: [2.3, 0.5],
+  rw: [-4.5, -0.6],
+  bi: [3.6, 1.0],
   sz: [1.4, -1.0],
   ls: [-1.4, -0.9],
   mw: [0.6, 0.4],

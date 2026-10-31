@@ -233,6 +233,23 @@ export const StageX: React.FC<{
             {planeSvg ? planeSvg(c) : null}
           </svg>
 
+          {/* leader lines: a nudged flag keeps a hairline back to its true centroid,
+              drawn on the map (in plane space) so it lies on the ground, not on the glass */}
+          <svg width={pw} height={ph} viewBox={`0 0 ${pw} ${ph}`} style={{position: 'absolute', left: 0, top: 0, pointerEvents: 'none'}}>
+            {(flags ?? []).map((sp) => {
+              const a = c.pts[sp.iso2];
+              const b = c.ptsTrue[sp.iso2];
+              if (!a || !b) return null;
+              if (Math.hypot(a[0] - b[0], a[1] - b[1]) < 20 * s) return null;
+              return (
+                <g key={`ld-${sp.iso2}`}>
+                  <line x1={b[0]} y1={b[1]} x2={a[0]} y2={a[1]} stroke="rgba(255,255,255,0.55)" strokeWidth={1.2} />
+                  <circle cx={b[0]} cy={b[1]} r={3} fill="#fff" stroke="rgba(0,0,0,0.6)" strokeWidth={1} />
+                </g>
+              );
+            })}
+          </svg>
+
         </div>
       </AbsoluteFill>
 

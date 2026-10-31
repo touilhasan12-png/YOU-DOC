@@ -96,12 +96,12 @@ const Doubly: React.FC = () => (
         uz: {color: AMBER, opacity: 0.62, halo: AMBER_HALO},
         ...Object.fromEntries(UZ_NEIGHBOURS.map((iso) => [iso, {color: RED, opacity: 0.40, halo: RED_HALO}])),
       }}
-      flags={[{iso2: 'uz', at: -900, w: 118, tone: 'amber', anchor: 'centre', label: '1,600 km from any coast'}]}
+      flags={[{iso2: 'uz', at: -900, w: 118, tone: 'amber', anchor: 'centre'}]}
     />
-    <Tag top={742} align="center" color={AMBER}>
+    <Tag top={232} align="center" color={AMBER}>
       DOUBLY LANDLOCKED
     </Tag>
-    <Hero top={796} at={-1} size={104} lines={[{t: 'Uzbekistan', glow: 'rgba(255,176,32,0.85)'}]} />
+    <Hero top={286} at={-1} size={104} lines={[{t: 'Uzbekistan', glow: 'rgba(255,176,32,0.85)'}]} />
     <Lede bottom={210} size={40}>
       All five of its neighbours are landlocked too.
     </Lede>
