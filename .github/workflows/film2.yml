@@ -32,6 +32,8 @@ jobs:
           for FR in 40 90 150 220 280 350 410 470 540 620 760 840 990 1075 1150 1240 1320 1420 1500 1600 1670 1760 1850 1950; do
             npx remotion still src/index.ts Film2 out/f2_${FR}.png --frame=${FR} --gl=swangle
           done
+      - name: Tilt clip, 3.7 s, straight through two cuts
+        run: npx remotion render src/index.ts Film2 out/f2_clip.mp4 --gl=swangle --crf=20 --frames=249-359 --muted
       - name: The film
         if: ${{ github.event.inputs.mode != 'stills' }}
         run: npx remotion render src/index.ts Film2 out/The_Locked_Countries_v2.mp4 --gl=swangle --concurrency=4 --crf=18 --audio-bitrate=160k
@@ -43,6 +45,7 @@ jobs:
           name: film2
           path: |
             out/f2_*.png
+            out/f2_clip.mp4
             out/The_Locked_Countries_v2.mp4
             out/small.mp4
           retention-days: 14
