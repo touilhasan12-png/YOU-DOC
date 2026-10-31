@@ -179,57 +179,12 @@ export const StageX: React.FC<{
           })}
 
           {/* THE FLAG THAT WEARS THE COUNTRY.
-              The country's own outline is the clip; the flag is the texture
-              inside it, so the flag fills the state exactly to its borders.
-              It falls from above, holds while the narrator is on it, then fades
-              back to the neon halo underneath. */}
-          {(flagFills ?? []).map((ff) => {
-            const d = c.shapes[ff.iso2];
-            if (!d || frame < ff.from) return null;
-            const box = c.boxes[ff.iso2];
-            const [bx, by, bw, bh] = box ?? bboxOf(d);
-            const drop = Math.max(1, Math.min(14, (ff.until ?? ff.from + 40) - ff.from > 0 ? 12 : 12));
-            const t = Math.min(1, (frame - ff.from) / drop);
-            const e = 1 - Math.pow(1 - t, 3);
-            const dy = -(1 - e) * (bh + bw * 0.25);
-            const out = ff.until === undefined ? 0 : Math.min(1, Math.max(0, (frame - ff.until) / 8));
-            const fade = 1 - out;
-            if (fade <= 0.001) return null;
-            return (
-              <div
-                key={`ff-${ff.iso2}`}
-                style={{position: 'absolute', inset: 0, clipPath: `path("${d}")`, opacity: fade, pointerEvents: 'none'}}
-              >
-                <Img
-                  src={staticFile(`flags/${ff.iso2}.svg`)}
-                  style={{
-                    position: 'absolute',
-                    left: bx,
-                    top: by + dy,
-                    width: bw,
-                    height: bh,
-                    objectFit: ff.mode === 'tile' ? 'none' : 'fill',
-                    ...(ff.mode === 'tile'
-                      ? {backgroundImage: `url(${staticFile(`flags/${ff.iso2}.svg`)})`, backgroundSize: `${bh * 1.333}px ${bh}px`}
-                      : {}),
-                  }}
-                />
-                {/* a shade so the flag sits in the scene rather than on top of it */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    left: bx,
-                    top: by,
-                    width: bw,
-                    height: bh,
-                    background:
-                      'linear-gradient(160deg, rgba(255,255,255,0.16) 0%, rgba(0,0,0,0) 38%, rgba(0,0,0,0.28) 100%)',
-                  }}
-                />
-              </div>
-            );
-          })}
-
+              The country's own outline is the clip; the flag is the texture inside
+              it, so the flag fills the state exactly to its borders. It falls from
+              above, holds while the narrator is on it, then fades back to the halo.
+              The clip lives INSIDE the svg: CSS clip-path is ignored on an element
+              under transform-style:preserve-3d, which let the first attempt spill
+              every flag over its neighbours. */}
           <svg width={pw} height={ph} viewBox={`0 0 ${pw} ${ph}`} style={{position: 'absolute', left: 0, top: 0}}>
             <defs>
               <filter id="xHalo" x="-45%" y="-45%" width="190%" height="190%">
@@ -238,7 +193,53 @@ export const StageX: React.FC<{
               <filter id="xHaloWide" x="-60%" y="-60%" width="220%" height="220%">
                 <feGaussianBlur stdDeviation="26" />
               </filter>
+              {(flagFills ?? []).map((ff) => {
+                const d = c.shapes[ff.iso2];
+                if (!d) return null;
+                return (
+                  <clipPath id={`cpf-${ff.iso2}`} key={`cpf-${ff.iso2}`}>
+                    <path d={d} />
+                  </clipPath>
+                );
+              })}
             </defs>
+
+            {(flagFills ?? []).map((ff) => {
+              const d = c.shapes[ff.iso2];
+              const box = c.boxes[ff.iso2];
+              if (!d || !box || frame < ff.from) return null;
+              const [bx, by, bw, bh] = box;
+              const t = Math.min(1, (frame - ff.from) / 12);
+              const e = 1 - Math.pow(1 - t, 3);
+              const dy = -(1 - e) * (bh + bw * 0.2);
+              const out = ff.until === undefined ? 0 : Math.min(1, Math.max(0, (frame - ff.until) / 8));
+              const fade = 1 - out;
+              if (fade <= 0.001) return null;
+              return (
+                <g key={`ff-${ff.iso2}`} clipPath={`url(#cpf-${ff.iso2})`} opacity={fade}>
+                  <foreignObject x={bx} y={by + dy} width={bw} height={bh}>
+                    <Img
+                      src={staticFile(`flags/${ff.iso2}.svg`)}
+                      style={{width: '100%', height: '100%', display: 'block', objectFit: 'fill'}}
+                    />
+                  </foreignObject>
+                </g>
+              );
+            })}
+            {(flagFills ?? []).map((ff) => {
+              const d = c.shapes[ff.iso2];
+              if (!d || frame < ff.from) return null;
+              return (
+                <path
+                  key={`ffr-${ff.iso2}`}
+                  d={d}
+                  fill="none"
+                  stroke="rgba(255,255,255,0.9)"
+                  strokeWidth={1.6}
+                  strokeLinejoin="round"
+                />
+              );
+            })}
 
             {allBorders ? (
               <g fill="none" stroke="rgba(255,255,255,0.16)" strokeWidth={0.8} strokeLinejoin="round">
