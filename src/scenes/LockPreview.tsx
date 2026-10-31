@@ -8,7 +8,6 @@ import {LANDLOCKED} from '../data/landlocked';
 const W = 1080;
 const H = 1920;
 
-type Poly = {num: number; d: string; cx: number; cy: number};
 export const LockPreview: React.FC = () => {
   const f = useCurrentFrame();
   const proj: GeoProjection = geoNaturalEarth1().fitExtent(
