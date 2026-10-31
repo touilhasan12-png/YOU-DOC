@@ -2,8 +2,7 @@ import React, {useMemo} from 'react';
 import {AbsoluteFill, Img, staticFile} from 'remotion';
 import {carto, type Cam, type Carto} from '../../lib/plate';
 import {landFC} from '../../lib/world';
-import {V} from '../../config/vertical';
-import {FlagCard, type FlagSpec} from './FlagCard';
+import {V, C, eo, clamp01} from '../../config/vertical';
 
 /**
  * STAGEX -- the full-bleed cinematic stage ("REF language").
@@ -30,6 +29,18 @@ import {FlagCard, type FlagSpec} from './FlagCard';
 
 const landFeats = landFC.features;
 
+export type FlagPin = {
+  iso2: string;
+  /** absolute film frame the flag lands on; -900 for a settled still */
+  at: number;
+  /** on-screen width in px (the card is always 4:3) */
+  w: number;
+  tone?: 'white' | 'amber' | 'red';
+  label?: string;
+  /** 'centre' puts the flag on the country; 'above' plants it above the point */
+  anchor?: 'centre' | 'above';
+};
+
 export type FXFill = {
   /** fill colour */
   color: string;
@@ -53,7 +64,7 @@ export const StageX: React.FC<{
   tx?: number;
   ty?: number;
   fills?: Record<string, FXFill>;
-  flags?: FlagSpec[];
+  flags?: FlagPin[];
   vignette?: number;
   grain?: boolean;
   /** draw every country border, not only the landlocked ones (the references
@@ -101,7 +112,7 @@ export const StageX: React.FC<{
       </AbsoluteFill>
 
       {/* 2. the tilted plate */}
-      <AbsoluteFill style={{perspective: V.PERSPECTIVE, perspectiveOrigin: '50% 44%'}}>
+      <AbsoluteFill style={{perspective: V.PERSPECTIVE, perspectiveOrigin: '50% 50%'}}>
         <div
           style={{
             position: 'absolute',
@@ -222,15 +233,90 @@ export const StageX: React.FC<{
             {planeSvg ? planeSvg(c) : null}
           </svg>
 
-          {/* flags are billboards inside the tilted plane, so they stay upright */}
-          <div style={{position: 'absolute', inset: 0, transformStyle: 'preserve-3d'}}>
-            {(flags ?? []).map((sp) => {
-              const pt = c.pts[sp.iso2];
-              if (!pt) return null;
-              return <FlagCard key={`${sp.iso2}-${sp.at}`} spec={sp} pt={pt} tilt={tilt} frame={frame} planeScale={s} />;
-            })}
-          </div>
         </div>
+      </AbsoluteFill>
+
+      {/* 2b. FLAGS IN SCREEN SPACE.
+          The pin is projected with the same camera and the same 3D tilt as the
+          plate, but the card is drawn flat on top of the frame: it can never be
+          foreshortened, clipped by the plane, or flip perspective. Size is an
+          exact pixel value, and the card is 4:3 by construction. */}
+      <AbsoluteFill style={{pointerEvents: 'none'}}>
+        {(flags ?? []).map((sp) => {
+          const d = c.pts[sp.iso2];
+          if (!d) return null;
+          const t = clamp01((frame - sp.at) / 11);
+          if (t <= 0) return null;
+          const e = eo(t);
+          // plane px -> screen px, through scale, tilt and the same lens
+          const dx = (d[0] - pw / 2) * s;
+          const dy = (d[1] - ph / 2) * s;
+          const z = -dy * Math.sin((tilt * Math.PI) / 180);
+          const f = V.PERSPECTIVE / (V.PERSPECTIVE + z);
+          const X = w / 2 + dx * f;
+          const Y = h / 2 + dy * Math.cos((tilt * Math.PI) / 180) * f;
+          const cw = sp.w;
+          const ch = cw * 0.75;
+          const lift = sp.anchor === 'above' ? -(ch / 2 + 12) : 0;
+          const tone = sp.tone === 'amber' ? C.amber : sp.tone === 'red' ? C.red2 : 'rgba(255,255,255,0.95)';
+          return (
+            <React.Fragment key={`${sp.iso2}-${sp.at}`}>
+              {sp.anchor === 'above' ? (
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: X - 1.25,
+                    top: Y,
+                    width: 2.5,
+                    height: Math.max(0, -lift - ch / 2),
+                    background: tone,
+                    opacity: 0.9 * e,
+                    boxShadow: '0 0 6px rgba(0,0,0,0.85)',
+                  }}
+                />
+              ) : null}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: X - cw / 2,
+                  top: Y - ch / 2 + lift - (1 - e) * 46,
+                  width: cw,
+                  height: ch,
+                  borderRadius: 3,
+                  overflow: 'hidden',
+                  border: `2px solid ${tone}`,
+                  boxShadow: '0 12px 26px rgba(0,0,0,0.66), 0 0 0 1px rgba(0,0,0,0.45)',
+                  backgroundColor: '#0B1119',
+                  opacity: Math.min(1, t * 3.2),
+                  transform: `scale(${1.22 - 0.22 * e})`,
+                  transformOrigin: '50% 50%',
+                }}
+              >
+                <Img src={staticFile(`flags/${sp.iso2}.svg`)} style={{width: '100%', height: '100%', display: 'block'}} />
+              </div>
+              {sp.label ? (
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: X,
+                    top: Y + ch / 2 + lift + 8,
+                    transform: 'translateX(-50%)',
+                    whiteSpace: 'nowrap',
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: 20,
+                    fontWeight: 700,
+                    letterSpacing: '0.02em',
+                    color: '#fff',
+                    textShadow: '0 2px 10px rgba(0,0,0,0.95)',
+                    opacity: e,
+                  }}
+                >
+                  {sp.label}
+                </div>
+              ) : null}
+            </React.Fragment>
+          );
+        })}
       </AbsoluteFill>
 
       {/* 3. vignette + grain: the two things that stop a map looking like a screenshot */}

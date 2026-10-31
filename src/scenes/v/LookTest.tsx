@@ -72,7 +72,7 @@ const Flags: React.FC = () => (
       tilt={9}
       allBorders
       fills={Object.fromEntries(REGION_OF.africa.map((iso) => [iso, {color: RED, opacity: 0.46, halo: RED_HALO}]))}
-      flags={REGION_OF.africa.map((iso) => ({iso2: iso, at: -900, w: 92, anchor: 'centre' as const}))}
+      flags={REGION_OF.africa.map((iso) => ({iso2: iso, at: -900, w: 96, anchor: 'centre' as const}))}
     />
     <Tag top={104} align="center">
       AFRICA
@@ -96,7 +96,7 @@ const Doubly: React.FC = () => (
         uz: {color: AMBER, opacity: 0.62, halo: AMBER_HALO},
         ...Object.fromEntries(UZ_NEIGHBOURS.map((iso) => [iso, {color: RED, opacity: 0.40, halo: RED_HALO}])),
       }}
-      flags={[{iso2: 'uz', at: -900, w: 110, tone: 'amber', anchor: 'centre'}]}
+      flags={[{iso2: 'uz', at: -900, w: 118, tone: 'amber', anchor: 'centre', label: '1,600 km from any coast'}]}
     />
     <Tag top={742} align="center" color={AMBER}>
       DOUBLY LANDLOCKED
