@@ -1,0 +1,61 @@
+name: Render beer-flood benchmark
+
+on:
+  workflow_dispatch:
+    inputs:
+      concurrency:
+        description: Remotion concurrency
+        required: false
+        default: '2'
+  push:
+    branches: [render/beer-flood-benchmark]
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'package*.json'
+      - '.github/workflows/render-benchmark.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install browser and media libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg libnss3 libnspr4 libasound2t64 || sudo apt-get install -y ffmpeg libnss3 libnspr4 libasound2
+          npx remotion browser ensure
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Render 2-second full-quality benchmark
+        env:
+          CONCURRENCY: ${{ github.event.inputs.concurrency || '2' }}
+        run: npm run render:benchmark
+      - name: Extract poster frame
+        run: ffmpeg -y -v error -i out/beer-flood-benchmark.mp4 -vf "select=eq(n\,30)" -vframes 1 out/poster.jpg
+      - name: Timing summary
+        if: always()
+        run: |
+          if [ -f out/timings.json ]; then
+            echo '## Benchmark timings' >> "$GITHUB_STEP_SUMMARY"
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat out/timings.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: beer-flood-benchmark
+          path: out/
+          retention-days: 7
+          if-no-files-found: warn

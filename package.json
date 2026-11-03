@@ -1,0 +1,30 @@
+{
+  "name": "beer-flood-benchmark",
+  "version": "1.0.0",
+  "private": true,
+  "description": "English London Beer Flood benchmark using the original MIT animated-shorts rendering engine",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "render:benchmark": "node scripts/render-benchmark.mjs",
+    "studio": "remotion studio src/index.ts --port=3000 --ip=0.0.0.0"
+  },
+  "dependencies": {
+    "@react-three/fiber": "9.3.0",
+    "@react-three/postprocessing": "3.0.4",
+    "@remotion/cli": "4.0.540",
+    "@remotion/three": "4.0.540",
+    "postprocessing": "6.37.8",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "remotion": "4.0.540",
+    "three": "0.179.1"
+  },
+  "devDependencies": {
+    "@remotion/bundler": "4.0.540",
+    "@remotion/renderer": "4.0.540",
+    "@types/react": "19.1.10",
+    "@types/react-dom": "19.1.9",
+    "@types/three": "0.179.0",
+    "typescript": "5.9.2"
+  }
+}
