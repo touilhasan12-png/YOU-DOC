@@ -1,0 +1,29 @@
+name: CPU AI image generation test
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch FastSD CPU source
+        run: git clone --depth 1 https://github.com/rupeshs/fastsdcpu.git /tmp/fastsdcpu
+      - name: Install OpenVINO diffusion runtime
+        run: |
+          python -m pip install 'optimum-intel[openvino]' 'diffusers<0.36' 'transformers<4.56' torch --extra-index-url https://download.pytorch.org/whl/cpu
+      - name: Generate five real AI images
+        env:
+          HF_HUB_DISABLE_XET: '1'
+        run: python animation/generate_ai_test.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: actual-ai-images-test
+          path: ai_test_images/*.png
+          if-no-files-found: warn
