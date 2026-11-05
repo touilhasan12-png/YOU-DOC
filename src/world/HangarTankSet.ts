@@ -123,7 +123,7 @@ export class HangarTankSet {
     bctx.font = '900 50px sans-serif';
     bctx.fillText('= LUXURY!', 362, 304);
     bctx.fillStyle = '#2F364A';
-    bctx.font = '700 28px sans-serif';
+    bctx.font = '700 23px sans-serif';
     bctx.fillText('"Passengers love big corners!"', 362, 366);
 
     const boardTex = new THREE.CanvasTexture(boardCanvas);
@@ -181,9 +181,9 @@ export class HangarTankSet {
     pctx.lineWidth = 10;
     pctx.strokeRect(8, 8, 1008, 112);
     pctx.fillStyle = '#F6ECDC';
-    pctx.font = '800 42px sans-serif';
+    pctx.font = '800 35px sans-serif';
     pctx.textAlign = 'center';
-    pctx.fillText('FARNBOROUGH PRESSURE TANK  ·  35,000 FT TEST', 512, 78);
+    pctx.fillText('FARNBOROUGH PRESSURE TANK  ·  35,000 FT TEST', 512, 76);
     const plaqueTex = new THREE.CanvasTexture(plaqueCanvas);
     plaqueTex.colorSpace = THREE.SRGBColorSpace;
     const plaque = new THREE.Mesh(
