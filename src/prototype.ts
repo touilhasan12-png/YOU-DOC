@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setSize(1280,720);renderer.setPixelRatio(1);renderer.outputColorSpace=THREE.SRGBColorSpace;document.body.appendChild(renderer.domElement);
 const scene=new THREE.Scene(), camera=new THREE.OrthographicCamera(-8,8,4.5,-4.5,.1,100);camera.position.z=10;
-new THREE.TextureLoader().load('/prototype/hangar.png',t=>{t.colorSpace=THREE.SRGBColorSpace;scene.background=t;});
+new THREE.TextureLoader().load('/prototype/hangar.png',t=>{t.colorSpace=THREE.SRGBColorSpace;scene.background=t;(window as any).sceneReady=true;});
 const c=document.createElement('canvas'); c.width=600;c.height=900;const g=c.getContext('2d')!; const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;
 const figure=new THREE.Mesh(new THREE.PlaneGeometry(4.2,6.3),new THREE.MeshBasicMaterial({map:tex,transparent:true}));figure.position.set(-4.3,-.55,0);scene.add(figure);
 function draw(t:number){g.clearRect(0,0,600,900);g.lineJoin='round';g.lineCap='round';g.strokeStyle='#211c22';g.lineWidth=15;
@@ -21,4 +21,6 @@ g.fillStyle='#344e68';g.beginPath();g.ellipse(294,171,157,55,0,Math.PI,Math.PI*2
 g.strokeStyle='#dbe9e7';g.lineWidth=6;for(let x=190;x<415;x+=32){g.beginPath();g.moveTo(x,177);g.lineTo(270+(x-270)*.35,123);g.stroke();}g.strokeStyle='#211c22';g.lineWidth=12;g.beginPath();g.ellipse(294,180,157,20,0,0,Math.PI);g.stroke();
 // eyebrows and expression
 line(219,265,259,260);line(327,260,368,265);g.fillStyle='#211c22';g.beginPath();g.ellipse(240,291,11,16,0,0,7);g.ellipse(347,291,11,16,0,0,7);g.fill();g.beginPath();g.ellipse(294,340,25,5+Math.abs(Math.sin(t*3))*8,0,0,7);g.fill();tex.needsUpdate=true;}
-function loop(ms:number){const t=ms/1000;draw(t);figure.rotation.z=Math.sin(t*1.2)*.012;renderer.render(scene,camera);requestAnimationFrame(loop)}requestAnimationFrame(loop);
+function frame(t:number){draw(t);figure.rotation.z=Math.sin(t*1.2)*.012;renderer.render(scene,camera)}
+(window as any).renderFrame=(t:number)=>frame(t);
+if(!new URLSearchParams(location.search).has('render')){function loop(ms:number){frame(ms/1000);requestAnimationFrame(loop)}requestAnimationFrame(loop);}
