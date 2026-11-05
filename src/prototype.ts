@@ -1,26 +1,24 @@
 import * as THREE from 'three';
-const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setSize(1280,720);renderer.setPixelRatio(1);renderer.outputColorSpace=THREE.SRGBColorSpace;document.body.appendChild(renderer.domElement);
-const scene=new THREE.Scene(), camera=new THREE.OrthographicCamera(-8,8,4.5,-4.5,.1,100);camera.position.z=10;
-new THREE.TextureLoader().load('/prototype/hangar.png',t=>{t.colorSpace=THREE.SRGBColorSpace;scene.background=t;(window as any).sceneReady=true;});
-const c=document.createElement('canvas'); c.width=600;c.height=900;const g=c.getContext('2d')!; const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;
-const figure=new THREE.Mesh(new THREE.PlaneGeometry(4.2,6.3),new THREE.MeshBasicMaterial({map:tex,transparent:true}));figure.position.set(-4.3,-.55,0);scene.add(figure);
-function draw(t:number){g.clearRect(0,0,600,900);g.lineJoin='round';g.lineCap='round';g.strokeStyle='#211c22';g.lineWidth=15;
-const line=(x:number,y:number,a:number,b:number)=>{g.beginPath();g.moveTo(x,y);g.lineTo(a,b);g.stroke()};
-// Thin stick limbs
-line(250,690,215+Math.sin(t*2)*9,850);line(345,690,365-Math.sin(t*2)*9,850);line(215,850,189,858);line(365,850,392,858);
-line(193,465,150,555);line(150,555,188,610);line(398,470,448,525+Math.sin(t*2)*12);line(448,525+Math.sin(t*2)*12,493,495+Math.sin(t*2)*20);
-// jacket silhouette
-g.fillStyle='#1aaf9c';g.beginPath();g.moveTo(206,430);g.quadraticCurveTo(173,455,181,665);g.quadraticCurveTo(292,738,407,665);g.quadraticCurveTo(415,470,379,430);g.closePath();g.fill();g.stroke();
-g.fillStyle='#252329';g.fillRect(224,456,20,232);g.fillRect(344,456,20,232);g.fillStyle='#e9e4d2';for(const y of [525,580,635]){g.beginPath();g.arc(294,y,8,0,7);g.fill();g.stroke();}
-g.fillStyle='#c54a3f';g.beginPath();g.moveTo(270,447);g.lineTo(322,447);g.lineTo(296,495);g.closePath();g.fill();g.stroke();
-// white round face
-g.fillStyle='#fffdfa';g.beginPath();g.ellipse(294,293,151,141,0,0,Math.PI*2);g.fill();g.stroke();
-// hair and cap
-g.fillStyle='#604638';g.beginPath();g.moveTo(155,283);g.quadraticCurveTo(133,210,188,185);g.lineTo(206,204);g.lineTo(184,291);g.closePath();g.fill();g.stroke();
-g.fillStyle='#344e68';g.beginPath();g.ellipse(294,171,157,55,0,Math.PI,Math.PI*2);g.lineTo(451,179);g.quadraticCurveTo(292,206,138,179);g.closePath();g.fill();g.stroke();
-g.strokeStyle='#dbe9e7';g.lineWidth=6;for(let x=190;x<415;x+=32){g.beginPath();g.moveTo(x,177);g.lineTo(270+(x-270)*.35,123);g.stroke();}g.strokeStyle='#211c22';g.lineWidth=12;g.beginPath();g.ellipse(294,180,157,20,0,0,Math.PI);g.stroke();
-// eyebrows and expression
-line(219,265,259,260);line(327,260,368,265);g.fillStyle='#211c22';g.beginPath();g.ellipse(240,291,11,16,0,0,7);g.ellipse(347,291,11,16,0,0,7);g.fill();g.beginPath();g.ellipse(294,340,25,5+Math.abs(Math.sin(t*3))*8,0,0,7);g.fill();tex.needsUpdate=true;}
-function frame(t:number){draw(t);figure.rotation.z=Math.sin(t*1.2)*.012;renderer.render(scene,camera)}
-(window as any).renderFrame=(t:number)=>frame(t);
-if(!new URLSearchParams(location.search).has('render')){function loop(ms:number){frame(ms/1000);requestAnimationFrame(loop)}requestAnimationFrame(loop);}
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setSize(1280,720);renderer.setPixelRatio(1);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.setClearColor(0xc7d6df);document.body.appendChild(renderer.domElement);
+const scene=new THREE.Scene();scene.background=new THREE.Color('#b8cbd8');const camera=new THREE.PerspectiveCamera(43,1280/720,.1,200);camera.position.set(9,5,15);camera.lookAt(0,2,0);
+scene.add(new THREE.HemisphereLight(0xe1f3ff,0x806b4e,2));const sun=new THREE.DirectionalLight(0xffd7a0,3);sun.position.set(-8,15,8);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-20;sun.shadow.camera.right=20;sun.shadow.camera.top=20;sun.shadow.camera.bottom=-20;scene.add(sun);
+function mat(color:string,metalness=0){return new THREE.MeshStandardMaterial({color,metalness,roughness:.67})}const steel=mat('#8d9fa4',.7), dark=mat('#344b53',.45), concrete=mat('#918f85'), gold=mat('#dba655');
+function box(x:number,y:number,z:number,w:number,h:number,d:number,m:THREE.Material){const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;scene.add(o);return o}
+box(0,-.15,0,35,.3,30,concrete);box(0,5,-10,35,10,.3,mat('#b98565'));box(-16,5,0,.3,10,20,mat('#d4c4a9'));box(0,10,0,34,.3,20,dark);
+for(let x=-15;x<=15;x+=5){box(x,5,-9.7,.25,10,.3,dark);box(x,9.7,0,.25,.35,20,dark);box(x,6,-9.45,3.3,4,.1,mat('#b9d9e6',.1));}
+for(let z=-8;z<=8;z+=4)box(0,9.5,z,32,.25,.25,dark);
+// Aircraft fuselage: true cylinder geometry and separate 3D window frames.
+const fus=new THREE.Mesh(new THREE.CylinderGeometry(2.25,2.25,17,48),steel);fus.rotation.z=Math.PI/2;fus.position.set(4,3.25,-3);fus.castShadow=true;fus.receiveShadow=true;scene.add(fus);
+for(let x=-3;x<=10;x+=2){const frame=new THREE.Mesh(new THREE.TorusGeometry(.43,.09,12,36),dark);frame.scale.set(.8,1.12,1);frame.position.set(x,3.5,-.78);scene.add(frame);const glass=new THREE.Mesh(new THREE.CircleGeometry(.41,36),mat('#456d86',.3));glass.scale.set(.8,1.12,1);glass.position.set(x,3.5,-.77);scene.add(glass)}
+box(8,.35,-3,2,.7,1.2,dark);box(7.3,.9,-3,.15,1,1,dark);box(8.7,.9,-3,.15,1,1,dark);
+box(-8,1,-5,3,.18,1.3,gold);for(const x of [-9.2,-6.8])for(const z of [-5.45,-4.55])box(x,.5,z,.12,1,.12,dark);
+// Build an articulated flat cartoon with independent limbs, head and body.
+function texture(w:number,h:number,draw:(ctx:CanvasRenderingContext2D)=>void){const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d')!;ctx.lineWidth=9;ctx.lineJoin='round';ctx.lineCap='round';ctx.strokeStyle='#241d22';draw(ctx);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t}
+function plane(t:THREE.Texture,w:number,h:number){return new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({map:t,transparent:true,side:THREE.DoubleSide,depthWrite:false}));}
+const head=texture(400,400,c=>{c.fillStyle='#fffcf5';c.beginPath();c.ellipse(200,230,150,136,0,0,7);c.fill();c.stroke();c.fillStyle='#55413a';c.beginPath();c.moveTo(54,232);c.quadraticCurveTo(38,155,82,132);c.lineTo(110,142);c.lineTo(95,247);c.closePath();c.fill();c.stroke();c.fillStyle='#385975';c.beginPath();c.ellipse(200,108,152,52,0,Math.PI,Math.PI*2);c.lineTo(352,119);c.quadraticCurveTo(200,155,48,119);c.closePath();c.fill();c.stroke();c.strokeStyle='#d7e5e5';c.lineWidth=5;for(let i=0;i<7;i++){c.beginPath();c.moveTo(85+i*38,115);c.lineTo(174+i*9,62);c.stroke()}c.strokeStyle='#241d22';c.lineWidth=9;c.beginPath();c.moveTo(128,220);c.lineTo(167,217);c.moveTo(233,217);c.lineTo(272,220);c.stroke();c.fillStyle='#241d22';c.beginPath();c.ellipse(149,239,10,14,0,0,7);c.ellipse(251,239,10,14,0,0,7);c.fill();c.beginPath();c.ellipse(200,286,20,7,0,0,7);c.fill()});
+const body=texture(260,320,c=>{c.fillStyle='#1eb29c';c.beginPath();c.moveTo(50,32);c.quadraticCurveTo(16,80,28,265);c.quadraticCurveTo(130,320,232,265);c.quadraticCurveTo(244,80,210,32);c.closePath();c.fill();c.stroke();c.fillStyle='#2a282b';c.fillRect(60,42,15,238);c.fillRect(185,42,15,238);c.fillStyle='#d65246';c.beginPath();c.moveTo(98,35);c.lineTo(162,35);c.lineTo(130,92);c.closePath();c.fill();c.stroke();c.fillStyle='#f9f4e8';for(const y of [125,175,225]){c.beginPath();c.arc(130,y,7,0,7);c.fill();c.stroke()}});
+const puppet=new THREE.Group();puppet.position.set(-4.1,.12,1.7);scene.add(puppet);const torso=plane(body,1.5,1.85);torso.position.set(0,1.65,.03);puppet.add(torso);const face=plane(head,2.2,2.2);face.position.set(0,3.15,.1);puppet.add(face);
+function limb(x:number,y:number,len:number){const pivot=new THREE.Group();pivot.position.set(x,y,0);puppet.add(pivot);const m=new THREE.Mesh(new THREE.CapsuleGeometry(.045,len,4,8),new THREE.MeshBasicMaterial({color:'#241d22'}));m.position.y=-len/2;pivot.add(m);return pivot}
+const armL=limb(-.64,2.15,.95),armR=limb(.64,2.15,.95),legL=limb(-.35,.83,.83),legR=limb(.35,.83,.83);
+function frame(t:number){armL.rotation.z=-.3+.22*Math.sin(t*4);armR.rotation.z=.8+.35*Math.sin(t*5);legL.rotation.z=.10*Math.sin(t*4);legR.rotation.z=-.10*Math.sin(t*4);face.rotation.z=.055*Math.sin(t*4);torso.position.y=1.65+.025*Math.sin(t*8);camera.position.x=9+Math.sin(t*.6)*.6;camera.lookAt(0,2,0);renderer.render(scene,camera)}
+(window as any).sceneReady=true;(window as any).renderFrame=frame;if(!new URLSearchParams(location.search).has('render')){function loop(ms:number){frame(ms/1000);requestAnimationFrame(loop)}requestAnimationFrame(loop)}
