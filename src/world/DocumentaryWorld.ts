@@ -107,101 +107,100 @@ export class DocumentaryWorld {
       // ---------------- BEAT 1: 1952 GOLDEN-HOUR JET HOOK (0.00 -> 5.65s) ----------------
       activeBeat = 'sky_hook';
       this.skyJetSet.update(t);
-      this.skyMat.uniforms.uSunsetMix.value = 0.15;
+      this.skyMat.uniforms.uSunsetMix.value = 0.18;
       this.skyMat.uniforms.uIndoorDim.value = 0.0;
+      this.hemiLight.intensity = 1.05;
       this.sunLight.position.set(10, 9, 12);
       this.sunLight.target.position.set(1.4, 0, 0);
-      this.sunLight.intensity = 2.65;
+      this.sunLight.intensity = 2.75;
 
-      // Sweeping 16:9 aerial hero camera -> pushes close to the sharp 90° square window -> banks into cloud bank!
-      const u = easeInOutCubic(clamp(t / 5.30, 0, 1));
+      // Unobstructed 16:9 aerial tracking shot from 3/4 nose hero angle right up to the square window & waving Passenger!
+      const u = easeInOutCubic(clamp(t / 5.25, 0, 1));
       const camPos = new THREE.Vector3(
-        lerp(9.8, 1.55, u),
-        lerp(1.65, 0.24, u),
-        lerp(10.8, 3.55, u)
+        lerp(9.6, 1.72, u),
+        lerp(2.15, 0.32, u),
+        lerp(9.2, 3.65, u)
       );
       const lookTarget = new THREE.Vector3(
-        lerp(0.8, 1.45, u),
-        lerp(0.10, 0.18, u),
-        lerp(0.0, 1.48, u)
+        lerp(0.6, 1.40, u),
+        lerp(-0.15, 0.16, u),
+        lerp(0.0, 1.49, u)
       );
 
-      // Dive into foreground cloud bank during 5.15 -> 5.65s
-      if (t > 5.15) {
-        const dive = smootherstep(5.15, 5.65, t);
-        camPos.z = lerp(camPos.z, 6.2, dive);
-        camPos.x += dive * 1.4;
+      // Smooth bank into cloud wipe during 5.20 -> 5.65s
+      if (t > 5.20) {
+        const dive = smootherstep(5.20, 5.65, t);
+        camPos.y += dive * 0.9;
+        camPos.x += dive * 1.6;
       }
 
-      this.camera.fov = lerp(43, 35, u);
+      this.camera.fov = lerp(44, 34, u);
       this.camera.position.copy(camPos);
       this.camera.up.set(0, 1, 0);
       this.camera.lookAt(lookTarget);
-      // Subtle dynamic aerial roll
-      this.camera.rotation.z += Math.sin(t * 0.9) * 0.025 + smootherstep(5.1, 5.65, t) * 0.09;
-      warmth = 0.65;
-      bloomIntensity = 0.92;
+      this.camera.rotation.z += Math.sin(t * 0.9) * 0.02 + smootherstep(5.15, 5.65, t) * 0.08;
+      warmth = 0.68;
+      bloomIntensity = 0.90;
     } else if (t < 11.75) {
       // ---------------- BEAT 2: FARNBOROUGH HANGAR & PRESSURE TANK (5.65 -> 11.75s) ----------------
       activeBeat = 'hangar_tank';
       this.hangarSet.update(t);
       this.skyMat.uniforms.uSunsetMix.value = 0.25;
-      this.skyMat.uniforms.uIndoorDim.value = 0.72;
-      this.sunLight.position.set(-5.5, 12.5, 8.5);
-      this.sunLight.target.position.set(0, 1.2, -1.0);
-      this.sunLight.intensity = 2.35;
+      this.skyMat.uniforms.uIndoorDim.value = 0.45;
+      this.hemiLight.intensity = 1.55;
+      this.sunLight.position.set(-5.5, 12.5, 9.5);
+      this.sunLight.target.position.set(0, 1.5, -1.0);
+      this.sunLight.intensity = 2.85;
 
-      // Two-part spline glide:
-      // 5.65 -> 8.15s: Frame Airline Boss & "SQUARE VIEW = LUXURY!" easel with tank looming behind
-      // 8.15 -> 11.75s: Smooth dolly/pan across to Chief Engineer pulling lever & Giant 35,000 FT Pressure Tank!
-      const uPan = smootherstep(7.75, 9.65, t);
-      const pushGauge = smootherstep(10.35, 11.75, t);
+      // Generous wide 16:9 cinema framing:
+      // 5.65 -> 8.0s: Airline Boss + "SQUARE VIEW = LUXURY!" easel + Chief Engineer
+      // 8.0 -> 11.75s: Smooth dolly framing Chief Engineer pulling lever + FULL Farnborough Tank + Plaque + Gauge!
+      const uPan = smootherstep(7.65, 9.60, t);
+      const pushGauge = smootherstep(10.45, 11.75, t);
 
-      const cx = lerp(-2.05, 1.65, uPan) + pushGauge * 1.25;
-      const cy = lerp(1.78, 2.05, uPan) + pushGauge * 0.35;
-      const cz = lerp(5.45, 5.85, uPan) - pushGauge * 2.15;
+      const cx = lerp(-2.15, 1.55, uPan) + pushGauge * 0.85;
+      const cy = lerp(2.05, 2.35, uPan) + pushGauge * 0.15;
+      const cz = lerp(6.85, 7.65, uPan) - pushGauge * 1.45;
 
-      const tx = lerp(-2.65, 1.85, uPan) + pushGauge * 1.35;
-      const ty = lerp(1.58, 1.95, uPan) + pushGauge * 0.42;
-      const tz = lerp(-0.6, -1.65, uPan);
+      const tx = lerp(-2.35, 1.75, uPan) + pushGauge * 0.95;
+      const ty = lerp(1.75, 2.22, uPan) + pushGauge * 0.15;
+      const tz = lerp(-0.8, -1.85, uPan);
 
-      this.camera.fov = lerp(42, 38, pushGauge);
+      this.camera.fov = lerp(43, 40, pushGauge);
       this.camera.position.set(cx, cy, cz);
       this.camera.up.set(0, 1, 0);
       this.camera.lookAt(tx, ty, tz);
-      warmth = 0.42;
+      warmth = 0.48;
       bloomIntensity = 0.78;
     } else if (t < 19.95) {
       // ---------------- BEAT 3: MACRO PHOTOELASTIC STRESS SHADER & CRACK! (11.75 -> 19.95s) ----------------
       activeBeat = 'macro_stress';
       this.stressMacroSet.update(t);
       this.skyMat.uniforms.uSunsetMix.value = 0.55;
-      this.skyMat.uniforms.uIndoorDim.value = 0.65;
-      this.sunLight.position.set(4.5, 8.5, 7.5);
+      this.skyMat.uniforms.uIndoorDim.value = 0.45;
+      this.hemiLight.intensity = 1.35;
+      this.sunLight.position.set(4.5, 8.5, 8.5);
       this.sunLight.target.position.set(0, 2.0, 0);
-      this.sunLight.intensity = 2.25;
+      this.sunLight.intensity = 2.45;
 
-      // 11.75 -> 17.85s: Dramatic push-in onto Top-Right 90° Square Window Corner (x=0.96, y=3.13)!
-      // 17.88 -> 19.95s: Explosive impact camera shake + energetic pullback revealing Violet Boss (flying hat!) & Ring-Eyed Engineer!
       const uMacro = smootherstep(11.75, 16.90, t);
-      const uPullback = smootherstep(17.92, 18.75, t);
+      const uPullback = smootherstep(18.08, 18.80, t);
 
       let cx = lerp(0.15, 0.72, uMacro);
       let cy = lerp(2.22, 2.86, uMacro);
-      let cz = lerp(4.35, 2.15, uMacro);
+      let cz = lerp(4.35, 2.18, uMacro);
 
       let tx = lerp(0.10, 0.88, uMacro);
       let ty = lerp(2.25, 2.98, uMacro);
       const tz = 0.0;
 
-      // Pull back after the snap to capture Boss's flying hat & Engineer's ring-eyed shock!
+      // Pull back right after the crack snap to frame BOTH cracked window & Boss's flying hat + ring-eyed Engineer!
       cx = lerp(cx, 0.0, uPullback);
-      cy = lerp(cy, 1.82, uPullback);
-      cz = lerp(cz, 5.55, uPullback);
+      cy = lerp(cy, 1.92, uPullback);
+      cz = lerp(cz, 6.25, uPullback);
       tx = lerp(tx, 0.0, uPullback);
-      ty = lerp(ty, 1.88, uPullback);
+      ty = lerp(ty, 1.95, uPullback);
 
-      // Deterministic damped impact shake right at t = 17.88s!
       if (t >= 17.88) {
         const dtS = t - 17.88;
         const shake = Math.exp(-dtS * 7.5) * 0.16;
@@ -213,34 +212,34 @@ export class DocumentaryWorld {
       this.camera.position.set(cx, cy, cz);
       this.camera.up.set(0, 1, 0);
       this.camera.lookAt(tx, ty, tz);
-      warmth = 0.35;
-      bloomIntensity = t >= 17.85 && t < 18.5 ? 1.35 : 1.02;
+      warmth = 0.38;
+      bloomIntensity = t >= 17.85 && t < 18.5 ? 1.25 : 0.95;
     } else {
       // ---------------- BEAT 4: SMOOTH OVAL SOLUTION & SUNSET SKY PAYOFF (19.95 -> 26.00s) ----------------
       activeBeat = 'oval_payoff';
       this.ovalPayoffSet.update(t);
       this.skyMat.uniforms.uSunsetMix.value = 0.92;
       this.skyMat.uniforms.uIndoorDim.value = 0.0;
+      this.hemiLight.intensity = 1.25;
       this.sunLight.position.set(-7.5, 7.5, 9.5);
       this.sunLight.target.position.set(0, 1.8, 0);
-      this.sunLight.intensity = 2.75;
+      this.sunLight.intensity = 2.85;
 
-      // 19.95 -> 22.1s: Close on Smooth Rounded Oval Window showing effortless laminar streamlines
-      // 22.1 -> 26.0s: Majestic cinema pullback revealing triumphant Engineer wink, relieved Boss, & golden sunset cloud sea!
-      const uPull = smootherstep(21.55, 24.85, t);
-      const cx = lerp(0.18, 0.0, uPull);
-      const cy = lerp(2.25, 1.88, uPull);
-      const cz = lerp(2.65, 6.25, uPull);
+      // Start wide enough to frame the full rounded oval + laminar streamlines, then pull back to sunset vista & winking Engineer!
+      const uPull = smootherstep(21.40, 24.75, t);
+      const cx = lerp(0.08, 0.0, uPull);
+      const cy = lerp(2.25, 1.92, uPull);
+      const cz = lerp(4.25, 6.65, uPull);
 
       const tx = 0.0;
-      const ty = lerp(2.25, 1.78, uPull);
+      const ty = lerp(2.22, 1.82, uPull);
 
-      this.camera.fov = lerp(36, 43, uPull);
+      this.camera.fov = lerp(39, 44, uPull);
       this.camera.position.set(cx, cy, cz);
       this.camera.up.set(0, 1, 0);
       this.camera.lookAt(tx, ty, 0);
       warmth = 0.88;
-      bloomIntensity = 0.95;
+      bloomIntensity = 0.92;
     }
 
     // Apply sub-pixel Halton camera jitter for temporal supersampling AA

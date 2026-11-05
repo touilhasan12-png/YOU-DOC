@@ -114,7 +114,7 @@ async function main() {
       console.log('WebGL2 Capabilities:', JSON.stringify(glInfo, null, 2));
       if (!glInfo.webgl2) throw new Error('WebGL2 is NOT enabled!');
 
-      const keyFrames = [75, 169, 285, 485, 540, 645]; // 2.5s, 5.63s, 9.5s, 16.17s, 18.0s, 21.5s
+      const keyFrames = [55, 200, 295, 540, 565, 645, 725]; // 1.83s, 6.67s, 9.83s, 18.0s, 18.83s, 21.5s, 24.17s
       const tBenchStart = Date.now();
       for (const kf of keyFrames) {
         await page1080.evaluate((f) => window.__YOU_DOC_RENDER_FRAME__(f, 30), kf);

@@ -79,40 +79,40 @@ export class SkyJetSet {
     finGold.position.set(-10.9, 3.3, 0);
     this.jetGroup.add(finGold);
 
-    // Swept Wings (Comet style with buried wing-root turbojets!)
+    // Swept Wings (mounted cleanly at belly y = -0.95 with slight downward perspective clearance so camera at +Z/+Y sees entire fuselage unobstructed!)
     const wingShape = new THREE.Shape();
-    wingShape.moveTo(2.4, 0);
-    wingShape.lineTo(-2.2, 0);
-    wingShape.lineTo(-4.8, 10.5);
-    wingShape.lineTo(-3.1, 10.5);
+    wingShape.moveTo(1.8, 0);
+    wingShape.lineTo(-2.4, 0);
+    wingShape.lineTo(-5.2, 8.8);
+    wingShape.lineTo(-3.6, 8.8);
     wingShape.closePath();
-    const wingGeo = new THREE.ExtrudeGeometry(wingShape, { depth: 0.22, bevelEnabled: true, bevelSize: 0.05, bevelThickness: 0.05 });
+    const wingGeo = new THREE.ExtrudeGeometry(wingShape, { depth: 0.18, bevelEnabled: true, bevelSize: 0.04, bevelThickness: 0.04 });
 
     const rightWing = new THREE.Mesh(wingGeo, aluminumMat);
-    rightWing.rotation.x = Math.PI * 0.5;
-    rightWing.position.set(0.2, -0.45, 1.15);
+    rightWing.rotation.x = Math.PI * 0.5 + 0.06;
+    rightWing.position.set(-0.6, -0.95, 1.05);
     rightWing.castShadow = true;
     this.jetGroup.add(rightWing);
 
-    const leftWing = rightWing.clone();
-    leftWing.scale.z = -1;
-    leftWing.position.set(0.2, -0.45, -1.15);
+    const leftWing = new THREE.Mesh(wingGeo, aluminumMat);
+    leftWing.rotation.x = -Math.PI * 0.5 - 0.06;
+    leftWing.position.set(-0.6, -0.95, -1.05);
     this.jetGroup.add(leftWing);
 
-    // Four buried Comet turbojet nacelles + HDR amber exhaust glow
-    for (const zOff of [2.35, 3.55, -2.35, -3.55]) {
+    // Four buried Comet turbojet nacelles + HDR amber exhaust glow at wing roots
+    for (const zOff of [2.05, 3.05, -2.05, -3.05]) {
       const nac = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.42, 0.38, 3.8, 24).rotateZ(Math.PI * 0.5),
+        new THREE.CylinderGeometry(0.36, 0.32, 3.4, 24).rotateZ(Math.PI * 0.5),
         aluminumMat
       );
-      nac.position.set(0.2, -0.48, zOff);
+      nac.position.set(-0.6, -0.98, zOff);
       this.jetGroup.add(nac);
 
       const glow = new THREE.Mesh(
-        new THREE.SphereGeometry(0.32, 16, 16),
-        new THREE.MeshBasicMaterial({ color: new THREE.Color(2.2, 1.15, 0.35) })
+        new THREE.SphereGeometry(0.28, 16, 16),
+        new THREE.MeshBasicMaterial({ color: new THREE.Color(2.4, 1.25, 0.38) })
       );
-      glow.position.set(-1.75, -0.48, zOff);
+      glow.position.set(-2.35, -0.98, zOff);
       this.jetGroup.add(glow);
       this.engineGlows.push(glow);
     }
@@ -196,36 +196,26 @@ export class SkyJetSet {
 
     for (let i = 0; i < 210; i++) {
       let px: number, py: number, pz: number, sx: number, sy: number, sz: number, spd: number;
-      if (i < 165) {
-        // Vast lower golden cloud sea
-        px = (rng() - 0.45) * 140;
-        py = -6.5 - rng() * 6.5;
-        pz = -38 + rng() * 62;
-        const base = 3.2 + rng() * 6.2;
-        sx = base * (1.3 + rng() * 0.7);
-        sy = base * (0.48 + rng() * 0.28);
+      if (i < 175) {
+        // Vast lower golden cloud ocean cleanly below the aircraft (y: -4.8 .. -11.5)
+        px = (rng() - 0.45) * 150;
+        py = -4.8 - rng() * 6.8;
+        pz = -45 + rng() * 72;
+        const base = 3.4 + rng() * 6.4;
+        sx = base * (1.35 + rng() * 0.7);
+        sy = base * (0.45 + rng() * 0.25);
         sz = base * (1.0 + rng() * 0.6);
-        spd = 5.5 + rng() * 3.0;
-      } else if (i < 195) {
-        // Mid-altitude passing cloud wisps for strong 16:9 speed parallax
-        px = -35 + rng() * 85;
-        py = -2.8 + rng() * 5.2;
-        pz = -26 + rng() * 18;
-        const base = 2.0 + rng() * 3.5;
-        sx = base * 1.6;
-        sy = base * 0.52;
-        sz = base * 1.1;
-        spd = 8.5 + rng() * 4.0;
+        spd = 6.0 + rng() * 3.5;
       } else {
-        // Foreground Cloud Bank positioned at x ~ 2.0..7.0, z ~ 4.2..7.5 for Hidden Cloud Wipe!
-        px = 1.5 + (rng() - 0.5) * 6.5;
-        py = -0.3 + (rng() - 0.5) * 3.6;
-        pz = 5.2 + rng() * 3.2;
-        const base = 2.2 + rng() * 1.8;
+        // Distant background cumulus towers behind the jet (z < -8.5 — NEVER blocks camera!)
+        px = -55 + rng() * 110;
+        py = -3.2 + rng() * 7.5;
+        pz = -36 + rng() * 24;
+        const base = 3.0 + rng() * 4.8;
         sx = base * 1.5;
-        sy = base * 1.1;
-        sz = base * 1.3;
-        spd = 1.2;
+        sy = base * 0.85;
+        sz = base * 1.1;
+        spd = 4.0 + rng() * 2.5;
       }
       this.cloudBaseMatrices.push({
         pos: new THREE.Vector3(px, py, pz),
@@ -274,10 +264,7 @@ export class SkyJetSet {
     for (let i = 0; i < this.cloudBaseMatrices.length; i++) {
       const c = this.cloudBaseMatrices[i];
       let x = c.pos.x - t * c.speed;
-      if (i < 195) {
-        // Wrap seamlessly across [-65, +75]
-        x = ((((x + 65) % 140) + 140) % 140) - 65;
-      }
+      x = ((((x + 70) % 150) + 150) % 150) - 70;
       dummy.position.set(x, c.pos.y, c.pos.z);
       dummy.scale.copy(c.scale);
       dummy.updateMatrix();

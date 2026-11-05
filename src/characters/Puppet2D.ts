@@ -671,14 +671,26 @@ export class Puppet2D {
       ctx.fill();
       ctx.stroke();
     } else {
-      // Chief Engineer: Crisp parted dark hair tuft (distinguishes silhouette cleanly!)
+      // Chief Engineer: Crisp vintage cream-and-teal peaked drafting/testing cap (pops cleanly against dark hangar walls!)
+      ctx.fillStyle = '#EAE4D3';
+      ctx.beginPath();
+      ctx.moveTo(-124, -128);
+      ctx.quadraticCurveTo(-112, -238, 0, -242);
+      ctx.quadraticCurveTo(112, -238, 124, -128);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Teal cap band
+      ctx.fillStyle = '#177E89';
+      ctx.fillRect(-120, -154, 240, 26);
+      ctx.strokeRect(-120, -154, 240, 26);
+
+      // Dark visor peak
       ctx.fillStyle = '#1E2230';
       ctx.beginPath();
-      ctx.moveTo(-118, -118);
-      ctx.quadraticCurveTo(-90, -212, 18, -198);
-      ctx.quadraticCurveTo(72, -208, 112, -126);
-      ctx.quadraticCurveTo(45, -158, -28, -154);
-      ctx.quadraticCurveTo(-78, -154, -118, -118);
+      ctx.ellipse(18, -126, 138, 20, 0.04, 0, Math.PI);
+      ctx.closePath();
       ctx.fill();
       ctx.stroke();
     }

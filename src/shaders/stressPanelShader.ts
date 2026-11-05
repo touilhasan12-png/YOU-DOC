@@ -81,13 +81,21 @@ export function createStressPanelMaterial(): THREE.ShaderMaterial {
         float rSe = pow(pow(q.x + 1e-5, pwr) + pow(q.y + 1e-5, pwr), 1.0 / pwr);
         float distEdge = (rSe - 1.0) * min(a.x, a.y);
 
-        // Inside the window glass opening: warm cabin glow / pressurized sky reflection
+        // Inside the window glass opening: warm cabin glow OR golden sunset cloud horizon on Oval Payoff!
         if (rSe < 1.0) {
-          float bezel = smoothstep(0.90, 1.0, rSe);
-          vec3 glassInner = mix(vec3(0.11, 0.19, 0.34), vec3(0.95, 0.72, 0.40), 0.32 * (1.0 - vUv.y));
-          // Subtle diagonal glass reflection stripe
-          float refl = smoothstep(0.08, 0.0, abs((p.x + p.y * 0.7) - 0.05)) * 0.28;
-          vec3 colGlass = mix(glassInner + refl, vec3(0.22, 0.25, 0.30), bezel);
+          float bezel = smoothstep(0.88, 1.0, rSe);
+          vec3 skyTop = mix(vec3(0.14, 0.24, 0.46), vec3(0.22, 0.16, 0.44), uSafePalette);
+          vec3 skyMid = mix(vec3(0.45, 0.62, 0.86), vec3(0.96, 0.54, 0.32), uSafePalette);
+          vec3 skyBot = mix(vec3(0.96, 0.76, 0.46), vec3(1.08, 0.78, 0.42), uSafePalette);
+          float wy = clamp((p.y / a.y) * 0.5 + 0.5, 0.0, 1.0);
+          vec3 glassInner = mix(skyBot, skyMid, smoothstep(0.05, 0.52, wy));
+          glassInner = mix(glassInner, skyTop, smoothstep(0.48, 0.96, wy));
+          // Stylized drifting cloud silhouettes visible through the window!
+          float cld = smoothstep(0.18, 0.0, length(vec2(fract(p.x * 1.4 + uTime * 0.06) - 0.5, wy - 0.24) * vec2(1.0, 2.4)));
+          glassInner = mix(glassInner, vec3(1.05, 0.90, 0.72), cld * 0.55);
+          // Diagonal aircraft glass reflection
+          float refl = smoothstep(0.07, 0.0, abs((p.x + p.y * 0.65) - 0.04)) * 0.26;
+          vec3 colGlass = mix(glassInner + refl, vec3(0.24, 0.28, 0.35), bezel);
           gl_FragColor = vec4(colGlass, 1.0);
           return;
         }
@@ -126,59 +134,56 @@ export function createStressPanelMaterial(): THREE.ShaderMaterial {
         // Blend outer metal softly into heatmap
         basePlusHeat = mix(metalCol, heatCol, uHeatmapMix * clamp(0.45 + 0.55 * exp(-distEdge * 3.2), 0.0, 1.0));
 
-        // Animated Potential-Flow Force Streamlines bending around the window cutout!
+        // True Fluid-Mechanics Potential-Flow Force Streamlines wrapping smoothly around the window cutout!
+        // Streamfunction psi = y * (1 - 1 / rSe^2): equals 0 all along the window boundary rSe = 1,
+        // so horizontal streamlines part smoothly above and below the window instead of hitting the glass!
         if (uStreamlines > 0.001) {
-          float r2 = dot(p, p) + 0.001;
-          float R2 = dot(a, a) * 0.62;
-          // Streamfunction psi: horizontal flow deflected around cutout + pinched into sharp corners
-          float psi = p.y * (1.0 + R2 / r2);
-          float cornerPinch = sharpnessFactor * 0.055 * sign(p.y) * exp(-dCorner * 10.0);
+          float invR2 = 1.0 / max(rSe * rSe, 1.001);
+          float psi = p.y * (1.0 - invR2 * 0.86);
+          // On the sharp 90° square window, streamlines pinch tightly into the 90° vertex!
+          float cornerPinch = sharpnessFactor * 0.048 * sign(p.y) * exp(-dCorner * 11.0);
           psi -= cornerPinch;
 
-          float lineFreq = 26.0;
+          float lineFreq = 22.0;
           float stripe = abs(fract(psi * lineFreq) - 0.5) * 2.0;
-          float lineMask = smoothstep(0.18, 0.03, stripe);
-          // Travelling pulse along streamlines
-          float travel = 0.55 + 0.45 * sin(p.x * 16.0 - uTime * 5.2 + psi * 8.0);
+          float lineMask = smoothstep(0.19, 0.03, stripe);
+          float travel = 0.62 + 0.38 * sin(p.x * 14.0 - uTime * 5.5);
           vec3 lineCol = mix(
-            mix(vec3(0.55, 0.85, 1.25), vec3(2.1, 1.35, 0.55), clamp(cornerSpike * 0.6, 0.0, 1.0)),
-            vec3(0.45, 1.35, 1.05),
+            mix(vec3(0.60, 0.88, 1.30), vec3(2.2, 1.40, 0.55), clamp(cornerSpike * 0.6, 0.0, 1.0)),
+            vec3(0.55, 1.45, 1.15),
             uSafePalette
           );
-          basePlusHeat += lineCol * lineMask * travel * uStreamlines * smoothstep(0.004, 0.022, distEdge);
+          basePlusHeat += lineCol * lineMask * travel * uStreamlines * smoothstep(0.005, 0.025, distEdge);
         }
 
-        // Propagating Diagonal Structural Fracture from Top-Right 90° Corner (a.x, a.y)!
+        // Propagating High-Contrast Structural Fracture from Top-Right 90° Corner (a.x, a.y)!
         if (uCrackProgress > 0.001 && p.x > 0.0 && p.y > 0.0) {
-          vec2 cp = p - a; // origin right at top-right 90° corner
-          // Rotate 38 degrees outward from the corner
+          vec2 cp = p - a;
           float ang = 0.66;
           vec2 rot = vec2(
             cp.x * cos(ang) + cp.y * sin(ang),
             -cp.x * sin(ang) + cp.y * cos(ang)
           );
-          float maxLen = uCrackProgress * 0.52;
-          // Deterministic jagged lightning displacement along rot.x
-          float jag = sin(rot.x * 68.0) * 0.011 + sin(rot.x * 175.0 + 1.3) * 0.0055 + sin(rot.x * 340.0) * 0.0025;
+          float maxLen = uCrackProgress * 0.56;
+          float jag = sin(rot.x * 68.0) * 0.013 + sin(rot.x * 175.0 + 1.3) * 0.0065 + sin(rot.x * 340.0) * 0.003;
           float mainDist = abs(rot.y - jag);
-          float inLen = smoothstep(maxLen + 0.015, maxLen - 0.02, rot.x) * smoothstep(-0.01, 0.008, rot.x);
+          float inLen = smoothstep(maxLen + 0.012, maxLen - 0.018, rot.x) * smoothstep(-0.012, 0.006, rot.x);
 
-          // Secondary fork branch at rot.x > 0.14
-          vec2 forkOrigin = vec2(0.14, sin(0.14 * 68.0) * 0.011);
+          vec2 forkOrigin = vec2(0.14, sin(0.14 * 68.0) * 0.013);
           vec2 fp = rot - forkOrigin;
           vec2 fRot = vec2(fp.x * 0.86 - fp.y * 0.50, fp.x * 0.50 + fp.y * 0.86);
-          float fJag = sin(fRot.x * 95.0) * 0.007;
-          float forkLen = max(0.0, (uCrackProgress - 0.32) * 0.36);
-          float forkMask = smoothstep(0.006, 0.001, abs(fRot.y - fJag))
+          float fJag = sin(fRot.x * 95.0) * 0.008;
+          float forkLen = max(0.0, (uCrackProgress - 0.28) * 0.40);
+          float forkMask = smoothstep(0.008, 0.0015, abs(fRot.y - fJag))
                          * smoothstep(forkLen + 0.01, forkLen - 0.015, fRot.x)
-                         * smoothstep(0.0, 0.015, fRot.x);
+                         * smoothstep(0.0, 0.012, fRot.x);
 
-          float crackCore = smoothstep(0.009, 0.0018, mainDist) * inLen;
-          float crackGlow = smoothstep(0.042, 0.003, mainDist) * inLen + forkMask * 0.8;
+          float crackCore = smoothstep(0.014, 0.0035, mainDist) * inLen;
+          float crackRim  = smoothstep(0.032, 0.011, mainDist) * inLen + forkMask * 0.85;
 
-          // Hot HDR fracture edge + dark ruptured aluminum core
-          basePlusHeat += vec3(2.4, 1.15, 0.35) * crackGlow * (1.15 - 0.35 * uCrackProgress);
-          basePlusHeat = mix(basePlusHeat, vec3(0.04, 0.03, 0.05), clamp(crackCore + forkMask, 0.0, 1.0));
+          // Vivid fiery crimson-orange rim + deep obsidian split core so crack pops against bright stress lobe!
+          basePlusHeat = mix(basePlusHeat, vec3(2.2, 0.42, 0.12), clamp(crackRim * 0.85, 0.0, 1.0));
+          basePlusHeat = mix(basePlusHeat, vec3(0.02, 0.02, 0.04), clamp(crackCore + forkMask, 0.0, 1.0));
         }
 
         gl_FragColor = vec4(basePlusHeat, 1.0);

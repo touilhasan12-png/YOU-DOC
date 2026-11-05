@@ -47,9 +47,9 @@ export class HangarTankSet {
     this.group.add(floor);
 
     // 2. Back Hangar Wall + Steel Columns + Arched Clerestory Windows + Volumetric God-Rays!
-    const wallMat = new THREE.MeshStandardMaterial({ color: '#1B2030', roughness: 0.85, metalness: 0.2 });
-    const steelMat = new THREE.MeshStandardMaterial({ color: '#394156', roughness: 0.45, metalness: 0.7 });
-    const brassMat = new THREE.MeshStandardMaterial({ color: '#DFAA3E', roughness: 0.3, metalness: 0.82 });
+    const wallMat = new THREE.MeshStandardMaterial({ color: '#2B3550', roughness: 0.78, metalness: 0.15 });
+    const steelMat = new THREE.MeshStandardMaterial({ color: '#586682', roughness: 0.38, metalness: 0.62 });
+    const brassMat = new THREE.MeshStandardMaterial({ color: '#E8B64C', roughness: 0.28, metalness: 0.78 });
 
     const backWall = new THREE.Mesh(new THREE.PlaneGeometry(46, 18), wallMat);
     backWall.position.set(0, 9, -8.5);
@@ -242,9 +242,10 @@ export class HangarTankSet {
     }
     tankGroup.add(this.bubbles);
 
-    // Giant Illuminated Brass Altitude Pressure Gauge on right tank pillar!
+    // Giant Illuminated Brass Altitude Pressure Gauge mounted cleanly on upper-right tank frame!
     const gaugeGroup = new THREE.Group();
-    gaugeGroup.position.set(3.65, 2.75, 1.92);
+    gaugeGroup.position.set(2.85, 2.85, 1.92);
+    gaugeGroup.scale.setScalar(0.88);
     const brassRing = new THREE.Mesh(new THREE.CylinderGeometry(0.92, 0.92, 0.18, 36).rotateX(Math.PI * 0.5), brassMat);
     gaugeGroup.add(brassRing);
 
