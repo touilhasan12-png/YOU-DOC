@@ -45,7 +45,7 @@ export class DocumentaryWorld {
     this.sunLight = new THREE.DirectionalLight('#FFE4B5', 2.45);
     this.sunLight.position.set(-9, 12, 11);
     this.sunLight.castShadow = true;
-    this.sunLight.shadow.mapSize.set(2048, 2048);
+    this.sunLight.shadow.mapSize.set(1024, 1024);
     this.sunLight.shadow.camera.near = 1.0;
     this.sunLight.shadow.camera.far = 45.0;
     const d = 10;

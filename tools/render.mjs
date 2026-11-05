@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-import { spawn, execFileSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
+import http from 'node:http';
 import path from 'node:path';
 import { chromium } from 'playwright';
 
@@ -15,16 +16,38 @@ function parseArgs(argv) {
   return out;
 }
 
-async function waitForHttp(url, timeoutMs = 25000) {
-  const t0 = Date.now();
-  while (Date.now() - t0 < timeoutMs) {
-    try {
-      const res = await fetch(url);
-      if (res.ok) return;
-    } catch {}
-    await new Promise((r) => setTimeout(r, 250));
-  }
-  throw new Error(`Timed out waiting for server at ${url}`);
+const MIME_TYPES = {
+  '.html': 'text/html; charset=utf-8',
+  '.js': 'application/javascript; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2',
+  '.mp3': 'audio/mpeg',
+  '.wav': 'audio/wav',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.srt': 'text/plain; charset=utf-8',
+};
+
+function startStaticServer(rootDir, port) {
+  return new Promise((resolve, reject) => {
+    const srv = http.createServer((req, res) => {
+      const urlPath = (req.url || '/').split('?')[0];
+      const rel = urlPath === '/' ? '/index.html' : urlPath;
+      const fullPath = path.join(rootDir, path.normalize(rel));
+      if (!fullPath.startsWith(rootDir) || !fs.existsSync(fullPath) || fs.statSync(fullPath).isDirectory()) {
+        res.writeHead(404);
+        res.end('Not found');
+        return;
+      }
+      const ext = path.extname(fullPath).toLowerCase();
+      res.writeHead(200, { 'Content-Type': MIME_TYPES[ext] || 'application/octet-stream' });
+      fs.createReadStream(fullPath).pipe(res);
+    });
+    srv.on('error', reject);
+    srv.listen(port, '127.0.0.1', () => resolve(srv));
+  });
 }
 
 const CHROMIUM_ARGS = [
@@ -44,21 +67,13 @@ async function main() {
   const args = parseArgs(process.argv);
   const mode = args.mode || 'smoke';
   const port = Number(args.port || 4173);
+  const distDir = path.resolve('dist');
 
-  // Start Vite preview server detached with unref'd stdio so Node exits cleanly when done!
-  const server = spawn(
-    process.platform === 'win32' ? 'npx.cmd' : 'npx',
-    ['vite', 'preview', '--host', '127.0.0.1', '--port', String(port), '--strictPort'],
-    { stdio: 'ignore', detached: true }
-  );
-  server.unref();
+  const server = await startStaticServer(distDir, port);
 
   const cleanup = () => {
     try {
-      if (server.pid) process.kill(-server.pid, 'SIGKILL');
-    } catch {}
-    try {
-      server.kill('SIGKILL');
+      server.close();
     } catch {}
   };
   process.on('exit', cleanup);
@@ -66,7 +81,6 @@ async function main() {
 
   try {
     const baseUrl = `http://127.0.0.1:${port}`;
-    await waitForHttp(`${baseUrl}/render.html`);
 
     const browser = await chromium.launch({
       headless: true,

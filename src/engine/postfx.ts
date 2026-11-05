@@ -95,7 +95,7 @@ export function createPostPipeline(
     luminanceThreshold: 0.82,
     luminanceSmoothing: 0.22,
     mipmapBlur: true,
-    kernelSize: KernelSize.LARGE,
+    kernelSize: KernelSize.MEDIUM,
   });
 
   const toneMapping = new ToneMappingEffect({

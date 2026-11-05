@@ -94,14 +94,14 @@ async function initHarness(): Promise<void> {
   ) => {
     const tCenter = frameIndex / fps;
 
-    // Adaptive temporal shutter accumulation: 4 sub-frames on fast motion/wipes/impacts, 2 jittered AA samples otherwise
-    let samples = shutterSamples ?? 2;
+    // Adaptive temporal shutter accumulation: 3 sub-frames on fast motion/wipes/impacts, 1 SMAA-filtered frame otherwise
+    let samples = shutterSamples ?? 1;
     if (shutterSamples === undefined) {
       const isFastMotion =
         (tCenter >= 5.15 && tCenter <= 6.10) ||
         (tCenter >= 17.84 && tCenter <= 18.55) ||
         (tCenter >= 19.70 && tCenter <= 20.22);
-      samples = isFastMotion ? 4 : 2;
+      samples = isFastMotion ? 3 : 1;
     }
     samples = Math.max(1, Math.min(8, samples));
 
