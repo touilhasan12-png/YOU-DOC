@@ -45,16 +45,20 @@ async function main() {
   const mode = args.mode || 'smoke';
   const port = Number(args.port || 4173);
 
-  // Start Vite preview server on prebuilt dist/
+  // Start Vite preview server detached with unref'd stdio so Node exits cleanly when done!
   const server = spawn(
     process.platform === 'win32' ? 'npx.cmd' : 'npx',
     ['vite', 'preview', '--host', '127.0.0.1', '--port', String(port), '--strictPort'],
-    { stdio: ['ignore', 'pipe', 'pipe'] }
+    { stdio: 'ignore', detached: true }
   );
+  server.unref();
 
   const cleanup = () => {
     try {
-      server.kill('SIGTERM');
+      if (server.pid) process.kill(-server.pid, 'SIGKILL');
+    } catch {}
+    try {
+      server.kill('SIGKILL');
     } catch {}
   };
   process.on('exit', cleanup);
@@ -232,7 +236,11 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+main()
+  .then(() => {
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });

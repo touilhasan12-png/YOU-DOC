@@ -40,7 +40,7 @@ export class OverlayCompositor {
     }
 
     // 3. Diegetic Engineering Callouts & Live Stress Multiplier HUD
-    this.drawEngineeringHUD(ctx, width, height, t, s);
+    this.drawEngineeringHUD(ctx, width, height, t, s, state);
 
     // 4. Closing Documentary Title Plaque (24.40 -> 26.00s)
     if (t >= 24.35) {
@@ -103,7 +103,8 @@ export class OverlayCompositor {
     w: number,
     h: number,
     t: number,
-    s: number
+    s: number,
+    state: FrameDirectorState
   ): void {
     // Beat 1 subtle date & altitude stamp (0.35 -> 4.95s)
     if (t >= 0.35 && t <= 5.05) {
@@ -130,9 +131,9 @@ export class OverlayCompositor {
       ctx.save();
       ctx.globalAlpha = a;
 
-      // Animated target reticle over the 90° top-right corner
-      const rx = w * 0.545;
-      const ry = h * 0.415;
+      // Animated target reticle locked onto the exact 3D-projected 90° top-right corner!
+      const rx = w * state.cornerUvX;
+      const ry = h * state.cornerUvY;
       const pulseR = (38 + Math.sin(t * 10.0) * 5) * s;
 
       ctx.strokeStyle = load > 0.6 ? '#FF5D6C' : '#FFD166';
@@ -141,17 +142,19 @@ export class OverlayCompositor {
       ctx.arc(rx, ry, pulseR, 0, Math.PI * 2);
       ctx.stroke();
 
-      // Leader line to callout box on top-right
+      // Leader line to callout box on top-left of reticle so it never clips right frame edge!
+      const boxW = 490 * s;
+      const bx = Math.max(48 * s, Math.min(w - boxW - 48 * s, rx - boxW - 65 * s));
+      const by = Math.max(48 * s, ry - 115 * s);
       ctx.beginPath();
-      ctx.moveTo(rx + pulseR * 0.72, ry - pulseR * 0.72);
-      ctx.lineTo(rx + 95 * s, ry - 86 * s);
-      ctx.lineTo(rx + 430 * s, ry - 86 * s);
+      ctx.moveTo(rx - pulseR * 0.72, ry - pulseR * 0.72);
+      ctx.lineTo(bx + boxW * 0.75, by + 50 * s);
       ctx.stroke();
 
       this.drawPillBadge(
         ctx,
-        rx + 95 * s,
-        ry - 146 * s,
+        bx,
+        by,
         `90° SHARP CORNER  ·  ${factor}× STRESS`,
         load > 0.6 ? '#FF5D6C' : '#FFD166',
         s

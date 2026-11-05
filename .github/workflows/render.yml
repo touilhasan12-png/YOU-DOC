@@ -58,7 +58,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -79,8 +79,8 @@ jobs:
       - name: Build Engine
         run: npm run build
 
-      - name: Render Deterministic 1080p30 Chunk (78 frames)
-        run: node tools/render.mjs --mode=chunk --shard=${{ matrix.shard }} --shards=10 --totalFrames=780 --width=1920 --height=1080
+      - name: Render Deterministic 1080p30 Chunk (49 frames)
+        run: node tools/render.mjs --mode=chunk --shard=${{ matrix.shard }} --shards=16 --totalFrames=780 --width=1920 --height=1080
 
       - name: Upload Encoded Chunk
         uses: actions/upload-artifact@v4

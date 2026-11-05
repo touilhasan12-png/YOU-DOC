@@ -12,6 +12,8 @@ export interface FrameDirectorState {
   dissolveAlpha: number;
   warmth: number;
   bloomIntensity: number;
+  cornerUvX: number;
+  cornerUvY: number;
 }
 
 export class DocumentaryWorld {
@@ -248,6 +250,12 @@ export class DocumentaryWorld {
       this.camera.clearViewOffset();
     }
     this.camera.updateProjectionMatrix();
+    this.camera.updateMatrixWorld(true);
+
+    // Project exact 3D top-right 90° window corner (0.96, 3.13, 0.02) to normalized screen UV!
+    const cornerProj = new THREE.Vector3(0.96, 3.13, 0.02).project(this.camera);
+    const cornerUvX = clamp(cornerProj.x * 0.5 + 0.5, 0.1, 0.85);
+    const cornerUvY = clamp(-cornerProj.y * 0.5 + 0.5, 0.12, 0.78);
 
     return {
       activeBeat,
@@ -255,6 +263,8 @@ export class DocumentaryWorld {
       dissolveAlpha,
       warmth,
       bloomIntensity,
+      cornerUvX,
+      cornerUvY,
     };
   }
 }

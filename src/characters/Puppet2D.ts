@@ -58,9 +58,9 @@ export class Puppet2D {
 
     this.texture = new THREE.CanvasTexture(this.canvas);
     this.texture.colorSpace = THREE.SRGBColorSpace;
-    this.texture.minFilter = THREE.LinearMipmapLinearFilter;
+    this.texture.generateMipmaps = false;
+    this.texture.minFilter = THREE.LinearFilter;
     this.texture.magFilter = THREE.LinearFilter;
-    this.texture.anisotropy = 8;
 
     const aspect = this.canvas.width / this.canvas.height;
     const geo = new THREE.PlaneGeometry(heightWorld * aspect, heightWorld);
@@ -167,6 +167,9 @@ export class Puppet2D {
     return m;
   }
 
+  private lastDrawnTime = -999;
+  private lastDrawnExp = '';
+
   public update(pose: PuppetPose): void {
     const t = pose.time;
     const dtState = t - (pose.stateChangedAt ?? 0);
@@ -193,8 +196,12 @@ export class Puppet2D {
       }
     }
 
-    this.drawCharacter(pose, pop);
-    this.texture.needsUpdate = true;
+    if (Math.abs(t - this.lastDrawnTime) > 0.018 || pose.expression !== this.lastDrawnExp) {
+      this.drawCharacter(pose, pop);
+      this.texture.needsUpdate = true;
+      this.lastDrawnTime = t;
+      this.lastDrawnExp = pose.expression;
+    }
   }
 
   private drawCharacter(pose: PuppetPose, springVal: number): void {
