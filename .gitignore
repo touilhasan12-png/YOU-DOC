@@ -1,0 +1,8 @@
+node_modules/
+dist/
+frames/
+chunks/
+out_render/
+.DS_Store
+*.log
+.secrets/

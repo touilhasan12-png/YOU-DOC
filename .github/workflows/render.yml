@@ -1,0 +1,184 @@
+name: Render & Publish 3D Documentary
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Execution mode: 'smoke' (benchmark + WebGL2 check) or 'sample' (full 1080p30 parallel render + Pages + Release)"
+        required: true
+        default: "sample"
+        type: choice
+        options:
+          - smoke
+          - sample
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  smoke-test:
+    if: ${{ inputs.mode == 'smoke' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install system ffmpeg & Playwright Chromium
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Build production bundle
+        run: npm run build
+
+      - name: Run WebGL2 SwiftShader Smoke Benchmark (1080p stills + 3s clip)
+        run: node tools/render.mjs --mode=smoke
+
+      - name: Upload Smoke Benchmark Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-benchmark-report
+          path: out_render/smoke/
+
+  render-shard:
+    if: ${{ inputs.mode == 'sample' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: true
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install ffmpeg & Playwright Chromium
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Build Engine
+        run: npm run build
+
+      - name: Render Deterministic 1080p30 Chunk (78 frames)
+        run: node tools/render.mjs --mode=chunk --shard=${{ matrix.shard }} --shards=10 --totalFrames=780 --width=1920 --height=1080
+
+      - name: Upload Encoded Chunk
+        uses: actions/upload-artifact@v4
+        with:
+          name: chunk-${{ matrix.shard }}
+          path: chunks/
+          retention-days: 5
+
+  assemble-qa-publish:
+    if: ${{ inputs.mode == 'sample' }}
+    needs: render-shard
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20 & Python Pillow
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install ffmpeg & Pillow
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg python3-pil
+          npm ci
+
+      - name: Download all 10 parallel chunks
+        uses: actions/download-artifact@v4
+        with:
+          pattern: chunk-*
+          path: all_chunks
+          merge-multiple: true
+
+      - name: Concatenate video chunks + mux -14 LUFS Master Audio
+        run: |
+          mkdir -p out_master
+          ls -la all_chunks
+          for f in $(ls all_chunks/chunk_*.mp4 | sort); do
+            echo "file '$PWD/$f'" >> concat_list.txt
+          done
+          cat concat_list.txt
+          ffmpeg -y -f concat -safe 0 -i concat_list.txt \
+            -i assets/audio/master_audio.wav \
+            -c:v copy \
+            -c:a aac -b:a 256k -ar 48000 \
+            -movflags +faststart \
+            out_master/YOU-DOC-Sample-1080p30.mp4
+
+      - name: Run Automated Quality Gates & Generate Contact Sheet
+        run: python3 tools/qa_verify.py out_master/YOU-DOC-Sample-1080p30.mp4 out_master
+
+      - name: Assemble GitHub Pages Showcase Site (with MP4 + Download Button)
+        run: |
+          npm run build
+          mkdir -p dist/video
+          cp out_master/YOU-DOC-Sample-1080p30.mp4 dist/video/YOU-DOC-Sample-1080p30.mp4
+          cp out_master/poster.jpg dist/poster.jpg
+          cp out_master/contact_sheet.jpg dist/contact_sheet.jpg
+          cp out_master/qa_report.json dist/qa_report.json
+
+      - name: Upload Master Deliverable Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: you-doc-master-deliverable
+          path: |
+            out_master/
+            public/captions.srt
+
+      - name: Publish GitHub Release (v1.0.0-sample)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete v1.0.0-sample --yes || true
+          git push --delete origin v1.0.0-sample || true
+          gh release create v1.0.0-sample \
+            out_master/YOU-DOC-Sample-1080p30.mp4 \
+            out_master/contact_sheet.jpg \
+            out_master/poster.jpg \
+            out_master/qa_report.json \
+            public/captions.srt \
+            --title "YOU-DOC Sample v1.0 — Why Airplane Windows Are Never Square (1080p30)" \
+            --notes "Deterministic 2D-in-3D Three.js Cinema Sample (1920x1080 @ 30fps, 780 frames, -14.1 LUFS)."
+
+      - name: Enable & Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+        continue-on-error: true
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
