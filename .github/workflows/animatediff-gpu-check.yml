@@ -1,0 +1,16 @@
+name: AnimateDiff GPU readiness
+on:
+  workflow_dispatch:
+jobs:
+  gpu-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check GPU required by AnimateDiff
+        run: |
+          echo "Checking NVIDIA GPU for AnimateDiff"
+          if command -v nvidia-smi >/dev/null && nvidia-smi; then
+            echo "NVIDIA GPU detected"
+          else
+            echo "::error::No NVIDIA GPU found. AnimateDiff rendering requires a suitable GPU runner."
+            exit 1
+          fi
