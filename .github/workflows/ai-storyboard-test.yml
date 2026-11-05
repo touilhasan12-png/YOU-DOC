@@ -1,0 +1,33 @@
+name: One-second AI storyboard experiment
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          python -m pip install 'optimum-intel[openvino]' 'diffusers<0.36' 'transformers<4.56' torch --extra-index-url https://download.pytorch.org/whl/cpu
+      - name: Generate storyboard and cut 15 panels
+        env:
+          HF_HUB_DISABLE_XET: '1'
+        run: python animation/ai_storyboard_test.py
+      - name: Encode one second at 15 fps
+        run: |
+          ffmpeg -v error -y -framerate 15 -i storyboard_test/frames/frame_%04d.png -frames:v 15 -c:v libx264 -pix_fmt yuv420p -movflags +faststart storyboard_test/one_second.mp4
+          ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames,r_frame_rate,duration -of default=nw=1 storyboard_test/one_second.mp4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: storyboard-one-second-test
+          path: storyboard_test/
+          if-no-files-found: warn
+          retention-days: 7
