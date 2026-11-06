@@ -108,7 +108,7 @@ jobs:
             ENGINE_SOURCE/qa/native_units_current/
           retention-days: 30
   assemble-candidate:
-    if: inputs.mode == 'full'
+    if: ${{ always() && inputs.mode == 'full' && needs.render.result == 'success' }}
     needs: render
     runs-on: ubuntu-24.04
     timeout-minutes: 20

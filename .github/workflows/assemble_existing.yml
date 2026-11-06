@@ -1,0 +1,78 @@
+name: Assemble and review already-rendered GitHub native units
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Successful remote native-render run ID
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  assemble-reviewed-candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - name: Verify native run and get its exact source commit
+        id: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+        shell: bash
+        run: |
+          [[ "$SOURCE_RUN_ID" =~ ^[0-9]+$ ]]
+          curl -fsS -H "Authorization: Bearer $GH_TOKEN" "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$SOURCE_RUN_ID" > /tmp/source_run.json
+          curl -fsS -H "Authorization: Bearer $GH_TOKEN" "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$SOURCE_RUN_ID/jobs?per_page=100" > /tmp/source_jobs.json
+          python - <<'PY'
+          import os,json
+          r=json.load(open('/tmp/source_run.json'));jobs=json.load(open('/tmp/source_jobs.json'))['jobs']
+          natives=[j for j in jobs if j['name'].startswith('render (')]
+          assert len(natives)==12 and all(j['conclusion']=='success' for j in natives),'All twelve remote native jobs must pass'
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('commit='+r['head_sha']+'\n')
+          print('Verified 12 successful native jobs, exact rendering commit:',r['head_sha'])
+          PY
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.source.outputs.commit }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: ENGINE_SOURCE/requirements.txt
+      - run: pip install -r ENGINE_SOURCE/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: native-*
+          merge-multiple: true
+          path: ENGINE_SOURCE
+          run-id: ${{ inputs.source_run_id }}
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: narration-and-geometry
+          path: ENGINE_SOURCE
+          run-id: ${{ inputs.source_run_id }}
+          github-token: ${{ github.token }}
+      - name: Assemble at the exact native rendering source
+        env:
+          SOURCE_RENDER_COMMIT: ${{ steps.source.outputs.commit }}
+        run: |
+          python - <<'PY'
+          import os,sys,runpy
+          from pathlib import Path
+          # The checked-out source is the native run commit, not this orchestration workflow's newer commit.
+          os.environ['GITHUB_SHA']=os.environ['SOURCE_RENDER_COMMIT']
+          script=Path('ENGINE_SOURCE/production/ci_pipeline.py').resolve()
+          sys.path.insert(0,str(script.parent));sys.argv=[str(script),'candidate']
+          runpy.run_path(str(script),run_name='__main__')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: revision2-complete-candidate-and-review
+          path: ENGINE_SOURCE/delivery/
+          retention-days: 30
