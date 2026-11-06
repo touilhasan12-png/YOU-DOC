@@ -1,1 +1,1 @@
-{"edition":"R5","stage":"source-preparation","basis_inspection_run":42285031108,"scope":"Authored human conversion only; no full-film render or approval","attempt":1}
+{"edition":"R5","stage":"source-preparation","basis_inspection_run":42285031108,"previous_run":42288128688,"correction":"Store source material names before unlinking source scene; no automatic retry","attempt":2}

@@ -49,7 +49,9 @@ for ob in keep:
  mesh=bpy.data.meshes.new_from_object(ob.evaluated_get(dg),preserve_all_data_layers=True,depsgraph=dg)
  names={g.index:g.name for g in ob.vertex_groups}
  weights=[[(names.get(g.group,''),g.weight) for g in v.groups] for v in mesh.vertices]
- snapshots.append((ob.name,mesh,weights,list(ob.data.materials),ob.matrix_world.copy()))
+ names_mats=[m.name if m else None for m in ob.data.materials]
+ if not names_mats or any(m is None for m in names_mats):raise RuntimeError('Missing original material slot on '+ob.name+': '+repr(names_mats))
+ snapshots.append((ob.name,mesh,weights,names_mats,ob.matrix_world.copy()))
 # Reconstruct explicit source-based materials; the three UDIM tiles form one atlas.
 mat_cache={};img_cache={}
 def image(name):
@@ -99,8 +101,8 @@ report=[]
 for name,mesh,weights,mats,matrix in snapshots:
  ob=bpy.data.objects.new(name.replace('-','_'),mesh);bpy.context.collection.objects.link(ob);ob.matrix_world=matrix
  mesh.materials.clear()
- for m in mats:mesh.materials.append(material(m.name))
- if mats and all(m.name.startswith('snow.skin') for m in mats):
+ for m in mats:mesh.materials.append(material(m))
+ if mats and all(m.startswith('snow.skin') for m in mats):
   for uv in mesh.uv_layers:
    for loop in uv.data:loop.uv.x/=3
  for f in mesh.polygons:f.use_smooth=True
