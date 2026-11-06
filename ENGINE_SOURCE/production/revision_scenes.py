@@ -11,7 +11,7 @@ import physical_scene as ph
 import illustrated_rig as rig
 import revision_geometry as g
 INK=(31,57,68)
-KEYS={'diver_entanglement','rudder_detaches','hypothesis_play','hypothesis_imitation','boat_option','helm_response','human_not_target','interaction_counts','open_water_pov','plans_final'}
+KEYS={'diver_entanglement','rudder_detaches','hypothesis_play','hypothesis_imitation','boat_option','helm_response','human_not_target','interaction_counts','open_water_pov','plans_final','ice_option','power_option','worn_teeth'}
 
 def cockpit(t,disabled=True):
  im=ocean(t,horizon=390);svg=people.path('M0 780 Q580 650 1920 735 L1920 1080 0 1080Z','url(#cream)','#385765',4)
@@ -81,16 +81,26 @@ def frame(key,t):
  if key=='diver_entanglement':return freediver(t)
  if key in {'helm_response','human_not_target'}:return cockpit(t,key=='helm_response')
  if key=='interaction_counts':return interaction_counts(t)
+ if key=='ice_option':
+  ice=ph.slab(.85,position=(2.6,0,0));whale=ph.whale('orca',t*3,position=(-4.4,-2.4,-.6),flip=True)
+  assert not g.overlap(ice,whale)
+  return h.title(h.world(underwater(t),[ice,whale],ppm=135,centre=(1120,600),elevation=25,wet=False),'AN ICE FLOE?','The seal sequence showed why this is not an escape plan.')
+ if key=='power_option':
+  return h.title(h.world(underwater(t),[ph.whale('orca',t*2,jaw=10+9*g.ease(t/2),position=(0,0,-.2),flip=True)],ppm=190,centre=(970,660),elevation=10,wet=False),'40-56 CURVED TEETH','More than six tonnes in a large male')
+ if key=='worn_teeth':
+  m=rig.model('orca');v=rig.articulate(m.v,'orca',t,m.part,17).copy();teeth=(m.part==9)&(m.v[:,0]<.10*m.s['L']);faces=m.f[~np.all(teeth[m.f],axis=1)];v[:,0]-=3.75
+  return h.title(h.world(underwater(t),[(ph.pose(v,(0,0,-.2),flip=True),faces,m.col)],ppm=190,centre=(920,680),wet=False),'WORN TEETH','Historical account: tow-rope wear')
+
  if key=='rudder_detaches':
-  return h.title(h.world(underwater(t),g.attack_actors(t),ppm=137,centre=(1450,470),elevation=14,wet=False),'THE RUDDER','Attached stock, bearings and blade | mechanical reconstruction')
+  return h.title(h.world(underwater(t),g.attack_actors(t),ppm=118,centre=(1550,470),elevation=14,wet=False),'THE RUDDER','Attached stock, bearings and blade | mechanical reconstruction')
  if key in {'hypothesis_play','hypothesis_imitation'}:
   imitation=key=='hypothesis_imitation';obj,_=g.play_actors(t,imitation)
   return h.title(h.world(underwater(t),obj,ppm=118,centre=(1470,490),elevation=30 if imitation else 16,wet=False),'IMITATION?' if imitation else 'PLAY OR SOCIALIZING?','Proposed explanations - not proven motives')
  if key=='boat_option':
   obj=[g.hull_mesh(),g.rudder(4,True),ph.whale('orca_juvenile',t*3,position=(-7.8-t*.45,2,-1.1),flip=True)]
   return h.title(h.world(underwater(t),obj,ppm=117,centre=(1420,490),elevation=20,wet=False),'AFTER THE RUDDER BREAKS','The boat loses steering; the animals may leave')
- if key in {'open_water_pov','plans_final'}:
-  obj=[ph.whale('orca',t*3,position=(0,0,-.5),yaw=60),ph.whale('orca_female',t*2.5,position=(-4,7,-.6),yaw=45)]
+ if key in {'open_water_pov','plans_final','ice_option','power_option','worn_teeth'}:
+  obj=[ph.whale('orca',t*3,position=(0,0,-.5),yaw=60),ph.whale('orca_female',t*2.5,position=(-2,7,-.6),yaw=45)]
   im=h.world(ocean(t,horizon=300),obj,ppm=185 if key=='open_water_pov' else 205,centre=(1080,690),elevation=13,wet=True)
   if key=='plans_final':type_text(im,'SOMETHING THAT PLANS',960,90,83,title=True,align='center')
   return im

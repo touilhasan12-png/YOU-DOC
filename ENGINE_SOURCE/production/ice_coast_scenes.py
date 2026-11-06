@@ -34,15 +34,17 @@ def seal_floe(t):
  return scene(base,[ice,seal],ppm=190,centre=(960,740),elev=10,water=phys.wave_mesh(t,amplitude=.045,velocity=.4,arrival=0))
 
 def formation(t):
- base=ice_background(t);distance=36-3.5*t;ppm=3600/distance;objects=[]
+ base=ice_background(t);objects=[]
+ # Oblique rank: seven recognizable complete animals, not seven head-on egg silhouettes.
  for j in range(7):
-  name='orca' if j%2==0 else 'orca_female';objects.append(phys.whale(name,phase=t*5+j*.37,position=((j-3)*1.8,0,-.49),yaw=90,roll=(j%3-1)*2))
- return scene(base,objects,ppm=ppm,centre=(960,675),elev=8)
+  rank=j-3;name='orca' if j%2==0 else 'orca_female'
+  objects.append(phys.whale(name,phase=t*5+j*.37,position=(rank*4.8*.866,rank*4.8*-.5,-.49),yaw=60,flip=True))
+ return scene(base,objects,ppm=55,centre=(960,700),elev=30)
 
 def floe_wave(t):
  import revision_geometry as g
  ice,seal,whales=g.wave_actors(t)
- return scene(ice_background(t),whales+[ice,seal],ppm=102,centre=(1050,640),elev=20,water=phys.wave_mesh(t,arrival=1.36))
+ return scene(ice_background(t),whales+[ice,seal],ppm=92,centre=(1160,640),elev=30,water=phys.wave_mesh(t,arrival=1.36))
 
 def bubbles(t,origin=(-1.2,-.2,-.40)):
  m=Mesh();rng=np.random.default_rng(990)

@@ -26,14 +26,15 @@ def wave_actors(t):
  crest=4*(t-1.36);h=lambda x:.65*math.exp(-((x-crest)/1.35)**2)
  tilt=7*(h(-2)-h(2))/.65;heave=.60*h(0);ice=ph.slab(position=(0,0,heave),pitch=tilt)
  v,f,c=pins.mesh('weddell',t*7,'struggle');slide=6.0*ease((t-1.1)/2.5);fall=.95*ease((t-3.7)/1.0)
+ v=v.copy();v[:,2]+=np.maximum(0,-.20-v[:,2])*(1-fall/.95)
  # Lift/slide along the actual top plane first. Descent begins only after body clearance.
- local=ph.pose(v,position=(slide,0,.20-float(v[:,2].min())),pitch=26*ease((t-3.7)/1.0))
+ local=ph.pose(v,position=(slide,0,.40),pitch=26*ease((t-3.7)/1.0))
  seal=(ph.pose(local,(0,0,heave-fall),pitch=tilt),f,c)
  if fall<=1e-8:
   # Support plane of tilted slab, not its screen-space rectangle.
   inv=ph.pose(seal[0]-[0,0,heave],pitch=-tilt);lift=max(0,.195-inv[:,2].min());seal=(ph.pose(inv+[0,0,lift],(0,0,heave),pitch=tilt),f,c)
  else:seal=clear_x(seal,ice)
- whales=[ph.whale('orca' if j!=1 else 'orca_female',t*5+j*.3,position=(-8.3+.8*ease(t/.8),y,-.52),flip=True) for j,y in enumerate([-2.1,0,2.1])]
+ whales=[ph.whale('orca' if j!=1 else 'orca_female',t*5+j*.3,position=(-8.3+.8*ease(t/.8)+[0,.3,-.2][j],y,-.52),flip=True) for j,y in enumerate([-5.,0,5.])]
  return ice,seal,whales
 
 def seal_outside(t,action='reach',lower=0):

@@ -108,8 +108,8 @@ def augment(s,im,t):
   text(im,'At 50 km/h: about 14 metres each second',1050,235,30);line(im,(1180,330),(1710,330),CREAM,3)
   cv2.circle(im,(int(1180+530*((local*.45)%1)),330),9,GOLD,-1,cv2.LINE_AA)
  elif k=='taxonomy':
-  text(im,'DELPHINIDAE',1280,230,38,False);line(im,(1440,305),(1440,405),INK,3)
-  for x,name in [(1210,'Orcas'),(1650,'Other dolphins')]:line(im,(1440,405),(x,490),INK,3);text(im,name,x-60,525,29,False)
+  text(im,'DELPHINIDAE',170,450,43,False);line(im,(350,530),(350,635),INK,3)
+  for x,name in [(180,'Orcas'),(610,'Other dolphins')]:line(im,(350,635),(x,745),INK,3);text(im,name,x-65,790,31,False)
  elif k=='old_tom_end':
   # Archival timeline balances the historical end frame, rather than an empty sea panel.
   for x,year in [(1150,'1840'),(1440,'1901'),(1730,'1930')]:cv2.circle(im,(x,330),8,CREAM,-1,cv2.LINE_AA);text(im,year,x-37,370,28)

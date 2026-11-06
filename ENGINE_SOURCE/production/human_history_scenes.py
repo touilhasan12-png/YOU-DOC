@@ -210,11 +210,11 @@ def ecosystem(t,role='bronze'):
 
 def final_canyon(t):
  im=ocean(t,horizon=345);bz=-.8+.18*ease(t/2);obj=[blue(16,t,(1,0,bz))]
- for j,x in enumerate([-6,-1.5,3]):obj.append(phys.whale('orca_female' if j==1 else 'orca',t*3+j,position=(x-2*(1-ease(t/5)),(-1 if j%2 else 1)*2.1,-.4)))
+ for j,x in enumerate([-6,-1.5,3]):obj.append(phys.whale('orca_female' if j==1 else 'orca',t*3+j,position=(x-2*(1-ease(t/5)),[-6.5,6.5,11.][j],-.4)))
  world(im,obj,ppm=78,centre=(960,650),elevation=12,wet=True);bm=rig.model('blue_whale');point=phys.pose(np.array([[1+(.12-.5)*16,0,bz+float((bm.cz(.12)*bm.s['L'])+(bm.rz(.12)*bm.s['L']))]]))@rig.rotation(elevation=12).T;plume(im,960+point[0,0]*78,650-point[0,2]*78,t-2.7056);return im
 
 def teamwork(t):
- im=underwater(t);obj=[phys.whale('orca_female',t*3,position=(-3,0,-.2)),phys.whale('orca_juvenile',t*4,position=(2,-1.2,-.4)),phys.whale('orca',t*2,position=(5,2.5,-.3))];world(im,obj,ppm=115,centre=(960,720),elevation=20,wet=False)
+ im=underwater(t);obj=[phys.whale('orca_female',t*3,position=(-3,0,-.2)),phys.whale('orca_juvenile',t*4,position=(2,-3.3,-.4)),phys.whale('orca',t*2,position=(5,3.5,-.3))];world(im,obj,ppm=115,centre=(960,720),elevation=20,wet=False)
  for j,word in enumerate(['PATIENCE','ROTATION','TEACHING']):
   if t>j*2.4:type_text(im,word,95+j*590,80,61,title=True)
  return im

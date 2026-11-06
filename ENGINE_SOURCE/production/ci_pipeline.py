@@ -16,11 +16,19 @@ def tests():
  for t in np.linspace(0,5,61):
   ice,seal,whales=g.wave_actors(t)
   if t>3.7:assert not g.overlap(ice,seal),'Wave seal/ice collision'
+  for j,a in enumerate(whales):
+   assert not g.overlap(a,ice),'Wave orca/ice collision'
+   for b in whales[j+1:]:assert not g.overlap(a,b),'Wave orca/orca collision'
   ice,seal,whale=g.denial_actors(t);assert not g.overlap(ice,seal) and not g.overlap(ice,whale),'Tail-strike ice collision'
   ice,seal,pred=g.capture_actors(t);assert not g.overlap(ice,seal) and not g.overlap(ice,pred),'Capture ice collision'
  for imitation in [False,True]:
   for t in np.linspace(0,11.8,120):
    meshes,_=g.play_actors(t,imitation);assert not g.overlap(meshes[-1],meshes[-2]),'Orca/orca penetration'
+ from investigation_scenes import relay_actors
+ for t in np.linspace(0,11.06,80):
+  animals=relay_actors(t)[1:]
+  for j,a in enumerate(animals):
+   for b in animals[j+1:]:assert not g.overlap(a,b),'Relay orca/orca collision'
  for t in np.linspace(0,6.28,32):
   svg,meta=people.whaleboat(t)
   assert svg.count('data-limb="left-arm"')==3 and svg.count('data-limb="right-arm"')==3
@@ -40,7 +48,7 @@ def writevideo(s,path,seconds=5):
 
 def proof(shard):
  tests();q=P/'qa/proof';q.mkdir(exist_ok=True)
- critical={'floe_wave','floe_denial','seal_capture','whaler_view','diver_entanglement','yacht_stern','rudder_detaches','hypothesis_play','hypothesis_imitation','helm_response','interaction_counts','open_water_pov','plans_final'}
+ critical={'seven_formation','blue_relays','ice_option','power_option','worn_teeth','floe_wave','floe_denial','seal_capture','whaler_view','diver_entanglement','yacht_stern','rudder_detaches','hypothesis_play','hypothesis_imitation','helm_response','interaction_counts','open_water_pov','plans_final'}
  for s in scenes.PLAN[shard::3]:
   for frac in ([.12,.45,.78] if s['key'] in critical else [.5]):
    im=scenes.frame(s,s['start']+s['duration']*frac);cv2.imwrite(str(q/f"{s['id']:02d}_{s['key']}_{frac}.jpg"),im,[cv2.IMWRITE_JPEG_QUALITY,92])

@@ -189,6 +189,9 @@ def learning(t):
 def antarctic_establish(t):
  im=ocean(t,horizon=422);poly=np.int32([[0,435],[120,260],[240,367],[460,160],[660,356],[870,305],[1010,435]])
  cv2.fillPoly(im,[poly],(203,215,210),cv2.LINE_AA);cv2.fillPoly(im,[np.int32([[120,260],[178,342],[240,367],[460,160],[490,268],[660,356],[870,305],[1010,435],[0,435]])],(177,198,199),cv2.LINE_AA)
+ from investigation_scenes import world
+ import physical_scene as ph
+ world(im,[ph.whale('orca_female',t*3,position=(1-t*.12,0,-.4),yaw=18),ph.whale('orca_juvenile',t*3+.5,position=(-3-t*.12,5,-.45),yaw=18)],ppm=155,centre=(1110,790),elevation=17,wet=True)
  type_text(im,'ANTARCTICA',W-92,78,58,title=True,align='right');return im
 
 FUNCTIONS={'taxonomy':lambda t,g:taxonomy(t,g),'male_dimensions':lambda t,g:dimensions(t),'mass_comparison':lambda t,g:mass(t),'dentition':lambda t,g:dentition(t),'speed_tracking':lambda t,g:speed(t),'hardware_software':lambda t,g:software(t),'pacific_ecotypes':lambda t,g:pacific(t),'resident_salmon':lambda t,g:residents(t),'biggs_silence':lambda t,g:biggs(t),'tagged_alaska':lambda t,g:research_tag(t),'listening_dark':lambda t,g:listening(t),'fish_hearing':lambda t,g:fish_hearing(t),'mammal_hearing':lambda t,g:mammal_hearing(t),'matriarch':lambda t,g:matriarch(t),'learning_observation':lambda t,g:learning(t),'knowledge_bridge':lambda t,g:antarctic_establish(t)}

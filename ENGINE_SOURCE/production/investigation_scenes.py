@@ -95,17 +95,20 @@ def cases(t):
 def blue(length=24,t=0,position=(0,0,-.6),pitch=0,jaw=0):
  m=rig.model('blue_whale');v=rig.articulate(m.v,'blue_whale',t*2,m.part,jaw).copy();v[:,0]-=m.s['L']*.5;v*=length/m.s['L'];return phys.pose(v,position=position,pitch=pitch),m.f,m.col
 
+def relay_actors(t):
+ bz=-.4-1.2*ease(t/8);pitch=-6;objects=[blue(24,t,(2.8,0,bz),pitch,jaw=8)]
+ m=rig.model('blue_whale');L=m.s['L']
+ for sign in [-1,1]:
+  yaw=sign*30;target=phys.pose(np.array([[.065*L-.5*L,sign*.91*float(m.ry(.065)*L),float((m.cz(.065)-.18*m.rz(.065))*L)]])*1.5,(2.8,0,bz),pitch=pitch)[0]
+  for j,name in enumerate(['orca','orca_female']):
+   om=rig.model(name);OL=om.s['L'];local=phys.pose(np.array([[(.075-.5)*OL,sign*.90*float(om.ry(.075)*OL),float((om.cz(.075)-.18*om.rz(.075))*OL)]]),yaw=yaw)[0]
+   working=target-local;park=np.array([3 if j==0 else -9,sign*(9 if j==0 else 10),-1.4])
+   engage=1-ease((t-3.2)/1.15) if j==0 else ease((t-5.1)/1.2)
+   objects.append(phys.whale(name,t*4+j,jaw=18*engage,position=park*(1-engage)+working*engage,yaw=yaw))
+ return objects
+
 def relays(t):
- base=underwater(t);bz=-.4-1.2*ease(t/8);pitch=-6;objects=[blue(24,t,(2.8,0,bz),pitch,jaw=8)]
- m=rig.model('blue_whale');L=m.s['L'];orca=rig.model('orca');OL=orca.s['L'];g=2*math.pi*t/11.06
- for j,sign in enumerate([-1,1]):
-  yaw=sign*30;target=phys.pose(np.array([[.065*L-.5*L,sign*.91*float((m.ry(.065)*m.s['L'])),float((m.cz(.065)*m.s['L'])-.18*(m.rz(.065)*m.s['L']))]])*1.5,(2.8,0,bz),pitch=pitch)[0]
-  local=phys.pose(np.array([[(.075-.5)*OL,sign*.90*float((orca.ry(.075)*orca.s['L'])),float((orca.cz(.075)*orca.s['L'])-.18*(orca.rz(.075)*orca.s['L']))]]),yaw=yaw)[0]
-  working=target-local;rest=np.array([5.5,sign*4.,-1.3]);swap=ease((t-4.2)/2.3)
-  objects.append(phys.whale('orca',t*4+j,jaw=18*(1-swap),position=working*(1-swap)+rest*swap+np.array([0,sign*3*math.sin(math.pi*swap),.25*math.sin(math.pi*swap)]),yaw=yaw+sign*30*swap))
-  fm=rig.model('orca_female');FL=fm.s['L'];flocal=phys.pose(np.array([[(.075-.5)*FL,sign*.90*float((fm.ry(.075)*fm.s['L'])),float((fm.cz(.075)*fm.s['L'])-.18*(fm.rz(.075)*fm.s['L']))]]),yaw=yaw)[0];femaleWorking=target-flocal
-  objects.append(phys.whale('orca_female',t*4+j+.8,jaw=18*swap,position=rest*(1-swap)+femaleWorking*swap+np.array([0,sign*.8*math.sin(math.pi*swap),-.1*math.sin(math.pi*swap)]),yaw=yaw))
- return world(base,objects,ppm=68,centre=(1050,590),elevation=30,wet=False)
+ return world(underwater(t),relay_actors(t),ppm=62,centre=(1060,590),elevation=25,wet=False)
 
 def young(t):
  im=world(underwater(t),[blue(8,t,(-6.2,0,-.3)),blue(13,t,(5.1,0,-.3))],ppm=70,centre=(960,650),elevation=13,wet=False)
@@ -116,7 +119,7 @@ def adult(t):
 
 def strategy(t):
  base=kelp(underwater(t),t);objects=[];turn=ease((t-1)/4);mouth=.8+3*ease((t-5.3)/2)
- mother=(-4+4*turn,1.6,-.3);youngPos=(-1+3*ease((t-3)/3),-1.3,-.3)
+ mother=(-4+4*turn,3.8,-.3);youngPos=(-1+3*ease((t-3)/3),-3.8,-.3)
  objects.append(phys.whale('orca_female',t*4,position=mother,yaw=45*turn,flip=True));objects.append(phys.whale('orca_juvenile',t*5,jaw=20*ease((t-6)/1),position=youngPos,yaw=-30*turn,flip=True))
  for j in range(7):
   x=5.7+.25*(j%3)-1.8*ease((t-2)/4);objects.append(phys.whale('salmon',t*7+j,position=(x,.35*(j//3),-.8+.18*(j%2)),yaw=-25*turn))
