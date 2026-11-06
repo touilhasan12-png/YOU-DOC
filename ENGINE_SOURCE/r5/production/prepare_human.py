@@ -11,6 +11,7 @@ args=sys.argv[sys.argv.index('--')+1:];source=Path(args[0]);out=Path('R5_PREP');
 bpy.context.preferences.filepaths.use_scripts_auto_execute=False
 bpy.ops.wm.open_mainfile(filepath=str(source),load_ui=False,use_scripts=False)
 source_rig=bpy.data.objects['RIG-Snow'];source_rig.data.pose_position='REST'
+bpy.context.scene.render.use_simplify=False
 # Source maps are rebuilt as explicit PBR materials, not painted replacement clothing.
 texture_dir=source.parent/'textures'; atlas_path=Path(args[1]).resolve()
 oldbones={b.name:{'head':b.head_local.copy(),'tail':b.tail_local.copy(),'z':b.z_axis.copy()} for b in source_rig.data.bones}
@@ -41,7 +42,11 @@ for ob in list(bpy.data.objects):
  if ob.hide_render or any(k in ob.name for k in ['helper','deformer','eye_corneas','eye_anim']):continue
  if ob.name.endswith('eye_dots'):continue # authored eyes already include their own highlight response
  for m in ob.modifiers:
-  if m.type=='SUBSURF':m.levels=0 if any(k in ob.name for k in ['teeth','gums','tongue']) else 1;m.render_levels=m.levels
+  if m.type=='SUBSURF':
+   for prop in ['levels','render_levels','show_viewport','show_render']:
+    try:m.driver_remove(prop)
+    except (TypeError,RuntimeError):pass
+   m.show_viewport=True;m.show_render=True;m.levels=0 if any(k in ob.name for k in ['teeth','gums','tongue']) else 1;m.render_levels=m.levels
   if m.type=='ARMATURE':m.show_viewport=False;m.show_render=False
  keep.append(ob)
 bpy.context.view_layer.update();dg=bpy.context.evaluated_depsgraph_get();snapshots=[]

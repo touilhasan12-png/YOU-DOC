@@ -1,1 +1,1 @@
-{"edition":"R5","stage":"source-preparation","basis_inspection_run":42285031108,"previous_run":42288428621,"correction":"Confirmed source uses OBJECT-linked materials: read ob.material_slots, not ob.data.materials; no placeholder materials","attempt":3}
+{"edition":"R5","stage":"source-refinement","basis_inspection_run":42285031108,"previous_success":42288645035,"correction":"Disable original scene viewport simplify and subdivision-control drivers, retain one real subdivision for clothed face/hands; no new source download or rig autoexecution policy","attempt":4}
