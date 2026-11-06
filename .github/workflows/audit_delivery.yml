@@ -1,0 +1,43 @@
+name: Final technical audio and packet audit — GitHub only
+on:
+  workflow_dispatch:
+    inputs:
+      delivery_run_id:
+        description: Existing complete candidate assembly run
+        required: true
+        type: string
+      native_run_id:
+        description: Existing native/audio source run
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install av==13.1.0 imageio-ffmpeg==0.6.0
+      - uses: actions/download-artifact@v4
+        with:
+          name: revision2-complete-candidate-and-review
+          path: CANDIDATE
+          run-id: ${{ inputs.delivery_run_id }}
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: narration-and-geometry
+          path: SOURCE_AUDIO
+          run-id: ${{ inputs.native_run_id }}
+          github-token: ${{ github.token }}
+      - run: python ENGINE_SOURCE/production/audit_existing_movie.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: final-technical-audit
+          path: REMOTE_FINAL_AUDIT/
+          retention-days: 30
