@@ -1,0 +1,45 @@
+{
+  "creator": "Junskie Pastilan / pasilan",
+  "creator_source": "https://blendswap.com/blend/7791",
+  "legacy_source_id": "65255; same ID verified in current creator preview image URLs",
+  "license": "CC-BY-3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0/",
+  "public_redistribution": "https://webglfundamentals.org/webgl/lessons/webgl-skinning.html",
+  "mirror_commit": "2e7d1ceee24d694fcc90bec134864abce7bdde30",
+  "license_caveat": "Bundled BLENDSWAP_LICENSE.txt mistakenly says Office Interior design. It names the same creator, original legacy ID65255, and CC BY3.0; current original creator page independently confirms Killer whale, pasilan, CC-BY and legacy65255 in its preview paths. Preserve the original license verbatim and this correction.",
+  "original_blend_downloaded": false,
+  "complete_obtained_source": "All five files from the public glTF source folder, untouched. No claim to have archived the original BlendSwap .blend file.",
+  "files": [
+    {
+      "file": "BLENDSWAP_LICENSE.txt",
+      "bytes": 3174,
+      "sha256": "a7f693da8ed0c761d9cddbf67d8fd3f00dad2cda6fc0aea612cf5c645738e5b6",
+      "pinned_source": "https://raw.githubusercontent.com/gfxfundamentals/webgl-fundamentals/2e7d1ceee24d694fcc90bec134864abce7bdde30/webgl/resources/models/killer_whale/BLENDSWAP_LICENSE.txt"
+    },
+    {
+      "file": "thumbnail.jpg",
+      "bytes": 13389,
+      "sha256": "941ee6b8d6cff9dbea542c51ce0b4ce20cdee45e83d56fae3e4091e83c5d1161",
+      "pinned_source": "https://raw.githubusercontent.com/gfxfundamentals/webgl-fundamentals/2e7d1ceee24d694fcc90bec134864abce7bdde30/webgl/resources/models/killer_whale/thumbnail.jpg"
+    },
+    {
+      "file": "whale.CYCLES.bin",
+      "bytes": 193428,
+      "sha256": "b88e0360fa325bfd0b7fce69fd08c0080340e8c1c0ba7e2ea28d89a2ca9d4b31",
+      "pinned_source": "https://raw.githubusercontent.com/gfxfundamentals/webgl-fundamentals/2e7d1ceee24d694fcc90bec134864abce7bdde30/webgl/resources/models/killer_whale/whale.CYCLES.bin"
+    },
+    {
+      "file": "whale.CYCLES.gltf",
+      "bytes": 43991,
+      "sha256": "4f1b0b1b289f62f703c1a6f26064c420ce57fb38942da9c1eb63c0fe18f70c23",
+      "pinned_source": "https://raw.githubusercontent.com/gfxfundamentals/webgl-fundamentals/2e7d1ceee24d694fcc90bec134864abce7bdde30/webgl/resources/models/killer_whale/whale.CYCLES.gltf"
+    },
+    {
+      "file": "whale.png",
+      "bytes": 1041434,
+      "sha256": "850b4f99457c5b939bf2167767ce88d8a318a8bf060f2e7a7964c717295b622d",
+      "pinned_source": "https://raw.githubusercontent.com/gfxfundamentals/webgl-fundamentals/2e7d1ceee24d694fcc90bec134864abce7bdde30/webgl/resources/models/killer_whale/whale.png"
+    }
+  ],
+  "status": "Verified creator license and source hierarchy; skin/rig/material conversion and artistic review pending."
+}
