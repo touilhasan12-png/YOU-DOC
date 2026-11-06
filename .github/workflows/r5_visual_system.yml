@@ -24,7 +24,7 @@ jobs:
         with:
           name: r5-authored-human-conversion
           path: ENGINE_SOURCE/r5/production_assets
-          run-id: 42288645035
+          run-id: 42290538701
           github-token: ${{ github.token }}
       - name: Check exact converted source and retain conversion record
         run: |
@@ -53,7 +53,7 @@ jobs:
         run: |
           npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium
-      - name: Render eight full-size frames of newly authored cast, boat, sea and animal
+      - name: Render full-size new cast, vessel, sea, freediver, paddle and jaw/rudder development frames
         run: node ENGINE_SOURCE/r5/production/render.mjs
       - uses: actions/upload-artifact@v4
         if: always()
