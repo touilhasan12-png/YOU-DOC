@@ -1,0 +1,56 @@
+name: R5 — authored human conversion, no full-film render
+on:
+  push:
+    branches: [r5-full-film-rebuild]
+    paths: [ENGINE_SOURCE/r5/production/PREP_REQUEST.json]
+permissions:
+  contents: read
+concurrency:
+  group: r5-source-preparation
+  cancel-in-progress: false
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require all-new-picture contract and unchanged script
+        run: python ENGINE_SOURCE/r5/production/validate_blueprint.py
+      - name: Verified original source and Blender
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/r5-source"
+          cd "$RUNNER_TEMP/r5-source"
+          curl -fsSL --retry 2 https://download.blender.org/release/Blender4.2/blender-4.2.5-linux-x64.tar.xz -o blender.tar.xz
+          echo 'cd28ab8164d88237c0c45a188ef7e4974bcb8c651de15fcbc3635166e584e4b3  blender.tar.xz' | sha256sum -c -
+          tar -xf blender.tar.xz
+          curl -fsSL --retry 2 https://github.com/touilhasan12-png/YOU-DOC/releases/download/r5-authored-source-archive-20261106/Snow_v4_ORIGINAL.zip -o snow.zip
+          echo '98d58ef3a07083ede14140bc462cccb55d317062846aa0eb652d2e4a7ac422a6  snow.zip' | sha256sum -c -
+          unzip -q snow.zip -d snow
+      - name: Convert existing licensed UDIM maps (not generated artwork)
+        run: |
+          pip install Pillow==11.0.0
+          python - <<'PY'
+          from PIL import Image
+          import os
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])/'r5-source/snow/Snow/textures'
+          atlas=Image.new('RGB',(6144,2048))
+          for i in range(3):
+              with Image.open(p/f'skin_diffuse.{1001+i}.png') as im:
+                  atlas.paste(im.convert('RGB').resize((2048,2048),Image.Resampling.LANCZOS),(i*2048,0))
+          atlas.save(Path(os.environ['RUNNER_TEMP'])/'r5-source/skin_atlas.png')
+          PY
+      - name: Bake modeled coverage and simplify original deformation rig safely
+        run: |
+          "$RUNNER_TEMP/r5-source/blender-4.2.5-linux-x64/blender" --background --factory-startup --disable-autoexec --python-exit-code 13 --python ENGINE_SOURCE/r5/production/prepare_human.py -- "$RUNNER_TEMP/r5-source/snow/Snow/snow_v4.2.blend" "$RUNNER_TEMP/r5-source/skin_atlas.png"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r5-authored-human-conversion
+          path: R5_PREP/
+          retention-days: 30
+          if-no-files-found: error
