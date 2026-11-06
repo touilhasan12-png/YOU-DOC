@@ -1,1 +1,13 @@
-{"edition":"R5","attempt":1,"human_conversion_run":42288645035,"scope":"Eight new full-size internal visual-system frames; no user approval requested and no film completion claimed"}
+{
+  "edition": "R5",
+  "attempt": 2,
+  "human_conversion_run": 42288645035,
+  "scope": "Eight new full-size internal visual-system frames; no user approval requested and no film completion claimed",
+  "previous_run": 42288859138,
+  "corrections": [
+    "physical anatomical hand orientation and curl",
+    "close transom and modeled sail",
+    "controlled blue sky and lower ocean reflectance",
+    "repair orca source rest-mesh binding and readable framing"
+  ]
+}
