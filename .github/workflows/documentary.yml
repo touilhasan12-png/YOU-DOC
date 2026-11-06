@@ -8,6 +8,11 @@ on:
         default: proof
         type: choice
         options: [proof, full]
+      reuse_proof_run_id:
+        description: Reuse a verified graphics-identical proof run (optional)
+        required: false
+        default: ''
+        type: string
 permissions:
   contents: read
   actions: read
@@ -30,6 +35,12 @@ jobs:
           cache: pip
           cache-dependency-path: ENGINE_SOURCE/requirements.txt
       - run: pip install -r ENGINE_SOURCE/requirements.txt
+      - name: Validate optional remote proof reuse
+        if: inputs.reuse_proof_run_id != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REUSE_PROOF_RUN_ID: ${{ inputs.reuse_proof_run_id }}
+        run: python ENGINE_SOURCE/production/verify_remote_proof_reuse.py
       - run: python ENGINE_SOURCE/production/ci_pipeline.py tests
       - run: python ENGINE_SOURCE/production/ci_pipeline.py audio
       - uses: actions/upload-artifact@v4
@@ -40,8 +51,10 @@ jobs:
             ENGINE_SOURCE/audio_revision_ending/
             ENGINE_SOURCE/qa/ending_comparison/
             ENGINE_SOURCE/qa/GEOMETRY_TESTS.json
+            ENGINE_SOURCE/qa/REUSED_PROOF.json
           retention-days: 30
   proof:
+    if: inputs.reuse_proof_run_id == ''
     needs: audio-and-geometry
     runs-on: ubuntu-24.04
     timeout-minutes: 30
@@ -65,8 +78,8 @@ jobs:
           path: ENGINE_SOURCE/qa/proof/
           retention-days: 30
   render:
-    if: inputs.mode == 'full'
-    needs: proof
+    if: ${{ always() && inputs.mode == 'full' && needs.audio-and-geometry.result == 'success' && (needs.proof.result == 'success' || needs.proof.result == 'skipped') }}
+    needs: [audio-and-geometry, proof]
     runs-on: ubuntu-24.04
     timeout-minutes: 50
     strategy:

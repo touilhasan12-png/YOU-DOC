@@ -57,7 +57,7 @@ def proof(shard):
 
 
 def shard(n):
- tests();keys=','.join(s['key'] for s in scenes.PLAN[n::12]);subprocess.run([sys.executable,str(P/'production/render_picture_units.py'),'--keys',keys],check=True)
+ tests();keys=','.join(s['key'] for s in scenes.PLAN[n::12]);os.execv(sys.executable,[sys.executable,str(P/'production/render_picture_units.py'),'--keys',keys])
 
 
 def candidate():

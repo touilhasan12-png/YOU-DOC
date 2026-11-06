@@ -19,7 +19,11 @@ def memory_state():
    if str(P) in cmd or str(cwd).startswith(str(P)) or proc.name==str(os.getpid()):
     line=next(x for x in (proc/'status').read_text().splitlines() if x.startswith('VmRSS:'));rss+=int(line.split()[1])*1024
   except (OSError,StopIteration,ValueError):pass
- return {'cgroup_limit_bytes':limit,'cgroup_used_bytes':used,'project_process_rss_bytes':rss,'measurement':'cgroup' if limit is not None else 'project RSS + conservative fixed budget; sandbox hard limit unavailable','soft_usable_limit_bytes':int(limit*.78) if limit is not None else 600*1024*1024,'used_for_guard_bytes':used if used is not None else rss}
+ fixed_budget=600*1024*1024
+ if os.environ.get('GITHUB_ACTIONS')=='true' and os.environ.get('RUNNER_ENVIRONMENT')=='github-hosted':
+  # Hosted runners are dedicated VMs, not the original small local sandbox. Still retain a hard project budget.
+  physical=os.sysconf('SC_PHYS_PAGES')*os.sysconf('SC_PAGE_SIZE');fixed_budget=min(4*1024**3,int(physical*.5))
+ return {'cgroup_limit_bytes':limit,'cgroup_used_bytes':used,'project_process_rss_bytes':rss,'measurement':'cgroup' if limit is not None else 'project RSS + conservative fixed budget; sandbox hard limit unavailable','soft_usable_limit_bytes':int(limit*.78) if limit is not None else fixed_budget,'used_for_guard_bytes':used if used is not None else rss}
 class HeavyWork:
  def __enter__(self):
   self.file=(P/'production/HEAVY_WORK.lock').open('w');fcntl.flock(self.file,fcntl.LOCK_EX|fcntl.LOCK_NB);self.file.write(str(os.getpid()));self.file.flush();return self
