@@ -1,0 +1,7 @@
+{
+  "source": "https://raw.githubusercontent.com/mrdoob/three.js/r170/examples/textures/waternormals.jpg",
+  "license": "Three.js repository MIT; verbatim LICENSE preserved",
+  "bytes": 248813,
+  "sha256": "add9912b158a4fe9c12421745babe68c44c8af75631ac4837236cb2a03bc373f",
+  "use": "Existing water normal texture for physically lit/reflected Three.js Water shader; not AI-generated imagery."
+}
