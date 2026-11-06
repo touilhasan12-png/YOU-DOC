@@ -7,7 +7,7 @@ on:
         required: true
         default: proof
         type: choice
-        options: [proof, native]
+        options: [lookdev, proof, native]
 permissions:
   contents: read
   actions: read

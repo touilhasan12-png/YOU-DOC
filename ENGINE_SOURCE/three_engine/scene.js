@@ -1,5 +1,7 @@
 import * as T from 'three';
 import {MeshBVH} from 'three-mesh-bvh';
+import {loadCharacters,createHuman} from './characters.js';
+import {buildOcean} from './ocean.js';
 // Original procedural models, not generated images. Metres, Y up, X longitudinal.
 const C={ink:0x1d3541,cream:0xe0e5d6,skin:0xcda782,navy:0x294c60,metal:0x7c9391,wood:0x94734e};
 const V=(x=0,y=0,z=0)=>new T.Vector3(x,y,z), clamp=(x)=>Math.min(1,Math.max(0,x)), ease=x=>{x=clamp(x);return x*x*(3-2*x)};
@@ -18,14 +20,8 @@ function curveUpdate(m,pts,r=.015){m.geometry.dispose();m.geometry=new T.TubeGeo
 function cameraAt(pos,target,width){camera.left=-width/2;camera.right=width/2;camera.top=width*9/32;camera.bottom=-width*9/32;camera.position.copy(pos);camera.lookAt(target);camera.updateProjectionMatrix()}
 function title(a,b='',c=''){document.querySelector('#title').textContent=a;document.querySelector('#sub').textContent=b;document.querySelector('#detail').textContent=c}
 function label(text,p){const el=document.createElement('div');el.className='label';el.textContent=text;document.querySelector('#labels').appendChild(el);labels.push({el,p})}
-function sea(under=true){
- const bg=document.createElement('canvas');bg.width=2;bg.height=1080;const ctx=bg.getContext('2d'),grad=ctx.createLinearGradient(0,0,0,1080);grad.addColorStop(0,under?'#2c6473':'#7fabb8');grad.addColorStop(1,under?'#112e3d':'#477c8b');ctx.fillStyle=grad;ctx.fillRect(0,0,2,1080);scene.background=new T.CanvasTexture(bg);scene.fog.color.setHex(0x234b5b);
- const g=new T.PlaneGeometry(110,110,35,35);g.rotateX(-Math.PI/2);const p=g.attributes.position;
- for(let i=0;i<p.count;i++)p.setY(i,.09+.07*Math.sin(p.getX(i)*.9)*Math.cos(p.getZ(i)*1.1));g.computeVertexNormals();
- const s=mesh(g,new T.MeshToonMaterial({color:0x689eaa,transparent:true,opacity:under?.23:.72,side:T.DoubleSide,depthWrite:false}));s.renderOrder=2;s.visible=!under;
- // Sparse physically placed water-column particles, not decorative text/filler.
- if(under){const ps=[];for(let i=0;i<85;i++)ps.push(-22+(i*7.31)%44,-1-(i*.73)%12,-12+(i*3.21)%25);const g2=new T.BufferGeometry();g2.setAttribute('position',new T.Float32BufferAttribute(ps,3));root.add(new T.Points(g2,new T.PointsMaterial({color:0x83b0b1,size:.022,transparent:true,opacity:.34})))}
-}
+let oceans=[];
+function sea(under=true,options={}){const o=buildOcean({root,scene,under,...options});oceans.push(o);return o}
 function fin(parent,points,depth,c){const shape=new T.Shape();shape.moveTo((points[0][0]+points.at(-1)[0])/2,(points[0][1]+points.at(-1)[1])/2);for(let i=0;i<points.length;i++){const a=points[i],b=points[(i+1)%points.length];shape.quadraticCurveTo(a[0],a[1],(a[0]+b[0])/2,(a[1]+b[1])/2)}shape.closePath();const geo=new T.ExtrudeGeometry(shape,{depth,bevelEnabled:true,bevelSize:.025,bevelThickness:.018,bevelSegments:2,steps:1});geo.translate(0,0,-depth/2);geo.setIndex(Array.from({length:geo.attributes.position.count},(_,i)=>i));geo.boundsTree=new MeshBVH(geo);return mesh(geo,c,parent)}
 const stations=[0,.025,.07,.14,.24,.36,.49,.62,.75,.86,.94,1];
 const widths=[.025,.039,.064,.081,.089,.088,.073,.054,.033,.018,.009,.001];
@@ -40,7 +36,7 @@ function whale(L=6.2){
  // Separate full upper head and articulated lower jaw. No solid closed head behind a painted mouth.
  const bmap=new Map(),jmap=new Map();function addVert(old,jaw){const map=jaw?jmap:bmap,arr=jaw?jawP:bodyP,cols=jaw?jawC:bodyC;if(map.has(old))return map.get(old);const id=arr.length/3;arr.push(pp[old*3]-(jaw?hinge:0),pp[old*3+1]-(jaw?hy:0),pp[old*3+2]);cols.push(...cc.slice(old*3,old*3+3));map.set(old,id);return id}
  for(let i=0;i<NX;i++)for(let j=0;j<NT;j++){const a=i*NT+j,b=i*NT+(j+1)%NT,c=(i+1)*NT+j,d=(i+1)*NT+(j+1)%NT;for(const tr of [[a,c,b],[b,c,d]]){const bits=tr.map(v=>isJaw[v]);if(bits.some(Boolean)&&!bits.every(Boolean))continue;const jaw=bits.every(Boolean),out=jaw?jawIdx:bodyIdx;out.push(...tr.map(v=>addVert(v,jaw)))}}
- const vertexMat=new T.MeshToonMaterial({vertexColors:true,side:T.DoubleSide});function geom(p,c,idx){const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(p,3));g.setAttribute('color',new T.Float32BufferAttribute(c,3));g.setIndex(idx);g.computeVertexNormals();return g}
+ const vertexMat=new T.MeshStandardMaterial({vertexColors:true,roughness:.56,metalness:.02,side:T.DoubleSide});function geom(p,c,idx){const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(p,3));g.setAttribute('color',new T.Float32BufferAttribute(c,3));g.setIndex(idx);g.computeVertexNormals();return g}
  const body=mesh(geom(bodyP,bodyC,bodyIdx),vertexMat,group),jawGroup=new T.Group();jawGroup.position.set(hinge,hy,0);group.add(jawGroup);const jaw=mesh(geom(jawP,jawC,jawIdx),vertexMat,jawGroup);
  const baseBody=body.geometry.attributes.position.array.slice();body.geometry.boundsTree=new MeshBVH(body.geometry);jaw.geometry.boundsTree=new MeshBVH(jaw.geometry);
  // Palates close the mouth cavity, and follow the actual jaw rather than painting over a solid head.
@@ -72,36 +68,13 @@ function boat(broken=false){
  const base=bladeGroup.position.clone();function fracture(u){bladeGroup.position.copy(base).add(V(-.10*u,-.48*u,0));bladeGroup.rotation.z=.26*u;}
  fracture(broken?1:0);return {group,blade,bladeGroup,fracture,stockX};
 }
-function human({diver=false,swimmer=false}={}){
- const group=new T.Group();root.add(group);const body=new T.Group();group.add(body);ell(body,V(0,1.17,0),V(.215,.30,.125),C.navy);ell(body,V(0,.92,0),V(.17,.14,.12),0x223b4d);tube(body,V(0,1.43,0),V(0,1.58,0),.064,C.skin);
- const head=new T.Group();head.position.set(0,1.70,0);body.add(head);ell(head,V(0,.03,0),V(.112,.145,.103),C.skin);ell(head,V(0,.005,.107),V(.031,.041,.047),C.skin);ell(head,V(-.113,.02,0),V(.025,.044,.026),C.skin);ell(head,V(.113,.02,0),V(.025,.044,.026),C.skin);
- const hair=mesh(new T.SphereGeometry(.116,24,12,0,Math.PI*2,0,Math.PI*.51),0x223945,head);hair.position.y=.075;hair.scale.set(1,1.05,.91);
- for(const x of [-.045,.045]){ell(head,V(x,.055,.093),V(.013,.012,.008),0x192f3b);tube(head,V(x-.018,.077,.091),V(x+.018,.081,.091),.007,0x394b4b)}line(head,[V(-.026,-.043,.091),V(0,-.047,.103),V(.026,-.044,.091)],.005,0x805d4b);
- if(diver){for(const x of [-.047,.047]){box(head,V(x,.047,.113),V(.085,.058,.025),0x6f9aa0);box(head,V(x,.047,.128),V(.068,.039,.008),0xa6c7c0)}tube(head,V(-.105,.05,.05),V(-.15,.27,.04),.012,0x91afa7);tube(head,V(-.15,.27,.04),V(-.11,.29,.04),.012,0x91afa7);for(let i=0;i<5;i++)box(body,V((i-2)*.06,.965,.12),V(.045,.08,.045),0x879797);}
- const parts=[];function segment(r1,r2,col){const m=mesh(new T.CylinderGeometry(r2,r1,1,14),col,body);parts.push(m);return m}
- function setSeg(m,a,b){const d=b.clone().sub(a);m.position.copy(a).add(b).multiplyScalar(.5);m.scale.y=d.length();m.quaternion.setFromUnitVectors(V(0,1,0),d.normalize())}
- function elbow(a,b,l1,l2,bend){const delta=b.clone().sub(a),d=Math.min(delta.length(),l1+l2-.001);delta.normalize();const x=(l1*l1-l2*l2+d*d)/(2*d),h=Math.sqrt(Math.max(0,l1*l1-x*x)),perp=bend.clone().addScaledVector(delta,-bend.dot(delta)).normalize();return a.clone().addScaledVector(delta,x).addScaledVector(perp,h)}
- const arms=[],legs=[];
- for(const sign of [-1,1]){const palm=ell(body,V(),V(.049,.070,.031),C.skin),fingers=[];for(let j=0;j<4;j++)fingers.push(tube(body,V(0,0,0),V(0,.06,0),.009,C.skin));const thumb=ell(body,V(),V(.018,.039,.02),C.skin);arms.push({sign,up:segment(.062,.049,C.navy),low:segment(.048,.033,diver?C.navy:C.skin),palm,fingers,thumb});const foot=ell(body,V(),V(.065,.055,.13),diver?0x2a4b5d:swimmer?C.skin:0x3f433f);const fin=diver?finShape(body):null;legs.push({sign,up:segment(.09,.064,C.navy),low:segment(.063,.043,swimmer&&!diver?C.skin:C.navy),foot,fin});}
- const hands=[];let maxGripError=0;
- function pose(t,wheelAngle=null){hands.length=0;maxGripError=0;
-  for(const a of arms){const s=a.sign,S=V(s*.205,1.43,0);let H;
-   if(wheelAngle!==null){const ang=(s<0?Math.PI:0)+wheelAngle;H=V(.32*Math.cos(ang),1.12+.32*Math.sin(ang),.48)}
-   else {const ph=t*(diver?2.1:5.4)+(s<0?0:Math.PI);H=V(s*(.22+.05*Math.cos(ph)),1.44+.43*Math.sin(ph),.23+.18*Math.cos(ph))}
-   const E=elbow(S,H,.30,.285,V(s,-.25,-.25));setSeg(a.up,S,E);setSeg(a.low,E,H);a.palm.position.copy(H);a.palm.rotation.z=wheelAngle??-.25;for(let j=0;j<4;j++){const p=H.clone().add(V((j-1.5)*.018,-.025,.014)),q=p.clone().add(V(0,-.045,wheelAngle!==null?-.04:.015));setSeg(a.fingers[j],p,q)}a.thumb.position.copy(H).add(V(s*.038,.012,-.006));hands.push(H.clone());if(wheelAngle!==null)maxGripError=Math.max(maxGripError,Math.abs(Math.hypot(H.x,H.y-1.12)-.32));
-  }
-  for(const l of legs){const s=l.sign,H=V(s*.105,.92,0),kick=wheelAngle!==null?0:.13*Math.sin(t*(diver?3:6)+s*Math.PI/2),F=V(s*.105,.075,kick);const K=elbow(H,F,.43,.43,V(0,.05,.9));setSeg(l.up,H,K);setSeg(l.low,K,F);l.foot.position.copy(F).add(V(0,-.025,.065));l.foot.rotation.x=wheelAngle!==null?0:-.30+kick;if(l.fin){l.fin.position.copy(F);l.fin.rotation.x=-.15+kick}}
-  head.rotation.y=wheelAngle!==null?-.10+.05*Math.sin(t):.06*Math.sin(t*.6);return maxGripError;
- }
- function finShape(parent){const f=fin(parent,[[-.07,0],[-.10,-.40],[.10,-.45],[.065,0]],.025,0x4a7b86);f.rotation.x=.15;return f}
- return {group,body,head,pose,hands,getGripError:()=>maxGripError};
-}
+function human(options={}){return createHuman({root,...options})}
 function helm(captain){const h=new T.Group();captain.group.add(h);box(h,V(0,.43,.48),V(.28,.86,.28),0xc6d1c6);tube(h,V(0,.70,.46),V(0,1.12,.48),.047,C.metal);const wheel=new T.Group();wheel.position.set(0,1.12,.48);h.add(wheel);mesh(new T.TorusGeometry(.32,.025,12,64),C.wood,wheel);for(let i=0;i<3;i++)tube(wheel,V(),V(.295*Math.cos(i*2*Math.PI/3),.295*Math.sin(i*2*Math.PI/3),0),.013,C.metal);ell(wheel,V(),V(.05,.05,.035),C.metal);box(h,V(0,.91,.40),V(.20,.08,.13),0x244956);return wheel}
-function captainOnDeck(b){const p=human();p.group.position.set(-3.40,.66,0);p.group.rotation.y=Math.PI/2;const w=helm(p);return {p,w}}
+function captainOnDeck(b){const p=human();p.group.position.set(-3.40,.66451,0);p.group.rotation.y=Math.PI/2;const w=helm(p);return {p,w}}
 function intersection(a,b){scene.updateMatrixWorld(true);const tr=new T.Matrix4().copy(a.matrixWorld).invert().multiply(b.matrixWorld);return a.geometry.boundsTree.intersectsGeometry(b.geometry,tr)}
 function gripPose(w,t,u,bladeMove=0){const roll=ease(u/.65),insert=ease((u-.68)/.32);w.group.rotation.set(roll*Math.PI/2,0,0);w.group.position.set(-5.70+.49*insert-w.L/2,-2.27-bladeMove,.13*roll);w.animate(t,.04+.20*(6.2/w.L)*roll)}
 function setupRudder(k){
- sea(true);const b=boat(k==='boat_option'),a=whale(k==='hypothesis_play'?3.5:6.2),second=['hypothesis_play','hypothesis_imitation'].includes(k)?whale(3.3):null;
+ sea(true,{vessel:true});const b=boat(k==='boat_option'),a=whale(k==='hypothesis_play'?3.5:6.2),second=['hypothesis_play','hypothesis_imitation'].includes(k)?whale(3.3):null;
  cameraAt(V(-7,2.1,20),V(-2.9,-1.0,0),25);
  title(k==='rudder_detaches'?'THE RUDDER':k==='hypothesis_play'?'PLAY OR SOCIALIZING?':k==='hypothesis_imitation'?'IMITATION?':'AFTER THE RUDDER BREAKS',k.includes('hypothesis')?'Proposed explanations — not proven motives':'Illustrated mechanical reconstruction');
  update=t=>{
@@ -112,12 +85,12 @@ function setupRudder(k){
   if(k!=='boat_option'){checks.body_blade_penetration=intersection(a.body,b.blade);checks.lower_jaw_blade_penetration=intersection(a.jaw,b.blade);if(second){checks.second_body_blade_penetration=intersection(second.body,b.blade);checks.second_jaw_blade_penetration=intersection(second.jaw,b.blade);checks.orca_body_intersection=intersection(a.body,second.body)}}
  };
 }
-function setupDeck(k){const b=boat(k!=='yacht_stern');if(k==='human_not_target')b.bladeGroup.visible=false;const {p,w}=captainOnDeck(b);sea(true);let a=null;
+function setupDeck(k){const b=boat(k!=='yacht_stern');if(k==='human_not_target')b.bladeGroup.visible=false;const {p,w}=captainOnDeck(b);sea(false,{vessel:true});let a=null;
  if(k==='helm_response'){cameraAt(V(-.4,3.4,4.9),V(-3.15,1.60,0),6.5);title('NO STEERING RESPONSE','A turning wheel can no longer move the damaged rudder.');}
  else {cameraAt(V(-10,4.7,18),V(-1.5,.35,0),23);a=whale(5.5);a.group.position.set(-7.6,-2.4,-.5);title(k==='human_not_target'?'PEOPLE ARE NOT THE TARGET':'IBERIAN VESSEL INTERACTIONS',k==='human_not_target'?'People remain on deck; the interaction is with the rudder.':'Illustrated yacht reconstruction | attached rudder');}
  update=t=>{const angle=.32*Math.sin(t*1.2);w.rotation.z=angle;p.pose(t,angle);checks.maximum_hand_to_rim_error_metres=p.getGripError();checks.feet_on_deck=true;if(a){a.group.position.x=-8.6+.45*Math.sin(t*.7);a.animate(t,.03)}};
 }
-function setupSwim(k){sea(true);const diver=k==='diver_entanglement',surf=k==='surfer_incident',p=human({diver,swimmer:true});p.group.quaternion.setFromRotationMatrix(new T.Matrix4().makeBasis(V(0,0,diver?1:-1),V(diver?-1:1,0,0),V(0,-1,0)));
+function setupSwim(k){sea(true,{level:k==='swim_comparison'?4.1:0});const diver=k==='diver_entanglement',surf=k==='surfer_incident',p=human({diver,swimmer:true,surfer:surf});p.group.quaternion.setFromRotationMatrix(new T.Matrix4().makeBasis(V(0,0,diver?1:-1),V(diver?-1:1,0,0),V(0,-1,0)));
  if(k==='swim_comparison'){
   const a=whale(6.2);inset={camera:new T.OrthographicCamera(-1.6,1.6,.9,-.9,.1,100),human:p};cameraAt(V(0,3.2,25),V(0,-.3,0),26);title('ORCA AND SWIMMER','One shared distance scale and one 0.80-second interval.','Illustrative speeds: 50.4 km/h versus 9 km/h — not a measured race.');
   for(let d=0;d<=12;d+=2){tube(root,V(-3+d,-.80,0),V(-3+d,-1.0,0),.012,0xb5ccc5);label(d+' m',V(-3+d,-1.2,0))}tube(root,V(-3,-.88,0),V(9,-.88,0),.012,0xb5ccc5);tube(root,V(-3,2.5,0),V(-3,-3.8,0),.012,0x8daeb0);
@@ -125,14 +98,14 @@ function setupSwim(k){sea(true);const diver=k==='diver_entanglement',surf=k==='s
  }
  const a=whale(6.2);a.group.position.set(-1.4,-2.9,-.8);p.group.position.set(5.0,-1.35,1.0);cameraAt(V(1,2,16),V(1.4,-1.2,0),16.7);
  if(diver){title('NEW ZEALAND','Free-diving line entanglement account | illustrated reconstruction');const rope=line(root,[V(),V(1,1,0),V(2,0,0)],.017,0xc4c7a7);const loop=line(root,[V(),V(.1,.1,0),V(.2,0,0)],.017,0xc4c7a7);update=t=>{p.pose(t);a.animate(t);a.group.position.x=-1.4+.12*t;p.group.position.x=5.0+.12*t;scene.updateMatrixWorld(true);const start=p.group.localToWorld(p.hands[1].clone()),end=a.group.localToWorld(a.finAnchor.clone());curveUpdate(rope,[start,start.clone().lerp(end,.35).add(V(0,-.24,.15)),end.clone().add(V(.1,-.14,0)),end]);const pts=[];for(let i=0;i<=24;i++){const q=i/24*Math.PI*2;pts.push(a.group.localToWorld(a.finAnchor.clone().add(V(.11*Math.cos(q),.08*Math.sin(q),.04*Math.sin(q)))))}curveUpdate(loop,pts);checks.free_diver_no_tank=true;checks.line_loop_tracks_pectoral=true;};}
- else {sea(false);title('A REPORTED SURFER ENCOUNTER','Illustrated reconstruction — not evidence of hunting people');const board=ell(root,V(4,.11,0),V(1.35,.07,.35),0xd7c49a);p.group.position.set(3.5,.32,0);p.group.scale.setScalar(.93);a.group.position.set(-1.5,-1.7,-1.5);cameraAt(V(0,4,15),V(1,-.5,0),16);update=t=>{p.pose(t*.6);a.animate(t);a.group.position.x=-1.5+.10*t;board.position.y=.11+.018*Math.sin(t);document.querySelector('#detail').textContent=t>6?'1972 · Hans Kretschmer · California\nReported injury: around 100 stitches':''};}
+ else {title('A REPORTED SURFER ENCOUNTER','Illustrated surface cutaway — not evidence of hunting people');const board=ell(root,V(4,.11,0),V(1.35,.07,.35),0xd7c49a);board.geometry.boundsTree=new MeshBVH(board.geometry);line(root,[V(2.9,.14,.02),V(3.5,.179,.02),V(4.4,.179,.02),V(5.05,.15,.02)],.010,0x936b50);p.group.position.set(3.5,.32,0);p.group.scale.setScalar(.93);a.group.position.set(-1.5,-1.7,-1.5);cameraAt(V(0,4,15),V(1,-.5,0),16);update=t=>{p.pose(t*.6);a.animate(t);a.group.position.x=-1.5+.10*t;board.position.y=.11+.018*Math.sin(t);p.group.position.y=.32+.018*Math.sin(t);scene.updateMatrixWorld(true);Object.assign(checks,p.checkBoard(board));document.querySelector('#detail').textContent=t>6?'1972 · Hans Kretschmer · California\nReported injury: around 100 stitches':''};}
 }
 window.configure=async(k,d)=>{
- scene.remove(root);root.traverse(o=>{if(o.geometry)o.geometry.dispose()});root=new T.Group();scene.add(root);key=k;dur=d;checks={};labels=[];inset=null;document.querySelector('#labels').innerHTML='';document.querySelector('#clock').textContent='';
+ scene.remove(root);root.traverse(o=>{if(o.geometry)o.geometry.dispose()});root=new T.Group();scene.add(root);key=k;dur=d;checks={};labels=[];inset=null;oceans=[];document.querySelector('#labels').innerHTML='';document.querySelector('#clock').textContent='';
  if(['rudder_detaches','hypothesis_play','hypothesis_imitation','boat_option'].includes(k))setupRudder(k);
  else if(['helm_response','human_not_target','yacht_stern'].includes(k))setupDeck(k);
  else setupSwim(k);
  await document.fonts.ready;return {engine:'Three.js r170 / real WebGL',key:k};
 };
-window.drawFrame=(t)=>{checks={};update(t);scene.updateMatrixWorld(true);for(const l of labels){const p=l.p.clone().project(camera);l.el.style.left=((p.x+1)*960-16)+'px';l.el.style.top=((1-p.y)*540)+'px'}renderer.setViewport(0,0,1920,1080);renderer.setScissorTest(false);renderer.render(scene,camera);if(inset){const target=inset.human.group.position.clone().add(V(.9,0,0));inset.camera.position.copy(target).add(V(.3,1.1,5));inset.camera.lookAt(target);inset.camera.updateProjectionMatrix();renderer.setScissorTest(true);renderer.setScissor(1340,70,500,281);renderer.setViewport(1340,70,500,281);renderer.render(scene,inset.camera);renderer.setScissorTest(false);renderer.setViewport(0,0,1920,1080)}return {...checks,time:t,engine:'Three.js',webgl:renderer.capabilities.isWebGL2?'WebGL2':'WebGL'};};
-window.engineReady=true;
+window.drawFrame=(t)=>{checks={};update(t);for(const o of oceans)o.update(t);scene.updateMatrixWorld(true);for(const l of labels){const p=l.p.clone().project(camera);l.el.style.left=((p.x+1)*960-16)+'px';l.el.style.top=((1-p.y)*540)+'px'}renderer.setViewport(0,0,1920,1080);renderer.setScissorTest(false);renderer.render(scene,camera);if(inset){const target=inset.human.group.position.clone().add(V(.9,0,0));inset.camera.position.copy(target).add(V(.3,1.1,5));inset.camera.lookAt(target);inset.camera.updateProjectionMatrix();renderer.setScissorTest(true);renderer.setScissor(1340,70,500,281);renderer.setViewport(1340,70,500,281);renderer.render(scene,inset.camera);renderer.setScissorTest(false);renderer.setViewport(0,0,1920,1080)}return {...checks,time:t,engine:'Three.js',webgl:renderer.capabilities.isWebGL2?'WebGL2':'WebGL'};};
+window.engineReady=false;loadCharacters().then(()=>{window.engineReady=true}).catch(e=>{console.error('LICENSED CHARACTER LOAD FAILURE',e);window.characterLoadError=String(e)});

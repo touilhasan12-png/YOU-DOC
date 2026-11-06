@@ -28,3 +28,9 @@ The picture includes updated **Spanish vessel guidance, May 2025**: do not stop 
 
 ## Scientific and historical context
 The script's historical dates and reported counts are presented as narrated-period records, not live totals. Illustrative case maps identify real regions without fabricating individual research tracks. Existing production research references and archive receipts remain in `SOURCES.md` and the design/QA folders. Prior film editions and their sharing were not overwritten or changed.
+
+## R4 authored humanoid source and ocean reconstruction
+- Human body, skeleton, eyes, eyebrows and Simple Parted hair: **Quaternius — Universal Base Characters Kit, free Standard edition**, **CC0-1.0**. https://quaternius.com/packs/universalbasecharacters.html and https://quaternius.itch.io/universal-base-characters . License: https://creativecommons.org/publicdomain/zero/1.0/ .
+- Source topology and 65-joint skeleton are retained, independently retargeted using two-bone IK. Wardrobe is a programmatic shader, with original skin/eye/hair maps retained; supplied normal-map filenames corrected to their actual archived names. Masks, snorkel, weights and long fins are programmatic equipment. Free diver: no scuba tank/regulator.
+- Untouched full source archive, 128968391 bytes, SHA256 `fdbf1804c90dfc1ea03e992bff7da2dfd1a79318e13270a660180f9308455f40`: https://github.com/touilhasan12-png/YOU-DOC/releases/tag/r4-licensed-character-source-20261106 . Original license and download receipt accompany runtime assets.
+- The ocean is analytic Three.js shader geometry, including an explicit near-side surface cutaway where needed to reveal underwater mechanics. It is not event footage. Approved scene timing, narration and orca choreography are unchanged. Surfboard stroke paths are corrected spatially for safe arm recovery and underwater pull beside the board, retaining their existing cycle timing.

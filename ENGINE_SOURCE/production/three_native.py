@@ -3,14 +3,15 @@ from pathlib import Path
 import hashlib,json,math,os,argparse,subprocess
 P=Path(__file__).resolve().parents[1]
 KEYS={'rudder_detaches','hypothesis_play','hypothesis_imitation','boat_option','helm_response','human_not_target','yacht_stern','diver_entanglement','surfer_incident','swim_comparison'}
-SOURCES=['three_engine/scene.js','three_engine/render.mjs','three_engine/web/index.html','three_engine/package.json','production/three_native.py','fonts/BarlowCondensed-SemiBold.ttf','fonts/SourceSans3[wght].ttf']
+SOURCES=['three_engine/characters.js','three_engine/ocean.js','three_engine/scene.js','three_engine/render.mjs','three_engine/web/index.html','three_engine/package.json','production/three_native.py','fonts/BarlowCondensed-SemiBold.ttf','fonts/SourceSans3[wght].ttf']
+SOURCES+=sorted(str(p.relative_to(P)) for p in (P/'three_engine/web/assets/quaternius').rglob('*') if p.is_file())
 def fingerprint(s):
  h=hashlib.sha256(b'three-webgl-native-v1-continuous-articulated-metres')
  for n in SOURCES:h.update(n.encode());h.update((P/n).read_bytes())
  h.update(json.dumps({k:s[k] for k in ['key','start','end']},sort_keys=True).encode());return h.hexdigest()
 if __name__=='__main__':
  assert os.environ.get('GITHUB_ACTIONS')=='true','Every frame must render on GitHub Actions'
- ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['proof','native']);ap.add_argument('--shard',type=int,default=0);ap.add_argument('--shards',type=int,default=5);args=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['lookdev','proof','native']);ap.add_argument('--shard',type=int,default=0);ap.add_argument('--shards',type=int,default=5);args=ap.parse_args()
  plan=json.loads((P/'shots/NEW_SHOT_PLAN_ENDING_REVISED.json').read_text());selected=[s for s in plan if s['key'] in KEYS][args.shard::args.shards]
  task=[]
  for s in selected:

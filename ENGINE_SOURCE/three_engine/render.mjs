@@ -10,6 +10,14 @@ const gpu=await page.evaluate(()=>{const gl=document.querySelector('canvas').get
 try{
  for(const s of tasks){
   await page.evaluate(({key,duration})=>window.configure(key,duration),s);
+  if(mode==='lookdev'){
+   const frames=[];
+   for(const [i,f] of [0,.18,.38,.59,.79,.995].entries()){
+    const t=s.duration*f,c=await page.evaluate(t=>window.drawFrame(t),t);frames.push(c);
+    fs.writeFileSync(path.join(out,s.key+`_sample_${i}.png`),await page.screenshot({type:'png',animations:'disabled'}));
+   }
+   fs.writeFileSync(path.join(out,s.key+'_LOOKDEV.json'),JSON.stringify({key:s.key,stage:'Art-development samples ONLY; not continuous contact verification',webgl:gpu,checks:frames},null,2));continue;
+  }
   const fps=mode==='native'?24:12,N=mode==='native'?s.encoded_frames:Math.ceil(s.duration*fps),checks=[];
   const dest=mode==='native'?path.join(P,'picture_units',`unit_${String(s.id-1).padStart(3,'0')}_${s.key}.mp4`):path.join(out,s.key+'_MOTION.mp4');
   const ff=spawn(process.env.FFMPEG_EXE,['-y','-v','error','-f','image2pipe','-framerate',String(fps),'-c:v','png','-i','pipe:0','-an','-c:v','libx264','-preset','fast','-crf','17','-threads','1','-pix_fmt','yuv420p','-video_track_timescale','12288','-frames:v',String(N),dest],{stdio:['pipe','inherit','inherit']});
