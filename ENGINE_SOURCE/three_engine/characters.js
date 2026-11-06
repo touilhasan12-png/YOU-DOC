@@ -3,6 +3,7 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {clone} from 'three/addons/utils/SkeletonUtils.js';
 import {MeshBVH} from 'three-mesh-bvh';
 const V=(x=0,y=0,z=0)=>new T.Vector3(x,y,z);
+export const HELM_Y=1.25,HELM_Z=.41;
 let original,hairOriginal;
 export async function loadCharacters(){
  const l=new GLTFLoader();[original,hairOriginal]=await Promise.all(['male','hair'].map(n=>l.loadAsync('/assets/quaternius/'+n+'.gltf')));
@@ -28,12 +29,30 @@ export function createHuman({root,diver=false,swimmer=false,surfer=false}){
     const c=new T.Color(cloth??0xffffff);ci.push(c.r,c.g,c.b);mask.push(cloth===null?0:1);
    }
    o.geometry.setAttribute('wardrobe',new T.Float32BufferAttribute(ci,3));o.geometry.setAttribute('clothMask',new T.Float32BufferAttribute(mask,1));
+   const kind=diver?3:surfer?2:swimmer?1:0;
    m.onBeforeCompile=s=>{
-    s.vertexShader='attribute vec3 wardrobe; attribute float clothMask; varying vec3 vWardrobe; varying float vClothMask;\n'+s.vertexShader;
-    s.vertexShader=s.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvWardrobe=wardrobe;vClothMask=clothMask;');
-    s.fragmentShader='varying vec3 vWardrobe; varying float vClothMask;\n'+s.fragmentShader;
-    s.fragmentShader=s.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb=mix(diffuseColor.rgb,vWardrobe,smoothstep(0.25,0.75,vClothMask));');
-   };m.customProgramCacheKey=()=> 'source-skinned-wardrobe-v1';
+    s.uniforms.wardrobeKind={value:kind};
+    s.vertexShader='uniform float wardrobeKind; varying vec3 vBindPos;\n'+s.vertexShader;
+    s.vertexShader=s.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
+     vBindPos=position;
+     float garment=step(.10,position.y)*(1.-step(1.525,position.y))*(1.-step(.535,abs(position.x)));
+     transformed+=normal*.008*garment*(1.-step(.5,wardrobeKind));`);
+    s.fragmentShader='uniform float wardrobeKind; varying vec3 vBindPos;\n'+s.fragmentShader;
+    s.fragmentShader=s.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+     float bx=abs(vBindPos.x),by=vBindPos.y;
+     float shirt=step(1.0,by)*(1.-smoothstep(1.520,1.525,by))*(1.-smoothstep(.530,.535,bx));
+     float shorts=step(.68,by)*(1.-step(1.005,by))*(1.-step(.27,bx));
+     float suit=(1.-smoothstep(1.52,1.525,by))*(1.-step(.735,bx));
+     float clothCoverage=0.;vec3 clothTone=vec3(.05,.10,.14);
+     if(wardrobeKind<.5){clothCoverage=max(1.-step(1.005,by),shirt);clothTone=by>1.005?vec3(.095,.175,.21):vec3(.043,.074,.105);if(by<.095)clothTone=vec3(.025,.035,.045);}
+     else if(wardrobeKind<1.5){clothCoverage=shorts;clothTone=vec3(.017,.135,.19);}
+     else if(wardrobeKind<2.5){clothCoverage=max(shorts,shirt);clothTone=vec3(.025,.080,.110);}
+     else{clothCoverage=suit;clothTone=bx<.18&&by>.96&&by<1.42?vec3(.036,.115,.15):vec3(.012,.039,.065);}
+     diffuseColor.rgb=mix(diffuseColor.rgb,clothTone,clothCoverage);`);
+    s.fragmentShader=s.fragmentShader.replace('#include <normal_fragment_maps>',`vec3 garmentNormal=normal;
+     #include <normal_fragment_maps>
+     normal=normalize(mix(normal,garmentNormal,clothCoverage));`);
+   };m.customProgramCacheKey=()=> 'source-skinned-wardrobe-v3-'+kind;
   }
   o.material=m;
  });
@@ -56,6 +75,14 @@ export function createHuman({root,diver=false,swimmer=false,surfer=false}){
   for(const side of ['l','r']){
    const sign=side==='l'?1:-1,shape=new T.Shape();shape.moveTo(-.065,.015);shape.lineTo(-.095,.57);shape.quadraticCurveTo(0,.64,.095,.57);shape.lineTo(.065,.015);shape.closePath();
    const fin=new T.Mesh(new T.ExtrudeGeometry(shape,{depth:.018,bevelEnabled:true,bevelSize:.006,bevelThickness:.004,bevelSegments:2,steps:1}),new T.MeshStandardMaterial({color:0x3f7985,roughness:.65}));fin.rotation.x=Math.PI/2;fin.position.set(sign*.114,.032,.045);group.add(fin);group.updateMatrixWorld(true);bones['foot_'+side].attach(fin);
+  }
+ }
+ if(!swimmer){
+  for(const side of ['l','r']){
+   const sign=side==='l'?1:-1,zs=[-.156,-.133,-.09,-.02,.07,.13,.158],ws=[.02,.061,.076,.080,.077,.055,.006],hs=[.04,.10,.145,.13,.075,.05,.018],vs=[],ix=[],N=24;
+   for(let i=0;i<zs.length;i++)for(let j=0;j<N;j++){const t=j/N*Math.PI*2;vs.push(sign*.114+ws[i]*Math.cos(t),-.0095+hs[i]*(.5+.5*Math.sin(t)),zs[i])}
+   for(let i=0;i<zs.length-1;i++)for(let j=0;j<N;j++){const a=i*N+j,b=i*N+(j+1)%N,c=a+N,d=b+N;ix.push(a,c,b,b,c,d)}
+   const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(vs,3));geo.setIndex(ix);geo.computeVertexNormals();const shoe=new T.Mesh(geo,new T.MeshStandardMaterial({color:0x293640,roughness:.83,side:T.DoubleSide}));group.add(shoe);group.updateMatrixWorld(true);bones['foot_'+side].attach(shoe);
   }
  }
  const hands=[],segments=[];let maxGripError=0;
@@ -83,7 +110,7 @@ export function createHuman({root,diver=false,swimmer=false,surfer=false}){
   }
   for(const side of ['r','l']){
    const sign=side==='l'?1:-1,up=bones['upperarm_'+side],low=bones['lowerarm_'+side],hand=bones['hand_'+side],S=localPosition(up);let H;
-   if(wheelAngle!==null){const a=(sign<0?Math.PI:0)+wheelAngle;H=V(.32*Math.cos(a),1.12+.32*Math.sin(a),.48)}
+   if(wheelAngle!==null){const a=(sign<0?Math.PI:0)+wheelAngle;H=V(.32*Math.cos(a),HELM_Y+.32*Math.sin(a),HELM_Z)}
    else if(surfer){const ph=t*5.4+(sign<0?0:Math.PI),theta=ph-Math.PI/2,s=Math.sin(theta);H=V(sign*(.46+.045*Math.max(0,-s)),1.44+.32*Math.cos(theta),s>0?.35*s:.15*s);}
    else {const ph=t*(diver?2.1:5.4)+(sign<0?0:Math.PI);H=V(sign*(.22+.05*Math.cos(ph)),1.44+.40*Math.sin(ph),.23+.18*Math.cos(ph))}
    const ray=H.clone().sub(S).normalize(),W=H.clone().addScaledVector(ray,-.095);

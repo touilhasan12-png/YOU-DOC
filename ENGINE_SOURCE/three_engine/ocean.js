@@ -3,8 +3,8 @@ const V=(x=0,y=0,z=0)=>new T.Vector3(x,y,z);
 // Analytic water, not an AI image or stock backdrop. All shader execution is remote on Actions.
 export function buildOcean({root,scene,under=true,level=0,cutaway=under,vessel=false}){
  const bg=document.createElement('canvas');bg.width=2;bg.height=1080;const c=bg.getContext('2d'),g=c.createLinearGradient(0,0,0,1080);
- if(under){g.addColorStop(0,'#619ba7');g.addColorStop(.40,'#23677c');g.addColorStop(1,'#102f49')}else{g.addColorStop(0,'#5e8eaa');g.addColorStop(.6,'#bad0d1');g.addColorStop(1,'#467f94')}
- c.fillStyle=g;c.fillRect(0,0,2,1080);scene.background=new T.CanvasTexture(bg);scene.fog=new T.Fog(under?0x225f73:0x9bbec9,under?29:70,under?95:260);
+ if(under){g.addColorStop(0,'#619ba7');g.addColorStop(.40,'#23677c');g.addColorStop(1,'#102f49')}else{g.addColorStop(0,'#5e8eaa');g.addColorStop(.6,'#bad0d1');g.addColorStop(1,'#1b4962')}
+ c.fillStyle=g;c.fillRect(0,0,2,1080);scene.background=new T.CanvasTexture(bg);scene.background.colorSpace=T.SRGBColorSpace;scene.fog=new T.Fog(under?0x225f73:0x9bbec9,under?29:70,under?95:260);
  const uniform={time:{value:0},waterLevel:{value:level},cutaway:{value:cutaway?1:0},vessel:{value:vessel?1:0},submerged:{value:under?1:0}};
  const surface=new T.Mesh(new T.PlaneGeometry(350,350,128,128).rotateX(-Math.PI/2),new T.ShaderMaterial({
   uniforms:uniform,transparent:true,depthWrite:false,side:T.DoubleSide,
