@@ -14,6 +14,8 @@ parser=argparse.ArgumentParser();parser.add_argument('--through',type=int,defaul
 MAXFRAMES=json.loads((P/'audio_revision_ending/ENDING_REVISION.json').read_text())['new_video_frames']
 
 def fingerprint(s):
+ from three_native import KEYS as THREE_KEYS,fingerprint as three_fingerprint
+ if s['key'] in THREE_KEYS:return three_fingerprint(s)
  h=hashlib.sha256();h.update(b'new-native-CRF17-scene-family-dependency-v2')
  for n in scenes.dependencies(s['key']):h.update(n.encode());h.update((P/'production'/n).read_bytes())
  for f in sorted((P/'references/accepted').glob('*.svg')):h.update(f.read_bytes())
@@ -48,6 +50,8 @@ with HeavyWork() as guard:
   i=plan.index(s);assert s['key'] in scenes.IMPLEMENTED,'No authored scene yet: '+s['key']
   a=math.ceil(s['start']*24-1e-7);b=min(MAXFRAMES,math.ceil(s['end']*24-1e-7));N=b-a;dest=OUT/f"unit_{i:03d}_{s['key']}.mp4";receipt=P/'qa/unit_receipts'/f"{s['id']}.json"
   if current(s):print('Already verified',s['id'],s['key'],flush=True);continue
+  from three_native import KEYS as THREE_KEYS
+  if s['key'] in THREE_KEYS:raise RuntimeError('This scene requires genuine Three.js WebGL native rendering: use three_documentary.yml. Refusing to label old Python pixels as Three.js.')
   CACHE.encoded.clear();CACHE.decoded.clear();CACHE.bytes=0
   # Return completed large-array arenas and decoder buffers to the OS, rather than lowering native quality.
   if 'im' in locals():im=None

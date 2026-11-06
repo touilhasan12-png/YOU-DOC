@@ -16,6 +16,8 @@ def digest(path,kind='sha256'):
  return h.hexdigest()
 
 def fingerprint(s):
+ from three_native import KEYS as THREE_KEYS,fingerprint as three_fingerprint
+ if s['key'] in THREE_KEYS:return three_fingerprint(s)
  h=hashlib.sha256();h.update(b'new-native-CRF17-scene-family-dependency-v2')
  for n in scenes.dependencies(s['key']):h.update(n.encode());h.update((P/'production'/n).read_bytes())
  for f in sorted((P/'references/accepted').glob('*.svg')):h.update(f.read_bytes())
