@@ -7,7 +7,7 @@ const mat=(c)=>new T.MeshToonMaterial({color:c,side:T.DoubleSide});
 const mats=new Map();function M(c){if(!mats.has(c))mats.set(c,mat(c));return mats.get(c)}
 const scene=new T.Scene();scene.background=new T.Color(0x1c4d5a);scene.fog=new T.Fog(0x1c4d5a,38,100);
 const renderer=new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true,alpha:false});renderer.setSize(1920,1080);renderer.setPixelRatio(1);renderer.outputColorSpace=T.SRGBColorSpace;renderer.setClearColor(0x1c4d5a);document.body.prepend(renderer.domElement);
-scene.add(new T.HemisphereLight(0xe1eee4,0x29434c,2.0));const sun=new T.DirectionalLight(0xfff4d7,2.1);sun.position.set(-7,16,12);scene.add(sun);
+scene.add(new T.HemisphereLight(0xe1eee4,0x29434c,1.3));const sun=new T.DirectionalLight(0xfff4d7,1.2);sun.position.set(-7,16,12);scene.add(sun);
 let root=new T.Group();scene.add(root);let camera=new T.OrthographicCamera(-12,12,6.75,-6.75,.1,180), update=()=>{}, key='',dur=1, checks={}, labels=[];
 function mesh(geom,c,parent=root){const m=new T.Mesh(geom,typeof c==='number'?M(c):c);parent.add(m);return m}
 function ell(parent,p,s,c){const m=mesh(new T.SphereGeometry(1,24,16),c,parent);m.position.copy(p);m.scale.copy(s);return m}
@@ -19,22 +19,22 @@ function cameraAt(pos,target,width){camera.left=-width/2;camera.right=width/2;ca
 function title(a,b='',c=''){document.querySelector('#title').textContent=a;document.querySelector('#sub').textContent=b;document.querySelector('#detail').textContent=c}
 function label(text,p){const el=document.createElement('div');el.className='label';el.textContent=text;document.querySelector('#labels').appendChild(el);labels.push({el,p})}
 function sea(under=true){
- scene.background=new T.Color(under?0x194957:0x75a4b0);scene.fog.color.copy(scene.background);
+ const bg=document.createElement('canvas');bg.width=2;bg.height=1080;const ctx=bg.getContext('2d'),grad=ctx.createLinearGradient(0,0,0,1080);grad.addColorStop(0,under?'#2c6473':'#7fabb8');grad.addColorStop(1,under?'#112e3d':'#477c8b');ctx.fillStyle=grad;ctx.fillRect(0,0,2,1080);scene.background=new T.CanvasTexture(bg);scene.fog.color.setHex(0x234b5b);
  const g=new T.PlaneGeometry(110,110,35,35);g.rotateX(-Math.PI/2);const p=g.attributes.position;
  for(let i=0;i<p.count;i++)p.setY(i,.09+.07*Math.sin(p.getX(i)*.9)*Math.cos(p.getZ(i)*1.1));g.computeVertexNormals();
- const s=mesh(g,new T.MeshToonMaterial({color:0x689eaa,transparent:true,opacity:under?.23:.72,side:T.DoubleSide,depthWrite:false}));s.renderOrder=2;
+ const s=mesh(g,new T.MeshToonMaterial({color:0x689eaa,transparent:true,opacity:under?.23:.72,side:T.DoubleSide,depthWrite:false}));s.renderOrder=2;s.visible=!under;
  // Sparse physically placed water-column particles, not decorative text/filler.
  if(under){const ps=[];for(let i=0;i<85;i++)ps.push(-22+(i*7.31)%44,-1-(i*.73)%12,-12+(i*3.21)%25);const g2=new T.BufferGeometry();g2.setAttribute('position',new T.Float32BufferAttribute(ps,3));root.add(new T.Points(g2,new T.PointsMaterial({color:0x83b0b1,size:.022,transparent:true,opacity:.34})))}
 }
-function fin(parent,points,depth,c){const shape=new T.Shape();shape.moveTo(points[0][0],points[0][1]);for(let i=1;i<points.length;i++)shape.lineTo(...points[i]);shape.closePath();const geo=new T.ExtrudeGeometry(shape,{depth,bevelEnabled:true,bevelSize:.025,bevelThickness:.018,bevelSegments:2,steps:1});geo.translate(0,0,-depth/2);return mesh(geo,c,parent)}
+function fin(parent,points,depth,c){const shape=new T.Shape();shape.moveTo((points[0][0]+points.at(-1)[0])/2,(points[0][1]+points.at(-1)[1])/2);for(let i=0;i<points.length;i++){const a=points[i],b=points[(i+1)%points.length];shape.quadraticCurveTo(a[0],a[1],(a[0]+b[0])/2,(a[1]+b[1])/2)}shape.closePath();const geo=new T.ExtrudeGeometry(shape,{depth,bevelEnabled:true,bevelSize:.025,bevelThickness:.018,bevelSegments:2,steps:1});geo.translate(0,0,-depth/2);geo.setIndex(Array.from({length:geo.attributes.position.count},(_,i)=>i));return mesh(geo,c,parent)}
 const stations=[0,.025,.07,.14,.24,.36,.49,.62,.75,.86,.94,1];
 const widths=[.025,.039,.064,.081,.089,.088,.073,.054,.033,.018,.009,.001];
 const heights=[.022,.041,.071,.089,.098,.095,.081,.062,.041,.023,.011,.001];
 function interp(a,s){let i=0;while(i<stations.length-2&&s>stations[i+1])i++;const u=ease((s-stations[i])/(stations[i+1]-stations[i]));return a[i]*(1-u)+a[i+1]*u}
 function whale(L=6.2){
  const group=new T.Group();root.add(group);const hinge=L*.262,hy=-.01*L;
- const bodyP=[],bodyC=[],jawP=[],jawC=[],bodyIdx=[],jawIdx=[];const NX=100,NT=64;
- function color(s,theta){const yy=Math.sin(theta),zz=Math.abs(Math.cos(theta));let c=new T.Color(C.ink);if(yy<-.50)c.setHex(0xe2e9de);if(s>.48&&s<.72&&yy<-.2&&yy>-.65)c.setHex(0xe2e9de);if(((s-.155)/.048)**2+((yy-.34)/.25)**2<1&&zz>.73)c.setHex(0xe6ebde);if(((s-.53)/.073)**2+((yy-.72)/.34)**2<1)c.setHex(0x7a929b);return c}
+ const bodyP=[],bodyC=[],jawP=[],jawC=[],bodyIdx=[],jawIdx=[];const NX=180,NT=112;
+ function color(s,theta){const yy=Math.sin(theta),zz=Math.abs(Math.cos(theta));const soft=(a,b,x)=>ease((x-a)/(b-a));let c=new T.Color(C.ink);c.lerp(new T.Color(0xe2e9de),1-soft(-.55,-.45,yy));const flank=(1-soft(.8,1.15,((s-.63)/.14)**2+((yy+.38)/.24)**2));c.lerp(new T.Color(0xe2e9de),flank);const eye=(1-soft(.86,1.12,((s-.155)/.048)**2+((yy-.34)/.25)**2))*soft(.70,.83,zz);c.lerp(new T.Color(0xe6ebde),eye);const saddle=1-soft(.75,1.18,((s-.53)/.073)**2+((yy-.72)/.34)**2);c.lerp(new T.Color(0x7a929b),saddle);return c}
  const pp=[],cc=[],isJaw=[];
  for(let i=0;i<=NX;i++){const s=i/NX,ry=interp(widths,s)*L,rz=interp(heights,s)*L,cy=.01*L*(1-s);for(let j=0;j<NT;j++){const th=j/NT*Math.PI*2;pp.push((.5-s)*L,cy+Math.sin(th)*rz,Math.cos(th)*ry);const c=color(s,th);cc.push(c.r,c.g,c.b);isJaw.push(s<.238&&Math.sin(th)<-.18)}}
  // Separate full upper head and articulated lower jaw. No solid closed head behind a painted mouth.
@@ -106,14 +106,14 @@ function setupRudder(k){
  title(k==='rudder_detaches'?'THE RUDDER':k==='hypothesis_play'?'PLAY OR SOCIALIZING?':k==='hypothesis_imitation'?'IMITATION?':'AFTER THE RUDDER BREAKS',k.includes('hypothesis')?'Proposed explanations — not proven motives':'Illustrated mechanical reconstruction');
  update=t=>{
   let u=0,fract=0;
-  if(k==='rudder_detaches'){u=ease((t-.45)/1.0)*(1-ease((t-3.7)/1.2));fract=ease((t-2.65)/.65);b.fracture(fract);gripPose(a,t,u,.3*fract);if(t>3.7){a.group.position.x-=2*ease((t-3.7)/2);a.group.position.z+=3.7*ease((t-3.7)/2)}checks.failure_time_seconds=2.65;checks.blade_detached=fract>.99;}
+  if(k==='rudder_detaches'){const cam=ease((t-.35)/1.4);cameraAt(V(-7,-3.0-8*cam,19-11*cam),V(-2.9-3*cam,-1.0-.7*cam,0),25-7*cam);document.querySelector('#detail').textContent='Roll onto side → grip the blade → pull';u=ease((t-.45)/1.0)*(1-ease((t-3.7)/1.2));fract=ease((t-2.65)/.65);b.fracture(fract);gripPose(a,t,u,.3*fract);if(t>3.7){a.group.position.x-=2*ease((t-3.7)/2);a.group.position.z+=3.7*ease((t-3.7)/2)}checks.failure_time_seconds=2.65;checks.blade_detached=fract>.99;}
   else if(k==='boat_option'){b.fracture(1);gripPose(a,t,0,0);a.group.position.x-=t*.65;a.group.position.z=-2.5;}
   else {const one=ease((t-.5)/1.1)*(1-ease((t-4.0)/1.0));const two=ease((t-5.7)/1.0)*(1-ease((t-8.8)/1.0));gripPose(a,t,one);a.group.position.z+=(1-one)*4.4;a.group.position.x-=(1-one)*2.1;gripPose(second,t,two);second.group.position.z-=(1-two)*4.4;second.group.position.x-=(1-two)*2.4;checks.same_action_copied_in_sequence=k==='hypothesis_imitation';checks.simultaneous_visitors=one>.8&&two>.8;}
   if(k!=='boat_option'){checks.body_blade_penetration=intersection(a.body,b.blade);checks.lower_jaw_blade_penetration=intersection(a.jaw,b.blade);if(second){checks.second_body_blade_penetration=intersection(second.body,b.blade);checks.second_jaw_blade_penetration=intersection(second.jaw,b.blade);checks.orca_body_intersection=intersection(a.body,second.body)}}
  };
 }
 function setupDeck(k){const b=boat(k!=='yacht_stern'),{p,w}=captainOnDeck(b);sea(k==='human_not_target');let a=null;
- if(k==='helm_response'){cameraAt(V(-6.6,3.8,5.3),V(-3.15,1.62,0),7.5);title('NO STEERING RESPONSE','Both hands remain on the mounted helm; the rudder has failed.');}
+ if(k==='helm_response'){cameraAt(V(-.4,3.4,4.9),V(-3.15,1.60,0),6.5);title('NO STEERING RESPONSE','Both hands remain on the mounted helm; the rudder has failed.');}
  else {cameraAt(V(-10,4.7,18),V(-1.5,.35,0),23);a=whale(5.5);a.group.position.set(-7.6,-2.4,-.5);title(k==='human_not_target'?'PEOPLE ARE NOT THE TARGET':'IBERIAN VESSEL INTERACTIONS',k==='human_not_target'?'People remain on deck; the interaction is with the rudder.':'Illustrated yacht reconstruction | attached rudder');}
  update=t=>{const angle=.32*Math.sin(t*1.2);w.rotation.z=angle;p.pose(t,angle);checks.maximum_hand_to_rim_error_metres=p.getGripError();checks.feet_on_deck=true;if(a){a.group.position.x=-8.6+.45*Math.sin(t*.7);a.animate(t,.03)}};
 }
