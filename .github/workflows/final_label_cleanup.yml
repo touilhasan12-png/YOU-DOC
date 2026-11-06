@@ -1,0 +1,109 @@
+name: Final label cleanup and strict complete-film verification
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+env:
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+jobs:
+  family-native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: ENGINE_SOURCE/requirements.txt
+      - run: pip install -r ENGINE_SOURCE/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: narration-and-geometry
+          path: ENGINE_SOURCE
+          run-id: 42251241326
+          github-token: ${{ github.token }}
+      - name: Rerender every native unit depending on the changed module, not fake fingerprints
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          python - <<'PY'
+          import os,sys
+          from pathlib import Path
+          p=Path('ENGINE_SOURCE/production').resolve();sys.path.insert(0,str(p))
+          import ci_pipeline as ci
+          ci.tests()
+          selected=[s['key'] for s in ci.scenes.PLAN if 'hardware_ecology_scenes.py' in ci.scenes.dependencies(s['key'])]
+          assert len(selected)==21
+          keys=selected[int(os.environ['SHARD'])::3]
+          os.execv(sys.executable,[sys.executable,str(p/'render_picture_units.py'),'--keys',','.join(keys)])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: retouched-hardware-${{ matrix.shard }}
+          path: |
+            ENGINE_SOURCE/picture_units/
+            ENGINE_SOURCE/qa/unit_receipts/
+          retention-days: 30
+  complete-film:
+    needs: family-native
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: ENGINE_SOURCE/requirements.txt
+      - run: pip install -r ENGINE_SOURCE/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: native-*
+          merge-multiple: true
+          path: ENGINE_SOURCE
+          run-id: 42251241326
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: narration-and-geometry
+          path: ENGINE_SOURCE
+          run-id: 42251241326
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: retouched-hardware-*
+          merge-multiple: true
+          path: ENGINE_SOURCE
+      - name: Strict current dependencies for all 93 units, complete decode and native review
+        run: python ENGINE_SOURCE/production/ci_pipeline.py candidate
+      - name: Independent complete-file AAC, duration and loudness audit
+        run: |
+          ln -s "$PWD/ENGINE_SOURCE/delivery" CANDIDATE
+          mkdir SOURCE_AUDIO
+          ln -s "$PWD/ENGINE_SOURCE/audio_revision_ending" SOURCE_AUDIO/audio_revision_ending
+          python ENGINE_SOURCE/production/audit_existing_movie.py
+          cp REMOTE_FINAL_AUDIT/FINAL_TECHNICAL_AUDIT.json ENGINE_SOURCE/delivery/
+      - name: Additional full-resolution encoded taxonomy review
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import av
+          p=Path('ENGINE_SOURCE');f=next((p/'picture_units').glob('*_taxonomy.mp4'))
+          with av.open(str(f)) as c:
+              n=c.streams.video[0].frames;want={n//3,2*n//3,n-1}
+              for i,fr in enumerate(c.decode(video=0)):
+                  if i in want:fr.to_image().save(p/f'delivery/TAXONOMY_NATIVE_{i:04d}.jpg',quality=95)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: revision2-complete-candidate-and-review
+          path: ENGINE_SOURCE/delivery/
+          retention-days: 30

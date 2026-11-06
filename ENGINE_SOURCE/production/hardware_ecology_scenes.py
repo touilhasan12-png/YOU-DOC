@@ -51,7 +51,7 @@ def taxonomy(t,global_t):
  else:type_text(im,'THE DOLPHIN FAMILY',90,80,76,colour=INK,title=True)
  animal(im,'orca',1100,470,115,t=t,roll=8*math.sin(t*.25),elevation=12)
  if global_t>=dolphin_at:
-  animal(im,'bottlenose_dolphin',1050,855,115,t=t,elevation=12);type_text(im,'DELPHINIDAE',95,790,35,colour=INK,title=True)
+  animal(im,'bottlenose_dolphin',1050,855,115,t=t,elevation=12)  # The new classification tree supplies this family label; avoid overprinting its Orcas branch.
  return im
 
 def dimensions(t):
