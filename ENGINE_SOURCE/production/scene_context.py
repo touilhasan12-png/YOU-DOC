@@ -87,8 +87,8 @@ def locator(im,lon,lat):
  pin=(int(ox+(lon+180)/360*w),int(oy+(90-lat)/180*h));cv2.circle(im,pin,7,(83,124,177),-1,cv2.LINE_AA)
  text(im,'Geographic context',ox,oy-43,28,False)
 
-SOUND={'biggs_silence','tagged_alaska','listening_dark','fish_hearing','mammal_hearing'}
-LEARNING={'matriarch','learning_observation','learned_strategy','patagonia_learning','teamwork_final'}
+SOUND={'biggs_silence','fish_hearing'}
+LEARNING={'learning_observation','patagonia_learning','teamwork_final'}
 LOCATORS={'farallon_evidence':(-123,37.7),'twofold_arrival':(149.9,-37),'iberian_region':(-5.6,36)}
 
 def augment(s,im,t):

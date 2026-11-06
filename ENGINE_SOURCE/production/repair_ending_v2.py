@@ -15,7 +15,7 @@ def repair():
  def ff(args):subprocess.run([FF,'-hide_banner','-v','error','-threads','1','-y',*args],check=True)
  # atempo is time-domain waveform-similarity overlap-add, not the rejected spectral phase vocoder.
  # Pad/trim applies only to the final quiet tail. Last spoken word maps to 663.544, >1.8s before endpoint.
- graph=f'[0:a]asplit=2[a][b];[a]atrim=end={cut},asetpts=PTS-STARTPTS[p];[b]atrim=start={cut},asetpts=PTS-STARTPTS,atempo=0.8,atempo=0.8,apad=whole_dur={dur},atrim=duration={dur},afade=t=out:st={dur-.65}:d=.65[e];[p][e]concat=n=2:v=0:a=1[out]'
+ graph=f'[0:a]asplit=2[a][b];[a]atrim=end={cut},asetpts=PTS-STARTPTS[p];[b]atrim=start={cut},asetpts=PTS-STARTPTS,atempo=0.8,atempo=0.8,apad=whole_dur={dur},atrim=duration={dur},afade=t=out:st={dur-.65}:d=0.65[e];[p][e]concat=n=2:v=0:a=1[out]'
  ff(['-i',str(source),'-filter_complex',graph,'-map','[out]','-ar','48000','-ac','2','-c:a','aac','-b:a','320k','-movflags','+faststart',str(output)])
  for name,path in [('ORIGINAL_END_UNPROCESSED',source),('REPAIRED_END_WSOLAx2',output),('REJECTED_END_DO_NOT_USE',P/'reference_audio/REJECTED_DO_NOT_MUX.m4a')]:
   ff(['-ss',str(cut),'-i',str(path),'-vn','-c:a','flac',str(q/(name+'.flac'))])
