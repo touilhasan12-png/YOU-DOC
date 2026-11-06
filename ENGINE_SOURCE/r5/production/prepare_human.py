@@ -49,7 +49,7 @@ for ob in keep:
  mesh=bpy.data.meshes.new_from_object(ob.evaluated_get(dg),preserve_all_data_layers=True,depsgraph=dg)
  names={g.index:g.name for g in ob.vertex_groups}
  weights=[[(names.get(g.group,''),g.weight) for g in v.groups] for v in mesh.vertices]
- names_mats=[m.name if m else None for m in ob.data.materials]
+ names_mats=[slot.material.name if slot.material else None for slot in ob.material_slots]
  if not names_mats or any(m is None for m in names_mats):raise RuntimeError('Missing original material slot on '+ob.name+': '+repr(names_mats))
  snapshots.append((ob.name,mesh,weights,names_mats,ob.matrix_world.copy()))
 # Reconstruct explicit source-based materials; the three UDIM tiles form one atlas.
