@@ -1,0 +1,19 @@
+{
+  "clip": "04.wav",
+  "retake_file": "04_tagged_sentence_retake.wav",
+  "retake_sha256": "683a3ebff45fc328b67941f273f06086cba60c74b9a643856d8e233dfac8dbbf",
+  "text": "Within eight hours, all seventeen tagged sharks were gone.",
+  "reason": "Two independent ASR windows rendered the past-tense adjective as tag. A same-voice, character-exact sentence retake makes tagged unambiguous; retake ASR confidence 0.955 for tagged.",
+  "voice_id": "voice-00",
+  "speech_generation_calls_this_continuation": 1,
+  "original_raw_wav_preserved_unchanged": true,
+  "replace_from": 58.3,
+  "replace_to": 63.38,
+  "retake_in": 0.24000000000000002,
+  "retake_out": 4.800000000000001,
+  "paste_at": 58.8,
+  "time_stretch": false,
+  "pitch_shift": false,
+  "duration_of_full_narration_unchanged": true,
+  "uses_existing_inter_sentence_silence_only": true
+}

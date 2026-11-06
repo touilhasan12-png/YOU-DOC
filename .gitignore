@@ -1,0 +1,9 @@
+**/__pycache__/
+**/.cache/
+**/.secrets/
+*.pyc
+ENGINE_SOURCE/picture_units/
+ENGINE_SOURCE/audio_revision_ending/*
+ENGINE_SOURCE/qa/**
+ENGINE_SOURCE/delivery/
+ENGINE_SOURCE/assets/

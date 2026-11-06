@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="325 300 900 506.25"><defs>
+<linearGradient id="sky" x2="0" y2="1"><stop stop-color="#467e91"/><stop offset=".64" stop-color="#bad5d5"/><stop offset="1" stop-color="#f4dfad"/></linearGradient>
+<linearGradient id="sea" x2="0" y2="1"><stop stop-color="#5e9d9f"/><stop offset=".48" stop-color="#286a79"/><stop offset="1" stop-color="#0e354c"/></linearGradient>
+<linearGradient id="ivory" x1="0" y1="0" x2=".3" y2="1"><stop stop-color="#fff9e5"/><stop offset=".6" stop-color="#dce0d0"/><stop offset="1" stop-color="#829d9f"/></linearGradient>
+<linearGradient id="sail" x2="1" y2=".3"><stop stop-color="#fff7d7"/><stop offset=".48" stop-color="#eadcba"/><stop offset=".8" stop-color="#fff6dd"/><stop offset="1" stop-color="#c9c6af"/></linearGradient>
+<linearGradient id="wood" x2="0" y2="1"><stop stop-color="#dbb77c"/><stop offset="1" stop-color="#846141"/></linearGradient>
+<linearGradient id="navy" x2="1" y2="1"><stop stop-color="#34566b"/><stop offset="1" stop-color="#112b3a"/></linearGradient>
+<linearGradient id="metal" x2="1" y2="1"><stop stop-color="#edeee1"/><stop offset=".25" stop-color="#8dacad"/><stop offset=".5" stop-color="#f8f4df"/><stop offset=".8" stop-color="#64828c"/><stop offset="1" stop-color="#b2c4c2"/></linearGradient>
+<linearGradient id="deep" x2=".2" y2="1"><stop stop-color="#358c9e"/><stop offset=".35" stop-color="#166277"/><stop offset="1" stop-color="#041e33"/></linearGradient>
+<linearGradient id="wet" x2="0" y2="1"><stop stop-color="#b2d2cb"/><stop offset=".7" stop-color="#57929c"/><stop offset="1" stop-color="#367487"/></linearGradient>
+<linearGradient id="orca" x2=".15" y2="1"><stop stop-color="#446b78"/><stop offset=".38" stop-color="#17333f"/><stop offset="1" stop-color="#0a202e"/></linearGradient>
+<linearGradient id="white" x2="0" y2="1"><stop stop-color="#e2eee1"/><stop offset=".6" stop-color="#b7d4ce"/><stop offset="1" stop-color="#74a8ad"/></linearGradient>
+<linearGradient id="skin" x2="1" y2=".8"><stop stop-color="#efd0a2"/><stop offset=".55" stop-color="#c98f66"/><stop offset="1" stop-color="#936649"/></linearGradient>
+</defs><g stroke="#193b4d" stroke-linejoin="round" stroke-linecap="round">
+<!-- Reconstructed aft-quarter view; the visible stern is left, bow remains right. -->
+<path d="M190 552Q724 534 1345 398L1390 435Q1362 560 1008 657Q763 732 465 760Q270 739 190 661Z" fill="url(#ivory)" stroke-width="4"/>
+<path d="M199 615Q323 690 468 697Q944 669 1363 477L1352 503Q950 695 466 723Q304 701 203 643Z" fill="#153a4e" stroke-width="1.5"/>
+<path d="M203 645Q319 709 465 728Q923 706 1344 522L1311 556Q953 731 465 756Q285 735 203 659Z" fill="#729096" opacity=".72" stroke="none"/>
+<path d="M190 552L480 638 465 760Q270 739 190 661Z" fill="url(#ivory)" stroke-width="3.5"/>
+<path d="M197 612Q335 665 476 665L474 689Q328 685 200 637Z" fill="#183d50" stroke="none"/>
+<path d="M190 552Q724 534 1345 398L1390 435Q944 597 480 638Z" fill="url(#wood)" stroke-width="3"/>
+<path d="M278 565Q811 546 1340 428M349 587Q889 547 1335 444M424 610Q874 570 1289 467" stroke="#96744e" stroke-width="1.8" fill="none"/>
+<!-- Cockpit coamings and bench make a physical place for the same approved crew. -->
+<path d="M483 556L588 490 795 479 897 537 746 593 565 597Z" fill="#17394c" stroke-width="3"/>
+<path d="M532 551L590 510 632 515 580 562Z M753 499L792 499 861 536 819 553Z" fill="#bb9564" stroke-width="2"/>
+<path d="M854 513L946 447 1182 420 1294 464 1254 503 944 566Z" fill="url(#ivory)" stroke-width="3"/>
+<path d="M946 447L966 470 1230 444 1182 420Z" fill="#f0e9d2" stroke-width="2"/>
+<path d="M971 483L1025 472 1037 496 983 510Z M1058 466L1113 456 1130 481 1073 495Z M1151 452L1191 446 1221 466 1169 482Z" fill="#20495c" stroke-width="2"/>
+<path d="M980 486L1017 479M1071 471L1106 464M1163 458L1188 454" fill="none" stroke="#78a1a8" stroke-width="2"/>
+</g>
+<g transform="translate(330 -17) scale(1.2)">
+<path d="M319 454L331 453 337 491 317 491Z" fill="url(#navy)" stroke="#244653" stroke-width="1.5"/>
+<path d="M320 461L321 485M315 491H339" stroke="#a0b6b1" stroke-width="1.6"/>
+<ellipse cx="326" cy="457" rx="3.2" ry="4.2" fill="url(#metal)" stroke="#345563" stroke-width="1"/>
+<!-- Crew refinement only: same two locations and scale, original scene unchanged. -->
+<!-- Helmsman: rounded shoulders, layered jacket/vest, bent arms and readable profile. -->
+<g stroke-linejoin="round" stroke-linecap="round">
+<path d="M249 469Q243 455 247 441Q250 432 258 429L278 429Q291 434 296 447L299 471Z" fill="#294e62" stroke="#193b4c" stroke-width="1.7"/>
+<path d="M262 429L262 419 274 419 276 431L269 437Z" fill="#be8d67" stroke="#705645" stroke-width="1.2"/>
+<path d="M254 403Q252 392 262 390Q274 386 279 398L279 406L283 411Q284 413 279 414Q280 421 274 423L263 421Q257 417 256 411Z" fill="#d4a67d" stroke="#5d5145" stroke-width="1.3"/>
+<path d="M254 407Q248 393 259 389Q272 383 279 394L278 401Q270 401 266 396L259 401 260 410Z" fill="#29373a" stroke="#26383c" stroke-width="1"/>
+<path d="M259 407Q253 403 254 410Q254 416 260 415" fill="#c18f69" stroke="#8c664e" stroke-width=".85"/>
+<path d="M255 410L258 411M270 402L275 402M271 406L274 406" stroke="#384349" stroke-width="1.15" fill="none"/>
+<path d="M278 416L273 416M270 420L275 419" stroke="#8b654f" stroke-width=".85" fill="none"/>
+<path d="M264 423L268 432 258 438 253 433M274 424L270 433 279 438 283 433" fill="#3e6170" stroke="#1a3b4b" stroke-width="1.15"/>
+<!-- Muted ochre flotation vest, without changing the scene's established palette. -->
+<path d="M258 434L265 438 264 466 254 463 252 446Z M274 436L282 438 291 462 276 467 271 445Z" fill="#b89b66" stroke="#665e4e" stroke-width="1.2"/>
+<path d="M259 440L258 456M278 443L285 458" stroke="#d3bb84" stroke-width="1.2"/>
+<path d="M256 459L287 460" stroke="#244557" stroke-width="3"/><rect x="267" y="457.6" width="6" height="4" rx=".8" fill="#a0ae9d" stroke="#294553" stroke-width=".8"/>
+<!-- Wheel is behind both grips, mounted inside the existing cockpit. -->
+<ellipse cx="326" cy="457" rx="16" ry="24" fill="none" stroke="#a5b6af" stroke-width="3"/>
+<!-- Far arm: elbow bends towards upper wheel grip. -->
+<path d="M283 435Q289 434 296 443L310 450 307 458Q293 454 286 447L279 440Z" fill="#34586a" stroke="#1d3e4f" stroke-width="1.3"/>
+<path d="M307 450L329 443 332 449 308 458Z" fill="#cb9a71" stroke="#795d48" stroke-width="1.05"/>
+<path d="M328 443L334 439Q338 436 340 439L339 443Q344 443 342 447L337 451 331 449Z" fill="#d7a77b" stroke="#795d48" stroke-width="1"/>
+<path d="M336 441L338 443M335 444L339 446" fill="none" stroke="#956e50" stroke-width=".75"/>
+<!-- Near arm: cuff and second hand connect continuously to the lower rim. -->
+<path d="M253 436Q245 438 247 451Q250 463 267 471L284 474 287 466 272 460 264 446Z" fill="#294f63" stroke="#1d3d4d" stroke-width="1.5"/>
+<path d="M252 445Q251 456 267 465" stroke="#567381" stroke-width="1.1" fill="none"/>
+<path d="M283 467L305 467 312 471 309 476 283 474Z" fill="#c9956e" stroke="#775b48" stroke-width="1"/>
+<path d="M307 468Q311 463 314 466L317 469 320 468Q323 469 320 473L316 477 309 475Z" fill="#d6a47a" stroke="#775b48" stroke-width="1"/>
+<path d="M313 469L316 472M312 472L314 474" stroke="#936c50" stroke-width=".7" fill="none"/>
+<!-- Second crewmember: seated, attentive, with face/ear, cap, collar and resting arms. -->
+<path d="M344 451Q343 437 349 426L358 421 369 423Q379 429 381 445L379 454Z" fill="#82928a" stroke="#344c52" stroke-width="1.5"/>
+<path d="M354 425L355 415 365 415 369 425 362 431Z" fill="#c3916b" stroke="#795d49" stroke-width="1"/>
+<path d="M349 403Q348 393 358 391Q368 389 371 399L371 406 375 411 371 414Q371 420 365 422L356 419 352 411Z" fill="#d1a17a" stroke="#695646" stroke-width="1.2"/>
+<path d="M350 407Q345 401 349 395L356 391 366 396 354 404 355 412Z" fill="#55483a" stroke="#3c4140" stroke-width=".8"/>
+<path d="M354 407Q349 403 350 410Q350 415 355 415" fill="#bc8965" stroke="#946b50" stroke-width=".7"/>
+<path d="M364 404L369 404M365 407L368 407" stroke="#3c4646" stroke-width="1" fill="none"/>
+<path d="M369 416L365 416" stroke="#90674e" stroke-width=".8"/>
+<!-- A low-profile sailing cap follows the head, with a small proper visor. -->
+<path d="M347 400Q346 389 357 387Q369 386 372 398L363 401Z" fill="#365265" stroke="#263e4b" stroke-width="1.1"/>
+<path d="M362 398Q374 395 382 400Q374 403 364 402Z" fill="#476577" stroke="#294654" stroke-width=".9"/>
+<path d="M352 393Q360 389 367 394" stroke="#78908e" stroke-width=".9" fill="none"/>
+<path d="M352 424L360 430 351 435 348 429M368 423L361 430 371 433 374 428" fill="#b0b5a0" stroke="#53655e" stroke-width="1"/>
+<path d="M352 434L351 451 359 453 360 434M366 433L374 434 378 452 367 454Z" fill="#355261" stroke="#29434e" stroke-width="1"/>
+<path d="M355 437V445M371 437L374 446" stroke="#b4a775" stroke-width="1.3"/>
+<!-- Near forearm rests on coaming; elbow, wrist and fingers remain attached. -->
+<path d="M375 430Q382 431 386 439L394 441 393 448 380 446 371 438Z" fill="#8e9b90" stroke="#40575a" stroke-width="1.2"/>
+<path d="M393 442L401 441Q406 442 405 446L400 449 393 448Z" fill="#d2a079" stroke="#82624b" stroke-width=".9"/>
+<path d="M400 443L403 445M398 445L401 447" stroke="#a27958" stroke-width=".65"/>
+<path d="M347 434Q341 441 345 449L356 454 360 448 352 445 354 436" fill="#7c8d86" stroke="#40575a" stroke-width="1.1"/>
+<path d="M355 449L362 447Q368 447 368 451L365 455 357 455Z" fill="#c8956f" stroke="#82624b" stroke-width=".85"/>
+</g>
+</g>
+<g stroke="#214353" stroke-linejoin="round" stroke-linecap="round">
+<!-- Forward coaming masks only the seated lower bodies. -->
+<path d="M537 568L634 566 723 568 823 550 838 564 744 592 563 599Z" fill="#214657" stroke-width="2"/>
+<!-- Guardrails and lifering are secured to the stern, not floating shapes. -->
+<g fill="none" stroke="#b1c5bd" stroke-width="4"><path d="M200 557V489L500 570 489 637M302 586V517M410 617V548M858 552V497L1360 391 1375 438M1002 524V468M1154 477V435M1291 443V408"/><path d="M202 515L496 596M860 521L1366 414" stroke-width="1.6"/></g>
+<ellipse cx="260" cy="577" rx="26" ry="38" fill="#ba693b" stroke="#e4ad68" stroke-width="10"/><ellipse cx="260" cy="577" rx="13" ry="23" fill="#345969" stroke-width="2"/>
+<path d="M328 618L306 732 355 749 379 637M320 655L371 673M313 688L362 705M309 716L357 732" fill="none" stroke="#b8c8c0" stroke-width="5"/>
+<!-- One mast, the same ivory sail plan, with boom safely above crew heads. -->
+<path d="M932 503L948 24" stroke="#c3cabb" stroke-width="10"/><path d="M932 503L948 24" stroke="#4e666c" stroke-width="2"/>
+<path d="M941 44Q816 211 512 387L935 379Z" fill="url(#sail)" stroke-width="2.7"/>
+<path d="M958 49Q1105 221 1352 397L952 378Z" fill="url(#sail)" stroke-width="2.5"/>
+<g fill="none" stroke="#a89c7b" stroke-width="1.4"><path d="M913 104Q780 270 575 375M873 161L939 169M782 250L937 259M655 337L936 340M986 109Q1168 314 1292 386M1046 173L960 183M1130 270L956 273M1232 348L954 341"/></g>
+<path d="M512 396L937 388" stroke="#5c7273" stroke-width="10"/><path d="M516 393L935 386" stroke="#c6c9b4" stroke-width="3"/>
+<g fill="none" stroke="#526e71" stroke-width="1.8"><path d="M948 26L1390 435M948 26L430 616M948 26L1098 523M948 26L816 556M518 397L604 566M1351 398L1257 493"/></g>
+<path d="M465 761Q960 715 1308 566" fill="none" stroke="#a0bfb7" stroke-width="3"/>
+</g></svg>
