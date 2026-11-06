@@ -35,12 +35,12 @@ export function createHuman({root,diver=false,swimmer=false,surfer=false}){
     s.vertexShader='uniform float wardrobeKind; varying vec3 vBindPos;\n'+s.vertexShader;
     s.vertexShader=s.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
      vBindPos=position;
-     float garment=step(.10,position.y)*(1.-step(1.525,position.y))*(1.-step(.535,abs(position.x)));
+     float collar=max((1.-step(1.525,position.y)),step(.105,abs(position.x))*(1.-step(1.605,position.y)));float garment=step(.10,position.y)*collar*(1.-step(.535,abs(position.x)));
      transformed+=normal*.008*garment*(1.-step(.5,wardrobeKind));`);
     s.fragmentShader='uniform float wardrobeKind; varying vec3 vBindPos;\n'+s.fragmentShader;
     s.fragmentShader=s.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
      float bx=abs(vBindPos.x),by=vBindPos.y;
-     float shirt=step(1.0,by)*(1.-smoothstep(1.520,1.525,by))*(1.-smoothstep(.530,.535,bx));
+     float collar=max(1.-smoothstep(1.520,1.525,by),smoothstep(.100,.105,bx)*(1.-smoothstep(1.600,1.605,by)));float shirt=step(1.0,by)*collar*(1.-smoothstep(.530,.535,bx));
      float shorts=step(.68,by)*(1.-step(1.005,by))*(1.-step(.27,bx));
      float suit=(1.-smoothstep(1.52,1.525,by))*(1.-step(.735,bx));
      float clothCoverage=0.;vec3 clothTone=vec3(.05,.10,.14);
@@ -52,7 +52,7 @@ export function createHuman({root,diver=false,swimmer=false,surfer=false}){
     s.fragmentShader=s.fragmentShader.replace('#include <normal_fragment_maps>',`vec3 garmentNormal=normal;
      #include <normal_fragment_maps>
      normal=normalize(mix(normal,garmentNormal,clothCoverage));`);
-   };m.customProgramCacheKey=()=> 'source-skinned-wardrobe-v3-'+kind;
+   };m.customProgramCacheKey=()=> 'source-skinned-wardrobe-v4-'+kind;
   }
   o.material=m;
  });
@@ -145,5 +145,10 @@ export function createHuman({root,diver=false,swimmer=false,surfer=false}){
   const tr=new T.Matrix4().copy(skinMesh.matrixWorld).invert().multiply(board.matrixWorld);
   return {arm_board_penetration:armGeometry.boundsTree.intersectsGeometry(board.geometry,tr),body_board_penetration:allGeometry.boundsTree.intersectsGeometry(board.geometry,tr),arm_board_test:'Actual deformed arm/finger triangles against surfboard triangles',arm_board_triangles:armIndex.length/3};
  }
- return {group,body,head,pose,hands,segments,checkBoard,getGripError:()=>maxGripError,skinMesh};
+ function checkDeck(deckHeight){
+  group.updateMatrixWorld(true);skinMesh.skeleton.update();let lowest=Infinity;const v=V();
+  for(let i=0;i<pos.count;i++)if(pos.getY(i)<.095){skinMesh.getVertexPosition(i,v);skinMesh.localToWorld(v);lowest=Math.min(lowest,v.y)}
+  const error=Math.abs(lowest-deckHeight);return {feet_on_deck:error<.001,foot_deck_contact_failure:error>=.001,maximum_sole_to_deck_error_metres:error};
+ }
+ return {group,body,head,pose,hands,segments,checkBoard,checkDeck,getGripError:()=>maxGripError,skinMesh};
 }

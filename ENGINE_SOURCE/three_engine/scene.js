@@ -97,7 +97,7 @@ function setupRudder(k){
 function setupDeck(k){const b=boat(k!=='yacht_stern');if(k==='human_not_target')b.bladeGroup.visible=false;const {p,w}=captainOnDeck(b);sea(false,{vessel:true});let a=null;
  if(k==='helm_response'){cameraAt(V(-.4,3.4,4.9),V(-3.15,1.60,0),6.5);title('NO STEERING RESPONSE','A turning wheel can no longer move the damaged rudder.');}
  else {cameraAt(V(-10,7.2,18),V(-1.5,.35,0),23);a=whale(5.5);a.group.position.set(-7.6,-2.4,-.5);title(k==='human_not_target'?'PEOPLE ARE NOT THE TARGET':'IBERIAN VESSEL INTERACTIONS',k==='human_not_target'?'People remain on deck; the interaction is with the rudder.':'Illustrated yacht reconstruction | attached rudder');}
- update=t=>{const angle=.32*Math.sin(t*1.2);w.rotation.z=angle;p.pose(t,angle);checks.maximum_hand_to_rim_error_metres=p.getGripError();checks.feet_on_deck=true;if(a){a.group.position.x=-8.6+.45*Math.sin(t*.7);a.animate(t,.03)}};
+ update=t=>{const angle=.32*Math.sin(t*1.2);w.rotation.z=angle;p.pose(t,angle);checks.maximum_hand_to_rim_error_metres=p.getGripError();Object.assign(checks,p.checkDeck(.655));if(a){a.group.position.x=-8.6+.45*Math.sin(t*.7);a.animate(t,.03)}};
 }
 function setupSwim(k){sea(true,{level:k==='swim_comparison'?4.1:0});const diver=k==='diver_entanglement',surf=k==='surfer_incident',p=human({diver,swimmer:true,surfer:surf});p.group.quaternion.setFromRotationMatrix(new T.Matrix4().makeBasis(V(0,0,diver?1:-1),V(diver?-1:1,0,0),V(0,-1,0)));
  if(k==='swim_comparison'){

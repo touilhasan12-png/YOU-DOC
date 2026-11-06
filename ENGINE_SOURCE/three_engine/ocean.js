@@ -16,7 +16,7 @@ export function buildOcean({root,scene,under=true,level=0,cutaway=under,vessel=f
    float beam(float x){if(x< -5.4||x>6.1)return 0.;if(x< -4.4)return mix(1.08,1.35,smoothstep(-5.4,-4.4,x));if(x< -2.)return mix(1.35,1.55,smoothstep(-4.4,-2.,x));if(x<1.5)return mix(1.55,1.45,smoothstep(-2.,1.5,x));if(x<4.3)return mix(1.45,.87,smoothstep(1.5,4.3,x));return mix(.87,.025,smoothstep(4.3,6.1,x));}
    void main(){
     // The near half is intentionally cut away in mechanical/underwater reconstructions.
-    if(cutaway>.5&&wp.z> -1.72)discard;
+    if(cutaway>.5&&wp.z> 0.0)discard;
     float b=beam(wp.x)*.962;if(vessel>.5&&abs(wp.z)<b)discard;
     vec3 viewDir=normalize(cameraPosition-wp);float fres=pow(1.-abs(dot(wn,viewDir)),3.);
     float wave=sin(wp.x*4.2+wp.z*6.9+time*.8)+.5*sin(wp.x*11.-wp.z*9.-time*.6);
@@ -39,7 +39,7 @@ export function buildOcean({root,scene,under=true,level=0,cutaway=under,vessel=f
   }
   if(cutaway){
    // A thin, curved waterline at the cut plane makes the cutaway legible without covering the action.
-   const pts=[];for(let i=0;i<=120;i++){const x=-45+i*.75;pts.push(V(x,level+.03*Math.sin(x*.65),-1.72))}
+   const pts=[];for(let i=0;i<=120;i++){const x=-45+i*.75;pts.push(V(x,level+.03*Math.sin(x*.65),0))}
    const edge=new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts),120,.014,5,false),new T.MeshBasicMaterial({color:0x9ec9cc,transparent:true,opacity:.42,depthWrite:false}));root.add(edge);
   }
  }

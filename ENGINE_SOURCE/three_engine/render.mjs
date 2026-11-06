@@ -26,7 +26,7 @@ try{
   for(let n=0;n<N;n++){
    const t=mode==='native'?(s.frame_start+n)/24-s.start:n/fps;
    const check=await page.evaluate(t=>window.drawFrame(t),t);checks.push(check);
-   const failures=Object.entries(check).filter(([k,v])=>(k.includes('penetration')||k==='orca_body_intersection'||k==='simultaneous_visitors')&&v===true);
+   const failures=Object.entries(check).filter(([k,v])=>(k.includes('penetration')||k.endsWith('_failure')||k==='orca_body_intersection'||k==='simultaneous_visitors')&&v===true);
    const buf=await page.screenshot({type:'png',animations:'disabled'});
    if(wanted.has(n))fs.writeFileSync(path.join(out,s.key+`_sample_${sample++}.png`),buf);
    if(failures.length||check.maximum_hand_to_rim_error_metres>1e-6){fs.writeFileSync(path.join(out,s.key+'_FAILED.png'),buf);fs.writeFileSync(path.join(out,s.key+'_GEOMETRY.json'),JSON.stringify({key:s.key,time:t,failures,checks},null,2));ff.stdin.end();throw Error('REAL GEOMETRY FAILURE '+s.key+' at '+t+': '+JSON.stringify(failures))}
@@ -34,6 +34,6 @@ try{
    if(n%fps===0)console.log('WEBGL FRAME',s.key,n,'/',N,'relative',t.toFixed(3));
   }
   ff.stdin.end();const [code]=await once(ff,'exit');if(code!==0)throw Error('Native encoder failed '+code);
-  fs.writeFileSync(path.join(out,s.key+'_GEOMETRY.json'),JSON.stringify({key:s.key,engine:'Three.js r170',webgl:gpu,frames:N,fps,status:'All sampled native frames passed explicit body/jaw-to-blade mesh intersection and hand-to-rim checks where applicable. This is not a subjective artistic pass.',checks},null,2));console.log('ACTUAL THREE CLIP COMPLETE',s.key,N);
+  fs.writeFileSync(path.join(out,s.key+'_GEOMETRY.json'),JSON.stringify({key:s.key,engine:'Three.js r170',webgl:gpu,frames:N,fps,status:'Every rendered frame passed the explicitly applicable flags, including skinned arm/body-to-board triangle intersections, actual hand grip attachments and sole/deck contact where present. Unchecked pairs are not asserted collision-free; technical checks are not artistic approval.',checks},null,2));console.log('ACTUAL THREE CLIP COMPLETE',s.key,N);
  }
 }finally{await browser.close();server.close()}

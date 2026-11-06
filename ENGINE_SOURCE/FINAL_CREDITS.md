@@ -1,7 +1,7 @@
 # Something That Plans — footage, artwork and sources
 
 ## Picture and narration
-Original programmatic colored illustration: dimensioned 3-D animal meshes, articulated crew and vessels, physical interaction reconstructions, and geographic diagrams. No image-generation tools or generated-image assets were used.
+Original programmatic colored scene illustration with licensed authored human meshes: dimensioned 3-D animals, skinned crew and vessels, physical interaction reconstructions, and geographic diagrams. No image-generation tools or generated-image assets were used.
 
 The approved 1,730-word script and original narrator master are preserved. The user-authorized ending derivative retains all spoken words and CTA, with pitch/formant-preserving tempo correction. Reconstructions and anatomy/size diagrams are illustrations, not event footage or measured individual telemetry. Calf/juvenile/adult drawings do not assert exact historical body lengths.
 

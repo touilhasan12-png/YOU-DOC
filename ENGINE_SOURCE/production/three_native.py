@@ -3,7 +3,7 @@ from pathlib import Path
 import hashlib,json,math,os,argparse,subprocess
 P=Path(__file__).resolve().parents[1]
 KEYS={'rudder_detaches','hypothesis_play','hypothesis_imitation','boat_option','helm_response','human_not_target','yacht_stern','diver_entanglement','surfer_incident','swim_comparison'}
-SOURCES=['three_engine/characters.js','three_engine/ocean.js','three_engine/scene.js','three_engine/render.mjs','three_engine/web/index.html','three_engine/package.json','production/three_native.py','fonts/BarlowCondensed-SemiBold.ttf','fonts/SourceSans3[wght].ttf']
+SOURCES=['three_engine/characters.js','three_engine/ocean.js','three_engine/scene.js','three_engine/render.mjs','three_engine/web/index.html','three_engine/package.json','three_engine/package-lock.json','production/three_native.py','fonts/BarlowCondensed-SemiBold.ttf','fonts/SourceSans3[wght].ttf']
 SOURCES+=sorted(str(p.relative_to(P)) for p in (P/'three_engine/web/assets/quaternius').rglob('*') if p.is_file())
 def fingerprint(s):
  h=hashlib.sha256(b'three-webgl-native-v1-continuous-articulated-metres')
