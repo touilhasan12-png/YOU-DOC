@@ -192,5 +192,7 @@
   "pose_policy": "Solve one anatomical fixture pose, bake the entire skinned character into static meshes, lock every bone and disable later IK/reset/grasp updates. Fixed wheel; supported board palms; fixed swimming articulation. Water, vessel, animals and approved whole-body comparison travel continue.",
   "no_video_audio_analysis": true,
   "no_samples_or_approval_questions": true,
-  "no_whole_film_redesign": true
+  "no_whole_film_redesign": true,
+  "production_attempt": 2,
+  "source_correction": "Refresh attached-skin inverse world matrix before baking so the posed character is not transformed twice; supersedes initial unpublished run."
 }

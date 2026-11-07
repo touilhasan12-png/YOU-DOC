@@ -32,8 +32,8 @@ function poseHand(S,h,side,center,forward,normal,pole,curl=0){
  }
 }
 function bakeCharacter(h){
- h.root.updateWorldMatrix(true,true);const skins=[];h.root.traverse(o=>{if(o.isSkinnedMesh)skins.push(o)});
- for(const skin of skins){skin.skeleton.update();const g=skin.geometry.clone(),p=g.attributes.position,v=V();for(let i=0;i<p.count;i++){skin.applyBoneTransform(i,v.fromBufferAttribute(p,i));p.setXYZ(i,v.x,v.y,v.z);}p.needsUpdate=true;g.deleteAttribute('skinIndex');g.deleteAttribute('skinWeight');g.computeVertexNormals();g.computeBoundingSphere();const fixed=new T.Mesh(g,skin.material);fixed.name='R8_FIXED_'+skin.name;fixed.position.copy(skin.position);fixed.quaternion.copy(skin.quaternion);fixed.scale.copy(skin.scale);fixed.castShadow=skin.castShadow;fixed.receiveShadow=skin.receiveShadow;fixed.frustumCulled=false;skin.parent.add(fixed);skin.parent.remove(skin);}
+ h.root.updateWorldMatrix(true,false);h.root.updateMatrixWorld(true);const skins=[];h.root.traverse(o=>{if(o.isSkinnedMesh)skins.push(o)});
+ for(const skin of skins){skin.updateMatrixWorld(true);if(skin.bindMode==='attached')skin.bindMatrixInverse.copy(skin.matrixWorld).invert();skin.skeleton.update();const g=skin.geometry.clone(),p=g.attributes.position,v=V();for(let i=0;i<p.count;i++){skin.applyBoneTransform(i,v.fromBufferAttribute(p,i));p.setXYZ(i,v.x,v.y,v.z);}p.needsUpdate=true;g.deleteAttribute('skinIndex');g.deleteAttribute('skinWeight');g.computeVertexNormals();g.computeBoundingSphere();const fixed=new T.Mesh(g,skin.material);fixed.name='R8_FIXED_'+skin.name;fixed.position.copy(skin.position);fixed.quaternion.copy(skin.quaternion);fixed.scale.copy(skin.scale);fixed.castShadow=skin.castShadow;fixed.receiveShadow=skin.receiveShadow;fixed.frustumCulled=false;skin.parent.add(fixed);skin.parent.remove(skin);}
  h.root.traverse(o=>{if(o.isBone){o.updateMatrix();o.matrixAutoUpdate=false;}});
  // Future legacy calls cannot undo the fixed pose. Root-only travel is still allowed.
  h.reset=()=>{};h.ik=()=>0;h.grasp=()=>{};h.r8Baked=true;h.r8BakedMeshCount=skins.length;
