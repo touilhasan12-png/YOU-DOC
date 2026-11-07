@@ -1,0 +1,44 @@
+{
+  "edition": "R5",
+  "proof_run": 42353011755,
+  "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16",
+  "status": "contact_system_passed_additional_named_composition_fixes_pending",
+  "actual_geometry": {
+    "surfer_incident": {
+      "frames": 450,
+      "arm_board_flags": 0,
+      "audited_actual_arm_triangles": 26000,
+      "all_reach_errors_below_m": 0.003
+    }
+  },
+  "bounded_calibration": {
+    "previous_failing_instants": 31,
+    "candidates_tested": 2,
+    "both_clear_on_probes": true,
+    "pinned_source_defaults": {
+      "x": 0.47,
+      "poleX": 1.2,
+      "poleY": 0.55
+    },
+    "automatic_native_profile_selection": false
+  },
+  "actually_opened_contact_sheets": [
+    "CONTACT_00",
+    "CONTACT_01",
+    "CONTACT_02",
+    "CONTACT_03",
+    "CONTACT_04",
+    "CONTACT_05"
+  ],
+  "visual_findings": [
+    "Actual surf arms now clear the board in the dense audited clip; full-size encoded viewing still required",
+    "Both waiting orcas now fully framed underwater in separate lanes; sequential choreography retained",
+    "Kelp/terrain/light shafts and liver cutaway are a visible improvement over prior flat generic family",
+    "Canyon background has disconnected wall-edge artifacts; replace with a continuous surface before native generation",
+    "Earlier complete-shot review exposed repeated hunting layouts and a towline detached from the actual mouth; concrete source changes need the new bounded proof",
+    "Human comparison and wild pass need unambiguous projected depth lanes",
+    "No native film, final assembled movie, delivery or final artistic approval exists yet"
+  ],
+  "native_generation_authorized": false,
+  "continuous_subjective_playback_claimed": false
+}
