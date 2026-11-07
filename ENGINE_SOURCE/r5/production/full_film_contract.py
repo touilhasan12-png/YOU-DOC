@@ -34,6 +34,10 @@ def runtime_fingerprint(film_source_sha=None):
  return hashlib.sha256(json.dumps([(str(p.relative_to(R)),film_source_sha if film_source_sha and p==R/'web/film.js' else sha(p)) for p in sorted(files)],separators=(',',':')).encode()).hexdigest()
 def validate_units(directory,review):
  rows=plan();fingerprint=runtime_fingerprint();review=json.loads(review.read_text())
+ from correction_contract import validate
+ compatibility=validate();recovery=json.loads((R/'production/RECOVERY_RENDER_REQUEST.json').read_text());expected_sources=review['expected_unit_sources']
+ assert set(expected_sources)=={r['key'] for r in rows}
+ assert review['exact_source_compatibility']==compatibility and compatibility['corrected_runtime_fingerprint']==fingerprint
  assert review['edition']=='R5' and review['runtime_fingerprint']==fingerprint
  assert review['all_93_shots_visually_reviewed'] is True
  assert review['scope']=='complete_new_picture' and review['status']=='approved_for_assembly'
@@ -59,7 +63,13 @@ def validate_units(directory,review):
  hashes=set()
  for row in rows:
   d=by[row['key']]
-  assert d['edition']=='R5' and d['source_runtime_fingerprint']==fingerprint
+  assert d['edition']=='R5'
+  is_recovered=row['key'] in recovery['selected_keys']
+  expected_fp=fingerprint if is_recovered else compatibility['base_runtime_fingerprint']
+  assert d['source_runtime_fingerprint']==expected_fp
+  assert {k:d[k] for k in ['github_run_id','source_commit','source_runtime_fingerprint','video_sha256']}==expected_sources[row['key']]
+  assert str(d['github_run_id'])==str(review['recovery_native_run_id'] if is_recovered else recovery['base_native_run_id'])
+  assert d['source_commit']==(review['recovery_source_commit'] if is_recovered else recovery['base_source_commit'])
   assert d['new_native_picture'] is True and d['prior_edition_unit_reused'] is False
   assert d['executed_on']=='GitHub Actions' and d['github_run_id'] and d['source_commit']
   assert d['rendered_key']==row['key'] and d['width']==1920 and d['height']==1080 and d['fps']==24
@@ -69,7 +79,7 @@ def validate_units(directory,review):
   assert video.exists() and video.stat().st_size==d['video_bytes']
   digest=sha(video);assert digest==d['video_sha256'] and digest not in hashes
   hashes.add(digest)
- return {'edition':'R5','unit_count':93,'new_picture_frames':15969,'duration_seconds':665.375,'old_encoded_units_used':0,'runtime_fingerprint':fingerprint,'script_sha256':SCRIPT_SHA,'required_audio_payload_sha256':AUDIO_PAYLOAD_SHA,'scope':'Validated receipts and the explicitly separate internal review record; actual subjective quality remains the responsibility of that review.'}
+ return {'edition':'R5','unit_count':93,'new_picture_frames':15969,'duration_seconds':665.375,'old_encoded_units_used':0,'runtime_fingerprint':fingerprint,'source_runtime_fingerprints_used':sorted({d['source_runtime_fingerprint'] for d in by.values()}),'per_key_native_provenance':expected_sources,'exact_source_compatibility':compatibility,'script_sha256':SCRIPT_SHA,'required_audio_payload_sha256':AUDIO_PAYLOAD_SHA,'scope':'Validated receipts and the explicitly separate internal review record; actual subjective quality remains the responsibility of that review.'}
 if __name__=='__main__':
  ap=argparse.ArgumentParser();ap.add_argument('--units',type=Path);ap.add_argument('--review',type=Path);args=ap.parse_args()
  if args.units:

@@ -16,5 +16,7 @@ for f in x.destination.glob('*.json'):
  r=json.loads(f.read_text())
  if r.get('schema')=='R5-new-picture-v1':receipts.append(r)
 assert len(receipts)==93 and len({r['key'] for r in receipts})==93,'All 93 fresh unit receipts required'
-assert len({r['github_run_id'] for r in receipts})==1 and len({r['source_runtime_fingerprint'] for r in receipts})==1
+request=json.loads(Path('ENGINE_SOURCE/r5/production/RECOVERY_RENDER_REQUEST.json').read_text())
+assert {r['source_runtime_fingerprint'] for r in receipts}=={request['base_runtime_fingerprint'],request['runtime_fingerprint']}
+assert sum(r['source_runtime_fingerprint']==request['runtime_fingerprint'] for r in receipts)==len(request['selected_keys'])
 print('Merged actual 93-unit native evidence. No artistic approval inferred.')
