@@ -1,0 +1,15 @@
+// Actual production captures only. Never analyzes or samples any existing movie.
+import fs from 'node:fs';import path from 'node:path';import http from 'node:http';import {once} from 'node:events';import {spawn} from 'node:child_process';import {chromium} from '../three_engine/node_modules/playwright/index.mjs';
+if(process.env.GITHUB_ACTIONS!=='true')throw Error('All rendering must run on GitHub Actions');
+const root=path.resolve('ENGINE_SOURCE/r10'),q=JSON.parse(fs.readFileSync(path.join(root,'REQUEST.json'))),worker=Number(process.argv[2]);
+const rows=q.shots.filter(r=>r.mode==='new_vector_puppet_2_5D'&&r.worker===worker).sort((a,b)=>a.id-b.id);fs.mkdirSync('R10_UNITS',{recursive:true});
+const server=http.createServer((req,res)=>{let u=decodeURIComponent(req.url.split('?')[0]),base=root,f;if(u==='/')f=path.join(root,'web/index.html');else if(u==='/vector.js')f=path.join(root,'web/vector.js');else if(u.startsWith('/fonts/')){base=path.resolve('ENGINE_SOURCE/fonts');f=path.resolve(base,u.slice(7))}else f=path.resolve(root,'.'+u);if(!f.startsWith(base+path.sep)||!fs.existsSync(f)){res.writeHead(404);res.end();return}res.setHeader('Content-Type',({'.html':'text/html','.js':'text/javascript','.json':'application/json','.ttf':'font/ttf'})[path.extname(f)]||'application/octet-stream');fs.createReadStream(f).pipe(res)});server.listen(0,'0.0.0.0');await once(server,'listening');
+const browser=await chromium.launch({headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+try{const page=await browser.newPage({viewport:{width:1920,height:1080},deviceScaleFactor:1});page.on('pageerror',e=>console.error('Production page error',e.message));await page.goto('http://127.0.0.1:'+server.address().port);await page.waitForFunction(()=>window.R10ready===true,null,{timeout:90000});
+const keys=await page.evaluate(()=>window.coverage());for(const r of rows)if(!keys.includes(r.key)||q.locked_keys.includes(r.key))throw Error('Refusing unimplemented/protected scene '+r.key);
+for(const r of rows){await page.evaluate(r=>window.configure(r),r);const dest='R10_UNITS/'+String(r.id).padStart(3,'0')+'_'+r.key+'.mp4';
+const ff=spawn(process.env.FFMPEG_EXE,['-y','-v','error','-f','image2pipe','-framerate','24','-c:v','png','-i','pipe:0','-an','-c:v','libx264','-preset','fast','-crf','17','-threads','1','-pix_fmt','yuv420p','-video_track_timescale','12288','-frames:v',String(r.encoded_frames),dest],{stdio:['pipe','inherit','inherit']});let error;ff.stdin.on('error',e=>error=e);const done=once(ff,'exit');
+for(let n=0;n<r.encoded_frames;n++){const global=(r.frame_start+n)/24;await page.evaluate(([t,global])=>window.draw(t,global),[global-r.start,global]);const png=await page.screenshot({type:'png',animations:'disabled'});if(error)throw error;if(!ff.stdin.write(png))await once(ff.stdin,'drain')}
+ff.stdin.end();const [code]=await done;if(code!==0)throw Error('Encoder failed '+r.key);console.log('PRODUCED',r.id,r.key,r.encoded_frames,'native frames');
+}
+}finally{await browser.close();server.close()}

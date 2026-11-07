@@ -1,0 +1,77 @@
+name: R10 — vector puppet 2.5D with ten protected inserts
+on:
+  push:
+    branches: [r10-vector-puppet-restyle]
+    paths: [ENGINE_SOURCE/r10/REQUEST.json]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: r10-vector-puppet-restyle
+  cancel-in-progress: false
+jobs:
+  vector-puppet-production:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        worker: [0, 1, 2, 3, 4, 5]
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: ENGINE_SOURCE/three_engine/package-lock.json
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ubuntu24-playwright-1.48.2
+      - name: Install vector production runtime
+        working-directory: ENGINE_SOURCE/three_engine
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Produce native Full HD vector cutout and puppet scenes only
+        run: |
+          python -m pip install imageio-ffmpeg==0.6.0
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node ENGINE_SOURCE/r10/render_vector.mjs "${{ matrix.worker }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r10-vector-worker-${{ matrix.worker }}
+          path: R10_UNITS/*.mp4
+          if-no-files-found: error
+          retention-days: 30
+  preserve-ten-and-deliver:
+    needs: vector-puppet-production
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: r10-vector-worker-*
+          merge-multiple: true
+          path: R10_UNITS
+      - name: Install editing runtime
+        run: python -m pip install requests==2.32.3 imageio-ffmpeg==0.6.0 CairoSVG==2.7.1
+      - name: Export original resolution-independent SVG source artwork
+        run: python ENGINE_SOURCE/r10/export_vectors.py
+      - name: Preserve all ten R9 intervals and licensed footage; assemble new vector film; copy complete R9 audio
+        run: python ENGINE_SOURCE/r10/assemble_r10.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r10-vector-puppet-full-film
+          path: R10_DELIVERY/
+          if-no-files-found: error
+          retention-days: 30
