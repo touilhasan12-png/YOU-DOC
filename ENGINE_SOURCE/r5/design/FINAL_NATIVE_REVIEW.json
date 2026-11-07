@@ -1,0 +1,1181 @@
+{
+  "edition": "R5",
+  "scope": "complete_new_picture",
+  "status": "approved_for_assembly",
+  "runtime_fingerprint": "b9f8cd9af029fde742e0784126f23c03aff85d1fa4f19b1003122e0a3e6745f2",
+  "all_93_shots_visually_reviewed": true,
+  "reviewed_keys": [
+    "canyon_deck",
+    "canyon_depth",
+    "blue_surface",
+    "blue_scale",
+    "hunt_rotation",
+    "canyon_exit",
+    "hunt_jaw",
+    "meal_exclusion",
+    "wild_human",
+    "decision_gaze",
+    "taxonomy",
+    "male_dimensions",
+    "mass_comparison",
+    "dentition",
+    "speed_tracking",
+    "hardware_software",
+    "pacific_ecotypes",
+    "resident_salmon",
+    "biggs_silence",
+    "tagged_alaska",
+    "listening_dark",
+    "fish_hearing",
+    "mammal_hearing",
+    "matriarch",
+    "scarcity_habitat",
+    "learning_observation",
+    "knowledge_bridge",
+    "seal_floe",
+    "seven_formation",
+    "floe_wave",
+    "floe_denial",
+    "seal_capture",
+    "patagonia_pup",
+    "patagonia_roll",
+    "patagonia_strand",
+    "patagonia_grab",
+    "patagonia_learning",
+    "tide_window",
+    "stranding_risk",
+    "white_shark",
+    "farallon_evidence",
+    "shark_departure",
+    "season_absence",
+    "port_starboard",
+    "shark_liver",
+    "sightings_change",
+    "blue_cases",
+    "blue_relays",
+    "young_victims",
+    "adult_victim",
+    "learned_strategy",
+    "twofold_arrival",
+    "whaler_view",
+    "whaling_cooperation",
+    "law_tongue",
+    "old_tom_intro",
+    "partnership_decline",
+    "tow_rope",
+    "worn_teeth",
+    "old_tom_end",
+    "surfer_incident",
+    "diver_entanglement",
+    "wild_record",
+    "captivity_context",
+    "iberian_region",
+    "yacht_stern",
+    "interaction_counts",
+    "iberian_population",
+    "rudder_detaches",
+    "helm_response",
+    "lisbon_context",
+    "five_rescued",
+    "hypothesis_play",
+    "hypothesis_imitation",
+    "human_not_target",
+    "open_water_pov",
+    "swim_comparison",
+    "ice_option",
+    "boat_option",
+    "power_option",
+    "distance_rule",
+    "wildlife_distance",
+    "boring_release",
+    "vulnerability",
+    "ecology_place",
+    "bronze_replacement",
+    "food_web_response",
+    "ocean_role",
+    "canyon_return",
+    "teamwork_final",
+    "plans_final",
+    "opinion_release",
+    "natural_outro"
+  ],
+  "continuous_subjective_playback_claimed": false,
+  "technical_checks_are_not_artistic_approval": true,
+  "critical_motion_evidence": {
+    "diver_entanglement": {
+      "scope": "dense_actual_encoded_samples_plus_every_frame_geometry",
+      "geometry_frames_checked": 212,
+      "geometry_failure_count": 0,
+      "reviewed_encoded_sample_frames": [
+        0,
+        38,
+        80,
+        124,
+        167,
+        211
+      ],
+      "reviewer_visual_notes": "Six actual encoded poses show a rigged freediver without tank, arm reaching the real line and separate pectoral/animal space; accident/entanglement context is explicit, not an intentional attack."
+    },
+    "floe_wave": {
+      "scope": "dense_actual_encoded_samples_plus_every_frame_geometry",
+      "geometry_frames_checked": 119,
+      "geometry_failure_count": 0,
+      "reviewed_encoded_sample_frames": [
+        0,
+        21,
+        45,
+        70,
+        93,
+        118
+      ],
+      "reviewer_visual_notes": "Six actual encoded stages show approach, crest, ice tilt and seal leaving the slab rather than passing through solid ice. Ocean/reflection and floe continuity are retained."
+    },
+    "helm_response": {
+      "scope": "dense_actual_encoded_samples_plus_every_frame_geometry",
+      "geometry_frames_checked": 127,
+      "geometry_failure_count": 0,
+      "reviewed_encoded_sample_frames": [
+        0,
+        23,
+        48,
+        74,
+        100,
+        126
+      ],
+      "reviewer_visual_notes": "Six native poses show anatomically bent arms and hands retaining the turning wheel, feet on deck, no visible arm/wheel penetration in reviewed poses; ocean and railing remain coherent."
+    },
+    "hypothesis_imitation": {
+      "scope": "dense_actual_encoded_samples_plus_every_frame_geometry",
+      "geometry_frames_checked": 252,
+      "geometry_failure_count": 0,
+      "reviewed_encoded_sample_frames": [
+        0,
+        45,
+        95,
+        148,
+        198,
+        251
+      ],
+      "reviewer_visual_notes": "Six actual encoded stages show sequential roll and response with separate body lanes and readable stern geometry; no blocking sampled overlap seen."
+    },
+    "hypothesis_play": {
+      "scope": "dense_actual_encoded_samples_plus_every_frame_geometry",
+      "geometry_frames_checked": 284,
+      "geometry_failure_count": 0,
+      "reviewed_encoded_sample_frames": [
+        0,
+        51,
+        108,
+        167,
+        224,
+        283
+      ],
+      "reviewer_visual_notes": "Six actual encoded stages show one visiting animal at a time with the second in a separate lane; roll/approach/withdrawal and imitation remain coherent. Motive labeled proposed/unproven."
+    },
+    "patagonia_strand": {
+      "scope": "dense_actual_encoded_samples_plus_every_frame_geometry",
+      "geometry_frames_checked": 60,
+      "geometry_failure_count": 0,
+      "reviewed_encoded_sample_frames": [
+        0,
+        11,
+        22,
+        35,
+        47,
+        59
+      ],
+      "reviewer_visual_notes": "Six actual native stages show controlled flank roll, shallow supported stranding and return with distinct pup on shore. Inspection does not imply universal fin/terrain collision certification."
+    },
+    "rudder_detaches": {
+      "scope": "dense_actual_encoded_samples_plus_every_frame_geometry",
+      "geometry_frames_checked": 200,
+      "geometry_failure_count": 0,
+      "reviewed_encoded_sample_frames": [
+        0,
+        36,
+        76,
+        117,
+        157,
+        199
+      ],
+      "reviewer_visual_notes": "Six actual native stages show approved roll, grip, withdrawal, unroll and detached sinking blade. Boat/keel/rudder continuity holds; implemented tooth/jaw checks remain clear."
+    },
+    "seal_capture": {
+      "scope": "dense_actual_encoded_samples_plus_every_frame_geometry",
+      "geometry_frames_checked": 51,
+      "geometry_failure_count": 0,
+      "reviewed_encoded_sample_frames": [
+        0,
+        9,
+        19,
+        30,
+        40,
+        50
+      ],
+      "reviewer_visual_notes": "Original failed approach was explicitly rejected. Corrected contact0/19/50 and full-size9/30/40 were all actually viewed. Paired hind flippers reach the jaw, remain gripped during gentle pull, and stay below and clear of the floe; actual mesh-derived contact enforced over hold frames."
+    },
+    "surfer_incident": {
+      "scope": "dense_actual_encoded_samples_plus_every_frame_geometry",
+      "geometry_frames_checked": 450,
+      "geometry_failure_count": 0,
+      "reviewed_encoded_sample_frames": [
+        0,
+        81,
+        171,
+        265,
+        355,
+        449
+      ],
+      "reviewer_visual_notes": "Six actual encoded poses and full-size265 were viewed. Forearms/hands remain outside the board during paddle/recovery. All450 implemented actual-frame checks pass with exact26000 triangles, without relaxing tolerance."
+    },
+    "swim_comparison": {
+      "scope": "dense_actual_encoded_samples_plus_every_frame_geometry",
+      "geometry_frames_checked": 165,
+      "geometry_failure_count": 0,
+      "reviewed_encoded_sample_frames": [
+        0,
+        30,
+        62,
+        97,
+        130,
+        164
+      ],
+      "reviewer_visual_notes": "Six encoded stages and full-size97 viewed. Physically smaller human and larger orca occupy separate lanes; 0.80s clock/quarter-speed disclosure and14 versus2.5m/s labels are legible; no projected body overlap."
+    },
+    "whaler_view": {
+      "scope": "dense_actual_encoded_samples_plus_every_frame_geometry",
+      "geometry_frames_checked": 85,
+      "geometry_failure_count": 0,
+      "reviewed_encoded_sample_frames": [
+        0,
+        15,
+        32,
+        50,
+        66,
+        84
+      ],
+      "reviewer_visual_notes": "Six actual encoded stages plus full-size50 viewed. Three licensed rigged rowers visibly articulate arms with hands on oars; blades and hull remain separated over moving reflective water."
+    }
+  },
+  "expected_unit_sources": {
+    "learning_observation": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "adc879cfa85801b3023499be6cc25406bde7668ecd2285ba7aba38d1a8d3fed4"
+    },
+    "hypothesis_imitation": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "61bf02c7a139f2ef0c41992c7c43448e6bde16cc0776bd4aaa96f8f331b12bf3"
+    },
+    "diver_entanglement": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "b14ec3146d4cd046fd72169fa34c9b31128ba1d20a85a3d21857d11e66824c01"
+    },
+    "old_tom_intro": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "989dde1e03528466d5a0a292fe1a7e04ea339ce23f9042a681a33755a6816197"
+    },
+    "tagged_alaska": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "e3a72dc3b3c449b3afff1283f2ec3772613cba16acc7cbd21b0ebe2b6c0812d2"
+    },
+    "canyon_depth": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "8a87a8536dfa420fb5035fb1ea53aff67453daf76253f9e1d6f8b98cc31fa614"
+    },
+    "dentition": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "c588973581447f6b0b2bca94ab1408864910ad5b853e6a09a30fdd5207c60349"
+    },
+    "meal_exclusion": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "c811c9aae02a764ede22983a717c3fb934828db61842df37f970590ff7d85c5e"
+    },
+    "opinion_release": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "09ebed03dc039550e3c6745da53181f18828c347f55893891b2dfa933f7ee814"
+    },
+    "power_option": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "a713e3d38afaf4f8028785c515183dd522f426609427f6fbde1e1773864882e9"
+    },
+    "tide_window": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "2fd8fbdd61ad1f17fd9f75c76b611436ec5dd70cd0895d9cf0c4c330efbd6104"
+    },
+    "iberian_population": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "2a2cbef13c9bed968c729078e574f8becde35b4d58b183bb92f2d69886162470"
+    },
+    "port_starboard": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "07bcdc5634d6aeb9922e871feee3a7574b3ae186b68fa9bb79ec397c9b46fef6"
+    },
+    "adult_victim": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "88d93b2ac16b6fc9af4689211773fc6e7133917ea242411337e5dca0dfc74ce3"
+    },
+    "bronze_replacement": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "481598b7c54a7867e65e715e67cb122fb74c9314df6a55650ffd91d9a44b0b84"
+    },
+    "wild_human": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "6f1ae514ff61c7aa7ff7e98bf662967e663bde196e57fc5a32c515b4af64953d"
+    },
+    "natural_outro": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "cfc1e1da7f8a48264a5a7364a25cb267371f67a09ae641e57fa464c2be6e49a8"
+    },
+    "speed_tracking": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "921a6ecc671b77592ac7515543d63b25cc0d593124fc461ce757c2f6c345b325"
+    },
+    "shark_liver": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "7ffd2c08b8d84f2d3cd6224061e28c9acd9c36e193ee65dacb45f8c28bc953f3"
+    },
+    "knowledge_bridge": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "7ec114ae85d14f1185ce0f7915d95d24c9f37e019c8c630c8f0f73519871b27d"
+    },
+    "distance_rule": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "fccfb21c262be3a73559d4a64707e73ad9e008d57b76ae9a569c3cdd98c3d04c"
+    },
+    "food_web_response": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "c612186855882f91a30cf082079d21d1e4fbf4551db0e59a997d1b5aa2d81477"
+    },
+    "patagonia_pup": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "e55a04ac5697888df4551af6ca1160bbbac9de35d72ea42cd12b30d7fee963ad"
+    },
+    "wild_record": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "7423ab4b290467965206030a138286118c8066646d9d10ed118ff1bbbc23cf49"
+    },
+    "blue_surface": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "9d92d5efca4c39f3981220eb4644c604873e505184b4ee1ae1257b529cf6eaef"
+    },
+    "stranding_risk": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "9214877680ce771d116478a12f8f102f3a411bcbfab019249c62a02d744d00b9"
+    },
+    "rudder_detaches": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "5399c31324d3a8c7bdd36c8722a8b40b535aa90e57cee35e098f225c77008841"
+    },
+    "listening_dark": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "82a6199a38bee9af0dd790d3c3f6c4b9863bd3821077d62942e2de6ef7652a58"
+    },
+    "learned_strategy": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "09752af3731cad5bd5f164db0c5dbfb96febbd14b24835381bc3c6ab00b343a8"
+    },
+    "partnership_decline": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "9e985dcddeb68a60fb2e627cb7d2eab1d1435d53a7218372d46fa3a9a0a7a9e7"
+    },
+    "human_not_target": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "2e5c076c449d98806a2f870d96f3cf632823a0cecfe2ff5fecc65605a5629bbc"
+    },
+    "decision_gaze": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "a4a47fd9f8fe1864a7926f10546ecc635d1a737e683951fb88f843d607d89ac5"
+    },
+    "blue_scale": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "57e5e53ba231d2f27f5575515413aff58724ec7f3419c14fa5bba91b55deed25"
+    },
+    "ocean_role": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "0d87f8214a6275f8d52f95fd97939ce582c44773bd69ba998e338c4b3598a41f"
+    },
+    "white_shark": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "b732418956a5f4306c75ffd9ea17b645ba88b73328bc93780127f5a0713e6f3f"
+    },
+    "fish_hearing": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "fd1f7a57e3f807ac188f1a60cf43fd624a027dc65f3812540d1a46f993490615"
+    },
+    "hardware_software": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "9a0abbf8b246cc954b5d4b4cf3e74f20ac9daedc078a2f89a9c2aa04fe00d785"
+    },
+    "captivity_context": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "66b2e60961e57d49b8af96964efdf90350fa8757319003c8af17dcb98d346def"
+    },
+    "helm_response": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "986ee03ba4eac6bb921fa836e048febe2e0b7bafb1dcfdcc62d6ffc817a80a0f"
+    },
+    "sightings_change": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "74628cc2e5773e7dbfe11dd0c5a6690acf4040a23ed635584b51a6f1e8da8cc9"
+    },
+    "patagonia_roll": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "d7739aac00b871999a7e1486fb5b1d2088c441be4bb6764330093b7dd1614262"
+    },
+    "tow_rope": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "96435f724c85e4111e4d31202d14a22db26f59688a86c365fa464f29c3784856"
+    },
+    "seal_floe": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "b5fa77b301549f729970faaca546a92c2f45f67ff2dead7c9876a2ef36e31b6f"
+    },
+    "open_water_pov": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "e94752f9f786c4b5deea750ca0f7e1afe59a0ab02306deb91ed1b520d6978c44"
+    },
+    "wildlife_distance": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "226a5321e6e574310779b68a79828f6f4120b5fcc894eff623a372f389be49d6"
+    },
+    "twofold_arrival": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "d61d4f4b04436382cefe5f17708fda7ada72415b47a0222f9bd16ffb2680bb47"
+    },
+    "iberian_region": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "2db8dc1a66381ad114af363382685fed190446d0c5eb757193f2adb18c83505e"
+    },
+    "seven_formation": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "41eb74e720753b3d126c5eae6945d1d944634540f89b1fadbceedd0bfb86e3a2"
+    },
+    "canyon_return": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "e6eab396a0bc95fdc657484daf44510fc7b251732cca51f917373fe81ff3684b"
+    },
+    "swim_comparison": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "666fb40b1955c1e5a42bba17bf58af4b52c9258e77ce86276ec19fb562d13a3f"
+    },
+    "pacific_ecotypes": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "57a1adfa7c6114ad4767f79d39f914dda22b4aefff8fdc39d90969fa04f595ea"
+    },
+    "lisbon_context": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "ee4425823acb914cd746a824776c91b14e428c48de47dfbe1a00647c26d543c3"
+    },
+    "boring_release": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "012038985bcaa51291e8edd020f5af20a49b83f5e47689d73bccafdbf85d2068"
+    },
+    "farallon_evidence": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "bfafc9becedc1da36615d14ffbcf63b23ff384083f00a878e5e75b10d1d6c591"
+    },
+    "patagonia_strand": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "389db6ac850c6fda091a103470fe106779e6bdf9bbf6ef6f89fe19c55279e4f8"
+    },
+    "blue_cases": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "2bb69a46725d070abe3604c00f0d1debb8a29c4930c30355f6ec8ed4df98e77d"
+    },
+    "whaler_view": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "c937ef2b5c8af931be300410f26ce1a233cc432f52439febb3ca53e6610c05dc"
+    },
+    "hunt_rotation": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "e7974c19e35205240c365b510e29a1c53cb1aabd75bdfc9c7fff40b70900d7aa"
+    },
+    "mammal_hearing": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "b8356f176b50f933af1b9bb0315b2b75f38414037675e24c2e5210bd6723487a"
+    },
+    "worn_teeth": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "89018b39d3a7f837011307e85d7f462dd4c2051a7c58abaee640861c13a096fd"
+    },
+    "taxonomy": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "3f31bd8e1f676ae66303334dffda3a5f89ee73fad55814987dd5b80b99ebbe0c"
+    },
+    "floe_wave": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "d7bf6405b276a078ada9e6ca26d58f76b3848eec4d283d0325280a5b9fd922e5"
+    },
+    "patagonia_grab": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "d9f0710f020a516d3e1ae3cbc428290fbf72a06a88651fc135aa580b0a1080cf"
+    },
+    "canyon_exit": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "e10073a8ec658ca61c249fa17bdb39d87a66fd01e0e8eff596ce60b95f4bd6d6"
+    },
+    "shark_departure": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "56b5461fb63f5fe36a70151b96ad480feb727c6823186242160a178289197536"
+    },
+    "whaling_cooperation": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "f8aec0d10ae5d311e988974816fc9a3411164ed1bdeca8722b367ec53b225ba1"
+    },
+    "five_rescued": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "fd9b2c49a0e4e4e7db400a6bd87f584324fe2ae63339f4c744e7fa1035348894"
+    },
+    "vulnerability": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "7cb8290c0a40ebacf2b3ac4f03a5b4ccebcc5535009d1fad5e1435a5b129ac95"
+    },
+    "male_dimensions": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "aded08ca1969f1b1635ea5f84472df1ca46ad6745cea69473a7a9c0d7a2070b1"
+    },
+    "old_tom_end": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "55540ff634d7f2580856034556c16be18305d7d27080915df9c2ad5227005cb5"
+    },
+    "teamwork_final": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "377088825e3d4b266929b624298e8d99331af845519f73a5caf794d10b2cfc81"
+    },
+    "blue_relays": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "45032cae1fb3e6f7fce5202ba78331a7d33cd46e6e6c89c69e46a0f67bb60530"
+    },
+    "resident_salmon": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "bf6e62d1088c01a8efb3b0a6fe9e6e159ca94e4276db688ac79652064ca1d799"
+    },
+    "ice_option": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "24e0cedeaf214db7f7832b7653e59214fb75920ae37524b0273dce9a2a4099c8"
+    },
+    "matriarch": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "71a2eb3eaa156b621237153b2f521c895a0680b32ca8e5334bb65c6471d51bc0"
+    },
+    "yacht_stern": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "ae37ee0b9cbbfcc737737a5ee062894a1ddf1738eea7a899e8784583651f33a6"
+    },
+    "canyon_deck": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "24f6b93b1614c5047f7bb7c302552966e7be10fd1bba45112ab197d25bf80b69"
+    },
+    "biggs_silence": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "6ca69081a012eb0e189f69f7785bfff8f0cc6e823a678632a39cd902794e1276"
+    },
+    "patagonia_learning": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "9e37fee8b223054da1a9ba18eb095e5dbd039612808ba40f5239a6dd87e2234f"
+    },
+    "hunt_jaw": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "2cbbc1a09f1784df5afa6c56ec7f20f6a2fe890153b055ac8e8d9148d1257f76"
+    },
+    "scarcity_habitat": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "7bf592876645a1ace12f8704dfb6906cad4fbbd15d2382f3e797eef12bd1a8e6"
+    },
+    "law_tongue": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "814c0ae8e9da9a3bb4d3e7e550053762c5e44172207c31aefc88e28e8bbece26"
+    },
+    "floe_denial": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "1ba645423a8fbd87cae760aa7822e35a602b3009bfb5526812ebd12cc8dac49d"
+    },
+    "young_victims": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "08d16c7c9ec8a45040dea13c293c60bb2462eab9d0f6236728303c00f2cfd599"
+    },
+    "mass_comparison": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "a5aab2dfa88c8f2ca9a1b7277f5c7fc3af0aa2c0b7ca153f42a146c92c2af845"
+    },
+    "season_absence": {
+      "github_run_id": "42355077797",
+      "source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+      "source_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+      "video_sha256": "e853185ff5403195a39b6b787449b7b5a634eac0a22e60c9d3756e0a15835392"
+    },
+    "seal_capture": {
+      "github_run_id": "42358790718",
+      "source_commit": "c7a92b7dae903078f7ad68f469390ecb80677804",
+      "source_runtime_fingerprint": "b9f8cd9af029fde742e0784126f23c03aff85d1fa4f19b1003122e0a3e6745f2",
+      "video_sha256": "fd58deb57fddb402283b85f709deca633cdf79af3395efd5d2969030695f345d"
+    },
+    "boat_option": {
+      "github_run_id": "42358790718",
+      "source_commit": "c7a92b7dae903078f7ad68f469390ecb80677804",
+      "source_runtime_fingerprint": "b9f8cd9af029fde742e0784126f23c03aff85d1fa4f19b1003122e0a3e6745f2",
+      "video_sha256": "fb4948a6dfe95252e20e67fb1dd13a1e355dfeaa525e446497e0bb01a15ad07d"
+    },
+    "surfer_incident": {
+      "github_run_id": "42358790718",
+      "source_commit": "c7a92b7dae903078f7ad68f469390ecb80677804",
+      "source_runtime_fingerprint": "b9f8cd9af029fde742e0784126f23c03aff85d1fa4f19b1003122e0a3e6745f2",
+      "video_sha256": "39db00dbf2618948a05756ba2dce88b1020b18103c7c0b501ff7af575ecc7336"
+    },
+    "ecology_place": {
+      "github_run_id": "42358790718",
+      "source_commit": "c7a92b7dae903078f7ad68f469390ecb80677804",
+      "source_runtime_fingerprint": "b9f8cd9af029fde742e0784126f23c03aff85d1fa4f19b1003122e0a3e6745f2",
+      "video_sha256": "ac3592ad64780ba8548ec6cc81f9c8347f55b0dbeae6e7c0a79fb1bb73737512"
+    },
+    "interaction_counts": {
+      "github_run_id": "42358790718",
+      "source_commit": "c7a92b7dae903078f7ad68f469390ecb80677804",
+      "source_runtime_fingerprint": "b9f8cd9af029fde742e0784126f23c03aff85d1fa4f19b1003122e0a3e6745f2",
+      "video_sha256": "deafaddfc1af8441153c0abb1d4e32512bf4c2d9dfe937b34a1e246b54f622e1"
+    },
+    "plans_final": {
+      "github_run_id": "42358790718",
+      "source_commit": "c7a92b7dae903078f7ad68f469390ecb80677804",
+      "source_runtime_fingerprint": "b9f8cd9af029fde742e0784126f23c03aff85d1fa4f19b1003122e0a3e6745f2",
+      "video_sha256": "0f5314af06392e320e6537367d3ffc5648aa282c3bea73374529ecc121514a51"
+    },
+    "hypothesis_play": {
+      "github_run_id": "42358790718",
+      "source_commit": "c7a92b7dae903078f7ad68f469390ecb80677804",
+      "source_runtime_fingerprint": "b9f8cd9af029fde742e0784126f23c03aff85d1fa4f19b1003122e0a3e6745f2",
+      "video_sha256": "be7ff571d841e3b98f3d056c96f840b7997d1d19210a6f1515a3f004436afb87"
+    }
+  },
+  "exact_source_compatibility": {
+    "base_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+    "corrected_runtime_fingerprint": "b9f8cd9af029fde742e0784126f23c03aff85d1fa4f19b1003122e0a3e6745f2",
+    "only_changed_picture_key": "seal_capture",
+    "exact_unchanged_other_runtime_and_asset_bytes": true,
+    "artistic_approval": false
+  },
+  "base_native_run_id": 42355077797,
+  "recovery_native_run_id": 42358790718,
+  "recovery_source_commit": "c7a92b7dae903078f7ad68f469390ecb80677804",
+  "preserved_completed_new_R5_units": 86,
+  "bounded_recovery_new_units": 7,
+  "prior_edition_picture_units_used": 0,
+  "source_scope": "Every picture was newly generated for the full R5 rebuild. Five complete original shards and ten intact interrupted-shard units were preserved; the rejected new R5 seal unit was replaced, six missing units completed. This is not the rejected R4 ten-shot patch or old-picture fallback.",
+  "visual_review_method": "Internal assistant actually opened encoded contact sheets for all93 compositions; six actual encoded stages for all11 critical actions, and selected full-size frames. Not uninterrupted subjective playback or an external human approval.",
+  "observations_and_actually_opened_evidence": {
+    "4": {
+      "unit_keys": [
+        "blue_cases",
+        "boring_release",
+        "canyon_return",
+        "farallon_evidence",
+        "hunt_rotation",
+        "iberian_region",
+        "lisbon_context",
+        "mammal_hearing",
+        "pacific_ecotypes",
+        "patagonia_strand",
+        "seven_formation",
+        "swim_comparison",
+        "taxonomy",
+        "whaler_view",
+        "worn_teeth"
+      ],
+      "actually_opened_files": [
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-4/ENCODED_CONTACT_00.jpg",
+          "sha256": "cf7b2c76bc0f701fcdbafa21a0f2df607019f9155f2cdb1f59d10d3e3aeaa6c4"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-4/ENCODED_CONTACT_01.jpg",
+          "sha256": "de8617fd477bd16c1aadb76b96039f9530fabd2109c6175835188b14bed3ad07"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-4/ENCODED_CONTACT_02.jpg",
+          "sha256": "996fdc79194073076b63ac99d07c4b0406b778e3ceb00d58d13d8fdd9efe5b73"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-4/ENCODED_CONTACT_03.jpg",
+          "sha256": "d8c9a841fab6f67f069308dcb75536c5b3d0b352013fcca910896f53c86751bd"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-4/ENCODED_CONTACT_04.jpg",
+          "sha256": "072a795a58a2f56d2be1ba9976ed3ebc223f13d236a39ddbc0fb749701da4571"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-4/whaler_view_ENCODED_50.jpg",
+          "sha256": "f989a6bf8e2af2ccf362065c24a9ae8458ed958ac65acd53cb9e8627df9a5889"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-4/swim_comparison_ENCODED_97.jpg",
+          "sha256": "f5404f6db46b7dea6c8a321e6f5c4cf39b771c1f5873a189a59bdfc27d1cced7"
+        }
+      ],
+      "observations": "Viewed all five actual encoded contacts (54 sampled pictures across 15 compositions), including six stages each for stranding, swimmer comparison and whaler. Also opened full-size whaler frame50 and swim frame97. Licensed rigged cast, separated hands/oars/boat, reflective moving ocean, readable timed comparison with separate lanes, coherent canyon wall and differentiated maps/chronology. Stylized reconstruction, not live action. No blocking sampled-frame issue observed. Human in comparison is deliberately physically smaller and darker than orca; both lane labels legible at full size.",
+      "continuous_subjective_playback_claimed": false
+    },
+    "1": {
+      "unit_keys": [
+        "adult_victim",
+        "bronze_replacement",
+        "canyon_depth",
+        "dentition",
+        "diver_entanglement",
+        "hypothesis_imitation",
+        "iberian_population",
+        "learning_observation",
+        "meal_exclusion",
+        "old_tom_intro",
+        "opinion_release",
+        "port_starboard",
+        "power_option",
+        "seal_capture",
+        "tagged_alaska",
+        "tide_window"
+      ],
+      "actually_opened_files": [
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-1/ENCODED_CONTACT_00.jpg",
+          "sha256": "ede9118b2f6903ab8dfa31285d9fb1569737861a0e9fea047c3f521acd0ede02"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-1/ENCODED_CONTACT_01.jpg",
+          "sha256": "d246f4b7f9d6ae41f777dc2c14d350496a40a023bc260a8a894c0ae4f5b0c8c7"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-1/ENCODED_CONTACT_02.jpg",
+          "sha256": "50d5364b34f32573b54c024fcffab08c952fb06d4bde328a6fd0d270f789c71d"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-1/ENCODED_CONTACT_03.jpg",
+          "sha256": "aa8ad8a693dacb03635f540e01141a9c862ee7fc7ee06abcd7768d9367c92eaa"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-1/ENCODED_CONTACT_04.jpg",
+          "sha256": "e8f63cb5668ea8506b1c4e93a47e90d11b90769b91bdc83ef3f9ca019dff4370"
+        }
+      ],
+      "observations": "All five contacts actually opened: 54 actual encoded samples across 16 units, including six diver and imitation samples. Readable jaws/dentition, swimming rigged diver separate from fin, sequential separate imitation lanes, mapped Alaska, distinct reef/canyon and shore/rowboat compositions. BLOCKING seal_capture: all three actual encoded samples show approach without hind-flipper contact; code confirms initial 8m separation and only ~2.3m travel during 2.11s, plus sideways prey orientation. Do not approve complete native or assembly until corrected native evidence reaches actual paired hind flippers.",
+      "blocking_keys": [
+        "seal_capture"
+      ],
+      "continuous_subjective_playback_claimed": false
+    },
+    "5": {
+      "unit_keys": [
+        "blue_relays",
+        "canyon_exit",
+        "five_rescued",
+        "floe_wave",
+        "ice_option",
+        "male_dimensions",
+        "matriarch",
+        "old_tom_end",
+        "patagonia_grab",
+        "resident_salmon",
+        "shark_departure",
+        "teamwork_final",
+        "vulnerability",
+        "whaling_cooperation",
+        "yacht_stern"
+      ],
+      "actually_opened_files": [
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-5/ENCODED_CONTACT_00.jpg",
+          "sha256": "086ea7a5cdbc5d1e48f2e52944792aef720f49d881fc473ca27efcb7bff8b6c9"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-5/ENCODED_CONTACT_01.jpg",
+          "sha256": "b01ccbb2a057c0b4e8f5cbf9372e35680ea4397bd05fb537a0f65b5e5adb6678"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-5/ENCODED_CONTACT_02.jpg",
+          "sha256": "ae5f3550662f7a7a7b70d728e886c9f20d6cd559561f839bb68ac75f6eea3d4a"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-5/ENCODED_CONTACT_03.jpg",
+          "sha256": "6d29893fea2aa68ce4cd1f2200dd441023cb57be970aa046b1a55ddfcf5cdde8"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-5/patagonia_grab_ENCODED_108.jpg",
+          "sha256": "3bc9d4f7a39b83f0aab1cd94ba446a3fd42c6a140a65d9dd27d8efd9823e3e95"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-5/patagonia_grab_ENCODED_145.jpg",
+          "sha256": "d1cf16b46aec5ee88f3322a296e3442e6a4de8054bb41b7e195fdc08624398d1"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-5/patagonia_grab_ENCODED_33.jpg",
+          "sha256": "d24a83d4916af8bdbe8561f978164f73a668679149dcd9ddd7b82afaff37b6c2"
+        }
+      ],
+      "observations": "All four actual encoded contacts opened: 48 sampled pictures across 15 compositions. Floe wave six stages show wave approach, tilt and seal leaving ice. Five rescued visibly five vested figures; licensed rower and boat separation; differentiated marine/diagram scenes and ocean. Potential second artistic hold: patagonia_grab shows arrival and retreat but prey remains on shore in all three samples; confirm mouth attachment/carry against source before final approval. CLEARED patagonia_grab after actually opening full-size frames33/108/145: real jaw grip and attached pup carried back into sea are visibly present; three-sample contacts simply missed intermediate action. No source fix needed for this key.",
+      "continuous_subjective_playback_claimed": false
+    },
+    "3": {
+      "unit_keys": [
+        "blue_scale",
+        "captivity_context",
+        "decision_gaze",
+        "fish_hearing",
+        "hardware_software",
+        "helm_response",
+        "ocean_role",
+        "open_water_pov",
+        "patagonia_roll",
+        "seal_floe",
+        "sightings_change",
+        "tow_rope",
+        "twofold_arrival",
+        "white_shark",
+        "wildlife_distance"
+      ],
+      "actually_opened_files": [
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-3/ENCODED_CONTACT_00.jpg",
+          "sha256": "d96aa9d513f643932174edd19b7eb6f8e9a2175154ac515950370f75af1c35e1"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-3/ENCODED_CONTACT_01.jpg",
+          "sha256": "384fff42bcda5fbde74f1ea37dd191db23d4064641430bdfa4d18238cb620052"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-3/ENCODED_CONTACT_02.jpg",
+          "sha256": "b2e4607ed929534d4a668cc5f8b2671008ef99000634e9d7053e9d93c0b34308"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-3/ENCODED_CONTACT_03.jpg",
+          "sha256": "7c95c8e7dc35839d2156237f7a90af7a607e7b1dd79a75cb00403dac9e805d4a"
+        }
+      ],
+      "observations": "All four actual encoded contacts opened (48 samples/15 units). All six helm stages show hand/wheel separation, bent arms and actual wheel turning over reflective sea. Distinct captivity diagram, size scale, quiet/open ocean, seal floe and low roll, Twofold map. Historical towline sampled in context; actual mouth endpoint was previously verified in full-size layout proof. No additional blocking sampled-frame issue observed.",
+      "continuous_subjective_playback_claimed": false
+    },
+    "2": {
+      "unit_keys": [
+        "blue_surface",
+        "distance_rule",
+        "food_web_response",
+        "human_not_target",
+        "knowledge_bridge",
+        "learned_strategy",
+        "listening_dark",
+        "natural_outro",
+        "partnership_decline",
+        "patagonia_pup",
+        "rudder_detaches",
+        "shark_liver",
+        "speed_tracking",
+        "stranding_risk",
+        "wild_human",
+        "wild_record"
+      ],
+      "actually_opened_files": [
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-2/ENCODED_CONTACT_00.jpg",
+          "sha256": "0e8c3c2abfd2fc7de1a1a21cea4f3d5a134fe6a098fc2a6e3ccb0f0cc9ba9ff6"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-2/ENCODED_CONTACT_01.jpg",
+          "sha256": "4adff7ffd5728a98dcfb41a80f5f4bd5edece58151cdfdbc9640d34c8fb9dff4"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-2/ENCODED_CONTACT_02.jpg",
+          "sha256": "e85faec47a1eb747585c4705ce63cb84da3ca1b1bbfd3997b1828927c82ee7db"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-2/ENCODED_CONTACT_03.jpg",
+          "sha256": "8e9449f0707923d71494e23ed24dca155b86342b560e755597a69070faed2c58"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42355077797/r5-new-native-2/ENCODED_CONTACT_04.jpg",
+          "sha256": "ec8e7e8e2e99d01f2b9633fbfb4897e301c8d93918a192002d17ba76c1f70793"
+        }
+      ],
+      "observations": "All five actual encoded contacts opened (51 samples/16 units). All six native rudder stages show roll, grip, withdrawal, unroll and detached sinking blade with the approved staging; no blocking sampled projection issue observed. Other units: readable selection/liver reconstruction, reef ecology, distinct wild-human lanes and natural ocean/canyon outro ending black with no next-video UI. No additional blocking sampled-frame issue observed.",
+      "continuous_subjective_playback_claimed": false
+    },
+    "salvaged-original-0": {
+      "native_source_run": "42355077797",
+      "analysis_only_run": "42358790718",
+      "unit_keys": [
+        "biggs_silence",
+        "canyon_deck",
+        "floe_denial",
+        "hunt_jaw",
+        "law_tongue",
+        "mass_comparison",
+        "patagonia_learning",
+        "scarcity_habitat",
+        "season_absence",
+        "young_victims"
+      ],
+      "actually_opened_files": [
+        {
+          "path": "/home/user/.cache/r5-native/42358790718/r5-salvaged-native-0/ENCODED_CONTACT_00.jpg",
+          "sha256": "d0d63b06f659b0428b253545a35148a7876e2150e5caed7217f2e35b13c08537"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42358790718/r5-salvaged-native-0/ENCODED_CONTACT_01.jpg",
+          "sha256": "64ea3e924267e215a142cdbc79b2da9d0937646fbced02ef4a73d79c54469648"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42358790718/r5-salvaged-native-0/ENCODED_CONTACT_02.jpg",
+          "sha256": "79e16e67a1256f289a4d353841193346d39bcab94612b8f487393de721ec6176"
+        }
+      ],
+      "observations": "Actually opened all three encoded contacts (30 samples/10 preserved native units) derived remotely without reencoding original pictures. Rigged deck observers/helm with ocean and coherent railing, mouth-focused hunt, readable weight diagram and empty-season reef, seal-level floe denial and Patagonian learning. No additional blocking sampled-frame problem observed. Source unit receipts and video bytes preserved, not falsely assigned to the recovery renderer.",
+      "continuous_subjective_playback_claimed": false
+    },
+    "recovery-0": {
+      "native_source_run": "42358790718",
+      "unit_keys": [
+        "boat_option",
+        "seal_capture"
+      ],
+      "actually_opened_files": [
+        {
+          "path": "/home/user/.cache/r5-native/42358790718/r5-recovery-native-0/ENCODED_CONTACT_00.jpg",
+          "sha256": "7de2164dfec3f0926f05bfc05fb59376585239e48a9843c3243164f3fd7b0cc7"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42358790718/r5-recovery-native-0/seal_capture_ENCODED_9.jpg",
+          "sha256": "ead22fd0528ada0c2e74e3ef9a527f403fcf42eecafb426524f6414724dd2a5b"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42358790718/r5-recovery-native-0/seal_capture_ENCODED_30.jpg",
+          "sha256": "3ae75897c18054f24ba75d65d8477525621274e069f5a759ae271fe63766f05c"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42358790718/r5-recovery-native-0/seal_capture_ENCODED_40.jpg",
+          "sha256": "35e807b9163830f65077556b383cb7919a7c4692212062b8a0c7ca9be0414258"
+        }
+      ],
+      "observations": "Actually opened encoded contact for boat_option and corrected seal_capture, then full-size seal frames9/30/40. Together with contact0/19/50 all six actual encoded seal stages were seen. Clear approach then paired hind-flipper grip and persistent gentle pull, safely below the floe; no gratuitous injury. Previous missed-contact problem visibly resolved in actual encoded output, not a code-only claim. Boat retains rigged helmsman/ocean and hull continuity.",
+      "continuous_subjective_playback_claimed": false
+    },
+    "recovery-2": {
+      "native_source_run": "42358790718",
+      "unit_keys": [
+        "interaction_counts",
+        "plans_final"
+      ],
+      "actually_opened_files": [
+        {
+          "path": "/home/user/.cache/r5-native/42358790718/r5-recovery-native-2/ENCODED_CONTACT_00.jpg",
+          "sha256": "e928675ddb739f416d9224e3cd89ecb77c6c49ab2f011c2577ade94f8520a72c"
+        }
+      ],
+      "observations": "Actually opened actual encoded contact: readable around700 estimate and one-in-five schematic, plus distinct closing title over adult/calf underwater scene. No blocking sampled-frame issue observed.",
+      "continuous_subjective_playback_claimed": false
+    },
+    "recovery-3": {
+      "native_source_run": "42358790718",
+      "unit_keys": [
+        "hypothesis_play"
+      ],
+      "actually_opened_files": [
+        {
+          "path": "/home/user/.cache/r5-native/42358790718/r5-recovery-native-3/ENCODED_CONTACT_00.jpg",
+          "sha256": "56296fd5ee33d059c4a2b47b3245bd84571c132ac856e69f3b7bb8cfa52aaaa1"
+        }
+      ],
+      "observations": "Actually opened all six actual encoded play-hypothesis stages on contact: one animal approaches, rolls and withdraws; second animal remains in a separate lane, then follows. Rudder and boat geography remain coherent; motive text explicitly unproven. No blocking sampled-frame issue observed.",
+      "continuous_subjective_playback_claimed": false
+    },
+    "recovery-1": {
+      "native_source_run": "42358790718",
+      "unit_keys": [
+        "ecology_place",
+        "surfer_incident"
+      ],
+      "actually_opened_files": [
+        {
+          "path": "/home/user/.cache/r5-native/42358790718/r5-recovery-native-1/ENCODED_CONTACT_00.jpg",
+          "sha256": "38818ce575db98a11c69e77662380e5cb45d424037d751a5fb9408c1cfde7343"
+        },
+        {
+          "path": "/home/user/.cache/r5-native/42358790718/r5-recovery-native-1/surfer_incident_ENCODED_265.jpg",
+          "sha256": "caa6577804674d1ddb1fdb453930f298f9b0d9076ad0deaefc99e609bde664e9"
+        }
+      ],
+      "observations": "Actually opened encoded contact with all six surfer stages and three ecology stages, plus full-size surfer265. Rigged prone human paddles with bent/retracting arms outside the board; hands/forearms visibly separated from the board in inspected poses. Reflective animated sea and coherent fin approach. All450 actual-frame implemented geometry checks passed, with exact26000 arm triangles; this is not universal collision certification. Reef ecology retains distinct sharks/school/vegetation. No blocking sampled-frame issue observed.",
+      "continuous_subjective_playback_claimed": false
+    }
+  },
+  "resolved_deficiency": {
+    "seal_capture": "Actual corrected native six stages reviewed; generation every-frame checks passed51 frames with enforced paired-mesh contact and persistent hold."
+  },
+  "remaining_blocking_keys": [],
+  "delivery_approved": false
+}

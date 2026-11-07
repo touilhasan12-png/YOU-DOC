@@ -1,0 +1,15 @@
+{
+  "edition": "R5",
+  "mode": "assemble-all-93-new-units",
+  "attempt": 1,
+  "native_run_id": 42358790718,
+  "native_source_commit": "c7a92b7dae903078f7ad68f469390ecb80677804",
+  "base_native_run_id": 42355077797,
+  "old_picture_units_allowed": 0,
+  "approved_audio_artifact_id": 13534423869,
+  "approved_audio_archive_member": "Something_That_Plans_R4_CHARACTER_OCEAN_REBUILD_2026-11-06.mp4",
+  "runtime_fingerprint": "b9f8cd9af029fde742e0784126f23c03aff85d1fa4f19b1003122e0a3e6745f2",
+  "automatic_retry": false,
+  "maximum_output_frames": 15969,
+  "final_delivery_requires_actual_assembled_picture_and_audio_hash_verification": true
+}
