@@ -1,0 +1,80 @@
+name: R8 — baked fixed character and grip fixtures only
+on:
+  push:
+    branches: [r8-locked-grips]
+    paths: [ENGINE_SOURCE/r8/REQUEST.json]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: r8-locked-grips
+  cancel-in-progress: false
+jobs:
+  fixed-character-fixtures:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        key: [yacht_stern, helm_response, human_not_target, boat_option, surfer_incident, swim_comparison]
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: ENGINE_SOURCE/three_engine/package-lock.json
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ubuntu24-playwright-1.48.2
+      - name: Restore existing licensed character source
+        run: |
+          mkdir -p ENGINE_SOURCE/r5/production_assets
+          gh release download r5-authored-source-archive-20261106 --repo "$GITHUB_REPOSITORY" --pattern Snow_v4_R5_clean_60bone_CC-BY-4.0.glb --dir "$RUNNER_TEMP"
+          mv "$RUNNER_TEMP/Snow_v4_R5_clean_60bone_CC-BY-4.0.glb" ENGINE_SOURCE/r5/production_assets/snow_clean.glb
+      - name: Install production runtime only
+        working-directory: ENGINE_SOURCE/three_engine
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Produce baked fixed character and grip fixtures; no analysis or inspection
+        run: |
+          python -m pip install imageio-ffmpeg==0.6.0
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node ENGINE_SOURCE/r8/render_locked_pose.mjs "${{ matrix.key }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r8-fixed-${{ matrix.key }}
+          path: R8_PATCHES/*.mp4
+          if-no-files-found: error
+          retention-days: 30
+  cut-and-deliver:
+    needs: fixed-character-fixtures
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: r8-fixed-*
+          merge-multiple: true
+          path: R8_PATCHES
+      - name: Install editing runtime only
+        run: python -m pip install requests==2.32.3 imageio-ffmpeg==0.6.0
+      - name: Insert fixed-character shots; copy complete R7 audio and preserve all other pictures
+        run: python ENGINE_SOURCE/r8/assemble_r8.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r8-fixed-character-and-grips
+          path: R8_DELIVERY/
+          if-no-files-found: error
+          retention-days: 30
