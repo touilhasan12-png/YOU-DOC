@@ -1,0 +1,60 @@
+name: R5 — all 93 newly authored shot proofs
+on:
+  push:
+    branches: [r5-full-film-rebuild]
+    paths: [ENGINE_SOURCE/r5/production/FILM_RENDER_REQUEST.json]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: r5-whole-film-development
+  cancel-in-progress: false
+jobs:
+  all-shot-proof:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate immutable script, exact 93-shot timeline and licensed source hashes
+        run: python ENGINE_SOURCE/r5/production/validate_blueprint.py
+      - name: Restore preserved authored cast; verify exact converted asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p ENGINE_SOURCE/r5/production_assets
+          gh release download r5-authored-source-archive-20261106 --repo "$GITHUB_REPOSITORY" --pattern Snow_v4_R5_clean_60bone_CC-BY-4.0.glb --dir "$RUNNER_TEMP"
+          mv "$RUNNER_TEMP/Snow_v4_R5_clean_60bone_CC-BY-4.0.glb" ENGINE_SOURCE/r5/production_assets/snow_clean.glb
+          echo '37e58348495d5dd0ab3415d6ef793cfd201ea1e2df29a5105796b6fe11821a0d  ENGINE_SOURCE/r5/production_assets/snow_clean.glb' | sha256sum -c -
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: ENGINE_SOURCE/three_engine/package-lock.json
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ubuntu24-playwright-1.48.2
+      - name: Install pinned runtime and Chromium
+        timeout-minutes: 8
+        working-directory: ENGINE_SOURCE/three_engine
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Evaluate 93 new compositions and denser critical-action frames — no old-unit fallback
+        run: node ENGINE_SOURCE/r5/production/render_film.mjs
+      - name: Create contact sheets from actual rendered output
+        if: always()
+        run: |
+          python -m pip install Pillow==10.4.0
+          python ENGINE_SOURCE/r5/production/proof_sheets.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r5-all-93-new-shot-development
+          path: R5_FILM_PROOF/
+          retention-days: 30
+          if-no-files-found: error

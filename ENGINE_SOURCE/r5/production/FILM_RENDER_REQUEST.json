@@ -1,0 +1,13 @@
+{
+  "edition": "R5",
+  "mode": "all-shot-proof",
+  "attempt": 1,
+  "purpose": "Evaluate every newly authored scene, not a ten-shot patch. Internal review only, no full-film encode and no artistic PASS inferred.",
+  "new_shots": 93,
+  "old_encoded_units_allowed": 0,
+  "maximum_jobs": 1,
+  "maximum_rendered_frames": 400,
+  "timeout_minutes": 25,
+  "automatic_retry": false,
+  "preserve_original_script_audio_and_approved_motion": true
+}
