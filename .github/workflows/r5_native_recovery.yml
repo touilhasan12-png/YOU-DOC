@@ -1,0 +1,56 @@
+name: R5 — salvage completed new units and finish only missing pictures
+on:
+  push:
+    branches: [r5-full-film-rebuild]
+    paths: [ENGINE_SOURCE/r5/production/RECOVERY_RENDER_REQUEST.json]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: r5-bounded-native-recovery
+  cancel-in-progress: false
+jobs:
+  review-preserved-complete-units:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m pip install remotezip==0.12.3 requests==2.32.3 av==13.1.0 Pillow==10.4.0
+      - name: Restore only the ten intact receipted new units from the interrupted shard
+        run: python ENGINE_SOURCE/r5/production/stage_salvaged_units.py
+      - name: Decode every preserved frame and produce actual encoded review evidence
+        run: python ENGINE_SOURCE/r5/production/review_native.py R5_NATIVE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r5-salvaged-native-0
+          path: R5_NATIVE/
+          retention-days: 30
+  generate-only-missing-and-observed-correction:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/r5-runtime
+      - name: Validate exact one-branch correction and unchanged other runtime bytes
+        run: python ENGINE_SOURCE/r5/production/correction_contract.py
+      - run: |
+          python -m pip install imageio-ffmpeg==0.6.0 av==13.1.0 Pillow==10.4.0
+          echo "FFMPEG_EXE=$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')" >> "$GITHUB_ENV"
+      - name: Generate allocated subset only — total cap1395 new frames, no automatic retry
+        timeout-minutes: 27
+        run: node ENGINE_SOURCE/r5/production/render_native.mjs recovery ${{ matrix.shard }} 4
+      - name: Fully decode and derive actual encoded contact evidence
+        run: python ENGINE_SOURCE/r5/production/review_native.py R5_NATIVE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r5-recovery-native-${{ matrix.shard }}
+          path: R5_NATIVE/
+          retention-days: 30

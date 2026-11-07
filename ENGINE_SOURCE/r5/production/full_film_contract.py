@@ -6,7 +6,7 @@ import hashlib,json,argparse,math
 R=Path(__file__).resolve().parents[1];P=R.parent
 SCRIPT_SHA='af5f03682a9d6fe4c53393a806e2dbb35e51ae2818de102efc42ef242be70eb9'
 AUDIO_PAYLOAD_SHA='743d56c7a1d3f438ee3dfa53597d0b469c1395880da44a9d6bf1c49ac707d898'
-CRITICAL={'rudder_detaches','hypothesis_play','hypothesis_imitation','helm_response','surfer_incident','diver_entanglement','swim_comparison','floe_wave','patagonia_strand','whaler_view'}
+CRITICAL={'rudder_detaches','hypothesis_play','hypothesis_imitation','helm_response','surfer_incident','diver_entanglement','swim_comparison','floe_wave','patagonia_strand','whaler_view','seal_capture'}
 def sha(path):
  h=hashlib.sha256()
  with path.open('rb') as f:
@@ -25,13 +25,13 @@ def plan():
   if i:assert r['frame_start']==rows[i-1]['frame_end']
  assert sum(r['encoded_frames'] for r in rows)==15969
  return rows
-def runtime_fingerprint():
+def runtime_fingerprint(film_source_sha=None):
  # Deliberately excludes review prose, upload scripts and Git metadata: editing notes
  # must not force a wasteful picture rerender if actual runtime/assets did not change.
  files=[p for p in (R/'web').glob('*.js') if p.name not in {'bundle.js','film-bundle.js'}]+list((R/'web').glob('*.html'))
  files += [R/'design/DIRECTOR_PLAN_93.json',R/'rights/SNOW_SOURCE_RECEIPT.json',R/'rights/PRODUCTION_ASSETS.json']
  files += [p for p in (R/'assets').rglob('*') if p.is_file()]
- return hashlib.sha256(json.dumps([(str(p.relative_to(R)),sha(p)) for p in sorted(files)],separators=(',',':')).encode()).hexdigest()
+ return hashlib.sha256(json.dumps([(str(p.relative_to(R)),film_source_sha if film_source_sha and p==R/'web/film.js' else sha(p)) for p in sorted(files)],separators=(',',':')).encode()).hexdigest()
 def validate_units(directory,review):
  rows=plan();fingerprint=runtime_fingerprint();review=json.loads(review.read_text())
  assert review['edition']=='R5' and review['runtime_fingerprint']==fingerprint

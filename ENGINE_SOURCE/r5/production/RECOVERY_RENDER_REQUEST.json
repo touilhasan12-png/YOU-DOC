@@ -1,0 +1,38 @@
+{
+  "edition": "R5",
+  "status": "authorized_for_bounded_generation_only",
+  "attempt": 1,
+  "mode": "recover-missing-and-correct-observed-new-R5-units",
+  "base_native_run_id": 42355077797,
+  "base_source_commit": "60d932af7b6cab91c786d8721c3110209cd98d76",
+  "base_partial_artifact_id": 13567819359,
+  "base_runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+  "runtime_fingerprint": "b9f8cd9af029fde742e0784126f23c03aff85d1fa4f19b1003122e0a3e6745f2",
+  "selected_keys": [
+    "seal_capture",
+    "surfer_incident",
+    "interaction_counts",
+    "hypothesis_play",
+    "boat_option",
+    "ecology_place",
+    "plans_final"
+  ],
+  "missing_keys": [
+    "surfer_incident",
+    "interaction_counts",
+    "hypothesis_play",
+    "boat_option",
+    "ecology_place",
+    "plans_final"
+  ],
+  "corrected_keys": [
+    "seal_capture"
+  ],
+  "maximum_new_picture_frames": 1395,
+  "shards": 4,
+  "automatic_retry": false,
+  "prior_edition_picture_units_allowed": 0,
+  "preserve_all_published_complete_new_units": true,
+  "artistic_approval": false,
+  "why": "Only shard0 hit its 40-minute bound; ten complete new native units survived in its uploaded artifact. Analyze those without rerendering. Generate the six truly missing units and the one observed seal-contact correction, not another full film."
+}
