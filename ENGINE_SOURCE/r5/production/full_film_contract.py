@@ -38,7 +38,17 @@ def validate_units(directory,review):
  assert review['all_93_shots_visually_reviewed'] is True
  assert review['scope']=='complete_new_picture' and review['status']=='approved_for_assembly'
  assert set(review['reviewed_keys'])=={r['key'] for r in rows}
- assert CRITICAL<=set(review['continuous_critical_motion_reviewed_keys'])
+ assert review['continuous_subjective_playback_claimed'] is False
+ evidence=review['critical_motion_evidence'];assert CRITICAL<=set(evidence)
+ for key in CRITICAL:
+  e=evidence[key];row=next(r for r in rows if r['key']==key)
+  assert e['scope']=='dense_actual_encoded_samples_plus_every_frame_geometry'
+  assert e['geometry_frames_checked']==row['encoded_frames'] and e['geometry_failure_count']==0
+  assert len(set(e['reviewed_encoded_sample_frames']))>=6
+  assert 0 in e['reviewed_encoded_sample_frames'] and row['encoded_frames']-1 in e['reviewed_encoded_sample_frames']
+  assert len(e['reviewer_visual_notes'])>30
+  g=json.loads((directory/(key+'_GEOMETRY.json')).read_text());assert len(g['checks'])==row['encoded_frames']
+  assert all(not c['flags'] and c['actual_film_key']==key for c in g['checks'])
  assert review['technical_checks_are_not_artistic_approval'] is True
  receipts=list(directory.glob('*.json'));by={}
  for p in receipts:
