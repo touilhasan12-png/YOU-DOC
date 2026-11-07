@@ -58,9 +58,9 @@ function boardArmAudit(h,board){const source=[];h.root.traverse(m=>{if(m.isSkinn
 function pronePose(h,t,diver=false){h.reset();for(let side of ['L','R']){let foot=h.bones['Foot_'+side],toe=h.bones['Toes_'+side],dir=toe.getWorldPosition(V()).sub(foot.getWorldPosition(V())).normalize(),desired=h.local(V(0,-1,0)).sub(h.local(V())).normalize();rotateWorld(foot,new T.Quaternion().setFromUnitVectors(dir,desired));}
  if(!diver){rotateWorld(h.bones.Neck,new T.Quaternion().setFromAxisAngle(V(1,0,0),-.22));rotateWorld(h.bones.Head,new T.Quaternion().setFromAxisAngle(V(1,0,0),-.25))}
  if(diver){for(let side of ['L','R']){let sign=side==='L'?1:-1;let target=h.local(V(sign*.24,1.03,.13)),hint=h.local(V(sign*.46,1.23,.17));h.ik(side,target,hint)}return}
- let max=0;for(let side of ['L','R']){let sign=side==='L'?1:-1,p=(t*(3.24/(2*Math.PI))+(side==='L'?0:.5))%1,x=sign*.365,y,z;
- if(p<.48){let u=p/.48;z=.74-.68*u;y=.035-.13*Math.sin(Math.PI*u)}else{let u=(p-.48)/.52;z=.06+.68*u;y=.05+.38*Math.sin(Math.PI*u);x=sign*(.365+.07*Math.sin(Math.PI*u))}
- let wrist=V(x,y,z),hint=V(sign*.56,.37,.32);max=Math.max(max,h.ik(side,wrist,hint));let forward=p<.48?V(0,-1,0):V(0,0,1),normal=p<.48?V(0,0,-1):V(0,-1,0);h.grasp(side,forward.negate(),normal,.10)}checks.paddle_wrist_reach_error_m=max;checks.pose_review_only=true;}
+ let max=0;for(let side of ['L','R']){let sign=side==='L'?1:-1,p=(t*(3.24/(2*Math.PI))+(side==='L'?0:.5))%1,x=sign*.395,y,z;
+ if(p<.48){let u=p/.48;z=.68-.54*u;y=.035-.10*Math.sin(Math.PI*u)}else{let u=(p-.48)/.52;z=.14+.54*u;y=.05+.34*Math.sin(Math.PI*u);x=sign*(.395+.07*Math.sin(Math.PI*u))}
+ let wrist=V(x,y,z),hint=V(sign*.95,.36,.41);max=Math.max(max,h.ik(side,wrist,hint));let forward=p<.48?V(0,-1,0):V(0,0,1),normal=p<.48?V(0,0,-1):V(0,-1,0);h.grasp(side,forward.negate(),normal,.10)}checks.paddle_wrist_reach_error_m=max;checks.pose_review_only=true;}
 
 function collision(a,b){a.geometry.boundsTree??=new MeshBVH(a.geometry);return a.geometry.boundsTree.intersectsGeometry(b.geometry,new T.Matrix4().copy(a.matrixWorld).invert().multiply(b.matrixWorld))}
 const ease=x=>{x=Math.max(0,Math.min(1,x));return x*x*(3-2*x)};
@@ -87,3 +87,5 @@ window.calibrateRudder=()=>{setup(true);const update=rudderProof(),results=[];fo
 
 // Public staging interface for the complete R5 film. No previous engine imports.
 export const stage={get scene(){return scene},get camera(){return camera},get checks(){return checks},get renderer(){return renderer},V,C,M,mesh,tube,box,curve,character,animal,yacht,cameraAt,ocean,underwater,marineOutfit,surfboard,pronePose,boardArmAudit,rotateWorld,ease,reset(under=false){if(scene){scene.environment?.dispose();scene.traverse(o=>{o.geometry?.dispose()})}setup(under);if(under){let f=new T.DirectionalLight(0xafdfe9,1.3);f.position.set(9,5,12);scene.add(f)}},install(key,fn){active=key;tick=fn;},getUpdate(){return tick},collision,project(v){return v.clone().project(camera)}};
+
+window.auditFrame=t=>{tick(t);scene.updateMatrixWorld(true);return {...checks,key:active,time:t}};
