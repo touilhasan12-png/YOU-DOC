@@ -38,7 +38,7 @@ jobs:
           done
           python ENGINE_SOURCE/r5/production/merge_native_evidence.py NATIVE_SHARDS R5_NATIVE
       - name: Install pinned analysis and mux runtime
-        run: python -m pip install av==13.1.0 imageio-ffmpeg==0.6.0
+        run: python -m pip install av==13.1.0 imageio-ffmpeg==0.6.0 Pillow==10.4.0
       - name: Restore the approved prior audio — never prior picture units
         run: |
           gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/13534423869/zip" > "$RUNNER_TEMP/audio_source_archive.zip"
@@ -55,6 +55,8 @@ jobs:
           PY
       - name: Enforce 93 actual new units, separate art review, unchanged audio and all final timestamps
         run: python ENGINE_SOURCE/r5/production/assemble_r5.py --units R5_NATIVE --review ENGINE_SOURCE/r5/design/FINAL_NATIVE_REVIEW.json --approved-audio-source approved_AAC_only.m4a
+      - name: Compare actual final decoded pixels with all93 reviewed native units and create assembled evidence
+        run: python ENGINE_SOURCE/r5/production/review_assembled.py --units R5_NATIVE --delivery R5_DELIVERY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
