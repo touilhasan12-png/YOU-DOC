@@ -30,7 +30,7 @@ jobs:
           assert run['conclusion']=='success' and run['head_sha']==r['native_source_commit']
           Path(os.environ['GITHUB_ENV']).open('a').write('NATIVE_RUN_ID='+str(r['native_run_id'])+'\n')
           PY
-      - name: Download each genuine native shard from that successful reviewed run
+      - name: Restore exact active new units from original generation and successful bounded recovery
         run: |
           set -euo pipefail
           python -m pip install remotezip==0.12.3 requests==2.32.3
