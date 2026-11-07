@@ -28,7 +28,7 @@ def plan():
 def runtime_fingerprint():
  # Deliberately excludes review prose, upload scripts and Git metadata: editing notes
  # must not force a wasteful picture rerender if actual runtime/assets did not change.
- files=[p for p in (R/'web').glob('*.js') if p.name!='bundle.js']+list((R/'web').glob('*.html'))
+ files=[p for p in (R/'web').glob('*.js') if p.name not in {'bundle.js','film-bundle.js'}]+list((R/'web').glob('*.html'))
  files += [R/'design/DIRECTOR_PLAN_93.json',R/'rights/SNOW_SOURCE_RECEIPT.json',R/'rights/PRODUCTION_ASSETS.json']
  files += [p for p in (R/'assets').rglob('*') if p.is_file()]
  return hashlib.sha256(json.dumps([(str(p.relative_to(R)),sha(p)) for p in sorted(files)],separators=(',',':')).encode()).hexdigest()

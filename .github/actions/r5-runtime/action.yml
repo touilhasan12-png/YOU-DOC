@@ -1,0 +1,40 @@
+name: Exact R5 authored runtime
+runs:
+  using: composite
+  steps:
+    - name: Preserve original script, exact timeline and source asset identity
+      shell: bash
+      run: python ENGINE_SOURCE/r5/production/validate_blueprint.py
+    - name: Restore immutable licensed human asset, never any old picture unit
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        set -euo pipefail
+        mkdir -p ENGINE_SOURCE/r5/production_assets
+        gh release download r5-authored-source-archive-20261106 --repo "$GITHUB_REPOSITORY" --pattern Snow_v4_R5_clean_60bone_CC-BY-4.0.glb --dir "$RUNNER_TEMP"
+        mv "$RUNNER_TEMP/Snow_v4_R5_clean_60bone_CC-BY-4.0.glb" ENGINE_SOURCE/r5/production_assets/snow_clean.glb
+        echo '37e58348495d5dd0ab3415d6ef793cfd201ea1e2df29a5105796b6fe11821a0d  ENGINE_SOURCE/r5/production_assets/snow_clean.glb' | sha256sum -c -
+        python - <<'PY'
+        import sys,json
+        from pathlib import Path
+        sys.path.insert(0,'ENGINE_SOURCE/r5/production')
+        from full_film_contract import runtime_fingerprint,plan
+        plan()
+        Path('ENGINE_SOURCE/r5/production_assets/RUNTIME_FINGERPRINT.json').write_text(json.dumps({'runtime_fingerprint':runtime_fingerprint()}))
+        PY
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: npm
+        cache-dependency-path: ENGINE_SOURCE/three_engine/package-lock.json
+    - uses: actions/cache@v4
+      with:
+        path: ~/.cache/ms-playwright
+        key: ubuntu24-playwright-1.48.2
+    - name: Install pinned source runtime
+      shell: bash
+      working-directory: ENGINE_SOURCE/three_engine
+      run: |
+        npm ci --no-audit --no-fund
+        npx playwright install --with-deps chromium
