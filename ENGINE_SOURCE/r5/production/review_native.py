@@ -5,6 +5,7 @@ assert os.environ.get('GITHUB_ACTIONS')=='true'
 import av
 from PIL import Image,ImageDraw,ImageFont
 p=argparse.ArgumentParser();p.add_argument('directory',type=Path);x=p.parse_args();q=x.directory
+critical={'rudder_detaches','hypothesis_play','hypothesis_imitation','helm_response','surfer_incident','diver_entanglement','swim_comparison','floe_wave','patagonia_strand','whaler_view'}
 font=ImageFont.truetype('ENGINE_SOURCE/fonts/SourceSans3[wght].ttf',22);items=[];record=[]
 for receipt in sorted(q.glob('*.json')):
  r=json.loads(receipt.read_text())
@@ -16,7 +17,8 @@ for receipt in sorted(q.glob('*.json')):
   for i,frame in enumerate(c.decode(video=0)):
    assert abs(float(frame.pts*frame.time_base)-i/24)<1e-5
    if i in wanted:
-    image=frame.reformat(width=640,height=360).to_image();name=r['key']+'_ENCODED_'+str(i)+'.jpg';image.save(q/name,quality=95);samples.append({'frame':i,'file':name});items.append((image.copy(),r['key'],i))
+    image=frame.to_image();name=r['key']+'_ENCODED_'+str(i)+'.jpg';image.save(q/name,quality=95);samples.append({'frame':i,'file':name});
+    if r['key'] in critical or i in {wanted[0],wanted[2],wanted[-1]}:items.append((image.resize((640,360),Image.Resampling.LANCZOS),r['key'],i))
    count+=1
  assert count==r['encoded_frames'],'Decoded frame count mismatch'
  record.append({'key':r['key'],'decoded_frames':count,'review_sample_frames':wanted,'samples':samples,'scope':'Actual encoded frames; independent subjective inspection required. Full decode is not an artistic PASS.'})

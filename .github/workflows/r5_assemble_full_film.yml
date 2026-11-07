@@ -1,0 +1,64 @@
+name: R5 — gated complete-film assembly and original audio preservation
+on:
+  push:
+    branches: [r5-full-film-rebuild]
+    paths: [ENGINE_SOURCE/r5/production/ASSEMBLY_REQUEST.json]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: r5-final-new-film-assembly
+  cancel-in-progress: false
+jobs:
+  assemble-reviewed-new-film:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate an explicit separate actual native review and real source run
+        run: |
+          python - <<'PY'
+          import json,subprocess,os
+          from pathlib import Path
+          p=Path('ENGINE_SOURCE/r5');r=json.loads((p/'production/ASSEMBLY_REQUEST.json').read_text());review=p/'design/FINAL_NATIVE_REVIEW.json'
+          assert r['mode']=='assemble-all-93-new-units' and r['old_picture_units_allowed']==0
+          assert r['approved_audio_artifact_id']==13534423869
+          v=json.loads(review.read_text());assert v['status']=='approved_for_assembly'
+          run=json.loads(subprocess.check_output(['gh','api','repos/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+str(r['native_run_id'])]))
+          assert run['conclusion']=='success' and run['head_sha']==r['native_source_commit']
+          Path(os.environ['GITHUB_ENV']).open('a').write('NATIVE_RUN_ID='+str(r['native_run_id'])+'\n')
+          PY
+      - name: Download each genuine native shard from that successful reviewed run
+        run: |
+          set -euo pipefail
+          for i in 0 1 2 3 4 5; do
+            gh run download "$NATIVE_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "r5-new-native-$i" --dir "NATIVE_SHARDS/shard-$i"
+          done
+          python ENGINE_SOURCE/r5/production/merge_native_evidence.py NATIVE_SHARDS R5_NATIVE
+      - name: Install pinned analysis and mux runtime
+        run: python -m pip install av==13.1.0 imageio-ffmpeg==0.6.0
+      - name: Restore the approved prior audio — never prior picture units
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/13534423869/zip" > "$RUNNER_TEMP/audio_source_archive.zip"
+          python - <<'PY'
+          import zipfile,os,json,subprocess
+          from pathlib import Path
+          import imageio_ffmpeg
+          a=zipfile.ZipFile(Path(os.environ['RUNNER_TEMP'])/'audio_source_archive.zip')
+          request=json.loads(Path('ENGINE_SOURCE/r5/production/ASSEMBLY_REQUEST.json').read_text());name=request['approved_audio_archive_member']
+          assert name in a.namelist() and name.endswith('.mp4')
+          old=Path(os.environ['RUNNER_TEMP'])/'prior_edition_audio_input_only.mp4';old.write_bytes(a.read(name))
+          subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(),'-y','-v','error','-i',str(old),'-map','0:a:0','-vn','-c:a','copy','approved_AAC_only.m4a'],check=True)
+          old.unlink()
+          PY
+      - name: Enforce 93 actual new units, separate art review, unchanged audio and all final timestamps
+        run: python ENGINE_SOURCE/r5/production/assemble_r5.py --units R5_NATIVE --review ENGINE_SOURCE/r5/design/FINAL_NATIVE_REVIEW.json --approved-audio-source approved_AAC_only.m4a
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r5-complete-new-film-delivery
+          path: R5_DELIVERY/
+          retention-days: 30
+          if-no-files-found: error
