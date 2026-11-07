@@ -1,7 +1,7 @@
 {
   "edition": "R5",
   "mode": "all-shot-proof",
-  "attempt": 1,
+  "attempt": 2,
   "purpose": "Evaluate every newly authored scene, not a ten-shot patch. Internal review only, no full-film encode and no artistic PASS inferred.",
   "new_shots": 93,
   "old_encoded_units_allowed": 0,
@@ -9,5 +9,7 @@
   "maximum_rendered_frames": 400,
   "timeout_minutes": 25,
   "automatic_retry": false,
-  "preserve_original_script_audio_and_approved_motion": true
+  "preserve_original_script_audio_and_approved_motion": true,
+  "previous_run": 42350313999,
+  "correction": "ES2022-compatible Gaussian exponent syntax. Previous run stopped at static bundle compilation, before any film frames rendered."
 }

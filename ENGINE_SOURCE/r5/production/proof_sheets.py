@@ -3,7 +3,10 @@ import os,json
 from pathlib import Path
 assert os.environ.get('GITHUB_ACTIONS')=='true'
 from PIL import Image,ImageDraw,ImageFont
-q=Path('R5_FILM_PROOF');r=json.loads((q/'FILM_PROOF_REPORT.json').read_text());rows=r['coverage'];frames=r['frames'];font=ImageFont.truetype('ENGINE_SOURCE/fonts/SourceSans3[wght].ttf',24)
+q=Path('R5_FILM_PROOF')
+if not (q/'FILM_PROOF_REPORT.json').exists():
+ print('No rendered frames exist; source-build failure is not a film proof.');raise SystemExit(0)
+r=json.loads((q/'FILM_PROOF_REPORT.json').read_text());rows=r['coverage'];frames=r['frames'];font=ImageFont.truetype('ENGINE_SOURCE/fonts/SourceSans3[wght].ttf',24)
 for b in range(0,len(rows),4):
  keys=rows[b:b+4];sheet=Image.new('RGB',(1920,388*len(keys)),'#18394c');d=ImageDraw.Draw(sheet)
  for y,k in enumerate(keys):
