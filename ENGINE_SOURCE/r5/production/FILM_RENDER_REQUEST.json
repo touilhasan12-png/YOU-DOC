@@ -1,7 +1,7 @@
 {
   "edition": "R5",
   "mode": "all-shot-proof",
-  "attempt": 6,
+  "attempt": 7,
   "previous_run": 42353011755,
   "purpose": "Final targeted actual review of previously repetitive hunting/chronology and historically unattached towline, plus corrected analytical lanes and continuous canyon terrain. Do not repeat the passed 22-shot set. Validate the exact same 26000 deformed arm triangles after caching only immutable topology; still no native authorization.",
   "selected_keys": [
@@ -42,5 +42,7 @@
   "every_frame_audit_keys": [
     "surfer_incident"
   ],
-  "fail_on_geometry_flags": true
+  "fail_on_geometry_flags": true,
+  "superseded_before_render_run": 42354014292,
+  "static_fix": "A semicolon missing in the newly edited companion-only update was caught by the local static compiler; obsolete job cancelled, bundle revalidated before this request."
 }
