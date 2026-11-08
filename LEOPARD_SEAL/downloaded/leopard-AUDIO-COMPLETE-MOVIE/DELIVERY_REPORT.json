@@ -1,0 +1,115 @@
+{
+  "status": "ALL_TEN_NARRATION_SECTIONS_INTEGRATED_AND_DECODED",
+  "audio_complete": true,
+  "missing_audio_sections": [],
+  "obsolete_missing_audio_notice_removed_from_all_ten_chapters": true,
+  "temporary_silent_section04_captions_removed": true,
+  "original_master_script_sha256": "12e7342195250a4484ad32e7f4ad30a4b7a35025cb46d06f12d44e51b85568fe",
+  "original_master_file_preserved": true,
+  "authorized_spoken_text_change": {
+    "section": 4,
+    "old": "The seal grabs you by the head or the feet, swings you in a wide arc, and smacks you against the surface of the water, over and over, until your skin and feathers come off. Then it bites off chunks and swallows them.",
+    "new": "The seal catches the penguin in the water, then brings its prey to the surface to feed."
+  },
+  "all_other_spoken_text_and_final_CTA_unchanged": true,
+  "source_audio_playback_rate": 1.0,
+  "audio_edit_checks": [
+    {
+      "section": 1,
+      "source_sha256": "bb551f2797d339c75720c51573fb16c50b68395b8008ec9b7c6618df642421e1",
+      "source_duration": 87.88,
+      "movie_offset": 0,
+      "decoded_source_correlation": 0.9999574532343648,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 2,
+      "source_sha256": "c70053de4e91572a4d527985e6953152933c26850a78a9a6cc85b9ef5f6a90a0",
+      "source_duration": 48.92,
+      "movie_offset": 87.91666666666667,
+      "decoded_source_correlation": 0.9999059336161761,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 3,
+      "source_sha256": "cce0c3d1d6d36fea7d8e083090e1d6d0fe4977c7684aec0623e80fd8604c2fe1",
+      "source_duration": 81.88,
+      "movie_offset": 136.875,
+      "decoded_source_correlation": 0.9999570077080173,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 4,
+      "source_sha256": "8fa0d9a4b5bedb35f64d59e027f21b9ef6d5db0041657705091da1715045edc7",
+      "source_duration": 53.44,
+      "movie_offset": 218.79166666666669,
+      "decoded_source_correlation": 0.9999061262871729,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 5,
+      "source_sha256": "6499a0041ff470297a28ec0455a6d7e1601fe8fd76912d9ec38ef8251ee40f95",
+      "source_duration": 52.32,
+      "movie_offset": 272.25,
+      "decoded_source_correlation": 0.9999754232007708,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 6,
+      "source_sha256": "a2e951909ee0e9c872c6a2659cc6dcf1d9e03962f9e19b3c9c0024f49e2f3dc7",
+      "source_duration": 69.56,
+      "movie_offset": 324.5833333333333,
+      "decoded_source_correlation": 0.9999317238774807,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 7,
+      "source_sha256": "c19726143cdc3d91bacce7f1df413059f9d16efeaea2b47409dc13e740057a67",
+      "source_duration": 69.12,
+      "movie_offset": 394.16666666666663,
+      "decoded_source_correlation": 0.9999147913050539,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 8,
+      "source_sha256": "a6779e92ca1945df0c10c9754640ba9eca3a29ce1942bb35e76efa9b49249a6a",
+      "source_duration": 60.76,
+      "movie_offset": 463.29166666666663,
+      "decoded_source_correlation": 0.9999464454050203,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 9,
+      "source_sha256": "07a119fc2b2ceadc538a16f290d54801cacb5a2c29461c17064d9a50cf024a1a",
+      "source_duration": 84.88,
+      "movie_offset": 524.0833333333333,
+      "decoded_source_correlation": 0.9999177403974222,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 10,
+      "source_sha256": "c724d9accc3fa31c4d685007d9af695c47fb54738cc27f0750bc71e152cb7289",
+      "source_duration": 41.96,
+      "movie_offset": 608.9999999999999,
+      "decoded_source_correlation": 0.9999689899836027,
+      "playback_rate": 1.0
+    }
+  ],
+  "chapter04_source_audio_duration": 53.44,
+  "chapter04_picture_duration": 53.458333333333336,
+  "frames": 15624,
+  "all_encoded_video_frames_decoded": true,
+  "fps": 24,
+  "width": 1920,
+  "height": 1080,
+  "duration_seconds": 650.9999999999999,
+  "chapters": 10,
+  "shots": 70,
+  "artistic_approval": false,
+  "continuous_human_listening_completed": false,
+  "rendered_original_chapters_source_run": 42503608840,
+  "integration_run": "42508350609",
+  "integration_source_commit": "3f0e349b3059d53f4b55371b4767d57c355db7be",
+  "movie_bytes": 158626231,
+  "movie_sha256": "99e34bd79b9eec04647afc1df7db13564056398254c69738a268a99fc12c99c3"
+}

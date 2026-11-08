@@ -19,7 +19,11 @@
     "sample_width": 2
   },
   "tool_result": "success",
-  "integrated_into_movie": false,
+  "integrated_into_movie": true,
   "existing_Drive_movie_still_old_workprint": true,
-  "human_listening_or_word_verification_completed": false
+  "human_listening_or_word_verification_completed": false,
+  "integration_run_id": 42508350609,
+  "new_audio_complete_movie_url": "https://drive.google.com/file/d/154HugfCVFk518rQcpxZcGMmwMCRhipQY/view",
+  "new_audio_complete_movie_duration": 651,
+  "old_workprint_retained_unchanged": true
 }

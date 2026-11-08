@@ -1,0 +1,93 @@
+{
+  "status": "UPDATED_AUDIO_COMPLETE_FILM_SUCCESSFULLY_DELIVERABLE",
+  "movie_url": "https://drive.google.com/file/d/154HugfCVFk518rQcpxZcGMmwMCRhipQY/view",
+  "folder_url": "https://drive.google.com/drive/folders/1RRYVhLpij9-QhNmlryPv7tIgbBa4Ef5A",
+  "movie_bytes": 158626231,
+  "movie_md5": "9e05034420fbaa5e1a072298acd0786b",
+  "movie_sha256": "99e34bd79b9eec04647afc1df7db13564056398254c69738a268a99fc12c99c3",
+  "drive_size_md5_verified": true,
+  "frames": 15624,
+  "seconds": 651,
+  "fps": 24,
+  "width": 1920,
+  "height": 1080,
+  "chapters": 10,
+  "shots": 70,
+  "all_ten_audio_sources_verified_against_decoded_movie": true,
+  "minimum_audio_correlation": 0.9999059336161761,
+  "fourth_audio_correlation": 0.9999061262871729,
+  "all15624_frames_fully_decoded": true,
+  "encoded_sample_visual_inspection": {
+    "actual_encoded_frames_fully_decoded": 15624,
+    "actual_shot_midpoints": 70,
+    "contact_sheets_reviewed": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "native_frames_reviewed": [
+      "ENCODED_008.png",
+      "ENCODED_030.png",
+      "ENCODED_034.png",
+      "ENCODED_042.png"
+    ],
+    "stale_missing_audio_notice_seen_in_reviewed_frames": false,
+    "temporary_silent_captions_seen_in_section04_reviewed_frames": false,
+    "opaque_header_cover_seen_in_reviewed_frames": false,
+    "scope": "Actual encoded samples, not continuous artistic approval or human listening. Native Snow torso/arm wardrobe gaps remain as previously documented."
+  },
+  "sole_authorized_text_edit": {
+    "section": 4,
+    "old": "The seal grabs you by the head or the feet, swings you in a wide arc, and smacks you against the surface of the water, over and over, until your skin and feathers come off. Then it bites off chunks and swallows them.",
+    "new": "The seal catches the penguin in the water, then brings its prey to the surface to feed."
+  },
+  "original_master_unchanged": true,
+  "original_master_sha256": "12e7342195250a4484ad32e7f4ad30a4b7a35025cb46d06f12d44e51b85568fe",
+  "prior_workprint_and_kit_unchanged": true,
+  "sharing_unchanged": true,
+  "resumable_session_deleted": true,
+  "cloud_run_id": 42508350609,
+  "cloud_source_commit": "3f0e349b3059d53f4b55371b4767d57c355db7be",
+  "audio_source_speed": 1.0,
+  "continuous_human_listening_completed": false,
+  "artistic_approval": false,
+  "sidecars": [
+    {
+      "name": "NARRATION_APPROVED.srt",
+      "id": "14yNx6O1ukHp7OFJvixaVqrp-GdVkZXCV",
+      "md5": "f2c1364b4b127e7d3d30477f8ce4bb30",
+      "bytes": 15797,
+      "verified": true
+    },
+    {
+      "name": "APPROVED_ACTIVE_NARRATION.txt",
+      "id": "1ibA5HvQpqXV8uredHVpDrT1l07HOZPcB",
+      "md5": "2db12ec6be017179f42af4296beb1f51",
+      "bytes": 9764,
+      "verified": true
+    },
+    {
+      "name": "CREDITS_AND_STATUS.md",
+      "id": "16l3h7shQ_qMLP0Cb1EkRrkNRIftpUAEn",
+      "md5": "b2b22b546f460345d95e7d49f156ada7",
+      "bytes": 5120,
+      "verified": true
+    },
+    {
+      "name": "DELIVERY_REPORT.json",
+      "id": "110mceG0DUM3BMqT8H-mnV_vhbYqDGbS4",
+      "md5": "51fde33f832bcf8761f6e16114b06436",
+      "bytes": 4319,
+      "verified": true
+    },
+    {
+      "name": "ENCODED_QA_REPORT.json",
+      "id": "1lPQ7wP1vpKieEnCmh7Bh2nkk4j6XLQ62",
+      "md5": "452d0088f8ba6c02f421a90c8464a129",
+      "bytes": 9703,
+      "verified": true
+    }
+  ]
+}

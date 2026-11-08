@@ -1,0 +1,102 @@
+{
+  "status": "STATIC_CONFORMANCE_VERIFIED_NOT_FINAL_MOVIE_QA",
+  "unchanged_nine_chapter_local_shot_arrays_and_durations": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "original_master_byte_identical": true,
+  "only_approved_spoken_change": {
+    "section": 4,
+    "old": "The seal grabs you by the head or the feet, swings you in a wide arc, and smacks you against the surface of the water, over and over, until your skin and feathers come off. Then it bites off chunks and swallows them.",
+    "new": "The seal catches the penguin in the water, then brings its prey to the surface to feed."
+  },
+  "expected_movie": {
+    "frames": 15624,
+    "seconds": 651,
+    "shots": 70,
+    "fps": 24,
+    "width": 1920,
+    "height": 1080
+  },
+  "audio_sources": [
+    {
+      "section": 1,
+      "file": "audio/01.wav",
+      "sha256": "bb551f2797d339c75720c51573fb16c50b68395b8008ec9b7c6618df642421e1",
+      "seconds": 87.88,
+      "offset": 0
+    },
+    {
+      "section": 2,
+      "file": "audio/02.wav",
+      "sha256": "c70053de4e91572a4d527985e6953152933c26850a78a9a6cc85b9ef5f6a90a0",
+      "seconds": 48.92,
+      "offset": 87.91666666666667
+    },
+    {
+      "section": 3,
+      "file": "audio/03.wav",
+      "sha256": "cce0c3d1d6d36fea7d8e083090e1d6d0fe4977c7684aec0623e80fd8604c2fe1",
+      "seconds": 81.88,
+      "offset": 136.875
+    },
+    {
+      "section": 4,
+      "file": "audio/04_NON_GRAPHIC_USER_AUTHORIZED.wav",
+      "sha256": "8fa0d9a4b5bedb35f64d59e027f21b9ef6d5db0041657705091da1715045edc7",
+      "seconds": 53.44,
+      "offset": 218.79166666666669
+    },
+    {
+      "section": 5,
+      "file": "audio/05.wav",
+      "sha256": "6499a0041ff470297a28ec0455a6d7e1601fe8fd76912d9ec38ef8251ee40f95",
+      "seconds": 52.32,
+      "offset": 272.25
+    },
+    {
+      "section": 6,
+      "file": "audio/06.wav",
+      "sha256": "a2e951909ee0e9c872c6a2659cc6dcf1d9e03962f9e19b3c9c0024f49e2f3dc7",
+      "seconds": 69.56,
+      "offset": 324.5833333333333
+    },
+    {
+      "section": 7,
+      "file": "audio/07.wav",
+      "sha256": "c19726143cdc3d91bacce7f1df413059f9d16efeaea2b47409dc13e740057a67",
+      "seconds": 69.12,
+      "offset": 394.16666666666663
+    },
+    {
+      "section": 8,
+      "file": "audio/08.wav",
+      "sha256": "a6779e92ca1945df0c10c9754640ba9eca3a29ce1942bb35e76efa9b49249a6a",
+      "seconds": 60.76,
+      "offset": 463.29166666666663
+    },
+    {
+      "section": 9,
+      "file": "audio/09.wav",
+      "sha256": "07a119fc2b2ceadc538a16f290d54801cacb5a2c29461c17064d9a50cf024a1a",
+      "seconds": 84.88,
+      "offset": 524.0833333333333
+    },
+    {
+      "section": 10,
+      "file": "audio/10.wav",
+      "sha256": "c724d9accc3fa31c4d685007d9af695c47fb54738cc27f0750bc71e152cb7289",
+      "seconds": 41.96,
+      "offset": 608.9999999999999
+    }
+  ],
+  "voice_total_seconds": 650.72,
+  "new_movie_visual_review_completed": false
+}

@@ -1,0 +1,27 @@
+{
+  "owner": "touilhasan12-png",
+  "repo": "YOU-DOC",
+  "branch": "leopard-seal-v1",
+  "source_commit": "3f0e349b3059d53f4b55371b4767d57c355db7be",
+  "workflow_name": "Leopard seal \u2014 integrate approved fourth narration and conform complete movie",
+  "baseline_render_run": 42503608840,
+  "fourth_audio_source": "audio/04_NON_GRAPHIC_USER_AUTHORIZED.wav",
+  "user_authorized_only_section04_two_sentence_replacement": true,
+  "original_master_unchanged": true,
+  "target_frames": 15624,
+  "target_duration": 651.0,
+  "target_shots": 70,
+  "finished_movie_available": true,
+  "run_id": 42508350609,
+  "run_url": "https://github.com/touilhasan12-png/YOU-DOC/actions/runs/42508350609",
+  "downloaded_artifacts": {
+    "leopard-audio-complete-plan": "/home/user/.cache/leopard-audio-complete/42508350609/leopard-audio-complete-plan",
+    "leopard-AUDIO-COMPLETE-MOVIE": "/home/user/.cache/leopard-audio-complete/42508350609/leopard-AUDIO-COMPLETE-MOVIE",
+    "leopard-audio-complete-encoded-QA": "/home/user/.cache/leopard-audio-complete/42508350609/leopard-audio-complete-encoded-QA"
+  },
+  "conclusion": "success",
+  "monitor_finished": true,
+  "finished_movie_drive_url": "https://drive.google.com/file/d/154HugfCVFk518rQcpxZcGMmwMCRhipQY/view",
+  "finished_movie_duration": 651,
+  "finished_movie_frames": 15624
+}
