@@ -1,0 +1,112 @@
+{
+  "status": "practical_test_passed_with_actual_visual_review",
+  "github_repository": "touilhasan12-png/YOU-DOC",
+  "test_branch": "production-kit-opening-v1",
+  "test_commit": "aa0203d8e5d5e7db830a7cf9ed218c64f807a3f3",
+  "test_run": 42493127596,
+  "test_url": "https://github.com/touilhasan12-png/YOU-DOC/actions/runs/42493127596",
+  "all_four_render_jobs_and_assembly_succeeded": true,
+  "test_frames": 1440,
+  "duration_seconds": 60,
+  "actual_audio_correlation": 0.9998066544362524,
+  "all_scenes_changed_adjacent_frames": 359,
+  "all_frame_producing_files_unchanged_since_test": [
+    {
+      "path": "SPEC.json",
+      "sha256": "171e1db5fcd68742f04538a8fb5c5f8c9a43ff1e7e861301c76ce3af46cbdd91",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "templates/OPENING_TEST.json",
+      "sha256": "30b40628955b0070ba81f230bd264dfed48ebcd92a72148086271a70240aecc8",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "scripts/render.mjs",
+      "sha256": "2d18d5fe646d467b1b1e3390d19c91a5d0722d78a4709168fb125aa70c7ecf85",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "scripts/prepare_runtime.py",
+      "sha256": "13e61e15cb3823b0378ec1f282953ad7c18ac5c4a56ab32d43e497ebdf15fbf8",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "scripts/prepare_audio.py",
+      "sha256": "902f353e9292502e106e37267468395bc83f0ba86dd345f48ae23a85f3e5a263",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "scripts/assemble_verify.py",
+      "sha256": "1669002ffd9a61d745022fa74a502437c33b4179c8c94b4904b5207c2b86621c",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "workflows/kit_opening_test.yml",
+      "sha256": "93a3a1c3d9f1b5f419269a70f3f4e27be2cf8038ddf5c858c1f23d4939bceb5e",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "reference/ENGINE_SOURCE/r15/scene.js",
+      "sha256": "a5822927c994eba50e6e490f236cf93b02589ea959a118668b2d34882f054450",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "reference/ENGINE_SOURCE/r15/orca_jaw.js",
+      "sha256": "bc012926070db75cd196f3d6060730d60fe177ea918818c82389e5b2650aca7f",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "reference/ENGINE_SOURCE/r15/shark.js",
+      "sha256": "1123266eda405e8bb578489ee6cec8dc779cccebf414ba4a5fc6fd825ebcc646",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "reference/ENGINE_SOURCE/r15/risk.js",
+      "sha256": "d8a737f919dec5e545238a77afc535d3b38dbb8c64b5e2b3651930b14f5c8569",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "reference/ENGINE_SOURCE/r15/species.js",
+      "sha256": "f17f99377bcc893c4fbed5c8153c72eb75d584267c2e6d1b088c4cc65e4553dc",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "reference/ENGINE_SOURCE/r15/blue_whale.js",
+      "sha256": "e0d2a1432694234d4905e21bbf8babcb4c6ed81514c066923d321f0cf1ffbbae",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "reference/ENGINE_SOURCE/r15/app.js",
+      "sha256": "faee168ccc038cadacce59b0e0c348aa89227f20c1caea5e39b6672c7400b12e",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "reference/ENGINE_SOURCE/r15/illustrations.js",
+      "sha256": "b36ad1148ac818437f9dfd5a6927a701e31603839ada7f4aae7528800065c858",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "reference/ENGINE_SOURCE/r15/index.html",
+      "sha256": "dcee8f6ef14f7dfc52aced51df2687da1de981f463237f00c4e26660bce58ef3",
+      "identical_to_tested_commit": true
+    },
+    {
+      "path": "reference/ENGINE_SOURCE/r15/illustrations.html",
+      "sha256": "d8bfef358208565b98cde76c6d02297d4163caae8c8561eb65f47b58cf88bf2b",
+      "identical_to_tested_commit": true
+    }
+  ],
+  "packaging_only_updates_after_test": [
+    "master priority clarification",
+    "quick start",
+    "safe cross-host artifact download and correct proof naming (successfully tested locally by downloading all actual artifacts)",
+    "streaming Drive checksum utility",
+    "package audit utility",
+    "test evidence"
+  ],
+  "known_failure_solution_count": 53,
+  "real_credentials_included": false,
+  "visual_review_scope": "Four final encoded nine-position motion sheets; full-resolution surface last frame and shark midpoint; full-resolution whale and yacht proofs. Not continuous human playback. No claim of auditory human playback.",
+  "caution": "Self-contained production inputs and included runtimes do not replace a cloud account, OS, browser system libraries or permissions. No universal artistic/no-error guarantee."
+}

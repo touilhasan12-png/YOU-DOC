@@ -1,10 +1,17 @@
 """GitHub REST monitor and artifact transfer, no GitHub connector needed."""
 from pathlib import Path
-import urllib.request,urllib.error,json,time,os,zipfile,shutil
+import urllib.request,urllib.error,urllib.parse,json,time,os,zipfile,shutil
 R=Path(__file__).resolve().parents[1];state=json.loads((R/'RUN_STATE.json').read_text());token=Path(os.environ.get('GH_TOKEN_FILE','/tmp/gh_token')).read_text().strip();base='https://api.github.com/repos/'+state['owner']+'/'+state['repo']
+class SafeRedirect(urllib.request.HTTPRedirectHandler):
+ def redirect_request(self,req,fp,code,msg,headers,newurl):
+  redirected=super().redirect_request(req,fp,code,msg,headers,newurl)
+  if redirected is not None and urllib.parse.urlsplit(req.full_url).netloc!=urllib.parse.urlsplit(newurl).netloc:
+   redirected.remove_header('Authorization')
+  return redirected
+opener=urllib.request.build_opener(SafeRedirect())
 def get(u):
  req=urllib.request.Request(u,headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json'})
- return urllib.request.urlopen(req,timeout=180)
+ return opener.open(req,timeout=180)
 for attempt in range(60):
  with get(base+'/actions/runs?per_page=100')as r:all_runs=json.load(r)['workflow_runs']
  runs=[r for r in all_runs if r['head_sha']==state['source_commit']and r['name']=='Production kit — four-scene opening test']
@@ -25,7 +32,7 @@ while True:
 with get(base+'/actions/runs/'+str(run['id'])+'/artifacts?per_page=100')as r:artifacts=json.load(r)['artifacts']
 (R/'RUN_ARTIFACTS.json').write_text(json.dumps(artifacts,indent=2));out=R/'downloaded';out.mkdir(exist_ok=True)
 for a in artifacts:
- if a['name']not in['kit-opening-delivery','kit-opening-review','kit-opening-proof']:continue
+ if a['name']not in['kit-opening-delivery','kit-opening-review']and not a['name'].startswith('kit-proof-'):continue
  folder=out/a['name'];folder.mkdir(exist_ok=True);archive=folder/'transfer.zip'
  with get(a['archive_download_url'])as src,archive.open('wb')as dst:shutil.copyfileobj(src,dst)
  with zipfile.ZipFile(archive)as z:

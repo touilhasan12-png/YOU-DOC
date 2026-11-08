@@ -1,0 +1,223 @@
+{
+  "status": "technical_pass_visual_review_required",
+  "scene_count": 4,
+  "paragraph_count": 4,
+  "duration_seconds": 60,
+  "width": 1920,
+  "height": 1080,
+  "fps": 24,
+  "frames": 1440,
+  "audio_source": "Original approved R9 voice excerpts in included R15 master; no synthesized voice",
+  "audio_waveform_correlation": 0.9998066544362524,
+  "scene_motion": [
+    {
+      "scene": 1,
+      "changed_adjacent_frames": 359,
+      "total_adjacent_pairs": 359
+    },
+    {
+      "scene": 2,
+      "changed_adjacent_frames": 359,
+      "total_adjacent_pairs": 359
+    },
+    {
+      "scene": 3,
+      "changed_adjacent_frames": 359,
+      "total_adjacent_pairs": 359
+    },
+    {
+      "scene": 4,
+      "changed_adjacent_frames": 359,
+      "total_adjacent_pairs": 359
+    }
+  ],
+  "sharpness_metrics_are_screening_not_artistic_or_zero_blur_proof": [
+    {
+      "scene": 1,
+      "frame": 0,
+      "edge_energy": 5.708601948302469
+    },
+    {
+      "scene": 1,
+      "frame": 45,
+      "edge_energy": 5.227226080246914
+    },
+    {
+      "scene": 1,
+      "frame": 90,
+      "edge_energy": 4.952787905092593
+    },
+    {
+      "scene": 1,
+      "frame": 135,
+      "edge_energy": 5.408025173611111
+    },
+    {
+      "scene": 1,
+      "frame": 180,
+      "edge_energy": 5.869383680555556
+    },
+    {
+      "scene": 1,
+      "frame": 225,
+      "edge_energy": 4.768510320216049
+    },
+    {
+      "scene": 1,
+      "frame": 270,
+      "edge_energy": 4.4736140046296295
+    },
+    {
+      "scene": 1,
+      "frame": 315,
+      "edge_energy": 4.917166280864198
+    },
+    {
+      "scene": 1,
+      "frame": 359,
+      "edge_energy": 4.9727281057098764
+    },
+    {
+      "scene": 2,
+      "frame": 0,
+      "edge_energy": 1.3463517554012345
+    },
+    {
+      "scene": 2,
+      "frame": 45,
+      "edge_energy": 1.340120563271605
+    },
+    {
+      "scene": 2,
+      "frame": 90,
+      "edge_energy": 1.2828641010802468
+    },
+    {
+      "scene": 2,
+      "frame": 135,
+      "edge_energy": 1.2841194058641976
+    },
+    {
+      "scene": 2,
+      "frame": 180,
+      "edge_energy": 1.2899590084876542
+    },
+    {
+      "scene": 2,
+      "frame": 225,
+      "edge_energy": 1.2858043981481482
+    },
+    {
+      "scene": 2,
+      "frame": 270,
+      "edge_energy": 1.2845437885802469
+    },
+    {
+      "scene": 2,
+      "frame": 315,
+      "edge_energy": 1.2812345679012345
+    },
+    {
+      "scene": 2,
+      "frame": 359,
+      "edge_energy": 1.2784080825617283
+    },
+    {
+      "scene": 3,
+      "frame": 0,
+      "edge_energy": 2.691065779320988
+    },
+    {
+      "scene": 3,
+      "frame": 45,
+      "edge_energy": 2.682822627314815
+    },
+    {
+      "scene": 3,
+      "frame": 90,
+      "edge_energy": 2.6849421296296296
+    },
+    {
+      "scene": 3,
+      "frame": 135,
+      "edge_energy": 2.6868021797839505
+    },
+    {
+      "scene": 3,
+      "frame": 180,
+      "edge_energy": 2.690381462191358
+    },
+    {
+      "scene": 3,
+      "frame": 225,
+      "edge_energy": 2.685759548611111
+    },
+    {
+      "scene": 3,
+      "frame": 270,
+      "edge_energy": 2.679019097222222
+    },
+    {
+      "scene": 3,
+      "frame": 315,
+      "edge_energy": 2.674937789351852
+    },
+    {
+      "scene": 3,
+      "frame": 359,
+      "edge_energy": 2.67834587191358
+    },
+    {
+      "scene": 4,
+      "frame": 0,
+      "edge_energy": 3.3876123649691356
+    },
+    {
+      "scene": 4,
+      "frame": 45,
+      "edge_energy": 3.4126933834876545
+    },
+    {
+      "scene": 4,
+      "frame": 90,
+      "edge_energy": 3.4169053819444444
+    },
+    {
+      "scene": 4,
+      "frame": 135,
+      "edge_energy": 3.2267505787037036
+    },
+    {
+      "scene": 4,
+      "frame": 180,
+      "edge_energy": 3.2425858410493826
+    },
+    {
+      "scene": 4,
+      "frame": 225,
+      "edge_energy": 3.1792915702160496
+    },
+    {
+      "scene": 4,
+      "frame": 270,
+      "edge_energy": 3.17750675154321
+    },
+    {
+      "scene": 4,
+      "frame": 315,
+      "edge_energy": 3.176832561728395
+    },
+    {
+      "scene": 4,
+      "frame": 359,
+      "edge_energy": 3.174116512345679
+    }
+  ],
+  "intentional_blur_enabled": false,
+  "github_run": "42493127596",
+  "source_commit": "aa0203d8e5d5e7db830a7cf9ed218c64f807a3f3",
+  "sha256": "5231428f07bb3119388d468f7769901fc7abb16a32603818a259ee6404b204f8",
+  "bytes": 17709868,
+  "continuous_human_playback_claimed": false,
+  "automatic_visual_acceptance": false
+}
