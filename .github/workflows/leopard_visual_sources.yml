@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - '.github/workflows/leopard_visual_sources.yml'
+      - 'LEOPARD_SEAL/visual_rebuild/inspect_real_sources.py'
   workflow_dispatch:
 permissions:
   contents: read
@@ -20,7 +21,7 @@ jobs:
           python-version: '3.12'
       - name: Install pinned media-inspection tools
         run: python -m pip install imageio-ffmpeg==0.6.0 pillow==11.3.0
-      - name: Fully decode both real videos, extract actual source frames, inspect exactly four real stills
+      - name: Fully decode four real videos, extract actual source frames, inspect exactly four real stills
         run: python LEOPARD_SEAL/visual_rebuild/inspect_real_sources.py
       - uses: actions/upload-artifact@v4
         if: always()
