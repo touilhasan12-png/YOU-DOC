@@ -130,7 +130,8 @@ jobs:
           python-version: '3.12'
       - name: Install pinned mux and verification tools
         working-directory: PRODUCTION_KIT
-        run: python -m pip install --no-index --find-links vendor/wheels imageio-ffmpeg==0.6.0
+        run: |
+          python -m pip install --no-index --find-links vendor/wheels imageio-ffmpeg==0.6.0
           python -m pip install numpy==2.2.6
       - uses: actions/download-artifact@v4
         with:
