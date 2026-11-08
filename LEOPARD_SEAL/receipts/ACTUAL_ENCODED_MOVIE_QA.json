@@ -1,0 +1,586 @@
+{
+  "status": "COMPLETE_WORKPRINT_VIDEO_DECODED_AND_ALL_71_SHOTS_SAMPLED",
+  "render_run_id": 42503608840,
+  "qa_source_commit": "a683ed85484a8e23b53cdd97c94a47c7a0f17dd2",
+  "final_film_complete": false,
+  "workprint_mp4_sha256": "489b2ad42239e87701b63140e2f25c9586227898d165715574554a4bb59bb24b",
+  "all_video_frames_successfully_decoded": 15805,
+  "actual_decoded_image_dimensions": [
+    1920,
+    1080
+  ],
+  "script_original_sha256": "12e7342195250a4484ad32e7f4ad30a4b7a35025cb46d06f12d44e51b85568fe",
+  "narration04_missing": true,
+  "artistic_approval": false,
+  "continuous_human_listening": false,
+  "actual_movie_sample_frames": [
+    {
+      "section": 1,
+      "shot": "01_01",
+      "kind": "underice",
+      "frame": 51,
+      "time": 2.125,
+      "actual_encoded_frame_file": "ENCODED_001.png"
+    },
+    {
+      "section": 1,
+      "shot": "01_02",
+      "kind": "surfacehunt",
+      "frame": 181,
+      "time": 7.541666666666667,
+      "actual_encoded_frame_file": "ENCODED_002.png"
+    },
+    {
+      "section": 1,
+      "shot": "01_03",
+      "kind": "boat",
+      "frame": 328,
+      "time": 13.666666666666666,
+      "actual_encoded_frame_file": "ENCODED_003.png"
+    },
+    {
+      "section": 1,
+      "shot": "01_04",
+      "kind": "scale",
+      "frame": 467,
+      "time": 19.458333333333332,
+      "actual_encoded_frame_file": "ENCODED_004.png"
+    },
+    {
+      "section": 1,
+      "shot": "01_05",
+      "kind": "contact",
+      "frame": 640,
+      "time": 26.666666666666668,
+      "actual_encoded_frame_file": "ENCODED_005.png"
+    },
+    {
+      "section": 1,
+      "shot": "01_06",
+      "kind": "offer",
+      "frame": 869,
+      "time": 36.208333333333336,
+      "actual_encoded_frame_file": "ENCODED_006.png"
+    },
+    {
+      "section": 1,
+      "shot": "01_07",
+      "kind": "gifts",
+      "frame": 1149,
+      "time": 47.875,
+      "actual_encoded_frame_file": "ENCODED_007.png"
+    },
+    {
+      "section": 1,
+      "shot": "01_08",
+      "kind": "chase",
+      "frame": 1395,
+      "time": 58.125,
+      "actual_encoded_frame_file": "ENCODED_008.png"
+    },
+    {
+      "section": 1,
+      "shot": "01_09",
+      "kind": "diver",
+      "frame": 1595,
+      "time": 66.45833333333333,
+      "actual_encoded_frame_file": "ENCODED_009.png"
+    },
+    {
+      "section": 1,
+      "shot": "01_10",
+      "kind": "fatalcard",
+      "frame": 1824,
+      "time": 76.0,
+      "actual_encoded_frame_file": "ENCODED_010.png"
+    },
+    {
+      "section": 1,
+      "shot": "01_11",
+      "kind": "eye",
+      "frame": 2028,
+      "time": 84.5,
+      "actual_encoded_frame_file": "ENCODED_011.png"
+    },
+    {
+      "section": 2,
+      "shot": "02_01",
+      "kind": "scale",
+      "frame": 2252,
+      "time": 93.83333333333333,
+      "actual_encoded_frame_file": "ENCODED_012.png"
+    },
+    {
+      "section": 2,
+      "shot": "02_02",
+      "kind": "jaw",
+      "frame": 2460,
+      "time": 102.5,
+      "actual_encoded_frame_file": "ENCODED_013.png"
+    },
+    {
+      "section": 2,
+      "shot": "02_03",
+      "kind": "teeth",
+      "frame": 2619,
+      "time": 109.125,
+      "actual_encoded_frame_file": "ENCODED_014.png"
+    },
+    {
+      "section": 2,
+      "shot": "02_04",
+      "kind": "sprint",
+      "frame": 2756,
+      "time": 114.83333333333333,
+      "actual_encoded_frame_file": "ENCODED_015.png"
+    },
+    {
+      "section": 2,
+      "shot": "02_05",
+      "kind": "orca",
+      "frame": 2863,
+      "time": 119.29166666666667,
+      "actual_encoded_frame_file": "ENCODED_016.png"
+    },
+    {
+      "section": 2,
+      "shot": "02_06",
+      "kind": "range",
+      "frame": 3052,
+      "time": 127.16666666666667,
+      "actual_encoded_frame_file": "ENCODED_017.png"
+    },
+    {
+      "section": 2,
+      "shot": "02_07",
+      "kind": "eye",
+      "frame": 3231,
+      "time": 134.625,
+      "actual_encoded_frame_file": "ENCODED_018.png"
+    },
+    {
+      "section": 3,
+      "shot": "03_01",
+      "kind": "foodweb",
+      "frame": 3427,
+      "time": 142.79166666666666,
+      "actual_encoded_frame_file": "ENCODED_019.png"
+    },
+    {
+      "section": 3,
+      "shot": "03_02",
+      "kind": "penguins",
+      "frame": 3632,
+      "time": 151.33333333333334,
+      "actual_encoded_frame_file": "ENCODED_020.png"
+    },
+    {
+      "section": 3,
+      "shot": "03_03",
+      "kind": "sydney",
+      "frame": 3810,
+      "time": 158.75,
+      "actual_encoded_frame_file": "ENCODED_021.png"
+    },
+    {
+      "section": 3,
+      "shot": "03_04",
+      "kind": "scars",
+      "frame": 4053,
+      "time": 168.875,
+      "actual_encoded_frame_file": "ENCODED_022.png"
+    },
+    {
+      "section": 3,
+      "shot": "03_05",
+      "kind": "colony",
+      "frame": 4284,
+      "time": 178.5,
+      "actual_encoded_frame_file": "ENCODED_023.png"
+    },
+    {
+      "section": 3,
+      "shot": "03_06",
+      "kind": "researchmap",
+      "frame": 4528,
+      "time": 188.66666666666666,
+      "actual_encoded_frame_file": "ENCODED_024.png"
+    },
+    {
+      "section": 3,
+      "shot": "03_07",
+      "kind": "camerafield",
+      "frame": 4780,
+      "time": 199.16666666666666,
+      "actual_encoded_frame_file": "ENCODED_025.png"
+    },
+    {
+      "section": 3,
+      "shot": "03_08",
+      "kind": "fishrocks",
+      "frame": 4925,
+      "time": 205.20833333333334,
+      "actual_encoded_frame_file": "ENCODED_026.png"
+    },
+    {
+      "section": 3,
+      "shot": "03_09",
+      "kind": "fishchase",
+      "frame": 4986,
+      "time": 207.75,
+      "actual_encoded_frame_file": "ENCODED_027.png"
+    },
+    {
+      "section": 3,
+      "shot": "03_10",
+      "kind": "theft",
+      "frame": 5132,
+      "time": 213.83333333333334,
+      "actual_encoded_frame_file": "ENCODED_028.png"
+    },
+    {
+      "section": 4,
+      "shot": "04_01",
+      "kind": "ambush",
+      "frame": 5333,
+      "time": 222.20833333333334,
+      "actual_encoded_frame_file": "ENCODED_029.png"
+    },
+    {
+      "section": 4,
+      "shot": "04_02",
+      "kind": "thrash",
+      "frame": 5565,
+      "time": 231.875,
+      "actual_encoded_frame_file": "ENCODED_030.png"
+    },
+    {
+      "section": 4,
+      "shot": "04_03",
+      "kind": "preyhold",
+      "frame": 5750,
+      "time": 239.58333333333334,
+      "actual_encoded_frame_file": "ENCODED_031.png"
+    },
+    {
+      "section": 4,
+      "shot": "04_04",
+      "kind": "colony",
+      "frame": 5854,
+      "time": 243.91666666666666,
+      "actual_encoded_frame_file": "ENCODED_032.png"
+    },
+    {
+      "section": 4,
+      "shot": "04_05",
+      "kind": "prydz",
+      "frame": 6000,
+      "time": 250.0,
+      "actual_encoded_frame_file": "ENCODED_033.png"
+    },
+    {
+      "section": 4,
+      "shot": "04_06",
+      "kind": "techniques",
+      "frame": 6202,
+      "time": 258.4166666666667,
+      "actual_encoded_frame_file": "ENCODED_034.png"
+    },
+    {
+      "section": 4,
+      "shot": "04_07",
+      "kind": "silhouettes",
+      "frame": 6521,
+      "time": 271.7083333333333,
+      "actual_encoded_frame_file": "ENCODED_035.png"
+    },
+    {
+      "section": 5,
+      "shot": "05_01",
+      "kind": "icewalk",
+      "frame": 6757,
+      "time": 281.5416666666667,
+      "actual_encoded_frame_file": "ENCODED_036.png"
+    },
+    {
+      "section": 5,
+      "shot": "05_02",
+      "kind": "survey",
+      "frame": 6905,
+      "time": 287.7083333333333,
+      "actual_encoded_frame_file": "ENCODED_037.png"
+    },
+    {
+      "section": 5,
+      "shot": "05_03",
+      "kind": "icebreach",
+      "frame": 7130,
+      "time": 297.0833333333333,
+      "actual_encoded_frame_file": "ENCODED_038.png"
+    },
+    {
+      "section": 5,
+      "shot": "05_04",
+      "kind": "crampon",
+      "frame": 7350,
+      "time": 306.25,
+      "actual_encoded_frame_file": "ENCODED_039.png"
+    },
+    {
+      "section": 5,
+      "shot": "05_05",
+      "kind": "rescue",
+      "frame": 7529,
+      "time": 313.7083333333333,
+      "actual_encoded_frame_file": "ENCODED_040.png"
+    },
+    {
+      "section": 5,
+      "shot": "05_06",
+      "kind": "boatunder",
+      "frame": 7648,
+      "time": 318.6666666666667,
+      "actual_encoded_frame_file": "ENCODED_041.png"
+    },
+    {
+      "section": 5,
+      "shot": "05_07",
+      "kind": "boatcontact",
+      "frame": 7830,
+      "time": 326.25,
+      "actual_encoded_frame_file": "ENCODED_042.png"
+    },
+    {
+      "section": 6,
+      "shot": "06_01",
+      "kind": "archive",
+      "frame": 8806,
+      "time": 366.9166666666667,
+      "actual_encoded_frame_file": "ENCODED_043.png"
+    },
+    {
+      "section": 7,
+      "shot": "07_01",
+      "kind": "circle",
+      "frame": 9804,
+      "time": 408.5,
+      "actual_encoded_frame_file": "ENCODED_044.png"
+    },
+    {
+      "section": 7,
+      "shot": "07_02",
+      "kind": "circleabove",
+      "frame": 10027,
+      "time": 417.7916666666667,
+      "actual_encoded_frame_file": "ENCODED_045.png"
+    },
+    {
+      "section": 7,
+      "shot": "07_03",
+      "kind": "headshake",
+      "frame": 10141,
+      "time": 422.5416666666667,
+      "actual_encoded_frame_file": "ENCODED_046.png"
+    },
+    {
+      "section": 7,
+      "shot": "07_04",
+      "kind": "offer",
+      "frame": 10264,
+      "time": 427.6666666666667,
+      "actual_encoded_frame_file": "ENCODED_047.png"
+    },
+    {
+      "section": 7,
+      "shot": "07_05",
+      "kind": "signalpanels",
+      "frame": 10442,
+      "time": 435.0833333333333,
+      "actual_encoded_frame_file": "ENCODED_048.png"
+    },
+    {
+      "section": 7,
+      "shot": "07_06",
+      "kind": "jaw",
+      "frame": 10643,
+      "time": 443.4583333333333,
+      "actual_encoded_frame_file": "ENCODED_049.png"
+    },
+    {
+      "section": 7,
+      "shot": "07_07",
+      "kind": "signalpanels",
+      "frame": 10849,
+      "time": 452.0416666666667,
+      "actual_encoded_frame_file": "ENCODED_050.png"
+    },
+    {
+      "section": 7,
+      "shot": "07_08",
+      "kind": "eye",
+      "frame": 11131,
+      "time": 463.7916666666667,
+      "actual_encoded_frame_file": "ENCODED_051.png"
+    },
+    {
+      "section": 8,
+      "shot": "08_01",
+      "kind": "povabove",
+      "frame": 11402,
+      "time": 475.0833333333333,
+      "actual_encoded_frame_file": "ENCODED_052.png"
+    },
+    {
+      "section": 8,
+      "shot": "08_02",
+      "kind": "options",
+      "frame": 11752,
+      "time": 489.6666666666667,
+      "actual_encoded_frame_file": "ENCODED_053.png"
+    },
+    {
+      "section": 8,
+      "shot": "08_03",
+      "kind": "retreat",
+      "frame": 12127,
+      "time": 505.2916666666667,
+      "actual_encoded_frame_file": "ENCODED_054.png"
+    },
+    {
+      "section": 8,
+      "shot": "08_04",
+      "kind": "watch",
+      "frame": 12356,
+      "time": 514.8333333333334,
+      "actual_encoded_frame_file": "ENCODED_055.png"
+    },
+    {
+      "section": 8,
+      "shot": "08_05",
+      "kind": "beach",
+      "frame": 12550,
+      "time": 522.9166666666666,
+      "actual_encoded_frame_file": "ENCODED_056.png"
+    },
+    {
+      "section": 8,
+      "shot": "08_06",
+      "kind": "shore",
+      "frame": 12701,
+      "time": 529.2083333333334,
+      "actual_encoded_frame_file": "ENCODED_057.png"
+    },
+    {
+      "section": 9,
+      "shot": "09_01",
+      "kind": "stats",
+      "frame": 12943,
+      "time": 539.2916666666666,
+      "actual_encoded_frame_file": "ENCODED_058.png"
+    },
+    {
+      "section": 9,
+      "shot": "09_02",
+      "kind": "rates",
+      "frame": 13280,
+      "time": 553.3333333333334,
+      "actual_encoded_frame_file": "ENCODED_059.png"
+    },
+    {
+      "section": 9,
+      "shot": "09_03",
+      "kind": "diver",
+      "frame": 13516,
+      "time": 563.1666666666666,
+      "actual_encoded_frame_file": "ENCODED_060.png"
+    },
+    {
+      "section": 9,
+      "shot": "09_04",
+      "kind": "singer",
+      "frame": 13705,
+      "time": 571.0416666666666,
+      "actual_encoded_frame_file": "ENCODED_061.png"
+    },
+    {
+      "section": 9,
+      "shot": "09_05",
+      "kind": "songs",
+      "frame": 13936,
+      "time": 580.6666666666666,
+      "actual_encoded_frame_file": "ENCODED_062.png"
+    },
+    {
+      "section": 9,
+      "shot": "09_06",
+      "kind": "profile",
+      "frame": 14121,
+      "time": 588.375,
+      "actual_encoded_frame_file": "ENCODED_063.png"
+    },
+    {
+      "section": 9,
+      "shot": "09_07",
+      "kind": "icechange",
+      "frame": 14320,
+      "time": 596.6666666666666,
+      "actual_encoded_frame_file": "ENCODED_064.png"
+    },
+    {
+      "section": 9,
+      "shot": "09_08",
+      "kind": "krill",
+      "frame": 14521,
+      "time": 605.0416666666666,
+      "actual_encoded_frame_file": "ENCODED_065.png"
+    },
+    {
+      "section": 9,
+      "shot": "09_09",
+      "kind": "population",
+      "frame": 14689,
+      "time": 612.0416666666666,
+      "actual_encoded_frame_file": "ENCODED_066.png"
+    },
+    {
+      "section": 10,
+      "shot": "10_01",
+      "kind": "eye",
+      "frame": 14859,
+      "time": 619.125,
+      "actual_encoded_frame_file": "ENCODED_067.png"
+    },
+    {
+      "section": 10,
+      "shot": "10_02",
+      "kind": "offer",
+      "frame": 15046,
+      "time": 626.9166666666666,
+      "actual_encoded_frame_file": "ENCODED_068.png"
+    },
+    {
+      "section": 10,
+      "shot": "10_03",
+      "kind": "circle",
+      "frame": 15324,
+      "time": 638.5,
+      "actual_encoded_frame_file": "ENCODED_069.png"
+    },
+    {
+      "section": 10,
+      "shot": "10_04",
+      "kind": "eye",
+      "frame": 15544,
+      "time": 647.6666666666666,
+      "actual_encoded_frame_file": "ENCODED_070.png"
+    },
+    {
+      "section": 10,
+      "shot": "10_05",
+      "kind": "outro",
+      "frame": 15707,
+      "time": 654.4583333333334,
+      "actual_encoded_frame_file": "ENCODED_071.png"
+    }
+  ]
+}

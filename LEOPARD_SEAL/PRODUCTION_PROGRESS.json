@@ -85,7 +85,7 @@
     "source_commit": "19cba9ae4c8bc32fb76faa102ef6e8ce11009498",
     "run_id": 42503608840,
     "run_url": "https://github.com/touilhasan12-png/YOU-DOC/actions/runs/42503608840",
-    "state": "TEN_COMPLETE_CHAPTER_RENDERS_RUNNING_AFTER_ALL_213_CORRECTED_PROBES",
+    "state": "FULL_LENGTH_WORKPRINT_DELIVERED_NOT_FINAL_FILM",
     "chapters": 10,
     "authored_shots": 71,
     "target_frames": 15805,
@@ -95,7 +95,7 @@
       1920,
       1080
     ],
-    "actual_complete_full_length_workprint_exists": false,
+    "actual_complete_full_length_workprint_exists": true,
     "final_film_complete": false,
     "missing_audio_sections": [
       4
@@ -129,7 +129,20 @@
     "outstanding_visual_issues": [
       "Protective outer clothing still leaves visible native material/arm gaps in the standing cast; not certified final wardrobe.",
       "Full-length rendered video still needs actual montage review; probes are not continuous motion proof."
-    ]
+    ],
+    "successful_assembly_and_decode_run": 42506446626,
+    "assembly_conclusion": "success",
+    "all_video_frames_decoded": 15805,
+    "actual_encoded_movie_sample_count": 71,
+    "actual_encoded_contact_sheets_opened": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "drive_movie_url": "https://drive.google.com/file/d/1dDW1rVugdCXUH-u9cPjTGsu8HBLXuzXo/view",
+    "active_processes": []
   },
   "stronger_audio_audit": {
     "run_id": 42503002557,
@@ -158,5 +171,10 @@
   },
   "speech_generation_attempts_total": 11,
   "successful_speech_files_total": 9,
-  "section04_attempts_total": 2
+  "section04_attempts_total": 2,
+  "remaining_to_finish_final_film": [
+    "Section04 narration remains unavailable after two exact-text refusals; no rewriting or bypass.",
+    "Exact-word/pronunciation listening remains unverified; small.en flags possible initial Say in01 and Start with in03.",
+    "Final wardrobe material gaps and full continuous-motion artistic review remain outstanding."
+  ]
 }

@@ -1,0 +1,93 @@
+{
+  "status": "FULL_LENGTH_VISUAL_WORKPRINT_AUDIO04_MISSING",
+  "final_film_complete": false,
+  "script_sha256": "12e7342195250a4484ad32e7f4ad30a4b7a35025cb46d06f12d44e51b85568fe",
+  "original_script_byte_unchanged": true,
+  "frames": 15805,
+  "fps": 24,
+  "duration_seconds": 658.5416666666666,
+  "width": 1920,
+  "height": 1080,
+  "chapters": 10,
+  "shots": 71,
+  "missing_audio_sections": [
+    4
+  ],
+  "chapter04_duration_is_workprint_estimate": true,
+  "narration_playback_rate": 1.0,
+  "continuous_human_listening_completed": false,
+  "artistic_approval": false,
+  "audio_edit_checks": [
+    {
+      "section": 1,
+      "source_duration": 87.88,
+      "movie_offset": 0,
+      "decoded_source_correlation": 0.9999574532343648,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 2,
+      "source_duration": 48.92,
+      "movie_offset": 87.91666666666667,
+      "decoded_source_correlation": 0.9999059336161761,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 3,
+      "source_duration": 81.88,
+      "movie_offset": 136.875,
+      "decoded_source_correlation": 0.9999570077080173,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 4,
+      "explicitly_missing": true,
+      "silent_audio_peak": 0.0,
+      "silence_is_not_narration": true
+    },
+    {
+      "section": 5,
+      "source_duration": 52.32,
+      "movie_offset": 279.7916666666667,
+      "decoded_source_correlation": 0.9999715949158879,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 6,
+      "source_duration": 69.56,
+      "movie_offset": 332.125,
+      "decoded_source_correlation": 0.9999384436507226,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 7,
+      "source_duration": 69.12,
+      "movie_offset": 401.7083333333333,
+      "decoded_source_correlation": 0.9999134401272767,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 8,
+      "source_duration": 60.76,
+      "movie_offset": 470.8333333333333,
+      "decoded_source_correlation": 0.9999510318972757,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 9,
+      "source_duration": 84.88,
+      "movie_offset": 531.625,
+      "decoded_source_correlation": 0.9999270193821959,
+      "playback_rate": 1.0
+    },
+    {
+      "section": 10,
+      "source_duration": 41.96,
+      "movie_offset": 616.5416666666666,
+      "decoded_source_correlation": 0.9999665195800105,
+      "playback_rate": 1.0
+    }
+  ],
+  "movie_bytes": 132103436,
+  "movie_sha256": "489b2ad42239e87701b63140e2f25c9586227898d165715574554a4bb59bb24b"
+}
