@@ -1,0 +1,84 @@
+{
+  "script_byte_identical_to_upload": true,
+  "script_sha256": "12e7342195250a4484ad32e7f4ad30a4b7a35025cb46d06f12d44e51b85568fe",
+  "voice_id": "voice-00",
+  "speech_tool_calls": 10,
+  "speech_tool_successes": 9,
+  "blocked_section": 4,
+  "blocked_section_text_preserved": true,
+  "moderation_bypass_attempted": false,
+  "audio_sections": [
+    {
+      "section": 1,
+      "status": "GENERATED_PENDING_ARTISTIC_LISTENING",
+      "duration_seconds": 87.88,
+      "audio_sha256": "bb551f2797d339c75720c51573fb16c50b68395b8008ec9b7c6618df642421e1"
+    },
+    {
+      "section": 2,
+      "status": "GENERATED_PENDING_ARTISTIC_LISTENING",
+      "duration_seconds": 48.92,
+      "audio_sha256": "c70053de4e91572a4d527985e6953152933c26850a78a9a6cc85b9ef5f6a90a0"
+    },
+    {
+      "section": 3,
+      "status": "GENERATED_PENDING_ARTISTIC_LISTENING",
+      "duration_seconds": 81.88,
+      "audio_sha256": "cce0c3d1d6d36fea7d8e083090e1d6d0fe4977c7684aec0623e80fd8604c2fe1"
+    },
+    {
+      "section": 4,
+      "status": "MISSING_TOOL_MODERATION_BLOCK",
+      "duration_seconds": null,
+      "audio_sha256": null
+    },
+    {
+      "section": 5,
+      "status": "GENERATED_PENDING_ARTISTIC_LISTENING",
+      "duration_seconds": 52.32,
+      "audio_sha256": "6499a0041ff470297a28ec0455a6d7e1601fe8fd76912d9ec38ef8251ee40f95"
+    },
+    {
+      "section": 6,
+      "status": "GENERATED_PENDING_ARTISTIC_LISTENING",
+      "duration_seconds": 69.56,
+      "audio_sha256": "a2e951909ee0e9c872c6a2659cc6dcf1d9e03962f9e19b3c9c0024f49e2f3dc7"
+    },
+    {
+      "section": 7,
+      "status": "GENERATED_PENDING_ARTISTIC_LISTENING",
+      "duration_seconds": 69.12,
+      "audio_sha256": "c19726143cdc3d91bacce7f1df413059f9d16efeaea2b47409dc13e740057a67"
+    },
+    {
+      "section": 8,
+      "status": "GENERATED_PENDING_ARTISTIC_LISTENING",
+      "duration_seconds": 60.76,
+      "audio_sha256": "a6779e92ca1945df0c10c9754640ba9eca3a29ce1942bb35e76efa9b49249a6a"
+    },
+    {
+      "section": 9,
+      "status": "GENERATED_PENDING_ARTISTIC_LISTENING",
+      "duration_seconds": 84.88,
+      "audio_sha256": "07a119fc2b2ceadc538a16f290d54801cacb5a2c29461c17064d9a50cf024a1a"
+    },
+    {
+      "section": 10,
+      "status": "GENERATED_PENDING_ARTISTIC_LISTENING",
+      "duration_seconds": 41.96,
+      "audio_sha256": "c724d9accc3fa31c4d685007d9af695c47fb54738cc27f0750bc71e152cb7289"
+    }
+  ],
+  "generated_speech_total_seconds": 597.28,
+  "ASR_completed_on_Actions": true,
+  "ASR_is_not_perfect_word_or_human_listening_verification": true,
+  "latest_successful_QA_run": 42501345727,
+  "source_commit": "ff140a3fdc9f1fa9de653f08b31e565d4517eddb",
+  "four_camera_jaw_triangle_tests_at_peak_contact": "all clear",
+  "full_movie_complete": false,
+  "remaining_work": [
+    "Resolve unchanged section4 speech tool block without rewriting or bypass",
+    "Finish remaining script-directed scenes/assets and complete edit",
+    "Full encoded-film visual/audio review and final Drive delivery"
+  ]
+}

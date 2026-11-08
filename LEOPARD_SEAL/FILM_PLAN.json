@@ -1,0 +1,2070 @@
+{
+  "status": "WORKPRINT_INCOMPLETE_AUDIO04",
+  "fps": 24,
+  "width": 1920,
+  "height": 1080,
+  "script_sha256": "12e7342195250a4484ad32e7f4ad30a4b7a35025cb46d06f12d44e51b85568fe",
+  "total_frames": 15805,
+  "duration": 658.5416666666666,
+  "missing_narration_sections": [
+    4
+  ],
+  "chapters": [
+    {
+      "section": 1,
+      "title": "Cold open",
+      "frames": 2110,
+      "duration": 87.91666666666667,
+      "global_start": 0,
+      "audio_missing": false,
+      "duration_estimated_because_audio_missing": false,
+      "shots": [
+        {
+          "kind": "underice",
+          "start": 0,
+          "cue": "",
+          "source_character": 0,
+          "id": "01_01",
+          "section": 1,
+          "title": "Cold open",
+          "end": 4.291666666666667,
+          "start_frame": 0,
+          "end_frame": 103,
+          "frames": 103,
+          "duration": 4.291666666666667
+        },
+        {
+          "kind": "surfacehunt",
+          "start": 4.291666666666667,
+          "cue": "watched a leopard seal kill",
+          "source_character": 70,
+          "id": "01_02",
+          "section": 1,
+          "title": "Cold open",
+          "end": 10.833333333333334,
+          "start_frame": 103,
+          "end_frame": 260,
+          "frames": 157,
+          "duration": 6.541666666666667
+        },
+        {
+          "kind": "boat",
+          "start": 10.833333333333334,
+          "cue": "Your guide says",
+          "source_character": 166,
+          "id": "01_03",
+          "section": 1,
+          "title": "Cold open",
+          "end": 16.5,
+          "start_frame": 260,
+          "end_frame": 396,
+          "frames": 136,
+          "duration": 5.666666666666667
+        },
+        {
+          "kind": "scale",
+          "start": 16.5,
+          "cue": "The seal is about",
+          "source_character": 231,
+          "id": "01_04",
+          "section": 1,
+          "title": "Cold open",
+          "end": 22.416666666666668,
+          "start_frame": 396,
+          "end_frame": 538,
+          "frames": 142,
+          "duration": 5.916666666666667
+        },
+        {
+          "kind": "contact",
+          "start": 22.416666666666668,
+          "cue": "She rushes",
+          "source_character": 299,
+          "id": "01_05",
+          "section": 1,
+          "title": "Cold open",
+          "end": 30.958333333333332,
+          "start_frame": 538,
+          "end_frame": 743,
+          "frames": 205,
+          "duration": 8.541666666666666
+        },
+        {
+          "kind": "offer",
+          "start": 30.958333333333332,
+          "cue": "Then she relaxes",
+          "source_character": 428,
+          "id": "01_06",
+          "section": 1,
+          "title": "Cold open",
+          "end": 41.5,
+          "start_frame": 743,
+          "end_frame": 996,
+          "frames": 253,
+          "duration": 10.541666666666666
+        },
+        {
+          "kind": "gifts",
+          "start": 41.5,
+          "cue": "When live penguins fail",
+          "source_character": 574,
+          "id": "01_07",
+          "section": 1,
+          "title": "Cold open",
+          "end": 54.25,
+          "start_frame": 996,
+          "end_frame": 1302,
+          "frames": 306,
+          "duration": 12.75
+        },
+        {
+          "kind": "chase",
+          "start": 54.25,
+          "cue": "On the last day",
+          "source_character": 767,
+          "id": "01_08",
+          "section": 1,
+          "title": "Cold open",
+          "end": 62.0,
+          "start_frame": 1302,
+          "end_frame": 1488,
+          "frames": 186,
+          "duration": 7.75
+        },
+        {
+          "kind": "diver",
+          "start": 62.0,
+          "cue": "Over four days",
+          "source_character": 877,
+          "id": "01_09",
+          "section": 1,
+          "title": "Cold open",
+          "end": 70.925,
+          "start_frame": 1488,
+          "end_frame": 1702,
+          "frames": 214,
+          "duration": 8.916666666666666
+        },
+        {
+          "kind": "fatalcard",
+          "start": 70.925,
+          "cue": "Here's the part",
+          "source_character": 1018,
+          "id": "01_10",
+          "section": 1,
+          "title": "Cold open",
+          "end": 81.08333333333333,
+          "start_frame": 1702,
+          "end_frame": 1946,
+          "frames": 244,
+          "duration": 10.166666666666666
+        },
+        {
+          "kind": "eye",
+          "start": 81.08333333333333,
+          "cue": "Because the more",
+          "source_character": 1171,
+          "id": "01_11",
+          "section": 1,
+          "title": "Cold open",
+          "end": 87.91666666666667,
+          "start_frame": 1946,
+          "end_frame": 2110,
+          "frames": 164,
+          "duration": 6.833333333333333
+        }
+      ],
+      "captions": [
+        {
+          "start": 0,
+          "end": 4.28,
+          "text": "Say you're a photographer on an Antarctic assignment, and you've just"
+        },
+        {
+          "start": 4.28,
+          "end": 7.94,
+          "text": "watched a leopard seal kill a penguin beside your boat."
+        },
+        {
+          "start": 7.94,
+          "end": 10.84,
+          "text": "The water is minus one degrees Celsius."
+        },
+        {
+          "start": 10.84,
+          "end": 13.82,
+          "text": "Your guide says get in with your camera."
+        },
+        {
+          "start": 13.82,
+          "end": 18.6,
+          "text": "You do, numb with fear. The seal is about 3.7 meters"
+        },
+        {
+          "start": 18.6,
+          "end": 22.42,
+          "text": "long and weighs around 450 kilograms."
+        },
+        {
+          "start": 22.42,
+          "end": 25.88,
+          "text": "She rushes you and takes your camera, and your head, into"
+        },
+        {
+          "start": 25.88,
+          "end": 29.46,
+          "text": "her mouth. It looks like a threat display, and it lasts"
+        },
+        {
+          "start": 29.46,
+          "end": 34.16,
+          "text": "a few minutes. Then she relaxes, catches a penguin, stops about"
+        },
+        {
+          "start": 34.16,
+          "end": 36.9,
+          "text": "three meters away, and lets it go."
+        },
+        {
+          "start": 36.9,
+          "end": 40.28,
+          "text": "It swims toward you. You can't catch it, so she tries"
+        },
+        {
+          "start": 40.28,
+          "end": 44.650000000000006,
+          "text": "again.\r\nWhen live penguins fail, she brings dead ones."
+        },
+        {
+          "start": 44.650000000000006,
+          "end": 47.54,
+          "text": "Four or five float around your head."
+        },
+        {
+          "start": 47.54,
+          "end": 51.0,
+          "text": "She flips them onto you, pushes you around, blows bubbles in"
+        },
+        {
+          "start": 51.0,
+          "end": 54.269999999999996,
+          "text": "your face, and tries to force-feed your camera."
+        },
+        {
+          "start": 54.269999999999996,
+          "end": 57.52,
+          "text": "On the last day, a second leopard seal swims in."
+        },
+        {
+          "start": 57.52,
+          "end": 60.74,
+          "text": "She chases it off, takes its penguin, and brings it to"
+        },
+        {
+          "start": 60.74,
+          "end": 65.38,
+          "text": "you.\r\nOver four days, Paul Nicklen decided she'd concluded that he"
+        },
+        {
+          "start": 65.38,
+          "end": 67.98,
+          "text": "was a useless predator who was going to starve in her"
+        },
+        {
+          "start": 67.98,
+          "end": 73.44,
+          "text": "ocean. Honestly, fair.\r\n\r\nHere's the part that doesn't add up."
+        },
+        {
+          "start": 73.44,
+          "end": 78.32,
+          "text": "In 2003, another leopard seal killed a scientist off Antarctica."
+        },
+        {
+          "start": 78.32,
+          "end": 81.08,
+          "text": "So what is this animal doing when it looks at you?"
+        },
+        {
+          "start": 81.08,
+          "end": 83.68,
+          "text": "Because the more you learn about it, the less it looks"
+        },
+        {
+          "start": 83.68,
+          "end": 86.88,
+          "text": "like an attack or a kindness, and the more it looks"
+        },
+        {
+          "start": 86.88,
+          "end": 87.91666666666667,
+          "text": "like a test."
+        }
+      ],
+      "narration_sha256": "9ffe90b97c39b19be32ad9ad8df663f13153576025ea86bcd9e2f2d77c23ecc2",
+      "visual_directions": [
+        "[VISUAL: first-person view under the ice edge, green-black water, a huge spotted head rising toward the camera]",
+        "[PAUSE. VISUAL: on-screen text, \"Documented fatal leopard seal attacks on humans: 1\"]"
+      ]
+    },
+    {
+      "section": 2,
+      "title": "The animal",
+      "frames": 1175,
+      "duration": 48.958333333333336,
+      "global_start": 87.91666666666667,
+      "audio_missing": false,
+      "duration_estimated_because_audio_missing": false,
+      "shots": [
+        {
+          "kind": "scale",
+          "start": 0,
+          "cue": "",
+          "source_character": 0,
+          "id": "02_01",
+          "section": 2,
+          "title": "The animal",
+          "end": 11.833333333333334,
+          "start_frame": 0,
+          "end_frame": 284,
+          "frames": 284,
+          "duration": 11.833333333333334
+        },
+        {
+          "kind": "jaw",
+          "start": 11.833333333333334,
+          "cue": "Its jaws",
+          "source_character": 170,
+          "id": "02_02",
+          "section": 2,
+          "title": "The animal",
+          "end": 17.333333333333332,
+          "start_frame": 284,
+          "end_frame": 416,
+          "frames": 132,
+          "duration": 5.5
+        },
+        {
+          "kind": "teeth",
+          "start": 17.333333333333332,
+          "cue": "and back teeth",
+          "source_character": 241,
+          "id": "02_03",
+          "section": 2,
+          "title": "The animal",
+          "end": 25.125,
+          "start_frame": 416,
+          "end_frame": 603,
+          "frames": 187,
+          "duration": 7.791666666666667
+        },
+        {
+          "kind": "sprint",
+          "start": 25.125,
+          "cue": "In short bursts",
+          "source_character": 364,
+          "id": "02_04",
+          "section": 2,
+          "title": "The animal",
+          "end": 28.75,
+          "start_frame": 603,
+          "end_frame": 690,
+          "frames": 87,
+          "duration": 3.625
+        },
+        {
+          "kind": "orca",
+          "start": 28.75,
+          "cue": "and its only natural predator",
+          "source_character": 419,
+          "id": "02_05",
+          "section": 2,
+          "title": "The animal",
+          "end": 34.041666666666664,
+          "start_frame": 690,
+          "end_frame": 817,
+          "frames": 127,
+          "duration": 5.291666666666667
+        },
+        {
+          "kind": "range",
+          "start": 34.041666666666664,
+          "cue": "Leopard seals live",
+          "source_character": 503,
+          "id": "02_06",
+          "section": 2,
+          "title": "The animal",
+          "end": 44.5,
+          "start_frame": 817,
+          "end_frame": 1068,
+          "frames": 251,
+          "duration": 10.458333333333334
+        },
+        {
+          "kind": "eye",
+          "start": 44.5,
+          "cue": "But the hardware",
+          "source_character": 674,
+          "id": "02_07",
+          "section": 2,
+          "title": "The animal",
+          "end": 48.958333333333336,
+          "start_frame": 1068,
+          "end_frame": 1175,
+          "frames": 107,
+          "duration": 4.458333333333333
+        }
+      ],
+      "captions": [
+        {
+          "start": 0,
+          "end": 4.66,
+          "text": "First, the hardware. The leopard seal is the largest of the"
+        },
+        {
+          "start": 4.66,
+          "end": 8.72,
+          "text": "four Antarctic seal species, and the biggest females pass three and"
+        },
+        {
+          "start": 8.72,
+          "end": 11.82,
+          "text": "a half meters and five hundred kilograms."
+        },
+        {
+          "start": 11.82,
+          "end": 16.44,
+          "text": "Its jaws are wide and massive, with long curving canines for"
+        },
+        {
+          "start": 16.44,
+          "end": 20.96,
+          "text": "gripping, and back teeth with three interlocking cusps that strain krill"
+        },
+        {
+          "start": 20.96,
+          "end": 24.52,
+          "text": "out of the water. A murder weapon with a colander built"
+        },
+        {
+          "start": 24.52,
+          "end": 28.74,
+          "text": "in. In short bursts it can reach forty kilometers an hour,"
+        },
+        {
+          "start": 28.74,
+          "end": 31.58,
+          "text": "and its only natural predator is the orca."
+        },
+        {
+          "start": 31.58,
+          "end": 34.04,
+          "text": "That says plenty about the neighborhood."
+        },
+        {
+          "start": 34.04,
+          "end": 38.6,
+          "text": "Leopard seals live more than twenty-six years, mostly alone, scattered across"
+        },
+        {
+          "start": 38.6,
+          "end": 41.74,
+          "text": "millions of square miles of pack ice, which makes them hard"
+        },
+        {
+          "start": 41.74,
+          "end": 44.5,
+          "text": "to study and harder to predict."
+        },
+        {
+          "start": 44.5,
+          "end": 46.52,
+          "text": "But the hardware isn't what makes it dangerous."
+        },
+        {
+          "start": 46.52,
+          "end": 48.958333333333336,
+          "text": "The curiosity is."
+        }
+      ],
+      "narration_sha256": "37ce584b138200d63953222c30048c7aa5f69a2079d483ee4b1976f74f7b538f",
+      "visual_directions": [
+        "[VISUAL: scale comparison, leopard seal next to a diver and a horse]"
+      ]
+    },
+    {
+      "section": 3,
+      "title": "The menu",
+      "frames": 1966,
+      "duration": 81.91666666666667,
+      "global_start": 136.875,
+      "audio_missing": false,
+      "duration_estimated_because_audio_missing": false,
+      "shots": [
+        {
+          "kind": "foodweb",
+          "start": 0,
+          "cue": "",
+          "source_character": 0,
+          "id": "03_01",
+          "section": 3,
+          "title": "The menu",
+          "end": 11.833333333333334,
+          "start_frame": 0,
+          "end_frame": 284,
+          "frames": 284,
+          "duration": 11.833333333333334
+        },
+        {
+          "kind": "penguins",
+          "start": 11.833333333333334,
+          "cue": "Seven penguin species",
+          "source_character": 147,
+          "id": "03_02",
+          "section": 3,
+          "title": "The menu",
+          "end": 17.083333333333332,
+          "start_frame": 284,
+          "end_frame": 410,
+          "frames": 126,
+          "duration": 5.25
+        },
+        {
+          "kind": "sydney",
+          "start": 17.083333333333332,
+          "cue": "One leopard seal caught",
+          "source_character": 216,
+          "id": "03_03",
+          "section": 3,
+          "title": "The menu",
+          "end": 26.708333333333332,
+          "start_frame": 410,
+          "end_frame": 641,
+          "frames": 231,
+          "duration": 9.625
+        },
+        {
+          "kind": "scars",
+          "start": 26.708333333333332,
+          "cue": "If you're a young",
+          "source_character": 355,
+          "id": "03_04",
+          "section": 3,
+          "title": "The menu",
+          "end": 37.333333333333336,
+          "start_frame": 641,
+          "end_frame": 896,
+          "frames": 255,
+          "duration": 10.625
+        },
+        {
+          "kind": "colony",
+          "start": 37.333333333333336,
+          "cue": "And if you're",
+          "source_character": 512,
+          "id": "03_05",
+          "section": 3,
+          "title": "The menu",
+          "end": 45.916666666666664,
+          "start_frame": 896,
+          "end_frame": 1102,
+          "frames": 206,
+          "duration": 8.583333333333334
+        },
+        {
+          "kind": "researchmap",
+          "start": 45.916666666666664,
+          "cue": "Each seal hunts",
+          "source_character": 657,
+          "id": "03_06",
+          "section": 3,
+          "title": "The menu",
+          "end": 57.666666666666664,
+          "start_frame": 1102,
+          "end_frame": 1384,
+          "frames": 282,
+          "duration": 11.75
+        },
+        {
+          "kind": "camerafield",
+          "start": 57.666666666666664,
+          "cue": "Scat studies",
+          "source_character": 824,
+          "id": "03_07",
+          "section": 3,
+          "title": "The menu",
+          "end": 66.91666666666667,
+          "start_frame": 1384,
+          "end_frame": 1606,
+          "frames": 222,
+          "duration": 9.25
+        },
+        {
+          "kind": "fishrocks",
+          "start": 66.91666666666667,
+          "cue": "Some stalked fish",
+          "source_character": 969,
+          "id": "03_08",
+          "section": 3,
+          "title": "The menu",
+          "end": 69.79166666666667,
+          "start_frame": 1606,
+          "end_frame": 1675,
+          "frames": 69,
+          "duration": 2.875
+        },
+        {
+          "kind": "fishchase",
+          "start": 69.79166666666667,
+          "cue": "Others chased",
+          "source_character": 1019,
+          "id": "03_09",
+          "section": 3,
+          "title": "The menu",
+          "end": 72.0,
+          "start_frame": 1675,
+          "end_frame": 1728,
+          "frames": 53,
+          "duration": 2.2083333333333335
+        },
+        {
+          "kind": "theft",
+          "start": 72.0,
+          "cue": "And the smallest",
+          "source_character": 1053,
+          "id": "03_10",
+          "section": 3,
+          "title": "The menu",
+          "end": 81.91666666666667,
+          "start_frame": 1728,
+          "end_frame": 1966,
+          "frames": 238,
+          "duration": 9.916666666666666
+        }
+      ],
+      "captions": [
+        {
+          "start": 0,
+          "end": 2.38,
+          "text": "Start with what's on the menu."
+        },
+        {
+          "start": 2.38,
+          "end": 7.22,
+          "text": "Anything small enough to kill. Krill is the winter staple, then"
+        },
+        {
+          "start": 7.22,
+          "end": 11.82,
+          "text": "fish, squid, penguins, and the pups of other seals."
+        },
+        {
+          "start": 11.82,
+          "end": 17.1,
+          "text": "Seven penguin species are on that list, from chinstraps to emperors."
+        },
+        {
+          "start": 17.1,
+          "end": 20.72,
+          "text": "One leopard seal caught near Sydney had eaten a fully grown"
+        },
+        {
+          "start": 20.72,
+          "end": 25.56,
+          "text": "platypus, which says two things: leopard seals wander, and they're not"
+        },
+        {
+          "start": 25.56,
+          "end": 31.02,
+          "text": "picky.\r\nIf you're a young crabeater seal, the odds are grim."
+        },
+        {
+          "start": 31.02,
+          "end": 35.92,
+          "text": "About seventy-eight percent of crabeaters carry parallel scars consistent with escaping"
+        },
+        {
+          "start": 35.92,
+          "end": 39.74,
+          "text": "a leopard seal. And if you're a newly fledged penguin, you're"
+        },
+        {
+          "start": 39.74,
+          "end": 43.12,
+          "text": "the most vulnerable bird on the menu, because seals ambush you"
+        },
+        {
+          "start": 43.12,
+          "end": 45.92,
+          "text": "on the way to and from the colony."
+        },
+        {
+          "start": 45.92,
+          "end": 48.64,
+          "text": "Each seal hunts her own way, too."
+        },
+        {
+          "start": 48.64,
+          "end": 53.34,
+          "text": "In 2013 and 2014, researchers strapped cameras to seven females at"
+        },
+        {
+          "start": 53.34,
+          "end": 57.66,
+          "text": "Livingston Island and collected more than fifty hours of footage."
+        },
+        {
+          "start": 57.66,
+          "end": 61.98,
+          "text": "Scat studies had suggested the seals fed mostly on krill offshore."
+        },
+        {
+          "start": 61.98,
+          "end": 65.26,
+          "text": "The video showed them staying near the coast, hunting fur seal"
+        },
+        {
+          "start": 65.26,
+          "end": 69.78,
+          "text": "pups and fish. Some stalked fish and flushed them from crevices."
+        },
+        {
+          "start": 69.78,
+          "end": 71.98,
+          "text": "Others chased them in open water."
+        },
+        {
+          "start": 71.98,
+          "end": 74.96,
+          "text": "And the smallest seal in the study had her meal stolen"
+        },
+        {
+          "start": 74.96,
+          "end": 78.12,
+          "text": "by another leopard seal six times."
+        },
+        {
+          "start": 78.12,
+          "end": 81.22,
+          "text": "Six. Even the top of the food chain gets its lunch"
+        },
+        {
+          "start": 81.22,
+          "end": 81.91666666666667,
+          "text": "taken."
+        }
+      ],
+      "narration_sha256": "770122866b2295b1f241f8737153d1bc4463b7480636bb318b67c42a8564a17c",
+      "visual_directions": [
+        "[VISUAL: animated food web, krill to penguins to seals, red arrows toward the leopard seal]"
+      ]
+    },
+    {
+      "section": 4,
+      "title": "The kill",
+      "frames": 1464,
+      "duration": 61.0,
+      "global_start": 218.79166666666669,
+      "audio_missing": true,
+      "duration_estimated_because_audio_missing": true,
+      "shots": [
+        {
+          "kind": "ambush",
+          "start": 0,
+          "cue": "",
+          "source_character": 0,
+          "id": "04_01",
+          "section": 4,
+          "title": "The kill",
+          "end": 6.833333333333333,
+          "start_frame": 0,
+          "end_frame": 164,
+          "frames": 164,
+          "duration": 6.833333333333333
+        },
+        {
+          "kind": "thrash",
+          "start": 6.833333333333333,
+          "cue": "The seal grabs",
+          "source_character": 98,
+          "id": "04_02",
+          "section": 4,
+          "title": "The kill",
+          "end": 19.375,
+          "start_frame": 164,
+          "end_frame": 465,
+          "frames": 301,
+          "duration": 12.541666666666666
+        },
+        {
+          "kind": "preyhold",
+          "start": 19.375,
+          "cue": "Then it bites",
+          "source_character": 271,
+          "id": "04_03",
+          "section": 4,
+          "title": "The kill",
+          "end": 22.25,
+          "start_frame": 465,
+          "end_frame": 534,
+          "frames": 69,
+          "duration": 2.875
+        },
+        {
+          "kind": "colony",
+          "start": 22.25,
+          "cue": "The best place",
+          "source_character": 316,
+          "id": "04_04",
+          "section": 4,
+          "title": "The kill",
+          "end": 28.0,
+          "start_frame": 534,
+          "end_frame": 672,
+          "frames": 138,
+          "duration": 5.75
+        },
+        {
+          "kind": "prydz",
+          "start": 28.0,
+          "cue": "In one study",
+          "source_character": 399,
+          "id": "04_05",
+          "section": 4,
+          "title": "The kill",
+          "end": 34.458333333333336,
+          "start_frame": 672,
+          "end_frame": 827,
+          "frames": 155,
+          "duration": 6.458333333333333
+        },
+        {
+          "kind": "techniques",
+          "start": 34.458333333333336,
+          "cue": "Researchers saw",
+          "source_character": 499,
+          "id": "04_06",
+          "section": 4,
+          "title": "The kill",
+          "end": 44.833333333333336,
+          "start_frame": 827,
+          "end_frame": 1076,
+          "frames": 249,
+          "duration": 10.375
+        },
+        {
+          "kind": "silhouettes",
+          "start": 44.833333333333336,
+          "cue": "Now look",
+          "source_character": 678,
+          "id": "04_07",
+          "section": 4,
+          "title": "The kill",
+          "end": 61.0,
+          "start_frame": 1076,
+          "end_frame": 1464,
+          "frames": 388,
+          "duration": 16.166666666666668
+        }
+      ],
+      "captions": [
+        {
+          "start": 0,
+          "end": 3.947058823529412,
+          "text": "Leopard seals are ambush hunters that feed in the water, not"
+        },
+        {
+          "start": 3.947058823529412,
+          "end": 6.81764705882353,
+          "text": "on land. Now say you're the penguin."
+        },
+        {
+          "start": 6.81764705882353,
+          "end": 10.764705882352942,
+          "text": "The seal grabs you by the head or the feet, swings"
+        },
+        {
+          "start": 10.764705882352942,
+          "end": 14.711764705882354,
+          "text": "you in a wide arc, and smacks you against the surface"
+        },
+        {
+          "start": 14.711764705882354,
+          "end": 18.658823529411766,
+          "text": "of the water, over and over, until your skin and feathers"
+        },
+        {
+          "start": 18.658823529411766,
+          "end": 22.24705882352941,
+          "text": "come off. Then it bites off chunks and swallows them."
+        },
+        {
+          "start": 22.24705882352941,
+          "end": 26.19411764705882,
+          "text": "The best place for this is the ice edge, where penguins"
+        },
+        {
+          "start": 26.19411764705882,
+          "end": 30.141176470588235,
+          "text": "bunch up before they dive. In one study at Prydz Bay,"
+        },
+        {
+          "start": 30.141176470588235,
+          "end": 34.44705882352941,
+          "text": "seals worked the fast-ice edge where departing Adélie penguins gathered."
+        },
+        {
+          "start": 34.44705882352941,
+          "end": 38.39411764705882,
+          "text": "Researchers saw five different hunting techniques and estimated that just six"
+        },
+        {
+          "start": 38.39411764705882,
+          "end": 42.34117647058823,
+          "text": "seals could eat about two point seven percent of the adult"
+        },
+        {
+          "start": 42.34117647058823,
+          "end": 44.852941176470594,
+          "text": "Adélie population over roughly 120 days."
+        },
+        {
+          "start": 44.852941176470594,
+          "end": 48.44117647058823,
+          "text": "Now look at who else stands at the ice edge."
+        },
+        {
+          "start": 48.44117647058823,
+          "end": 50.59411764705882,
+          "text": "Penguins stand upright. So do you."
+        },
+        {
+          "start": 50.59411764705882,
+          "end": 54.54117647058824,
+          "text": "The researchers' best idea is that against white ice, you look"
+        },
+        {
+          "start": 54.54117647058824,
+          "end": 58.48823529411765,
+          "text": "like a dark, upright shape, and the only other thing that"
+        },
+        {
+          "start": 58.48823529411765,
+          "end": 61.0,
+          "text": "stands up out there is a penguin."
+        }
+      ],
+      "narration_sha256": "62c60565224eb6fe8bf49598a5133b58666246485505a13c6867ce6da345ec1e",
+      "visual_directions": [
+        "[VISUAL: animated sequence of the thrash, then a map of the Prydz Bay ice edge]"
+      ]
+    },
+    {
+      "section": 5,
+      "title": "Where you come in",
+      "frames": 1256,
+      "duration": 52.333333333333336,
+      "global_start": 279.7916666666667,
+      "audio_missing": false,
+      "duration_estimated_because_audio_missing": false,
+      "shots": [
+        {
+          "kind": "icewalk",
+          "start": 0,
+          "cue": "",
+          "source_character": 0,
+          "id": "05_01",
+          "section": 5,
+          "title": "Where you come in",
+          "end": 3.5416666666666665,
+          "start_frame": 0,
+          "end_frame": 85,
+          "frames": 85,
+          "duration": 3.5416666666666665
+        },
+        {
+          "kind": "survey",
+          "start": 3.5416666666666665,
+          "cue": "British Antarctic Survey",
+          "source_character": 44,
+          "id": "05_02",
+          "section": 5,
+          "title": "Where you come in",
+          "end": 12.291666666666666,
+          "start_frame": 85,
+          "end_frame": 295,
+          "frames": 210,
+          "duration": 8.75
+        },
+        {
+          "kind": "icebreach",
+          "start": 12.291666666666666,
+          "cue": "The majority",
+          "source_character": 172,
+          "id": "05_03",
+          "section": 5,
+          "title": "Where you come in",
+          "end": 22.291666666666668,
+          "start_frame": 295,
+          "end_frame": 535,
+          "frames": 240,
+          "duration": 10.0
+        },
+        {
+          "kind": "crampon",
+          "start": 22.291666666666668,
+          "cue": "In 1985",
+          "source_character": 348,
+          "id": "05_04",
+          "section": 5,
+          "title": "Where you come in",
+          "end": 30.666666666666668,
+          "start_frame": 535,
+          "end_frame": 736,
+          "frames": 201,
+          "duration": 8.375
+        },
+        {
+          "kind": "rescue",
+          "start": 30.666666666666668,
+          "cue": "His companions",
+          "source_character": 462,
+          "id": "05_05",
+          "section": 5,
+          "title": "Where you come in",
+          "end": 37.166666666666664,
+          "start_frame": 736,
+          "end_frame": 892,
+          "frames": 156,
+          "duration": 6.5
+        },
+        {
+          "kind": "boatunder",
+          "start": 37.166666666666664,
+          "cue": "If you're thinking",
+          "source_character": 563,
+          "id": "05_06",
+          "section": 5,
+          "title": "Where you come in",
+          "end": 40.583333333333336,
+          "start_frame": 892,
+          "end_frame": 974,
+          "frames": 82,
+          "duration": 3.4166666666666665
+        },
+        {
+          "kind": "boatcontact",
+          "start": 40.583333333333336,
+          "cue": "The same study",
+          "source_character": 619,
+          "id": "05_07",
+          "section": 5,
+          "title": "Where you come in",
+          "end": 52.333333333333336,
+          "start_frame": 974,
+          "end_frame": 1256,
+          "frames": 282,
+          "duration": 11.75
+        }
+      ],
+      "captions": [
+        {
+          "start": 0,
+          "end": 3.56,
+          "text": "So what happens when you're the dark shape?"
+        },
+        {
+          "start": 3.56,
+          "end": 9.84,
+          "text": "British Antarctic Survey researchers collected questionnaires from seventy people describing 137"
+        },
+        {
+          "start": 9.84,
+          "end": 14.1,
+          "text": "encounters with leopard seals. The majority of attacks happened at the"
+        },
+        {
+          "start": 14.1,
+          "end": 17.06,
+          "text": "ice edge, and in most of them the seal wasn't seen"
+        },
+        {
+          "start": 17.06,
+          "end": 21.02,
+          "text": "beforehand. In more than half the reports from sea ice, the"
+        },
+        {
+          "start": 21.02,
+          "end": 25.86,
+          "text": "seal pursued the person. In 1985, a Scottish polar explorer named"
+        },
+        {
+          "start": 25.86,
+          "end": 28.88,
+          "text": "Gareth Wood was bitten on the leg by a seal that"
+        },
+        {
+          "start": 28.88,
+          "end": 32.44,
+          "text": "broke through thin ice. His companions kicked it in the head"
+        },
+        {
+          "start": 32.44,
+          "end": 35.0,
+          "text": "with ice crampons until it let go."
+        },
+        {
+          "start": 35.0,
+          "end": 39.12,
+          "text": "That's Antarctic first aid.\r\nIf you're thinking a boat is safer,"
+        },
+        {
+          "start": 39.12,
+          "end": 43.56,
+          "text": "the seals disagree. The same study counted thirteen cases of physical"
+        },
+        {
+          "start": 43.56,
+          "end": 48.24,
+          "text": "contact with small boats, including punctured rubber ones, and American researchers"
+        },
+        {
+          "start": 48.24,
+          "end": 50.96,
+          "text": "have had to fit guards on their inflatables to stop the"
+        },
+        {
+          "start": 50.96,
+          "end": 52.333333333333336,
+          "text": "seals from popping them."
+        }
+      ],
+      "narration_sha256": "36f51106deaeaa827e8859943f30a519e0031737f76351480569b4d13ecd321b",
+      "visual_directions": [
+        "[VISUAL: archival-style illustration, ice edge, a leg, a crampon]"
+      ]
+    },
+    {
+      "section": 6,
+      "title": "The one death",
+      "frames": 1670,
+      "duration": 69.58333333333333,
+      "global_start": 332.125,
+      "audio_missing": false,
+      "duration_estimated_because_audio_missing": false,
+      "shots": [
+        {
+          "kind": "archive",
+          "start": 0,
+          "cue": "",
+          "source_character": 0,
+          "id": "06_01",
+          "section": 6,
+          "title": "The one death",
+          "end": 69.58333333333333,
+          "start_frame": 0,
+          "end_frame": 1670,
+          "frames": 1670,
+          "duration": 69.58333333333333
+        }
+      ],
+      "captions": [
+        {
+          "start": 0,
+          "end": 3.02,
+          "text": "Then there's the one that changed everything."
+        },
+        {
+          "start": 3.02,
+          "end": 8.82,
+          "text": "On July 22, 2003, Kirsty Brown, a 28-year-old marine biologist with"
+        },
+        {
+          "start": 8.82,
+          "end": 12.78,
+          "text": "the British Antarctic Survey, was snorkeling with her partner twenty meters"
+        },
+        {
+          "start": 12.78,
+          "end": 17.2,
+          "text": "from shore at Rothera research station, studying how icebergs scour marine"
+        },
+        {
+          "start": 17.2,
+          "end": 21.06,
+          "text": "life. A leopard seal held her underwater."
+        },
+        {
+          "start": 21.06,
+          "end": 23.86,
+          "text": "Her colleagues pulled her out, and the station doctor tried to"
+        },
+        {
+          "start": 23.86,
+          "end": 25.76,
+          "text": "revive her for about an hour."
+        },
+        {
+          "start": 25.76,
+          "end": 28.7,
+          "text": "She was pronounced dead at 16:50."
+        },
+        {
+          "start": 28.7,
+          "end": 32.78,
+          "text": "It remains the only documented fatal leopard seal attack, and at"
+        },
+        {
+          "start": 32.78,
+          "end": 37.34,
+          "text": "the time the British Antarctic Survey called it completely unprecedented."
+        },
+        {
+          "start": 37.34,
+          "end": 41.04,
+          "text": "The coroner recorded accidental death by drowning caused by a leopard"
+        },
+        {
+          "start": 41.04,
+          "end": 44.38,
+          "text": "seal attack. The seal was estimated at four and a half"
+        },
+        {
+          "start": 44.38,
+          "end": 47.9,
+          "text": "meters long, measured against the rescue boat, and the study's authors"
+        },
+        {
+          "start": 47.9,
+          "end": 51.5,
+          "text": "concluded it was hunting, not being curious."
+        },
+        {
+          "start": 51.5,
+          "end": 54.82,
+          "text": "Ian Boyd, then director of the Sea Mammal Research Unit, offered"
+        },
+        {
+          "start": 54.82,
+          "end": 59.28,
+          "text": "three explanations: it was startled and defended itself, it mistook her"
+        },
+        {
+          "start": 59.28,
+          "end": 63.14,
+          "text": "for another seal, or it knew exactly what she was."
+        },
+        {
+          "start": 63.14,
+          "end": 66.58,
+          "text": "And neither the shore party nor her partner saw it coming."
+        },
+        {
+          "start": 66.58,
+          "end": 69.58333333333333,
+          "text": "Which means \"just watch for it\" isn't a plan."
+        }
+      ],
+      "narration_sha256": "342763d0b2dcc954e37790f3e1a8ef111bc8d468116b684ec4d4cb321be9e040",
+      "visual_directions": [
+        "[VISUAL: a quiet shot of Rothera station and the bay, no animation]"
+      ]
+    },
+    {
+      "section": 7,
+      "title": "Reading the signals",
+      "frames": 1659,
+      "duration": 69.125,
+      "global_start": 401.7083333333333,
+      "audio_missing": false,
+      "duration_estimated_because_audio_missing": false,
+      "shots": [
+        {
+          "kind": "circle",
+          "start": 0,
+          "cue": "",
+          "source_character": 0,
+          "id": "07_01",
+          "section": 7,
+          "title": "Reading the signals",
+          "end": 13.583333333333334,
+          "start_frame": 0,
+          "end_frame": 326,
+          "frames": 326,
+          "duration": 13.583333333333334
+        },
+        {
+          "kind": "circleabove",
+          "start": 13.583333333333334,
+          "cue": "It circles",
+          "source_character": 192,
+          "id": "07_02",
+          "section": 7,
+          "title": "Reading the signals",
+          "end": 18.583333333333332,
+          "start_frame": 326,
+          "end_frame": 446,
+          "frames": 120,
+          "duration": 5.0
+        },
+        {
+          "kind": "headshake",
+          "start": 18.583333333333332,
+          "cue": "It lifts its head",
+          "source_character": 255,
+          "id": "07_03",
+          "section": 7,
+          "title": "Reading the signals",
+          "end": 23.083333333333332,
+          "start_frame": 446,
+          "end_frame": 554,
+          "frames": 108,
+          "duration": 4.5
+        },
+        {
+          "kind": "offer",
+          "start": 23.083333333333332,
+          "cue": "Many observers",
+          "source_character": 316,
+          "id": "07_04",
+          "section": 7,
+          "title": "Reading the signals",
+          "end": 28.875,
+          "start_frame": 554,
+          "end_frame": 693,
+          "frames": 139,
+          "duration": 5.791666666666667
+        },
+        {
+          "kind": "signalpanels",
+          "start": 28.875,
+          "cue": "But the authors",
+          "source_character": 402,
+          "id": "07_05",
+          "section": 7,
+          "title": "Reading the signals",
+          "end": 37.916666666666664,
+          "start_frame": 693,
+          "end_frame": 910,
+          "frames": 217,
+          "duration": 9.041666666666666
+        },
+        {
+          "kind": "jaw",
+          "start": 37.916666666666664,
+          "cue": "And that open mouth",
+          "source_character": 540,
+          "id": "07_06",
+          "section": 7,
+          "title": "Reading the signals",
+          "end": 45.625,
+          "start_frame": 910,
+          "end_frame": 1095,
+          "frames": 185,
+          "duration": 7.708333333333333
+        },
+        {
+          "kind": "signalpanels",
+          "start": 45.625,
+          "cue": "In other seals",
+          "source_character": 670,
+          "id": "07_07",
+          "section": 7,
+          "title": "Reading the signals",
+          "end": 55.083333333333336,
+          "start_frame": 1095,
+          "end_frame": 1322,
+          "frames": 227,
+          "duration": 9.458333333333334
+        },
+        {
+          "kind": "eye",
+          "start": 55.083333333333336,
+          "cue": "Boyd's own",
+          "source_character": 825,
+          "id": "07_08",
+          "section": 7,
+          "title": "Reading the signals",
+          "end": 69.125,
+          "start_frame": 1322,
+          "end_frame": 1659,
+          "frames": 337,
+          "duration": 14.041666666666666
+        }
+      ],
+      "captions": [
+        {
+          "start": 0,
+          "end": 2.52,
+          "text": "So how would you read one?"
+        },
+        {
+          "start": 2.52,
+          "end": 7.16,
+          "text": "You can't, really. When researchers listed what leopard seals do around"
+        },
+        {
+          "start": 7.16,
+          "end": 10.8,
+          "text": "people in the water, the same pattern kept coming up."
+        },
+        {
+          "start": 10.8,
+          "end": 13.58,
+          "text": "The seal approaches, often from above."
+        },
+        {
+          "start": 13.58,
+          "end": 18.58,
+          "text": "It circles in closer. It disappears from view, then reappears."
+        },
+        {
+          "start": 18.58,
+          "end": 22.04,
+          "text": "It lifts its head, shakes it, and opens and shuts its"
+        },
+        {
+          "start": 22.04,
+          "end": 25.59,
+          "text": "mouth. Many observers described that as curious."
+        },
+        {
+          "start": 25.59,
+          "end": 28.88,
+          "text": "Nicklen got a few of those, and a penguin."
+        },
+        {
+          "start": 28.88,
+          "end": 33.32,
+          "text": "But the authors also flagged the possible warning signs: circling in"
+        },
+        {
+          "start": 33.32,
+          "end": 37.92,
+          "text": "toward the person, approaching the head, and blowing air or bubbles."
+        },
+        {
+          "start": 37.92,
+          "end": 41.74,
+          "text": "And that open mouth? Many people read it as aggression, and"
+        },
+        {
+          "start": 41.74,
+          "end": 45.64,
+          "text": "between leopard seals it's part of aggressive and defensive displays."
+        },
+        {
+          "start": 45.64,
+          "end": 48.42,
+          "text": "In other seals, an open mouth is often a sign of"
+        },
+        {
+          "start": 48.42,
+          "end": 52.46,
+          "text": "submission. It might also mean the animal feels threatened, and a"
+        },
+        {
+          "start": 52.46,
+          "end": 56.92,
+          "text": "threatened animal can be unpredictable. Boyd's own summary was that leopard"
+        },
+        {
+          "start": 56.92,
+          "end": 60.66,
+          "text": "seals are inquisitive about people, probably sizing them up as potential"
+        },
+        {
+          "start": 60.66,
+          "end": 66.24,
+          "text": "prey. So the same display can mean curious, scared, or deciding."
+        },
+        {
+          "start": 66.24,
+          "end": 69.125,
+          "text": "Which is exactly what a test looks like from the inside."
+        }
+      ],
+      "narration_sha256": "90a11f233e3ee743f0bc2069524b5f7a5f409ec6efd97ddbafd8f02b7d4623d5",
+      "visual_directions": [
+        "[VISUAL: three-panel animation, circle, head shake, open mouth, each labeled with its possible meanings]"
+      ]
+    },
+    {
+      "section": 8,
+      "title": "Your options",
+      "frames": 1459,
+      "duration": 60.791666666666664,
+      "global_start": 470.8333333333333,
+      "audio_missing": false,
+      "duration_estimated_because_audio_missing": false,
+      "shots": [
+        {
+          "kind": "povabove",
+          "start": 0,
+          "cue": "",
+          "source_character": 0,
+          "id": "08_01",
+          "section": 8,
+          "title": "Your options",
+          "end": 8.541666666666666,
+          "start_frame": 0,
+          "end_frame": 205,
+          "frames": 205,
+          "duration": 8.541666666666666
+        },
+        {
+          "kind": "options",
+          "start": 8.541666666666666,
+          "cue": "Swim away?",
+          "source_character": 119,
+          "id": "08_02",
+          "section": 8,
+          "title": "Your options",
+          "end": 29.166666666666668,
+          "start_frame": 205,
+          "end_frame": 700,
+          "frames": 495,
+          "duration": 20.625
+        },
+        {
+          "kind": "retreat",
+          "start": 29.166666666666668,
+          "cue": "Which leaves",
+          "source_character": 423,
+          "id": "08_03",
+          "section": 8,
+          "title": "Your options",
+          "end": 39.75,
+          "start_frame": 700,
+          "end_frame": 954,
+          "frames": 254,
+          "duration": 10.583333333333334
+        },
+        {
+          "kind": "watch",
+          "start": 39.75,
+          "cue": "After 2003",
+          "source_character": 560,
+          "id": "08_04",
+          "section": 8,
+          "title": "Your options",
+          "end": 48.25,
+          "start_frame": 954,
+          "end_frame": 1158,
+          "frames": 204,
+          "duration": 8.5
+        },
+        {
+          "kind": "beach",
+          "start": 48.25,
+          "cue": "If one turns",
+          "source_character": 688,
+          "id": "08_05",
+          "section": 8,
+          "title": "Your options",
+          "end": 55.958333333333336,
+          "start_frame": 1158,
+          "end_frame": 1343,
+          "frames": 185,
+          "duration": 7.708333333333333
+        },
+        {
+          "kind": "shore",
+          "start": 55.958333333333336,
+          "cue": "The best defense",
+          "source_character": 823,
+          "id": "08_06",
+          "section": 8,
+          "title": "Your options",
+          "end": 60.791666666666664,
+          "start_frame": 1343,
+          "end_frame": 1459,
+          "frames": 116,
+          "duration": 4.833333333333333
+        }
+      ],
+      "captions": [
+        {
+          "start": 0,
+          "end": 3.98,
+          "text": "Suppose a leopard seal is circling you in the water."
+        },
+        {
+          "start": 3.98,
+          "end": 7.3,
+          "text": "As Nicklen put it, you're at the predator's mercy."
+        },
+        {
+          "start": 7.3,
+          "end": 12.12,
+          "text": "Your options?\r\nSwim away? It reaches forty kilometers an hour, and"
+        },
+        {
+          "start": 12.12,
+          "end": 16.22,
+          "text": "the researchers list moving rapidly away and turning away among the"
+        },
+        {
+          "start": 16.22,
+          "end": 18.8,
+          "text": "things that can make a seal react more."
+        },
+        {
+          "start": 18.8,
+          "end": 21.56,
+          "text": "Block its path? Also on the list."
+        },
+        {
+          "start": 21.56,
+          "end": 24.16,
+          "text": "Blow bubbles at it? Also on the list."
+        },
+        {
+          "start": 24.16,
+          "end": 27.92,
+          "text": "Fight? Gareth Wood's friends did, with crampons."
+        },
+        {
+          "start": 27.92,
+          "end": 33.04,
+          "text": "Nobody recommends it.\r\nWhich leaves the dullest advice in Antarctica: stay"
+        },
+        {
+          "start": 33.04,
+          "end": 38.38,
+          "text": "calm, keep facing the seal, and if things escalate, retreat slowly,"
+        },
+        {
+          "start": 38.38,
+          "end": 43.16,
+          "text": "still facing it. After 2003, the British Antarctic Survey added a"
+        },
+        {
+          "start": 43.16,
+          "end": 48.26,
+          "text": "thirty-minute watch for marine mammals before any dive, and banned snorkeling."
+        },
+        {
+          "start": 48.26,
+          "end": 51.26,
+          "text": "If one turns up on a beach, New Zealand's Department of"
+        },
+        {
+          "start": 51.26,
+          "end": 54.74,
+          "text": "Conservation says stay at least twenty meters away and never touch"
+        },
+        {
+          "start": 54.74,
+          "end": 58.2,
+          "text": "or feed it. The best defense against a leopard seal is"
+        },
+        {
+          "start": 58.2,
+          "end": 60.791666666666664,
+          "text": "not being in its water in the first place."
+        }
+      ],
+      "narration_sha256": "c8bda39a805483172b2219783e7dc81e7e85a7f5d9535309516b307dbe8563d0",
+      "visual_directions": [
+        "[VISUAL: first-person underwater view, a dark shape circling above]"
+      ]
+    },
+    {
+      "section": 9,
+      "title": "In the seal's defense",
+      "frames": 2038,
+      "duration": 84.91666666666667,
+      "global_start": 531.625,
+      "audio_missing": false,
+      "duration_estimated_because_audio_missing": false,
+      "shots": [
+        {
+          "kind": "stats",
+          "start": 0,
+          "cue": "",
+          "source_character": 0,
+          "id": "09_01",
+          "section": 9,
+          "title": "In the seal's defense",
+          "end": 15.375,
+          "start_frame": 0,
+          "end_frame": 369,
+          "frames": 369,
+          "duration": 15.375
+        },
+        {
+          "kind": "rates",
+          "start": 15.375,
+          "cue": "The authors worked",
+          "source_character": 190,
+          "id": "09_02",
+          "section": 9,
+          "title": "In the seal's defense",
+          "end": 28.083333333333332,
+          "start_frame": 369,
+          "end_frame": 674,
+          "frames": 305,
+          "duration": 12.708333333333334
+        },
+        {
+          "kind": "diver",
+          "start": 28.083333333333332,
+          "cue": "And no curious",
+          "source_character": 397,
+          "id": "09_03",
+          "section": 9,
+          "title": "In the seal's defense",
+          "end": 35.041666666666664,
+          "start_frame": 674,
+          "end_frame": 841,
+          "frames": 167,
+          "duration": 6.958333333333333
+        },
+        {
+          "kind": "singer",
+          "start": 35.041666666666664,
+          "cue": "There's a gentler",
+          "source_character": 493,
+          "id": "09_04",
+          "section": 9,
+          "title": "In the seal's defense",
+          "end": 43.791666666666664,
+          "start_frame": 841,
+          "end_frame": 1051,
+          "frames": 210,
+          "duration": 8.75
+        },
+        {
+          "kind": "songs",
+          "start": 43.791666666666664,
+          "cue": "A 2025 study",
+          "source_character": 612,
+          "id": "09_05",
+          "section": 9,
+          "title": "In the seal's defense",
+          "end": 54.333333333333336,
+          "start_frame": 1051,
+          "end_frame": 1304,
+          "frames": 253,
+          "duration": 10.541666666666666
+        },
+        {
+          "kind": "profile",
+          "start": 54.333333333333336,
+          "cue": "So the animal",
+          "source_character": 780,
+          "id": "09_06",
+          "section": 9,
+          "title": "In the seal's defense",
+          "end": 59.166666666666664,
+          "start_frame": 1304,
+          "end_frame": 1420,
+          "frames": 116,
+          "duration": 4.833333333333333
+        },
+        {
+          "kind": "icechange",
+          "start": 59.166666666666664,
+          "cue": "And the seals have",
+          "source_character": 847,
+          "id": "09_07",
+          "section": 9,
+          "title": "In the seal's defense",
+          "end": 70.91666666666667,
+          "start_frame": 1420,
+          "end_frame": 1702,
+          "frames": 282,
+          "duration": 11.75
+        },
+        {
+          "kind": "krill",
+          "start": 70.91666666666667,
+          "cue": "Krill declines",
+          "source_character": 1044,
+          "id": "09_08",
+          "section": 9,
+          "title": "In the seal's defense",
+          "end": 75.91666666666667,
+          "start_frame": 1702,
+          "end_frame": 1822,
+          "frames": 120,
+          "duration": 5.0
+        },
+        {
+          "kind": "population",
+          "start": 75.91666666666667,
+          "cue": "The last circumpolar",
+          "source_character": 1124,
+          "id": "09_09",
+          "section": 9,
+          "title": "In the seal's defense",
+          "end": 84.91666666666667,
+          "start_frame": 1822,
+          "end_frame": 2038,
+          "frames": 216,
+          "duration": 9.0
+        }
+      ],
+      "captions": [
+        {
+          "start": 0,
+          "end": 2.94,
+          "text": "To be fair to the seal, you're the one who showed"
+        },
+        {
+          "start": 2.94,
+          "end": 9.4,
+          "text": "up. In that same study, dive logs covering 8,947 dives at"
+        },
+        {
+          "start": 9.4,
+          "end": 13.8,
+          "text": "three Antarctic sites recorded physical contact with a leopard seal on"
+        },
+        {
+          "start": 13.8,
+          "end": 18.253333333333334,
+          "text": "just four. The authors worked out about one interaction per two"
+        },
+        {
+          "start": 18.253333333333334,
+          "end": 22.82,
+          "text": "hundred dives, one physical contact per twenty-two hundred, and at most"
+        },
+        {
+          "start": 22.82,
+          "end": 26.78,
+          "text": "one injury per nine thousand, even assuming a quarter of all"
+        },
+        {
+          "start": 26.78,
+          "end": 30.52,
+          "text": "contacts caused one. And no curious seal went on to hunt"
+        },
+        {
+          "start": 30.52,
+          "end": 33.72,
+          "text": "or attack. Most of the time, it just wanted a look"
+        },
+        {
+          "start": 33.72,
+          "end": 37.14,
+          "text": "at you.\r\nThere's a gentler side, too."
+        },
+        {
+          "start": 37.14,
+          "end": 41.48,
+          "text": "For months each year, male leopard seals sing underwater, for up"
+        },
+        {
+          "start": 41.48,
+          "end": 46.3,
+          "text": "to thirteen hours a day. A 2025 study of twenty-six males"
+        },
+        {
+          "start": 46.3,
+          "end": 49.74,
+          "text": "found they use the same five sounds in a different order"
+        },
+        {
+          "start": 49.74,
+          "end": 52.6,
+          "text": "for each seal, and that the songs are about as predictable"
+        },
+        {
+          "start": 52.6,
+          "end": 56.88,
+          "text": "as nursery rhymes. So the animal that swings penguins around by"
+        },
+        {
+          "start": 56.88,
+          "end": 61.32,
+          "text": "the head also sings.\r\nAnd the seals have the bigger problem."
+        },
+        {
+          "start": 61.32,
+          "end": 64.66,
+          "text": "They depend on sea ice for breeding and resting, and one"
+        },
+        {
+          "start": 64.66,
+          "end": 68.36,
+          "text": "assessment found their habitat along the western Antarctic Peninsula has shrunk"
+        },
+        {
+          "start": 68.36,
+          "end": 73.28,
+          "text": "by 21 to 28 percent. Krill declines and heavier krill fishing"
+        },
+        {
+          "start": 73.28,
+          "end": 75.92,
+          "text": "could also thin out their food supply."
+        },
+        {
+          "start": 75.92,
+          "end": 80.76,
+          "text": "The last circumpolar surveys, in 1999 and 2000, counted more than"
+        },
+        {
+          "start": 80.76,
+          "end": 84.91666666666667,
+          "text": "35,000, which researchers consider a substantial underestimate."
+        }
+      ],
+      "narration_sha256": "85f29089ba2be8c641f8f7ed1a8645851254239cfd36174cfcb34d7100b4d3be",
+      "visual_directions": [
+        "[VISUAL: the study's numbers as simple on-screen text, one per line]"
+      ]
+    },
+    {
+      "section": 10,
+      "title": "Close",
+      "frames": 1008,
+      "duration": 42.0,
+      "global_start": 616.5416666666666,
+      "audio_missing": false,
+      "duration_estimated_because_audio_missing": false,
+      "shots": [
+        {
+          "kind": "eye",
+          "start": 0,
+          "cue": "",
+          "source_character": 0,
+          "id": "10_01",
+          "section": 10,
+          "title": "Close",
+          "end": 5.208333333333333,
+          "start_frame": 0,
+          "end_frame": 125,
+          "frames": 125,
+          "duration": 5.208333333333333
+        },
+        {
+          "kind": "offer",
+          "start": 5.208333333333333,
+          "cue": "She could have",
+          "source_character": 75,
+          "id": "10_02",
+          "section": 10,
+          "title": "Close",
+          "end": 15.541666666666666,
+          "start_frame": 125,
+          "end_frame": 373,
+          "frames": 248,
+          "duration": 10.333333333333334
+        },
+        {
+          "kind": "circle",
+          "start": 15.541666666666666,
+          "cue": "That's the unsettling",
+          "source_character": 204,
+          "id": "10_03",
+          "section": 10,
+          "title": "Close",
+          "end": 28.416666666666668,
+          "start_frame": 373,
+          "end_frame": 682,
+          "frames": 309,
+          "duration": 12.875
+        },
+        {
+          "kind": "eye",
+          "start": 28.416666666666668,
+          "cue": "Most of the time",
+          "source_character": 352,
+          "id": "10_04",
+          "section": 10,
+          "title": "Close",
+          "end": 33.833333333333336,
+          "start_frame": 682,
+          "end_frame": 812,
+          "frames": 130,
+          "duration": 5.416666666666667
+        },
+        {
+          "kind": "outro",
+          "start": 33.833333333333336,
+          "cue": "If there's another",
+          "source_character": 428,
+          "id": "10_05",
+          "section": 10,
+          "title": "Close",
+          "end": 42.0,
+          "start_frame": 812,
+          "end_frame": 1008,
+          "frames": 196,
+          "duration": 8.166666666666666
+        }
+      ],
+      "captions": [
+        {
+          "start": 0,
+          "end": 4.08,
+          "text": "Go back to that photographer, with a leopard seal's mouth around"
+        },
+        {
+          "start": 4.08,
+          "end": 7.34,
+          "text": "his head. She could have done anything."
+        },
+        {
+          "start": 7.34,
+          "end": 11.14,
+          "text": "She gave him a penguin. One reading is that she saw"
+        },
+        {
+          "start": 11.14,
+          "end": 15.56,
+          "text": "a predator so useless she felt sorry for him."
+        },
+        {
+          "start": 15.56,
+          "end": 19.22,
+          "text": "That's the unsettling part. It isn't aggression."
+        },
+        {
+          "start": 19.22,
+          "end": 23.52,
+          "text": "It's curiosity, and curiosity is how a predator works out what"
+        },
+        {
+          "start": 23.52,
+          "end": 28.4,
+          "text": "you are: food, rival, or a project."
+        },
+        {
+          "start": 28.4,
+          "end": 31.3,
+          "text": "Most of the time, you pass the test."
+        },
+        {
+          "start": 31.3,
+          "end": 33.82,
+          "text": "You just never know which day it is."
+        },
+        {
+          "start": 33.82,
+          "end": 36.92,
+          "text": "If there's another predator you want us to investigate, tell me"
+        },
+        {
+          "start": 36.92,
+          "end": 40.04,
+          "text": "in the comments. And if you want to keep going deeper,"
+        },
+        {
+          "start": 40.04,
+          "end": 42.0,
+          "text": "the next video is right here."
+        }
+      ],
+      "narration_sha256": "8a854729202c8a28d87a3447714a257343235c99ff0edc9d659a604bc9b3848f",
+      "visual_directions": [
+        "[VISUAL: slow push-in on the seal's eye, the photographer's silhouette reflected in it]",
+        "[OUTRO. VISUAL: end screen]"
+      ]
+    }
+  ]
+}

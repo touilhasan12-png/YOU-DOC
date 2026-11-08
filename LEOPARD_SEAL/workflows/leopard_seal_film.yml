@@ -1,0 +1,147 @@
+name: Leopard seal — full exact-script visual workprint
+on:
+  push:
+    paths:
+      - 'LEOPARD_SEAL/engine/film.js'
+      - 'LEOPARD_SEAL/engine/cast.js'
+      - 'LEOPARD_SEAL/engine/film.html'
+      - 'LEOPARD_SEAL/FILM_PLAN.json'
+      - 'LEOPARD_SEAL/scripts/render_film.mjs'
+      - 'LEOPARD_SEAL/scripts/assemble_film.py'
+      - '.github/workflows/leopard_seal_film.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: leopard-seal-full-film-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  actual-all-shot-probes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/PRODUCTION_KIT/vendor/browsers
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore existing self-contained runtime
+        working-directory: PRODUCTION_KIT
+        run: |
+          python scripts/rehydrate.py
+          python -m pip install --no-index --find-links vendor/wheels imageio-ffmpeg==0.6.0 pillow==11.3.0
+      - name: Restore pinned JavaScript and browser dependencies
+        working-directory: PRODUCTION_KIT/runtime
+        run: |
+          npm ci --offline --ignore-scripts --cache ../vendor/npm-cache --no-audit --no-fund
+          npx playwright install-deps chromium
+      - name: Render actual first, middle and last frame of every authored shot
+        run: |
+          node LEOPARD_SEAL/scripts/render_film.mjs --probe
+          python LEOPARD_SEAL/scripts/contact_sheets.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-fullfilm-probe
+          path: LEOPARD_SEAL/generated/fullfilm-probe/
+          retention-days: 30
+  chapters:
+    needs: actual-all-shot-probes
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        section: [1,2,3,4,5,6,7,8,9,10]
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/PRODUCTION_KIT/vendor/browsers
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore existing self-contained runtime
+        working-directory: PRODUCTION_KIT
+        run: |
+          python scripts/rehydrate.py
+          python -m pip install --no-index --find-links vendor/wheels imageio-ffmpeg==0.6.0 pillow==11.3.0
+      - name: Restore pinned JavaScript and browser dependencies
+        working-directory: PRODUCTION_KIT/runtime
+        run: |
+          npm ci --offline --ignore-scripts --cache ../vendor/npm-cache --no-audit --no-fund
+          npx playwright install-deps chromium
+      - name: Render complete chapter at native 1080p24, no old-proof loops
+        run: |
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node LEOPARD_SEAL/scripts/render_film.mjs ${{ matrix.section }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-fullfilm-chapter-${{ matrix.section }}
+          path: LEOPARD_SEAL/generated/chapter-*/
+          retention-days: 30
+  stronger-existing-audio-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      LEOPARD_ASR_MODEL: small.en
+      LEOPARD_AUDIT_DIR: audio-audit-small
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install faster-whisper==1.2.1
+      - name: Recheck existing unchanged recordings; no synthesis and no replacement text
+        run: python LEOPARD_SEAL/scripts/audio_audit.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-fullfilm-stronger-audio-audit
+          path: LEOPARD_SEAL/generated/audio-audit-small/
+          retention-days: 30
+  assemble-and-verify-deliverable:
+    needs: chapters
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned mux and verification tools
+        working-directory: PRODUCTION_KIT
+        run: python -m pip install --no-index --find-links vendor/wheels imageio-ffmpeg==0.6.0
+          python -m pip install numpy==2.2.6
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: leopard-fullfilm-chapter-*
+          path: LEOPARD_SEAL/generated/chapters/
+      - name: Assemble all ten chapters and verify delivered source-audio correlations
+        run: |
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          python LEOPARD_SEAL/scripts/assemble_film.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-fullfilm-WORKPRINT-AUDIO04-MISSING
+          path: LEOPARD_SEAL/generated/delivery/
+          retention-days: 30
