@@ -12,11 +12,13 @@ small=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',16)
 results=[]
 for source in M['real_video_candidates']:
  sid=source['id'];folder=out/sid;folder.mkdir(exist_ok=True);raw=folder/source['file']
- with urllib.request.urlopen(urllib.request.Request(source['original_url'],headers={'User-Agent':'MarineDocumentary/1.0 licensed-source inspection'}),timeout=180)as src,raw.open('wb')as dst:shutil.copyfileobj(src,dst)
+ shutil.copyfile(R/source['repository_file'],raw)
  sha=hashlib.sha256(raw.read_bytes()).hexdigest();assert sha==source['sha256'],(sid,sha)
  reader=imageio_ffmpeg.read_frames(str(raw));metadata=next(reader);reader.close();w,h=metadata['size'];duration=metadata['duration']
  assert [w,h]==source['native_size'],metadata
- decode=subprocess.run([F,'-v','error','-progress','pipe:1','-nostats','-i',str(raw),'-map','0:v:0','-an','-threads','2','-f','null','-'],capture_output=True,text=True,check=True)
+ # Legacy Ogg/Theora has duplicate end DTS: normalize ONLY null-output timestamps;
+ # decode every frame without dropping/repeating it. Original file remains hash-verified.
+ decode=subprocess.run([F,'-v','error','-progress','pipe:1','-nostats','-i',str(raw),'-map','0:v:0','-an','-vf',f'setpts=N/({metadata["fps"]}*TB)','-fps_mode','passthrough','-threads','2','-f','null','-'],capture_output=True,text=True,check=True)
  assert not decode.stderr.strip(),decode.stderr
  counts=re.findall(r'^frame=(\d+)$',decode.stdout,re.M);assert counts and int(counts[-1])>0
  interval=2 if duration>20 else 1;times=list(range(0,math.floor(duration),interval));frames=[]

@@ -1,5 +1,5 @@
 {
-  "status": "TWO_REAL_VIDEOS_AND_FOUR_STILLS_ACQUIRED_NOT_YET_IN_FILM",
+  "status": "FOUR_DISTINCT_REAL_VIDEOS_AND_EXACTLY_FOUR_REAL_STILLS_ACQUIRED",
   "maximum_real_still_photos": 4,
   "acquired_still_candidates": [
     {
@@ -50,32 +50,13 @@
       "license": "CC BY 2.0; Commons also lists NOAA public-domain notice",
       "license_url": "https://creativecommons.org/licenses/by/2.0/",
       "downloaded": true,
-      "visually_inspected": false,
+      "visually_inspected": true,
       "bytes": 5049923,
       "sha256": "8e071ed2cd94faa0423a23adc691e5275fd6d2db33e99dfc709a7eed662ae73b",
       "integrated_in_new_movie": false
     }
   ],
   "real_video_candidates": [
-    {
-      "id": "V01",
-      "file": "V01_paradise_bay.webm",
-      "page": "https://commons.wikimedia.org/wiki/File:Leopard_seal_(Hydrurga_leptonyx)_and_its_kill.webm",
-      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Leopard_seal_%28Hydrurga_leptonyx%29_and_its_kill.webm",
-      "author": "Lauren Farmer",
-      "license": "CC BY 3.0",
-      "license_url": "https://creativecommons.org/licenses/by/3.0/",
-      "native_size": [
-        1280,
-        720
-      ],
-      "seconds": 101.293,
-      "sha256": "35a1dce364190482d684a35d95108b4a9a65541b0229599b0a58b2ed1c6ba2d5",
-      "downloaded": true,
-      "context": "Paradise Harbour2014; prey may be a cormorant, not established as a penguin. Not Nicklen/2003 incident footage.",
-      "selection_policy": "Inspect actual footage. Non-graphic cuts only. Keep native720p or smaller, no fake1080p claim.",
-      "integrated_in_new_movie": false
-    },
     {
       "id": "V02",
       "file": "V02_penguin_edge.ogv",
@@ -93,9 +74,94 @@
       "downloaded": true,
       "context": "Movie S2, PLOS ONE2012, DOI10.1371/journal.pone.0050357. Leopard seal seeking emperor penguins at water edge, not Adelie-specific source.",
       "selection_policy": "Native640x480 scientific archival inset, no upscaling/nativeHD claim, no false Ad\u00e9lie or2003 incident label.",
+      "integrated_in_new_movie": false,
+      "repository_file": "visual_rebuild/source_media/V02_penguin_edge.ogv"
+    },
+    {
+      "id": "V05",
+      "file": "V5_CRITTERCAM.mp4",
+      "repository_file": "visual_rebuild/source_media/V5_CRITTERCAM.mp4",
+      "page": "https://link.springer.com/article/10.1186/s40317-015-0059-2",
+      "original_url": "https://static-content.springer.com/esm/art%3A10.1186%2Fs40317-015-0059-2/MediaObjects/40317_2015_59_MOESM5_ESM.mp4",
+      "author": "Douglas J Krause, Michael E Goebel, Gregory J Marshall, Kyler Abernathy",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "supplementary_file": 5,
+      "native_size": [
+        640,
+        480
+      ],
+      "sha256": "4d9345afaf22deca68da732702213f85d8b7d998f1c0c95f86057ec6dc1efd95",
+      "downloaded": true,
+      "context": "Leopard seal422Y ambushes an Antarctic fur seal pup at Cape Shirreff. Actual animal-borne research footage2013\u20132014, published2015; not a reconstruction.",
+      "selection_policy": "Use native-size archival inset, no fake1080p claim; inspect actual footage and select non-graphic segments, no suffering closeups. Keep original source attribution and disclose cuts/removed source audio.",
+      "integrated_in_new_movie": false
+    },
+    {
+      "id": "V06",
+      "file": "V6_CRITTERCAM.mp4",
+      "repository_file": "visual_rebuild/source_media/V6_CRITTERCAM.mp4",
+      "page": "https://link.springer.com/article/10.1186/s40317-015-0059-2",
+      "original_url": "https://static-content.springer.com/esm/art%3A10.1186%2Fs40317-015-0059-2/MediaObjects/40317_2015_59_MOESM6_ESM.mp4",
+      "author": "Douglas J Krause, Michael E Goebel, Gregory J Marshall, Kyler Abernathy",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "supplementary_file": 6,
+      "native_size": [
+        640,
+        480
+      ],
+      "sha256": "0d14fe753e8c135a6955f13c3fd54ad8906ab9c97357dac864d5659cd1317d61",
+      "downloaded": true,
+      "context": "Leopard seal401Y flushes a humped rockcod from a sponge bed. Actual animal-borne research footage2013\u20132014, published2015; not a reconstruction.",
+      "selection_policy": "Use native-size archival inset, no fake1080p claim; inspect actual footage and select non-graphic segments, no suffering closeups. Keep original source attribution and disclose cuts/removed source audio.",
+      "integrated_in_new_movie": false
+    },
+    {
+      "id": "V09",
+      "file": "V9_CRITTERCAM.mp4",
+      "repository_file": "visual_rebuild/source_media/V9_CRITTERCAM.mp4",
+      "page": "https://link.springer.com/article/10.1186/s40317-015-0059-2",
+      "original_url": "https://static-content.springer.com/esm/art%3A10.1186%2Fs40317-015-0059-2/MediaObjects/40317_2015_59_MOESM9_ESM.mp4",
+      "author": "Douglas J Krause, Michael E Goebel, Gregory J Marshall, Kyler Abernathy",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "supplementary_file": 9,
+      "native_size": [
+        640,
+        480
+      ],
+      "sha256": "47830b18c143afc029ed19c8188e4b429d89cdcd3fd1f9e47b4b0a7cf97d0830",
+      "downloaded": true,
+      "context": "Leopard seal397G loses a fur seal pup to another leopard seal; kleptoparasitism. Actual animal-borne research footage2013\u20132014, published2015; not a reconstruction.",
+      "selection_policy": "Use native-size archival inset, no fake1080p claim; inspect actual footage and select non-graphic segments, no suffering closeups. Keep original source attribution and disclose cuts/removed source audio.",
       "integrated_in_new_movie": false
     }
   ],
   "new_movie_exists": false,
-  "footage_inspection_required": true
+  "footage_inspection_required": true,
+  "unselected_downloaded_video_sources": [
+    {
+      "id": "V01",
+      "file": "V01_paradise_bay.webm",
+      "page": "https://commons.wikimedia.org/wiki/File:Leopard_seal_(Hydrurga_leptonyx)_and_its_kill.webm",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Leopard_seal_%28Hydrurga_leptonyx%29_and_its_kill.webm",
+      "author": "Lauren Farmer",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "native_size": [
+        1280,
+        720
+      ],
+      "seconds": 101.293,
+      "sha256": "35a1dce364190482d684a35d95108b4a9a65541b0229599b0a58b2ed1c6ba2d5",
+      "downloaded": true,
+      "context": "Paradise Harbour2014; prey may be a cormorant, not established as a penguin. Not Nicklen/2003 incident footage.",
+      "selection_policy": "Inspect actual footage. Non-graphic cuts only. Keep native720p or smaller, no fake1080p claim.",
+      "integrated_in_new_movie": false,
+      "selected": false,
+      "reason": "Poor long-distance view, bird identity uncertain; not selected for the redesigned cut."
+    }
+  ],
+  "maximum_selected_real_video_sources": 4
 }
