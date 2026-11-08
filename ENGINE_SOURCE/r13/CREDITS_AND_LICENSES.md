@@ -4,7 +4,7 @@
 - Nineteen new Three.js scenes replace the opening, whale comparison, selected sharks, shore capture and vessel contexts. Twelve additional passages are restored directly from the preferred R9 master. Original protected human/3D and authentic-media passages remain intact; the other existing R12 passages are retained. Exact selection and frame intervals are in REQUEST.json and delivered PROVENANCE.json.
 - Native R9 AAC is stream-copied without synthesis, filters, trimming, padding or ending stretch. The original picture/audio end relationship is retained.
 - New whale and shark bodies, fins and swimming are authored programmatic 3D surfaces. These are explanatory models, not scans or scientific measurements of individuals.
-- The approved brown sea lion is ONE whole cutout. A rear-flipper image anchor is carried at the orca jaw; the image has no independently animated limbs. No new AI images are generated.
+- The approved brown sea lion is ONE whole cutout. A rear-quarter image anchor is carried at the orca jaw; the image has no independently animated limbs. No new AI images are generated.
 - Detailed yacht and sea stage reuse the supplied authored Three.js engine; the principal orca uses the credited original textured source model, not a generated PNG.
 - Reconstructions are illustrative, not authentic event footage. No blanket commercial-clearance, exclusivity or copyright-eligibility guarantee is made.
 
