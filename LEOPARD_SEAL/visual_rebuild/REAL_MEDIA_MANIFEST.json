@@ -1,5 +1,5 @@
 {
-  "status": "FOUR_DISTINCT_REAL_VIDEOS_AND_EXACTLY_FOUR_REAL_STILLS_ACQUIRED",
+  "status": "FOUR_REAL_CAMERA_SOURCES_CUT_AND_PUBLISHED_FULL_MOVIE_INTEGRATION_PENDING",
   "maximum_real_still_photos": 4,
   "acquired_still_candidates": [
     {
@@ -14,7 +14,8 @@
       "downloaded": true,
       "visually_inspected": true,
       "integrated_in_new_movie": false,
-      "repository_file": "visual_rebuild/source_media/leopard_noaa_0367.jpg"
+      "repository_file": "visual_rebuild/source_media/leopard_noaa_0367.jpg",
+      "published_original_photo_archive_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-real-media-edits-6c8d7c0/LEOPARD_SEAL_FOUR_REAL_CLIPS_AND_FOUR_PHOTOS.zip"
     },
     {
       "id": "P02",
@@ -28,7 +29,8 @@
       "downloaded": true,
       "visually_inspected": true,
       "integrated_in_new_movie": false,
-      "repository_file": "visual_rebuild/source_media/leopard_gilad_rom.jpg"
+      "repository_file": "visual_rebuild/source_media/leopard_gilad_rom.jpg",
+      "published_original_photo_archive_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-real-media-edits-6c8d7c0/LEOPARD_SEAL_FOUR_REAL_CLIPS_AND_FOUR_PHOTOS.zip"
     },
     {
       "id": "P03",
@@ -39,7 +41,8 @@
       "downloaded": true,
       "visually_inspected": true,
       "integrated_in_new_movie": false,
-      "repository_file": "assets/archive/Rothera-01.jpg"
+      "repository_file": "assets/archive/Rothera-01.jpg",
+      "published_original_photo_archive_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-real-media-edits-6c8d7c0/LEOPARD_SEAL_FOUR_REAL_CLIPS_AND_FOUR_PHOTOS.zip"
     },
     {
       "id": "P04",
@@ -53,7 +56,8 @@
       "visually_inspected": true,
       "bytes": 5049923,
       "sha256": "8e071ed2cd94faa0423a23adc691e5275fd6d2db33e99dfc709a7eed662ae73b",
-      "integrated_in_new_movie": false
+      "integrated_in_new_movie": false,
+      "published_original_photo_archive_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-real-media-edits-6c8d7c0/LEOPARD_SEAL_FOUR_REAL_CLIPS_AND_FOUR_PHOTOS.zip"
     }
   ],
   "real_video_candidates": [
@@ -75,7 +79,25 @@
       "context": "Movie S2, PLOS ONE2012, DOI10.1371/journal.pone.0050357. Leopard seal seeking emperor penguins at water edge, not Adelie-specific source.",
       "selection_policy": "Native640x480 scientific archival inset, no upscaling/nativeHD claim, no false Ad\u00e9lie or2003 incident label.",
       "integrated_in_new_movie": false,
-      "repository_file": "visual_rebuild/source_media/V02_penguin_edge.ogv"
+      "repository_file": "visual_rebuild/source_media/V02_penguin_edge.ogv",
+      "edited_and_published": true,
+      "published_edit": {
+        "file": "CUT01_ICE_EDGE.mp4",
+        "source_out": 9.083333333333334,
+        "in": 1.0,
+        "frames": 194,
+        "duration_seconds": 8.083333333333334,
+        "crop": [
+          640,
+          428,
+          0,
+          26
+        ],
+        "sha256": "aa7faca502a6930cda107320fd36ba787992d894866fa563adbe13405ea851b3",
+        "real_time_rate": 1.0,
+        "fully_decoded_frames": 194,
+        "archive_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-real-media-edits-6c8d7c0/LEOPARD_SEAL_FOUR_REAL_CLIPS_AND_FOUR_PHOTOS.zip"
+      }
     },
     {
       "id": "V05",
@@ -95,7 +117,25 @@
       "downloaded": true,
       "context": "Leopard seal422Y ambushes an Antarctic fur seal pup at Cape Shirreff. Actual animal-borne research footage2013\u20132014, published2015; not a reconstruction.",
       "selection_policy": "Use native-size archival inset, no fake1080p claim; inspect actual footage and select non-graphic segments, no suffering closeups. Keep original source attribution and disclose cuts/removed source audio.",
-      "integrated_in_new_movie": false
+      "integrated_in_new_movie": false,
+      "edited_and_published": true,
+      "published_edit": {
+        "file": "CUT02_ANIMAL_CAMERA.mp4",
+        "source_out": 8.5,
+        "in": 2.0,
+        "frames": 156,
+        "duration_seconds": 6.5,
+        "crop": [
+          640,
+          360,
+          0,
+          60
+        ],
+        "sha256": "261f0aa226a1108f18f6b13af01731f257b5e994093c17d2bd474463528c527c",
+        "real_time_rate": 1.0,
+        "fully_decoded_frames": 156,
+        "archive_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-real-media-edits-6c8d7c0/LEOPARD_SEAL_FOUR_REAL_CLIPS_AND_FOUR_PHOTOS.zip"
+      }
     },
     {
       "id": "V06",
@@ -115,7 +155,25 @@
       "downloaded": true,
       "context": "Leopard seal401Y flushes a humped rockcod from a sponge bed. Actual animal-borne research footage2013\u20132014, published2015; not a reconstruction.",
       "selection_policy": "Use native-size archival inset, no fake1080p claim; inspect actual footage and select non-graphic segments, no suffering closeups. Keep original source attribution and disclose cuts/removed source audio.",
-      "integrated_in_new_movie": false
+      "integrated_in_new_movie": false,
+      "edited_and_published": true,
+      "published_edit": {
+        "file": "CUT03_REEF_SEARCH.mp4",
+        "source_out": 38.0,
+        "in": 24.0,
+        "frames": 336,
+        "duration_seconds": 14.0,
+        "crop": [
+          640,
+          360,
+          0,
+          60
+        ],
+        "sha256": "6882a7e49770fe2ba9ea5134a9e66c8649fd072ed103bfcafc9689ebb2c3baab",
+        "real_time_rate": 1.0,
+        "fully_decoded_frames": 336,
+        "archive_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-real-media-edits-6c8d7c0/LEOPARD_SEAL_FOUR_REAL_CLIPS_AND_FOUR_PHOTOS.zip"
+      }
     },
     {
       "id": "V09",
@@ -135,7 +193,25 @@
       "downloaded": true,
       "context": "Leopard seal397G loses a fur seal pup to another leopard seal; kleptoparasitism. Actual animal-borne research footage2013\u20132014, published2015; not a reconstruction.",
       "selection_policy": "Use native-size archival inset, no fake1080p claim; inspect actual footage and select non-graphic segments, no suffering closeups. Keep original source attribution and disclose cuts/removed source audio.",
-      "integrated_in_new_movie": false
+      "integrated_in_new_movie": false,
+      "edited_and_published": true,
+      "published_edit": {
+        "file": "CUT04_SECOND_SEAL.mp4",
+        "source_out": 22.0,
+        "in": 12.0,
+        "frames": 240,
+        "duration_seconds": 10.0,
+        "crop": [
+          640,
+          360,
+          0,
+          60
+        ],
+        "sha256": "66699661269dd89cfdad8c1b9a8e97402ed422b3afae32efaed6f5db3cfbe593",
+        "real_time_rate": 1.0,
+        "fully_decoded_frames": 240,
+        "archive_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-real-media-edits-6c8d7c0/LEOPARD_SEAL_FOUR_REAL_CLIPS_AND_FOUR_PHOTOS.zip"
+      }
     }
   ],
   "new_movie_exists": false,
@@ -163,5 +239,8 @@
       "reason": "Poor long-distance view, bird identity uncertain; not selected for the redesigned cut."
     }
   ],
-  "maximum_selected_real_video_sources": 4
+  "maximum_selected_real_video_sources": 4,
+  "real_media_publication": "https://github.com/touilhasan12-png/YOU-DOC/releases/tag/leopard-real-media-edits-6c8d7c0",
+  "published_real_video_edit_reel_seconds": 38.583333333333336,
+  "full_documentary_picture_rebuild_complete": false
 }

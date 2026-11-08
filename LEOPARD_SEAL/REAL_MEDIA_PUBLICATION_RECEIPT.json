@@ -1,0 +1,43 @@
+{
+  "release_id": 438466601,
+  "release_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/tag/leopard-real-media-edits-6c8d7c0",
+  "source_commit": "6c8d7c0c7bfd25c2cdfe45e42d44b4f1181cdf6f",
+  "run_id": 42514710258,
+  "not_full_film": true,
+  "approved_narration_preserved": true,
+  "assets": [
+    {
+      "id": 724953973,
+      "name": "FOUR_REAL_CAMERA_CLIPS_EDITED_REEL.mp4",
+      "bytes": 9976428,
+      "sha256": "b8a971cc261d62a53a86b638a8819a5313aed937a818ab4bc8d69f0e9fd5ffef",
+      "download_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-real-media-edits-6c8d7c0/FOUR_REAL_CAMERA_CLIPS_EDITED_REEL.mp4",
+      "server_digest": "sha256:b8a971cc261d62a53a86b638a8819a5313aed937a818ab4bc8d69f0e9fd5ffef"
+    },
+    {
+      "id": 724954044,
+      "name": "LEOPARD_SEAL_FOUR_REAL_CLIPS_AND_FOUR_PHOTOS.zip",
+      "bytes": 29423660,
+      "sha256": "22102838a49ffe0aae9690d9acdeb83f66d4c190281a515507a61fa835a2af9c",
+      "download_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-real-media-edits-6c8d7c0/LEOPARD_SEAL_FOUR_REAL_CLIPS_AND_FOUR_PHOTOS.zip",
+      "server_digest": "sha256:22102838a49ffe0aae9690d9acdeb83f66d4c190281a515507a61fa835a2af9c"
+    },
+    {
+      "id": 724954105,
+      "name": "CREDITS_REAL_MEDIA.md",
+      "bytes": 5155,
+      "sha256": "4b1e51d0b8c07d038c5485018bd81f59b8c26c7314655f056b2b17899d155390",
+      "download_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-real-media-edits-6c8d7c0/CREDITS_REAL_MEDIA.md",
+      "server_digest": "sha256:4b1e51d0b8c07d038c5485018bd81f59b8c26c7314655f056b2b17899d155390"
+    },
+    {
+      "id": 724954127,
+      "name": "REAL_MEDIA_EDIT_RECEIPT.json",
+      "bytes": 7881,
+      "sha256": "6430e41deed3de0235200529dd4b2c1005765f069469c2f56b44c83a274dc934",
+      "download_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-real-media-edits-6c8d7c0/REAL_MEDIA_EDIT_RECEIPT.json",
+      "server_digest": "sha256:6430e41deed3de0235200529dd4b2c1005765f069469c2f56b44c83a274dc934"
+    }
+  ],
+  "all_server_digests_verified": true
+}

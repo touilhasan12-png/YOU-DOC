@@ -1,0 +1,74 @@
+{
+  "status": "INTERNAL_SOURCE_AND_NEW_DIRECTION_PROGRESS_NOT_FULL_FILM",
+  "actions_run": 42514710258,
+  "commit": "6c8d7c0c7bfd25c2cdfe45e42d44b4f1181cdf6f",
+  "source_material_publication": "https://github.com/touilhasan12-png/YOU-DOC/releases/tag/leopard-real-media-edits-6c8d7c0",
+  "approved_master_unchanged": true,
+  "actual_source_camera_cuts": 4,
+  "real_still_photos_exactly": 4,
+  "cut_native_picture_sizes": [
+    [
+      640,
+      428
+    ],
+    [
+      640,
+      360
+    ],
+    [
+      640,
+      360
+    ],
+    [
+      640,
+      360
+    ]
+  ],
+  "source_movie_integration_complete": false,
+  "full_film_rebuilt": false,
+  "actual_2d_rendered": {
+    "model_parts": 65,
+    "native_size": [
+      1920,
+      1080
+    ],
+    "motion_file": "NEW_2D_INTERNAL_MOTION_PROOF.mp4",
+    "motion_duration_seconds": 12,
+    "layouts": [
+      "scale",
+      "ambush",
+      "research",
+      "signals",
+      "songs",
+      "profile"
+    ],
+    "actual_runtime_code": [
+      "Rev2D",
+      "anidoodle",
+      "lemo-opuscar"
+    ],
+    "design_guidance": "reelmimic: subject envelope and clean-zone composition; NOT an invented renderer"
+  },
+  "new_3d_actual_internal_views_rendered": [
+    "3d_quarter",
+    "3d_profile",
+    "3d_head"
+  ],
+  "new_3d_times_sampled_seconds": [
+    0,
+    1,
+    2
+  ],
+  "native_3d_motion_clip_tested": false,
+  "qualitative_review": [
+    "New continuous body and skull visible; rejected assembled ball head not recycled.",
+    "Foreground flipper now volumetric/tapered; jaw front rounded and open inner surface closed in newest rendered proof.",
+    "2D ruler and adult share exact nominal pixels-per-metre and ground baseline after the first internal view was corrected.",
+    "The3D eye and mouth tissues remain simplified, dorsal coloration is very pale under the internal studio lights, and3D animation still needs a native motion test; no artistic completion or intersection-free guarantee.",
+    "The field-camera sources are genuinely archival640x480, not HD. Non-graphic source cuts selected; source sound omitted, not newly synthesized.",
+    "Native real-video cuts have all926frames fully decoded; first/middle/last actual cut-frame contact sheet reviewed. This is not full-film temporal/audio QA."
+  ],
+  "no_approved_narration_changed": true,
+  "no_new_tts_calls": true,
+  "do_not_replace_or_relabel_rejected_movie": "154HugfCVFk518rQcpxZcGMmwMCRhipQY"
+}

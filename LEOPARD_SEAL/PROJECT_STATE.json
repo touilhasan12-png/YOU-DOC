@@ -80,5 +80,26 @@
   "visual_rebuild_complete": false,
   "visual_rebuild_full_render_started": false,
   "visual_rebuild_audit": "visual_rebuild/VISUAL_FAILURE_AUDIT.json",
-  "current_delivered_cut_has_complete_audio_but_rejected_visuals": true
+  "current_delivered_cut_has_complete_audio_but_rejected_visuals": true,
+  "visual_rebuild_current": {
+    "approved_narration_changed": false,
+    "four_actual_camera_clips_cut": true,
+    "real_still_photo_count": 4,
+    "full_movie_rebuilt": false,
+    "real_clips_integrated_in_full_movie": false,
+    "new_original_2d_runtime_rendered_on_actions": true,
+    "new_3d_authored_and_internal_views_rendered": true,
+    "new_3d_artistic_acceptance": false,
+    "source_commit_latest": "6c8d7c0c7bfd25c2cdfe45e42d44b4f1181cdf6f",
+    "actual_2d_parts": 65,
+    "full_film_visual_rebuild_required": true,
+    "source_material_actually_published": true,
+    "real_media_release_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/tag/leopard-real-media-edits-6c8d7c0",
+    "actual_real_camera_edit_reel_seconds": 38.583333333333336,
+    "real_media_release_archive_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-real-media-edits-6c8d7c0/LEOPARD_SEAL_FOUR_REAL_CLIPS_AND_FOUR_PHOTOS.zip",
+    "new_2d_native_motion_proof_seconds": 12,
+    "new_2d_and_3d_proof_run": 42514710258,
+    "new_3d_jaw_inner_surface_closed_and_rendered": true,
+    "background_processes_active": false
+  }
 }

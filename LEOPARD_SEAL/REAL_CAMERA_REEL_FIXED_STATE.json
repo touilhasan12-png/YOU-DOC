@@ -1,0 +1,18 @@
+{
+  "source_commit": "6c8d7c0c7bfd25c2cdfe45e42d44b4f1181cdf6f",
+  "workflow_name": "Leopard rebuild \u2014 actual real-media cuts and new 2D-3D internal inspection",
+  "report_file": "REAL_CAMERA_REEL_FIXED_REPORT.json",
+  "wanted_artifacts": [
+    "leopard-REAL-FOOTAGE-CUTS-AND-FOUR-PHOTOS",
+    "leopard-NEW-2D-3D-INTERNAL-PROOF"
+  ],
+  "new_full_film_created": false,
+  "run_id": 42514710258,
+  "run_url": "https://github.com/touilhasan12-png/YOU-DOC/actions/runs/42514710258",
+  "downloaded_artifacts": {
+    "leopard-REAL-FOOTAGE-CUTS-AND-FOUR-PHOTOS": "/home/user/.cache/leopard-visual-rebuild/42514710258/leopard-REAL-FOOTAGE-CUTS-AND-FOUR-PHOTOS",
+    "leopard-NEW-2D-3D-INTERNAL-PROOF": "/home/user/.cache/leopard-visual-rebuild/42514710258/leopard-NEW-2D-3D-INTERNAL-PROOF"
+  },
+  "conclusion": "success",
+  "monitor_finished": true
+}
