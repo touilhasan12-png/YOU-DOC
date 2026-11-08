@@ -4,7 +4,7 @@ const{V,mesh,curve,M}=S,PI=Math.PI,clamp=(x)=>Math.max(0,Math.min(1,x)),ease=x=>
 const sealTex=await new T.TextureLoader().loadAsync('/cutouts/sea_lion_brown_cutout.png');sealTex.colorSpace=T.SRGBColorSpace;
 let row,update,stats={},lastGrip=null;function title(t='',d=''){document.querySelector('#caption').innerHTML=t+(d?'<span id="detail">'+d+'</span>':'');}
 function orca(p,L=6.3,rot=0){let a=S.animal(S.scene,L);a.root.position.copy(p);a.root.rotation.y=rot;return a}
-function under(h=false){S.reset(true);S.underwater(3);S.scene.fog.density=.012;if(h)habitat(S.scene,'kelp');}
+function under(h=false){S.reset(true);S.underwater(3);S.scene.fog.density=.012;let f=new T.DirectionalLight(0xb8d9dd,.85);f.position.set(6,-7,9);S.scene.add(f);if(h)habitat(S.scene,'kelp');}
 function shoreHeight(x,z){return Math.max(-1,(z-2)*.105)+.025*Math.sin(x*.4)}
 function cutout(){let root=new T.Group();S.scene.add(root);let w=.95,h=w*558/572;let geo=new T.PlaneGeometry(w,h);geo.translate(-.37*w,.36*h,0);let material=new T.MeshBasicMaterial({map:sealTex,transparent:true,alphaTest:.45,side:T.DoubleSide,depthWrite:true});let sprite=mesh(root,geo,material);sprite.castShadow=false;return{root,mesh:sprite,w,h};}
 function support(a){S.scene.updateMatrixWorld(true);const objects=[a.mouth.body,a.mouth.lower];let gap=Infinity,p=V();for(const o of objects){const pos=o.geometry.attributes.position;for(let i=0;i<pos.count;i++){p.fromBufferAttribute(pos,i).applyMatrix4(o.matrixWorld);if(p.z>-25&&Math.abs(p.x)<1.3)gap=Math.min(gap,p.y-shoreHeight(p.x,p.z));}}if(Number.isFinite(gap)&&gap<.018)a.root.position.y+=.018-gap;S.scene.updateMatrixWorld(true);return gap;}
