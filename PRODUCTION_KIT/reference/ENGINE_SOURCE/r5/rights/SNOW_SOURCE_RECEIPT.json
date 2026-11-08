@@ -1,0 +1,15 @@
+{
+  "asset": "Snow v4",
+  "publisher": "Blender Studio / Blender Foundation",
+  "source_page": "https://studio.blender.org/characters/snow/v4/",
+  "official_download": "https://studio.blender.org/download-source/files/ba/0f/ba0fe6d810333b1d73c1c359e4dc03cb-6.zip",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "required_credit": "Snow Rig (CC) Blender Foundation | studio.blender.org",
+  "bytes": 111580346,
+  "sha256": "98d58ef3a07083ede14140bc462cccb55d317062846aa0eb652d2e4a7ac422a6",
+  "status": "Source downloaded and license confirmed; not yet converted, retargeted, rendered or artistically approved.",
+  "archive_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/r5-authored-source-archive-20261106/Snow_v4_ORIGINAL.zip",
+  "github_asset_id": 718368416,
+  "archive_digest_verified": true
+}

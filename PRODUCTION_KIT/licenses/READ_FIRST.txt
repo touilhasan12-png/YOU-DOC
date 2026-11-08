@@ -1,0 +1,9 @@
+ليس كل ما في هذه الحقيبة ملكية حصرية لنا.
+Snow Rig (CC) Blender Foundation | studio.blender.org — CC BY4.0. الأصل وGLB المشتق مرفقان، وشهادته في reference/ENGINE_SOURCE/r5/rights/.
+Orca Junskie Pastilan / pasilan — CC BY3.0، مع تصحيح وصف ترخيص المصدر المرفق الخاطئ OfficeInterior كما في SOURCE_RECEIPT، لا تغيير نصه الأصلي.
+BricolageGrotesque وDMSans وBarlowCondensed وSourceSans3: SILOFL1.1، ملفاتالرخصمضمنة. DejaVuملفهالأصليمرفق.
+Three.js وesbuild وPlaywright والتبعيات تحملرخصها فيمصادرvendorوالتثبيت؛ ChromiumيتضمنملفاتLICENSEللمكونات. لا تعيدترخيصها.
+Rev2D MIT، anidoodle Apache2، lemo-opuscar MIT، reelmimic MIT؛ الأخيرإرشادتركيبفقط. المصدر الكامل ورخصه في reference/ENGINE_SOURCE/r12/vendor/.
+الصور الأرشيفية الأربع: ملفاتأصليةمعmetadataوحقوقفي assets/approved/ARCHIVE_PHOTOGRAPHS.json؛ إطارهاالمعلنمنحقبةالرواية.
+الماسترR15يحتويالمقاطعالمرخصةوالنص/الصوتومساهماتالمشروعكمافيالتوثيق؛ لا ندّعيحقإعادةاستعمالكللقطةفيأيإعلانبغيرمراعاةالرخص.
+صورالمصغراتوقصاصتاالحيواناتالثانويةنتاجمولدبالذكاءالاصطناعيمعلن؛ لاأرشيفحقيقي، ولايُستخدمأيمنهاكنموذجرئيسيفيالفيلم.

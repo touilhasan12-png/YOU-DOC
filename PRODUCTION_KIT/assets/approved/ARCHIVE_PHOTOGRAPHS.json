@@ -1,0 +1,86 @@
+[
+  {
+    "key": "alaska",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Killerwhales_jumping.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Killerwhales_jumping.jpg",
+    "author": "Robert Pittman / NOAA",
+    "license": "PD-USGov-NOAA",
+    "context": "Unimak Island, Alaska; mammal-eating transient orcas. Context, not the specific tagging study.",
+    "shot": 20,
+    "file": "archive/alaska.jpg",
+    "dimensions": [
+      2186,
+      1453
+    ],
+    "bytes": 234095,
+    "sha256": "b1d3c5236a828522371cc38240a6712d6b426713ff7f3c2dcf7c7589f5e773c6",
+    "source_original_in_zip": "ENGINE_SOURCE/r14/archive/alaska.jpg",
+    "in_seconds": 136.91666666666666,
+    "out_seconds": 143.79166666666666,
+    "visible_credit": true,
+    "original_full_composition_retained": true
+  },
+  {
+    "key": "farallon",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/91/GFNMS_-_Farallon_Islands_%2826820988890%29.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:GFNMS_-_Farallon_Islands_(26820988890).jpg",
+    "author": "Matt McIntosh / NOAA National Marine Sanctuaries",
+    "license": "PD-USGov-NOAA",
+    "context": "Farallon Islands, 23 October 2014. Site context, not the 2009 event.",
+    "shot": 41,
+    "file": "archive/farallon.jpg",
+    "dimensions": [
+      5616,
+      3744
+    ],
+    "bytes": 12237911,
+    "sha256": "5a3521712605d5963565b00c18d6b20ba7ca092b014da52e69a7a69d59555a5e",
+    "source_original_in_zip": "ENGINE_SOURCE/r14/archive/farallon.jpg",
+    "in_seconds": 275.0416666666667,
+    "out_seconds": 282.0,
+    "visible_credit": true,
+    "original_full_composition_retained": true
+  },
+  {
+    "key": "blue",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/16/Blue-whale.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Blue-whale.jpg",
+    "author": "Lisa Conger / NOAA Fisheries",
+    "license": "PD-USGov-NOAA",
+    "context": "Blue whale near the surface after feeding, 2018. Species context, not Australian kill footage.",
+    "shot": 47,
+    "file": "archive/blue.jpg",
+    "dimensions": [
+      1000,
+      667
+    ],
+    "bytes": 119259,
+    "sha256": "75046286d1074f30ace678e51b8996cf65d07c817f9a6218d7798808ece4818e",
+    "source_original_in_zip": "ENGINE_SOURCE/r14/archive/blue.jpg",
+    "in_seconds": 316.125,
+    "out_seconds": 327.8333333333333,
+    "visible_credit": true,
+    "original_full_composition_retained": true
+  },
+  {
+    "key": "eden",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Killer_whale_%28Old_Tom%29_and_whalers_-_original.jpeg",
+    "page": "https://commons.wikimedia.org/wiki/File:Killer_whale_(Old_Tom)_and_whalers_-_original.jpeg",
+    "author": "Charles Eden Wellings (1881–1952); National Library of Australia",
+    "license": "PD-Australia; PD-US-expired",
+    "context": "Historical documentary still produced 1910; first shown publicly 1912. Old Tom and Eden whalers. Low-resolution original, no invented detail.",
+    "shot": 52,
+    "file": "archive/eden.jpg",
+    "dimensions": [
+      600,
+      480
+    ],
+    "bytes": 89077,
+    "sha256": "5286940f7394ff405bbf5e4b02867083536af6586f9b309c4e6b7605ba0f5b85",
+    "source_original_in_zip": "ENGINE_SOURCE/r14/archive/eden.jpg",
+    "in_seconds": 355.9583333333333,
+    "out_seconds": 368.0416666666667,
+    "visible_credit": true,
+    "original_full_composition_retained": true
+  }
+]

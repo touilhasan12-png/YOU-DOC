@@ -1,0 +1,8 @@
+{
+  "uri": "$AUTHORIZED_DRIVE_SESSION_URI",
+  "file": "$LOCAL_FILE_PATH",
+  "total": "$EXACT_BYTE_SIZE",
+  "offset": 0,
+  "mime_type": "application/zip",
+  "receipt_path": "$LOCAL_RECEIPT_PATH"
+}

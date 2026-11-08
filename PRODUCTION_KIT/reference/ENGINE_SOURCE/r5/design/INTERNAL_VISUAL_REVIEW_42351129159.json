@@ -1,0 +1,20 @@
+{
+  "edition": "R5",
+  "proof_run": 42351129159,
+  "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a",
+  "status": "rejected_for_native_generation",
+  "geometry_findings": [
+    "16 sampled rower wrist failures; 0.0502\u20130.170416m",
+    "Three actual arm/board penetrations at 1.875, 4.875 and 18.375 seconds; actual 26000 arm triangles",
+    "Paired waiting lane visibly raises one animal into/above surface"
+  ],
+  "additional_actual_visual_findings": [
+    "CONTACT_00\u201303 opened in this review: geography wrap and ocean improved, but beach pup still hovers and several beach views repeat",
+    "Seven-animal approach and ice wave cause are legible in actual rendered samples; this is not continuous motion approval",
+    "CONTACT_04/05/07/08 previously opened; rescue needed a distinct modern vessel and source rig posing; swimmer front direction needed correction"
+  ],
+  "technical_workflow_success_is_not_art_approval": true,
+  "full_native_authorized": false,
+  "continuous_playback_claimed": false,
+  "corrections_require_new_actual_evidence": true
+}

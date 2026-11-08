@@ -1,0 +1,97 @@
+name: Production kit — four-scene opening test
+on:
+  push:
+    paths:
+      - 'PRODUCTION_KIT/**'
+      - '.github/workflows/kit_opening_test.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: production-kit-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        scene: [1, 2, 3, 4]
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/PRODUCTION_KIT/vendor/browsers
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore every included source, media asset and browser
+        working-directory: PRODUCTION_KIT
+        run: |
+          python scripts/validate_kit.py
+          python scripts/rehydrate.py
+          python scripts/prepare_runtime.py
+          python -m pip install --no-index --find-links vendor/wheels imageio-ffmpeg==0.6.0 pillow==11.3.0
+      - name: Install bundled offline JS runtime and system browser libraries
+        working-directory: PRODUCTION_KIT/runtime
+        run: |
+          npm ci --offline --ignore-scripts --cache ../vendor/npm-cache --no-audit --no-fund
+          npx playwright install-deps chromium
+      - name: Render actual proof images, then every frame of allocated scene
+        working-directory: PRODUCTION_KIT
+        run: |
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node scripts/render.mjs proof ${{ matrix.scene }}
+          node scripts/render.mjs render ${{ matrix.scene }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kit-unit-${{ matrix.scene }}
+          path: PRODUCTION_KIT/generated/units/
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kit-proof-${{ matrix.scene }}
+          path: PRODUCTION_KIT/generated/proof/
+          if-no-files-found: warn
+          retention-days: 30
+  assemble:
+    needs: render
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: kit-unit-*
+          merge-multiple: true
+          path: PRODUCTION_KIT/generated/units
+      - name: Assemble and independently decode full test with original voice
+        working-directory: PRODUCTION_KIT
+        run: |
+          python scripts/rehydrate.py
+          python -m pip install --no-index --find-links vendor/wheels imageio-ffmpeg==0.6.0 pillow==11.3.0
+          python scripts/prepare_audio.py
+          python scripts/assemble_verify.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kit-opening-delivery
+          path: PRODUCTION_KIT/generated/delivery/
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kit-opening-review
+          path: PRODUCTION_KIT/generated/review/
+          retention-days: 30

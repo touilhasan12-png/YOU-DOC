@@ -1,0 +1,28 @@
+{
+  "run_id": 42350448554,
+  "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169",
+  "artifact_id": 13565447334,
+  "actual_shots_rendered": 60,
+  "actual_frames": 210,
+  "status": "NOT_APPROVED_FOR_NATIVE_GENERATION",
+  "contact_sheets_opened": [
+    "CONTACT_00",
+    "CONTACT_03",
+    "CONTACT_04",
+    "CONTACT_07",
+    "CONTACT_08",
+    "CONTACT_10",
+    "CONTACT_13"
+  ],
+  "full_size_frames_opened": [
+    "53_whaler_view_06",
+    "04_blue_scale_01"
+  ],
+  "scope": "Actual remote still/temporal samples only, no continuous subjective playback/listening or whole93shot approval.",
+  "observations": [
+    "New authored human, actual reflected ocean and yacht are visibly more developed than the rejected primitives/flat ocean.",
+    "A zero flag count did not reveal multiple serious visual faults: opaque rectangular wave slab; seal support and flat fish-like neck; reversed shoreline creates a floating pup; rower arms do not actually reach the oar; giant paper shadows; dateline bands in the Pacific map; blue-whale mouth/pleats float off its skin.",
+    "Job stopped before shot61 while computing actual skinned-arm/board intersections: the temporary triangle geometry lacked an index expected by the BVH library. It is a check implementation failure, not a passing collision result.",
+    "Corrections authored from these concrete findings. Missing33 plus affected families require new remote evaluation. Do not repeat unchanged60shots blindly."
+  ]
+}

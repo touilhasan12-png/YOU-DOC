@@ -1,0 +1,10 @@
+{
+  "drive_folder_id": "$DRIVE_FOLDER_ID",
+  "repo": "YOU-DOC",
+  "branch": "$KIT_BRANCH",
+  "only_two_final_drive_files": [
+    "00_MASTER_PROMPT.txt",
+    "FULL_PRODUCTION_KIT.zip"
+  ],
+  "test_delivery_separate_from_kit_folder": true
+}

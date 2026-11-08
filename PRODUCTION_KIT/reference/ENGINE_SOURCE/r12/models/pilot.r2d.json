@@ -1,0 +1,469 @@
+{
+  "format": "rev2d",
+  "version": 1,
+  "meta": {
+    "name": "R12_pilot",
+    "width": 1200,
+    "height": 800,
+    "background": "transparent",
+    "fps": 24
+  },
+  "parameters": [
+    {
+      "id": "Swim",
+      "min": -1,
+      "max": 1,
+      "default": 0
+    },
+    {
+      "id": "Fin",
+      "min": -1,
+      "max": 1,
+      "default": 0
+    }
+  ],
+  "textures": [],
+  "bones": [
+    {
+      "id": "root",
+      "x": 600,
+      "y": 400,
+      "rotation": 0,
+      "scaleX": 1,
+      "scaleY": 1,
+      "length": 0
+    },
+    {
+      "id": "fin",
+      "parent": "root",
+      "x": 180,
+      "y": 55,
+      "rotation": 0,
+      "scaleX": 1,
+      "scaleY": 1,
+      "length": 0
+    }
+  ],
+  "warps": [
+    {
+      "id": "bodyWarp",
+      "parent": "root",
+      "rect": [
+        30,
+        30,
+        1140,
+        700
+      ],
+      "cols": 4,
+      "rows": 2
+    }
+  ],
+  "parts": [
+    {
+      "id": "far_flipper",
+      "parent": "bodyWarp",
+      "shape": {
+        "type": "path",
+        "d": "M830 437 Q890 512 840 551 Q786 510 761 441Z",
+        "tolerance": 0.6
+      },
+      "fill": "#102b41",
+      "stroke": {
+        "color": "#102d43",
+        "width": 3,
+        "join": "round",
+        "align": "center"
+      },
+      "opacity": 1,
+      "tint": "#ffffff",
+      "blend": "normal",
+      "visible": true,
+      "z": 0,
+      "maskInvert": false
+    },
+    {
+      "id": "tail",
+      "parent": "bodyWarp",
+      "shape": {
+        "type": "path",
+        "d": "M180 396 Q120 339 47 326 Q58 377 123 409 Q66 437 54 471 Q124 459 182 417Z",
+        "tolerance": 0.6
+      },
+      "fill": "#263b51",
+      "stroke": {
+        "color": "#102d43",
+        "width": 3,
+        "join": "round",
+        "align": "center"
+      },
+      "opacity": 1,
+      "tint": "#ffffff",
+      "blend": "normal",
+      "visible": true,
+      "z": 1,
+      "maskInvert": false
+    },
+    {
+      "id": "body",
+      "parent": "bodyWarp",
+      "shape": {
+        "type": "path",
+        "d": "M1060 398 C1065 365 1020 314 944 300 C870 260 670 235 490 270 C375 300 300 350 190 388 L168 406 L191 422 C300 430 365 470 480 500 C660 540 880 520 1005 465 C1047 445 1063 425 1060 398Z",
+        "tolerance": 0.6
+      },
+      "fill": "#263b51",
+      "stroke": {
+        "color": "#102d43",
+        "width": 3,
+        "join": "round",
+        "align": "center"
+      },
+      "opacity": 1,
+      "tint": "#ffffff",
+      "blend": "normal",
+      "visible": true,
+      "z": 2,
+      "maskInvert": false
+    },
+    {
+      "id": "dorsal",
+      "parent": "bodyWarp",
+      "shape": {
+        "type": "path",
+        "d": "M520 270 Q568 172 607 144 Q634 172 663 277Z",
+        "tolerance": 0.6
+      },
+      "fill": "#263b51",
+      "stroke": {
+        "color": "#102d43",
+        "width": 3,
+        "join": "round",
+        "align": "center"
+      },
+      "opacity": 1,
+      "tint": "#ffffff",
+      "blend": "normal",
+      "visible": true,
+      "z": 3,
+      "maskInvert": false
+    },
+    {
+      "id": "near_flipper",
+      "parent": "fin",
+      "shape": {
+        "type": "path",
+        "d": "M820 450 Q816 522 722 595 Q688 603 703 571 Q726 490 764 443Z",
+        "tolerance": 0.6
+      },
+      "fill": "#112b41",
+      "stroke": {
+        "color": "#102d43",
+        "width": 3,
+        "join": "round",
+        "align": "center"
+      },
+      "opacity": 1,
+      "tint": "#ffffff",
+      "blend": "normal",
+      "visible": true,
+      "z": 4,
+      "maskInvert": false
+    },
+    {
+      "id": "mouth",
+      "parent": "bodyWarp",
+      "shape": {
+        "type": "path",
+        "d": "M1055 419 Q985 443 930 438",
+        "tolerance": 0.6
+      },
+      "fill": "transparent",
+      "stroke": {
+        "color": "#092539",
+        "width": 2.2,
+        "join": "round",
+        "align": "center"
+      },
+      "opacity": 1,
+      "tint": "#ffffff",
+      "blend": "normal",
+      "visible": true,
+      "z": 5,
+      "maskInvert": false
+    },
+    {
+      "id": "eye",
+      "parent": "bodyWarp",
+      "shape": {
+        "type": "ellipse",
+        "cx": 999,
+        "cy": 363,
+        "rx": 5.5,
+        "ry": 5.5,
+        "rotation": 0
+      },
+      "fill": "#071b2a",
+      "opacity": 1,
+      "tint": "#ffffff",
+      "blend": "normal",
+      "visible": true,
+      "z": 6,
+      "maskInvert": false
+    },
+    {
+      "id": "eye_glint",
+      "parent": "bodyWarp",
+      "shape": {
+        "type": "ellipse",
+        "cx": 1000,
+        "cy": 362,
+        "rx": 1.3,
+        "ry": 1.3,
+        "rotation": 0
+      },
+      "fill": "#ffffff",
+      "opacity": 1,
+      "tint": "#ffffff",
+      "blend": "normal",
+      "visible": true,
+      "z": 7,
+      "maskInvert": false
+    }
+  ],
+  "bindings": [
+    {
+      "target": "warp:bodyWarp.offsets",
+      "params": [
+        "Swim"
+      ],
+      "keys": [
+        {
+          "at": [
+            -1
+          ],
+          "value": {
+            "0": [
+              0,
+              -26
+            ],
+            "1": [
+              0,
+              -13
+            ],
+            "2": [
+              0,
+              -2
+            ],
+            "3": [
+              0,
+              0
+            ],
+            "4": [
+              0,
+              0
+            ],
+            "5": [
+              0,
+              -26
+            ],
+            "6": [
+              0,
+              -13
+            ],
+            "7": [
+              0,
+              -2
+            ],
+            "8": [
+              0,
+              0
+            ],
+            "9": [
+              0,
+              0
+            ],
+            "10": [
+              0,
+              -26
+            ],
+            "11": [
+              0,
+              -13
+            ],
+            "12": [
+              0,
+              -2
+            ],
+            "13": [
+              0,
+              0
+            ],
+            "14": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "at": [
+            0
+          ],
+          "value": {}
+        },
+        {
+          "at": [
+            1
+          ],
+          "value": {
+            "0": [
+              0,
+              26
+            ],
+            "1": [
+              0,
+              13
+            ],
+            "2": [
+              0,
+              2
+            ],
+            "3": [
+              0,
+              0
+            ],
+            "4": [
+              0,
+              0
+            ],
+            "5": [
+              0,
+              26
+            ],
+            "6": [
+              0,
+              13
+            ],
+            "7": [
+              0,
+              2
+            ],
+            "8": [
+              0,
+              0
+            ],
+            "9": [
+              0,
+              0
+            ],
+            "10": [
+              0,
+              26
+            ],
+            "11": [
+              0,
+              13
+            ],
+            "12": [
+              0,
+              2
+            ],
+            "13": [
+              0,
+              0
+            ],
+            "14": [
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "interpolation": "linear"
+    },
+    {
+      "target": "bone:fin.rotation",
+      "params": [
+        "Fin"
+      ],
+      "keys": [
+        {
+          "at": [
+            -1
+          ],
+          "value": -7
+        },
+        {
+          "at": [
+            0
+          ],
+          "value": 0
+        },
+        {
+          "at": [
+            1
+          ],
+          "value": 7
+        }
+      ],
+      "interpolation": "linear"
+    }
+  ],
+  "ik": [],
+  "physics": [],
+  "animations": [
+    {
+      "id": "swim",
+      "duration": 2.2,
+      "loop": true,
+      "tracks": [
+        {
+          "target": "param:Swim",
+          "keys": [
+            {
+              "t": 0,
+              "v": 0,
+              "ease": "inOutSine"
+            },
+            {
+              "t": 0.55,
+              "v": 1,
+              "ease": "inOutSine"
+            },
+            {
+              "t": 1.65,
+              "v": -1,
+              "ease": "inOutSine"
+            },
+            {
+              "t": 2.2,
+              "v": 0,
+              "ease": "linear"
+            }
+          ],
+          "offset": 0
+        },
+        {
+          "target": "param:Fin",
+          "keys": [
+            {
+              "t": 0,
+              "v": -1,
+              "ease": "inOutSine"
+            },
+            {
+              "t": 1.1,
+              "v": 1,
+              "ease": "inOutSine"
+            },
+            {
+              "t": 2.2,
+              "v": -1,
+              "ease": "linear"
+            }
+          ],
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

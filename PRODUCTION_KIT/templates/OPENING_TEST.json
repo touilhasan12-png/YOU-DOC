@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "key": "blue_surface",
+    "renderer": "3D",
+    "title": "Surface appearance",
+    "source_global_time": 12.583333333333334,
+    "audio_clips": [
+      [
+        0,
+        9.15
+      ],
+      [
+        12.6,
+        18.15
+      ]
+    ],
+    "source_time_offset": -9.15,
+    "frames": 360,
+    "duration": 15,
+    "frame_start": 0,
+    "frame_end": 360
+  },
+  {
+    "id": 2,
+    "key": "blue_scale",
+    "renderer": "3D",
+    "title": "Body, horizontal flukes and scale",
+    "source_global_time": 23.666666666666668,
+    "audio_clips": [
+      [
+        18.5,
+        26.65
+      ],
+      [
+        27.12,
+        29.76
+      ]
+    ],
+    "source_time_offset": 0,
+    "frames": 360,
+    "duration": 15,
+    "frame_start": 360,
+    "frame_end": 720
+  },
+  {
+    "id": 3,
+    "key": "white_shark",
+    "renderer": "3D",
+    "title": "Species-specific shark and orca movement",
+    "source_global_time": 269.5416666666667,
+    "audio_clips": [
+      [
+        269.52,
+        281.7
+      ]
+    ],
+    "source_time_offset": 0,
+    "frames": 360,
+    "duration": 15,
+    "frame_start": 720,
+    "frame_end": 1080
+  },
+  {
+    "id": 4,
+    "key": "vulnerability",
+    "renderer": "2D",
+    "title": "Yacht, mother and calf at shared scale",
+    "source_global_time": 586.75,
+    "audio_clips": [
+      [
+        586.75,
+        595.5
+      ],
+      [
+        642.2,
+        644.5
+      ]
+    ],
+    "source_time_offset": 0,
+    "frames": 360,
+    "duration": 15,
+    "frame_start": 1080,
+    "frame_end": 1440
+  }
+]

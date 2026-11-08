@@ -1,0 +1,21 @@
+{
+  "edition": "R5",
+  "human": {
+    "file": "snow_clean.glb",
+    "bytes": 77763320,
+    "sha256": "37e58348495d5dd0ab3415d6ef793cfd201ea1e2df29a5105796b6fe11821a0d",
+    "source_archive": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/r5-authored-source-archive-20261106/Snow_v4_R5_clean_60bone_CC-BY-4.0.glb",
+    "conversion_run": 42290538701,
+    "bone_count": 60,
+    "source_credit": "Snow Rig (CC) Blender Foundation | studio.blender.org",
+    "license": "CC-BY-4.0",
+    "asset_visual_approval": false
+  },
+  "orca": {
+    "complete_source_receipt": "assets/orca_pasilan/SOURCE_RECEIPT.json",
+    "modification_script": "web/orca_jaw.js",
+    "credit": "Killer whale by Junskie Pastilan / pasilan, CC BY3.0; geometry/rig/material modifications for R5",
+    "asset_visual_approval": false
+  },
+  "note": "Complete source preservation and runtime identity, not a film or artistic approval."
+}

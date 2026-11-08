@@ -1,0 +1,14 @@
+[
+  "scripts/bootstrap_github.sh",
+  "vendor/browsers/chromium-1140/chrome-linux/chrome",
+  "vendor/browsers/chromium-1140/chrome-linux/chrome-wrapper",
+  "vendor/browsers/chromium-1140/chrome-linux/chrome_crashpad_handler",
+  "vendor/browsers/chromium-1140/chrome-linux/chrome_sandbox",
+  "vendor/browsers/chromium-1140/chrome-linux/libEGL.so",
+  "vendor/browsers/chromium-1140/chrome-linux/libGLESv2.so",
+  "vendor/browsers/chromium-1140/chrome-linux/libvk_swiftshader.so",
+  "vendor/browsers/chromium-1140/chrome-linux/libvulkan.so.1",
+  "vendor/browsers/chromium-1140/chrome-linux/xdg-mime",
+  "vendor/browsers/chromium-1140/chrome-linux/xdg-settings",
+  "vendor/browsers/ffmpeg-1010/ffmpeg-linux"
+]

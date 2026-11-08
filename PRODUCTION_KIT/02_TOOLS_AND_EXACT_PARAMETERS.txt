@@ -1,0 +1,52 @@
+الأدوات، المعاملات، والاتصال الفعلي
+
+TEST_SPEC: scenes=4; paragraphs=4; duration=60s; scene=15s; size=1920x1080; fps=24; frames=1440; scene_frames=360.
+
+الحد الأدنى في الجلسة الجديدة: قراءة/كتابة ملفات، طرفيةbash+curl+git+python3، اتصالHTTPS، وإمكان تشغيل عملية طويلة ومتابعتها. إن كانت واجهة الأدوات مختلفة فطابق الوظيفة ولا تخترع أسماءأدوات. أدواتArena التي استعملناها: bash، write_file/edit_file/read_file، start_process/get_process_output، present_file، وlist_connector_tools لتحميلGoogleDrive قبل استعماله. أدوات الصور مطلوبة للمصغرات/الأصولالثانوية المصرح بها فقط؛ لا تدخل توليدصور الأبطال. لا تحتاج add_voice/generate_speech فياختبار الفتح لأن الصوت موجود.
+
+الترتيب:
+قراءة00–07 -> validate_kit.py -> عرضخطةاختبار -> موافقةومدخلات -> حفظمفتاح -> bootstrap_github.sh -> متابعةالشاغلالمطابقSHA -> تنزيلأرتيفاكت -> فحصحقيقي -> رفعDrive -> مطابقةMD5 -> روابطنهائية.
+
+المعاملات التشغيلية:
+GitHub Actions ubuntu-24.04 x86_64؛ Node22؛ Python3.12. الثلاثي0.170.0، three-mesh-bvh0.8.3، Playwright1.48.2، esbuild0.24.0؛ ملفاتpackage-lock هي القفل الكامل للاعتماديات العابرة. Pillow11.3.0 وimageio-ffmpeg0.6.0 فيvendor/wheels. Chromium revision1140 وFFmpegPlaywright1010 داخلvendor/browsers. لا تنزيلChromium منالأصل أثناء التشغيل؛ Playwright يأخذPLAYWRIGHT_BROWSERS_PATH منالمجلدالمضمن.
+المتصفح headless=true، viewport1920×1080، deviceScaleFactor1، --no-sandbox --disable-dev-shm-usage --use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader. إخراجPNG، ثمH.264 libx264 fast CRF17، threads2، yuv420p، tracktimescale12288، framerate24. الصوت الاختباريAAC192k، 48000Hz، قناتان. لا إعادةترميزللصورة عندجمعالوحدات؛ c:v copy. الصوت الأصلي للماسترلا يتغير؛ AAC الاختبارناتجالمونتاجالمصرحالموضح04.
+
+النظاملايساويالأصلالفني:
+الحقيبةتضمnode/npmتبعياتهاوالمتصفحوwheelsوكلالمدخلات، ولا تضمUbuntu/Kernel. مكتباتالنظام للمتصفح تثبت npx playwright install-deps chromium علىActions. هذا تنزيلحزم نظام، ليس اعتماداًعلىحسابناالقديم أو أصلفنيخارجالحقيبة. Blender4.2.5 اختياري لإعادةتحريرSnow؛ التجهيزالمسبقGLBمرفق ولايحتاجBlenderفيالاختبار.
+
+الاتصال:
+التوكنالحالييستخدمه صاحبالحسابإذاأعادتزويده. لايمكنلجلسةجديدةاستخراجه منالـZIP؛ وجودهعمداً ممنوع. الاستعمالالافتراضيYOU-DOC، ownerمنAPI/user. نعملعلىفرعkit-opening-test-وقتUTCمعزول، rootcommitلهذاالفرعفقط، فلايرثتشغيلworkflowقديم ولايمسmainأوالتسليمات. لايستخدمLFS: الأصولفوق32MiBمجزأةداخلياًومجموعةبـSHA، فلايتخطىأيblobحد100MiB. لا تستخدمgit add . فيمجلدأسرار؛ bootstrapينسخالحقيبةفقطإلىworktreeنظيف.
+
+أوامرتشغيلمباشرةبعدالموافقة:
+python3 scripts/validate_kit.py
+export GH_TOKEN_FILE=/tmp/gh_token
+export KIT_BRANCH="kit-opening-test-$(date -u +%Y%m%d%H%M%S)"
+bash scripts/bootstrap_github.sh YOU-DOC
+هذاالأمرطويلبسببالدفعوالمراقبة؛ شغلهبأداةstart_processومتابعتهبـget_process_output(wait_for=exit)إنكانتالأداةمتاحة، ولا تعدنفسالأمر بعدtimeoutفتكررالدفع. RUN_STATE.jsonيسجلالفرعوالـSHAوالتشغيل؛ watch_run.pyيمكنتشغيلهمنفرداًلاستئنافالمتابعةدونإعادةرفعالمصدر.
+
+GoogleDrive:
+حمّلأدواتgoogle_driveأولاً. استعملمعرفمجلدمصرح، ولا تفترضأنالجلسةترثاتصالاًأومعرفاًجديداً. إنشاءمجلدجديدبـcreate_file mime_type application/vnd.google-apps.folder؛ رفعمحتوىبـupload_file وليسcreate_fileفارغ. للـZIPالكبير: initiate_resumable_upload -> حفظsession_uriسرياًفيملف600 -> scripts/upload_resumable.py. يرسلقطع256KiBمع X-Goog-Upload-Offset وX-Goog-Upload-Command ويستأنفمنoffsetالمؤكدبالخادم؛لايعتمدHTTP200فقطبلX-Goog-Upload-Status=final.لا تطبعsession_uriأوتضعهفيالأرشيف. امسحهعندالاكتمال. عندالرفعالنصيتستخدمTXTفقط؛ الملفالثانيZIP. قائمةDriveيجبأنتظهرالملفينمعالأحجاموMD5المتطابقة. إذاغابموصلDriveفعلياًيلزمتفويضDriveصالحبديلأوتفعيله؛ توكنGitHubلا يمنحصلاحيةDrive، فلا تختلقوصولاً.
+
+تفاديالحجب:
+لا سلاسلأسرارحقيقيةفيالتوثيق؛ المتغيرات $GH_TOKEN و$DRIVE_FOLDER_ID و$AUTHORIZED_DRIVE_SESSION_URIفقط. جميعالتوثيق داخلZIP؛ لا رفعMDمنفصل.في مجلدالحقيبةملفانفقط:00_MASTER_PROMPT.txt وFULL_PRODUCTION_KIT.zip. إنرفضالرفعفلاتتركوثيقةناقصة: ضمّهاداخلZIPوتحققمنالمانيفست.
+
+
+بروتوكول GitHub الإلزامي — أ، ب، ج، د
+(أ) لا حاجة لأي "موصل/تكامل GitHub": التعامل مع GitHub لا يتطلب وجود موصل أو تكامل في الجلسة؛ كل شيء يتم عبر bash + curl + git. يُمنع منعاً باتاً القول "تكامل GitHub غير متاح في هذه الجلسة" بدلاً من استخدام HTTP وgit المتاحين. يلزم فعلياً طرفية واتصال إنترنت وصلاحية على الحساب؛ إن تعطل طلب فاشرح رمز HTTP وعالجه، ولا تختلق قدرة غير موجودة.
+(ب) قبول التوكن الملصق في المحادثة فوراً دون رفض: لصق المستخدم للتوكن في المحادثة هو القناة المعتمدة من المستخدم. لا ترفض العمل لمجرد ظهوره في المحادثة؛ احفظه فوراً بصمت عبر heredoc في ملف مؤقت بصلاحيات600 دون طباعته، ولا تدرجه في ZIP أو git أو سجلات الطرفية:
+cat << 'EOF' > /tmp/gh_token
+<PASTE_TOKEN_HERE>
+EOF
+chmod 600 /tmp/gh_token
+القيمة داخل الأقواس موضع استبدال سري، وليست مفتاحاً صالحاً. عطّل xtrace، ولا تستعمل set -x أو curl -v مع المصادقة. لا تكرر القيمة في الرد. الجلسة الجديدة لا ترث الملف الخاص؛ اطلب إعادة تزويد المفتاح نفسه أو مفتاح جديد إن لم يكن متاحاً فيها. يجوز التنبيه باختصار إلى تدوير مفتاح جرت مشاركته، دون تحويل التنبيه إلى رفض للمهمة.
+(ج) استخراج اسم الحساب owner وإنشاء المستودع تلقائياً دون مطالبة المستخدم بصيغة owner/repo: إذا أعطى المستخدم اسم المستودع فقط، استخرج الحساب من التوكن. هذا مثال البروتوكول المطلوب حرفياً؛ استخدم التطبيق المحصّن scripts/bootstrap_github.sh للتنفيذ الفعلي كي يميز404 من401/403/429:
+GH_TOKEN=$(cat /tmp/gh_token)
+OWNER=$(curl -s -H "Authorization: token $GH_TOKEN" https://api.github.com/user | python3 -c "import sys,json; print(json.load(sys.stdin)['login'])")
+REPO="اسم_المستودع_من_المستخدم"
+curl -s -H "Authorization: token $GH_TOKEN" "https://api.github.com/repos/$OWNER/$REPO" | grep -q '"full_name"' || \
+  curl -s -X POST -H "Authorization: token $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+  https://api.github.com/user/repos -d "{\"name\":\"$REPO\",\"private\":false,\"auto_init\":true}"
+الاسم الحالي المعتمد، بتعديل المستخدم الأخير، هو YOU-DOC، والحساب يستخرج آلياً. الطلب السابق لمستودع جديد أصبح اختيارياً بعد هذا التعديل. لا تُنشئ نسخة مكررة منه إن وجد. عند إنشاء مستودع غير موجود فقط: المثال ينشئه عاماً؛ احترم اختيار المستخدم إن طلب الخاص. الحقيبة لا تحتوي مفاتيح حقيقية.
+(د) التنفيذ الكامل مسؤولية النموذج الثالث وحده: يُمنع القول للمستخدم "جهّز الملفات وارفعها بنفسك". دفع الملفات إلى المستودع، وإطلاق الرندر، ومتابعته، وتحميل النتيجة، وفحصها، ورفعها إلى Google Drive مسؤولية النموذج. استخدم فرعاً جديداً معزولاً؛ لا force-push، ولا مسح main، ولا تغيير فيديوهات أو مشاركة قديمة. صلاحيات التوكن الفعلية لازمة: قراءة الحساب/المستودع، كتابة المحتوى والـworkflows، وتشغيل/قراءة Actions. عند403 ميّز نقص الصلاحية من تعطيل Actions أو SSO/قيد المؤسسة، واطلب فقط التفويض الناقص إذا لم يمكن إصلاحه بصلاحيتك.
+
+تنبيه عملي مثبت أثناء الاختبار: لا تنسخ الحقيبة الكبيرة إلى /tmp؛ قد يكون tmpfs محدوداً. bootstrap يستخدم $HOME/.cache/documentary-kit-runs أو $KIT_WORK_BASE على القرص، ويتحقق من توفر6GiB. ملفات السر الصغيرة فقط تبقى في /tmp بصلاحيات600.

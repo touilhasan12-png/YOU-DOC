@@ -1,0 +1,441 @@
+{
+  "edition": "R5",
+  "status": "approved_for_native_generation",
+  "runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+  "old_encoded_units_allowed": 0,
+  "all_93_compositions_reviewed": true,
+  "all_93_final_native_units_visually_approved": false,
+  "review_scope": "New visual system and all93 intended compositions, using actual cumulative development proofs and corrected-family rechecks. This authorizes generation only, not assembly/delivery. Earlier unchanged layouts have explicitly separate source-run provenance; current encoded clips must still be independently inspected.",
+  "source_proofs": [
+    {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169",
+      "actual_compositions": 60,
+      "scope": "Development actual image proof, never an encoded final-movie approval"
+    },
+    {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a",
+      "actual_compositions": 52,
+      "scope": "Development actual image proof, never an encoded final-movie approval"
+    },
+    {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072",
+      "actual_compositions": 24,
+      "scope": "Development actual image proof, never an encoded final-movie approval"
+    },
+    {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16",
+      "actual_compositions": 22,
+      "scope": "Development actual image proof, never an encoded final-movie approval"
+    },
+    {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9",
+      "actual_compositions": 19,
+      "scope": "Development actual image proof, never an encoded final-movie approval"
+    }
+  ],
+  "composition_provenance": {
+    "canyon_deck": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "canyon_depth": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "blue_surface": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "blue_scale": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "hunt_rotation": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "canyon_exit": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "hunt_jaw": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "meal_exclusion": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "wild_human": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "decision_gaze": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "taxonomy": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "male_dimensions": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "mass_comparison": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "dentition": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "speed_tracking": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "hardware_software": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "pacific_ecotypes": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "resident_salmon": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "biggs_silence": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "tagged_alaska": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "listening_dark": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "fish_hearing": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "mammal_hearing": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "matriarch": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "scarcity_habitat": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "learning_observation": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "knowledge_bridge": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "seal_floe": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "seven_formation": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "floe_wave": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "floe_denial": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "seal_capture": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "patagonia_pup": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "patagonia_roll": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "patagonia_strand": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "patagonia_grab": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "patagonia_learning": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "tide_window": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "stranding_risk": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "white_shark": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "farallon_evidence": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "shark_departure": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "season_absence": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "port_starboard": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "shark_liver": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "sightings_change": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "blue_cases": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "blue_relays": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "young_victims": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "adult_victim": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "learned_strategy": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "twofold_arrival": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "whaler_view": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "whaling_cooperation": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "law_tongue": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "old_tom_intro": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "partnership_decline": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "tow_rope": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "worn_teeth": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "old_tom_end": {
+      "run_id": 42350448554,
+      "source_commit": "f84a71ee5c932ee664d0f4a5d3b5d53c5eaf5169"
+    },
+    "surfer_incident": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "diver_entanglement": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "wild_record": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "captivity_context": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "iberian_region": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "yacht_stern": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "interaction_counts": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "iberian_population": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "rudder_detaches": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "helm_response": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "lisbon_context": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "five_rescued": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "hypothesis_play": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "hypothesis_imitation": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "human_not_target": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "open_water_pov": {
+      "run_id": 42352175140,
+      "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072"
+    },
+    "swim_comparison": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "ice_option": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "boat_option": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "power_option": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "distance_rule": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "wildlife_distance": {
+      "run_id": 42351129159,
+      "source_commit": "be01a75094b1593fb5d42056a8d39cc23df4a32a"
+    },
+    "boring_release": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "vulnerability": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "ecology_place": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "bronze_replacement": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "food_web_response": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "ocean_role": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "canyon_return": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "teamwork_final": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    },
+    "plans_final": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "opinion_release": {
+      "run_id": 42353011755,
+      "source_commit": "041328bc3570229c2b4e357dc00909a94a387d16"
+    },
+    "natural_outro": {
+      "run_id": 42354032565,
+      "source_commit": "0c75c515c6631213d4c6e19864920b7aae991cd9"
+    }
+  },
+  "actual_latest_sheets_opened": [
+    "42354032565/CONTACT_00.jpg",
+    "42354032565/CONTACT_01.jpg",
+    "42354032565/CONTACT_02.jpg",
+    "42354032565/CONTACT_03.jpg",
+    "42354032565/CONTACT_04.jpg"
+  ],
+  "reviewer_observations": [
+    "Actual rebuilt licensed human models and visible reflective ocean replace rejected primitive humans/flat sea. Both rowing wrists reach their modeled handles throughout the audited85+200frames.",
+    "Surfer actual26000-triangle arm-to-board test is clear on all450canonical instants after the pinned .47/1.2/.55 profile. The topology optimization was remotely rechecked on all450frames; no tolerance was relaxed.",
+    "Paired waiting animals are submerged and separately framed, with sequential approaches rather than simultaneous grip. Applicable full-frame motion preflight remains mandatory.",
+    "Actual final19-shot proof now shows distinct group circulation, jaw-front view, younger/adult comparison and explicit2019/2019/2021 chronology rather than repeated generic layouts.",
+    "Towline now reaches the real modeled mouth; the teeth close-up is genuinely distinct from the wide historical boat. Figures are generic licensed cast, not claimed portraits.",
+    "Wild pass and comparison have separately readable depth lanes. The displayed0.80s comparison holds both poses after the same elapsed interval and uses explicit speed labels.",
+    "Canyon is now a continuous surface with no disconnected black wall seams; the returning animals descend into a coherent natural outro with no graphical next-video UI.",
+    "Some compositions remain intentionally stylized explanatory illustrations, not photographic archival footage or exact individual/event reconstructions. Native generation is exactly24fps, not23.976."
+  ],
+  "required_before_assembly": [
+    "Successful critical every-frame preflight",
+    "All93 genuinely new1920x1080@24fps units on15969original frames",
+    "Actual H264-decoded sample review for all93, with6critical samples and every-frame applicable geometry",
+    "Independent assembly authorization; approved narration packet hash conserved"
+  ],
+  "technical_checks_are_not_artistic_approval": true,
+  "continuous_subjective_playback_claimed": false,
+  "native_or_assembled_movie_currently_exists": false
+}

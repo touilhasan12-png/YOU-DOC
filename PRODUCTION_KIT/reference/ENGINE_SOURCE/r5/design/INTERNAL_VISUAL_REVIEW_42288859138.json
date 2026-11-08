@@ -1,0 +1,10 @@
+{
+  "run_id": 42288859138,
+  "artifact_id": 13538288490,
+  "reviewer": "assistant visual inspection of opened full-size frames",
+  "frames_opened": ["human_face_0p5.png", "human_full_0p5.png", "opening_0p5.png", "helm_1p2.png", "orca_under_0p5.png", "ocean_0p5.png"],
+  "status": "REJECTED_FOR_FULL_FILM_RENDER",
+  "positive_observations": ["Authored human has a continuous clothed body, visible facial anatomy, individual fingers and shoes; substantially different source from rejected R4", "New perspective vessel and reflected surface are present"],
+  "blocking_observations": ["Helm wrist-target residual is small but actual palms/fingers do not grip the wheel; reject the pose", "Sea/sky are milky, desaturated and overexposed; hull also reads as a featureless white shell", "Stern transom is visibly open; missing sail geometry and insufficient boat finishing", "Underwater orca is too small, viewed toward the tail, with inadequate environmental depth cues; source rig/bind normalization needs attention", "Human source subdivision driver still overrides requested subdivision; portrait hair/head silhouette is coarse", "Only static internal samples were viewed; no complete critical action or film playback is claimed"],
+  "next_corrections": ["Anatomical hand basis and curled finger orientation, with actual rim location rather than wrist-only proof", "Controlled blue sky environment and physically lower water Fresnel/diffuse contribution", "Closed transom, real sail fabric and deck detailing", "Normalize original rest animal mesh before deliberate swimming deformation and meaningful framing", "Do not authorize 93-shot native rendering from these frames"]
+}

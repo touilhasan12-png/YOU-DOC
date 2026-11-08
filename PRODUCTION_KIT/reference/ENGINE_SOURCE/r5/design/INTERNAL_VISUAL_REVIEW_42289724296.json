@@ -1,0 +1,22 @@
+{
+  "run_id": 42289724296,
+  "artifact_id": 13539221151,
+  "frames_opened": [
+    "ocean_0p5.png",
+    "opening_0p5.png",
+    "helm_1p2.png",
+    "orca_under_0p5.png"
+  ],
+  "status": "NOT_APPROVED_FOR_FULL_FILM",
+  "observations": [
+    "Sea is now visibly blue with normal-scaled wave reflection and a physical horizon; improvement over milky first development.",
+    "Orca normalization repaired: continuous recognizable body is large enough to inspect, unlike first tail-end/tiny view. Jaw still needed articulation, subsequently implemented as source derivative pending visual test.",
+    "Hands now close around rim rather than raised open palms; exact grip volume and full turn remain unverified.",
+    "Captain face is too dark in sail shadow; add motivated unshadowed sky fill.",
+    "Second crew obscured by sail in opening; move to visible supported starboard position.",
+    "Procedural cloud shader creates vertical curtains near horizon; change projective denominator and fade.",
+    "Water ceiling creates a distant hard line; attenuate alpha with distance and model surface wave displacement.",
+    "No complete critical-motion clip or final film watched."
+  ],
+  "subsequent_source_changes_not_yet_visually_approved": true
+}

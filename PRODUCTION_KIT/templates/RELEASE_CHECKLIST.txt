@@ -1,0 +1,10 @@
+[ ] Approval, repository and destination folder explicitly established.
+[ ] /tmp/gh_token mode600; no credential in archive/git/command output.
+[ ] SPEC and eight document contract lines agree.
+[ ] MANIFEST, all payload parts and source licenses verified.
+[ ] Workflow exact commit succeeded; every frame decoded; audio aligned.
+[ ] Actual final scene frames/motion sheets inspected; no technical-pass-as-artistic-pass claim.
+[ ] All final payloads uploaded and byte sizes/MD5 verified.
+[ ] Exactly masterTXT + fullZIP in kit folder; no looseMD or duplicate kit versions.
+[ ] Earlier video deliveries/sharing untouched. Old kit duplicates removed only from designated kit folder after successful replacement verification.
+[ ] Final direct ZIP and masterTXT links sent, not an unuploaded local-only deliverable.

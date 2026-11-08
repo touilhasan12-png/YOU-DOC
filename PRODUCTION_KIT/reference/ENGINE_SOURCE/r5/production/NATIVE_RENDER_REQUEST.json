@@ -1,0 +1,25 @@
+{
+  "edition": "R5",
+  "mode": "full-native-new-picture",
+  "attempt": 1,
+  "old_encoded_units_allowed": 0,
+  "maximum_new_picture_frames": 15969,
+  "maximum_native_shards": 6,
+  "maximum_jobs": 7,
+  "automatic_retry": false,
+  "exact_fps": 24,
+  "runtime_fingerprint": "699c1a6d4d8a7fdcc516568bbfe9a633ea72765660be9f97b0d82b76983afa7d",
+  "required_preflight_keys": [
+    "rudder_detaches",
+    "hypothesis_play",
+    "hypothesis_imitation",
+    "helm_response",
+    "surfer_incident",
+    "diver_entanglement",
+    "swim_comparison",
+    "floe_wave",
+    "patagonia_strand",
+    "whaler_view"
+  ],
+  "purpose": "Authorized entire-film rebuild: generate all93fresh units, never reuse83prior pictures. Fail closed on critical actual geometry, then native coded-image review before any assembly."
+}

@@ -1,0 +1,14 @@
+{
+  "edition": "R5",
+  "attempt": 4,
+  "human_conversion_run": 42290538701,
+  "scope": "Bounded source-mouth/rudder geometric pose search and 144-frame audit, four internal frames only; no full-film render",
+  "previous_run": 42291408761,
+  "corrections": [
+    "physical anatomical hand orientation and curl",
+    "close transom and modeled sail",
+    "controlled blue sky and lower ocean reflectance",
+    "repair orca source rest-mesh binding and readable framing"
+  ],
+  "mode": "calibrate"
+}

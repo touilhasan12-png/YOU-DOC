@@ -1,0 +1,11 @@
+Scene identity and script sentence:
+Source/licensing and actual reporting period:
+Mode: original 3D / original Canvas 2D / licensed archive:
+Narration word cue and local-frame range:
+Primary action, start/turn/contact/withdraw/end:
+Geometry and fin-root invariants:
+Camera position/target/FOV and full-motion bounds:
+Actor/actor, actor/prop and terrain contacts to verify:
+Typography clean zone and cue:
+Evidence required: full-resolution frame, temporal sequence, actual encoded output:
+Preserved baseline units and exact hash comparison, if selective revision:

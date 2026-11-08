@@ -1,0 +1,48 @@
+{
+  "edition": "R5",
+  "mode": "all-shot-proof",
+  "attempt": 7,
+  "previous_run": 42353011755,
+  "purpose": "Final targeted actual review of previously repetitive hunting/chronology and historically unattached towline, plus corrected analytical lanes and continuous canyon terrain. Do not repeat the passed 22-shot set. Validate the exact same 26000 deformed arm triangles after caching only immutable topology; still no native authorization.",
+  "selected_keys": [
+    "hunt_rotation",
+    "hunt_jaw",
+    "meal_exclusion",
+    "blue_relays",
+    "young_victims",
+    "adult_victim",
+    "blue_cases",
+    "learned_strategy",
+    "teamwork_final",
+    "tow_rope",
+    "worn_teeth",
+    "wild_human",
+    "swim_comparison",
+    "surfer_incident",
+    "rudder_detaches",
+    "patagonia_strand",
+    "vulnerability",
+    "canyon_return",
+    "natural_outro"
+  ],
+  "maximum_jobs": 1,
+  "maximum_rendered_frames": 130,
+  "timeout_minutes": 25,
+  "automatic_retry": false,
+  "corrections": [
+    "Retain the remotely demonstrated .47/1.2/.55 paddle profile: all450 prior actual frames clear; do not relax any reach/intersection threshold",
+    "Cache only immutable arm triangle membership; recalculate all26000 actually deformed triangles on every frame",
+    "Replace repeated blue-whale group profiles with chronologically distinct diagrams, coordinated forward-consistent circling/relays, young/adult scale and exclusion action",
+    "Anchor the actual towline spline to the real open-mouth point and boat bow; show teeth close-up instead of another unchanged wide boat",
+    "Separate analytical speed lanes, explicit start line and metric labels; freeze actual poses with the 0.80s clock; gentle anatomically oriented leg kicks",
+    "Keep the human and wild orca in separate clear depth lanes, not a projected mouth/body overlap",
+    "Use a single continuous canyon terrain surface rather than disconnected wire-like wall edges; frame adult/juvenile fully and correct companion-only outro updates",
+    "Reframe the already calibrated rudder withdrawal without changing its approved physical timing"
+  ],
+  "every_frame_audit_keys": [
+    "surfer_incident"
+  ],
+  "fail_on_geometry_flags": true,
+  "superseded_before_render_run": 42354014292,
+  "static_fix": "A semicolon missing in the newly edited companion-only update was caught by the local static compiler; obsolete job cancelled, bundle revalidated before this request."
+}

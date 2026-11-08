@@ -1,0 +1,36 @@
+{
+  "edition": "R5",
+  "proof_run": 42352175140,
+  "source_commit": "a2ea7dd15ffd0952fc5dcca82cb21f567faa1072",
+  "status": "rejected_for_native_generation",
+  "actual_clear_24fps_geometry": {
+    "whaler_view": 85,
+    "whaling_cooperation": 200,
+    "diver_entanglement": 212,
+    "hypothesis_play": 284,
+    "hypothesis_imitation": 252
+  },
+  "actual_failing_24fps_geometry": {
+    "surfer_incident": {
+      "checked": 450,
+      "flagged": 31
+    }
+  },
+  "applicable_threshold_metres": 0.003,
+  "contact_sheets_actually_opened": [
+    "CONTACT_02",
+    "CONTACT_03",
+    "CONTACT_04",
+    "CONTACT_05"
+  ],
+  "visual_findings": [
+    "Actual source arms now reach both oar grips throughout the checked clips; seat/feet and rowing action visibly improved",
+    "Distinct modern rescue craft has five clothed seated figures and visible orange lifejackets",
+    "Surfer elbow/forearm still clips the board at a small part of the stroke; do not approve",
+    "Waiting orcas are now underwater, but the lower waiting animal is clipped by the camera frame",
+    "Landward approach is now nose-first with different views, but adult beach body support needs a real surface fit",
+    "Diver remains readable but is static; the shot is an illustrative account, not footage or an exact named-person portrait"
+  ],
+  "native_generation_authorized": false,
+  "continuous_subjective_playback_claimed": false
+}

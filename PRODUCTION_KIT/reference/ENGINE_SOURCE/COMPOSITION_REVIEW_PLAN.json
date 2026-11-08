@@ -1,0 +1,560 @@
+[
+  {
+    "id": 1,
+    "key": "canyon_deck",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 2,
+    "key": "canyon_depth",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 3,
+    "key": "blue_surface",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 4,
+    "key": "blue_scale",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 5,
+    "key": "hunt_rotation",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 6,
+    "key": "canyon_exit",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 7,
+    "key": "hunt_jaw",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 8,
+    "key": "meal_exclusion",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 9,
+    "key": "wild_human",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 10,
+    "key": "decision_gaze",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 11,
+    "key": "taxonomy",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 12,
+    "key": "male_dimensions",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 13,
+    "key": "mass_comparison",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 14,
+    "key": "dentition",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 15,
+    "key": "speed_tracking",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 16,
+    "key": "hardware_software",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 17,
+    "key": "pacific_ecotypes",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 18,
+    "key": "resident_salmon",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 19,
+    "key": "biggs_silence",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 20,
+    "key": "tagged_alaska",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 21,
+    "key": "listening_dark",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 22,
+    "key": "fish_hearing",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 23,
+    "key": "mammal_hearing",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 24,
+    "key": "matriarch",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 25,
+    "key": "scarcity_habitat",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 26,
+    "key": "learning_observation",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 27,
+    "key": "knowledge_bridge",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 28,
+    "key": "seal_floe",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 29,
+    "key": "seven_formation",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 30,
+    "key": "floe_wave",
+    "composition_review": "Shared solid-ice-safe geometry; separate body, tail, seal and ice; verify full movement, not just a midpoint.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 31,
+    "key": "floe_denial",
+    "composition_review": "Shared solid-ice-safe geometry; separate body, tail, seal and ice; verify full movement, not just a midpoint.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 32,
+    "key": "seal_capture",
+    "composition_review": "Shared solid-ice-safe geometry; separate body, tail, seal and ice; verify full movement, not just a midpoint.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 33,
+    "key": "patagonia_pup",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 34,
+    "key": "patagonia_roll",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 35,
+    "key": "patagonia_strand",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 36,
+    "key": "patagonia_grab",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 37,
+    "key": "patagonia_learning",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 38,
+    "key": "tide_window",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 39,
+    "key": "stranding_risk",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 40,
+    "key": "white_shark",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 41,
+    "key": "farallon_evidence",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 42,
+    "key": "shark_departure",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 43,
+    "key": "season_absence",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 44,
+    "key": "port_starboard",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 45,
+    "key": "shark_liver",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 46,
+    "key": "sightings_change",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 47,
+    "key": "blue_cases",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 48,
+    "key": "blue_relays",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 49,
+    "key": "young_victims",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 50,
+    "key": "adult_victim",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 51,
+    "key": "learned_strategy",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 52,
+    "key": "twofold_arrival",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 53,
+    "key": "whaler_view",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 54,
+    "key": "whaling_cooperation",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 55,
+    "key": "law_tongue",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 56,
+    "key": "old_tom_intro",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 57,
+    "key": "partnership_decline",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 58,
+    "key": "tow_rope",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 59,
+    "key": "worn_teeth",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 60,
+    "key": "old_tom_end",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 61,
+    "key": "surfer_incident",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 62,
+    "key": "diver_entanglement",
+    "composition_review": "New purpose-built composition: corrected anatomy/attachments, balanced framing and relevant scene objects.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 63,
+    "key": "wild_record",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 64,
+    "key": "captivity_context",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 65,
+    "key": "iberian_region",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 66,
+    "key": "yacht_stern",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 67,
+    "key": "interaction_counts",
+    "composition_review": "New purpose-built composition: corrected anatomy/attachments, balanced framing and relevant scene objects.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 68,
+    "key": "iberian_population",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 69,
+    "key": "rudder_detaches",
+    "composition_review": "New purpose-built composition: corrected anatomy/attachments, balanced framing and relevant scene objects.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 70,
+    "key": "helm_response",
+    "composition_review": "New purpose-built composition: corrected anatomy/attachments, balanced framing and relevant scene objects.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 71,
+    "key": "lisbon_context",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 72,
+    "key": "five_rescued",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 73,
+    "key": "hypothesis_play",
+    "composition_review": "New purpose-built composition: corrected anatomy/attachments, balanced framing and relevant scene objects.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 74,
+    "key": "hypothesis_imitation",
+    "composition_review": "New purpose-built composition: corrected anatomy/attachments, balanced framing and relevant scene objects.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 75,
+    "key": "human_not_target",
+    "composition_review": "New purpose-built composition: corrected anatomy/attachments, balanced framing and relevant scene objects.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 76,
+    "key": "open_water_pov",
+    "composition_review": "New purpose-built composition: corrected anatomy/attachments, balanced framing and relevant scene objects.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 77,
+    "key": "swim_comparison",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 78,
+    "key": "ice_option",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 79,
+    "key": "boat_option",
+    "composition_review": "New purpose-built composition: corrected anatomy/attachments, balanced framing and relevant scene objects.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 80,
+    "key": "power_option",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 81,
+    "key": "distance_rule",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 82,
+    "key": "wildlife_distance",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 83,
+    "key": "boring_release",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 84,
+    "key": "vulnerability",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 85,
+    "key": "ecology_place",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 86,
+    "key": "bronze_replacement",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 87,
+    "key": "food_web_response",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 88,
+    "key": "ocean_role",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 89,
+    "key": "canyon_return",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 90,
+    "key": "teamwork_final",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 91,
+    "key": "plans_final",
+    "composition_review": "New purpose-built composition: corrected anatomy/attachments, balanced framing and relevant scene objects.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 92,
+    "key": "opinion_release",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  },
+  {
+    "id": 93,
+    "key": "natural_outro",
+    "composition_review": "Retain the accepted primary composition; review context, balance and safe areas in the whole-film proof.",
+    "no_decorative_filler": true
+  }
+]

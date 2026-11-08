@@ -1,0 +1,27 @@
+# R12 internal inspection log
+
+## Review 1 — GitHub run 42467661924
+- Browser render completed for all 70 new scenes, three temporal samples each (210 frames); original R9 retained scenes sampled at three positions each (69 frames).
+- Conservative text/actor bounding-box reports found no text collisions or clipped labels in those 210 new-scene samples. This is a sampled geometric result, not blanket visual approval.
+- All 93 middle-of-scene images were actually viewed in eight full-frame contact sheets locally after the GitHub render. No local film/frame production occurred.
+- Findings corrected in the next source revision: blue-whale head outside the right edge in the jaw scene; upright secondary pup reading as perched rather than carried during capture; round frontal head/white chin reading as a smiley face; text-only four-item strategy recap lacking the animals/actions; anatomically wrong single central white patch in the seven-animal overhead formation.
+- Changes: whole blue whale brought inside frame; cohesive whole-pup rotation and approach/hold staging; new complete frontal geometry with dorsal/pectoral fins, side eye patches, eyes, chin and separate dark mouth line; four illustrated behavioral callbacks; paired overhead eye patches and proper flukes/fins. No principal image generation or secondary limb splitting.
+
+## Review 2
+GitHub run 42467988578 completed. Again 210 new-scene and 69 retained samples; no reported text collisions/clipped labels. All sampled actor boxes are inside the full frame. Changed jaw, overhead formation, capture, strategy and POV scenes were viewed at full resolution, not inferred from successful execution.
+
+The revised frontal face still read too much like a graphic face rather than the established animal. It was discarded before production, replaced with the already reviewed Rev2D main-orca rig in a contained, left-facing approach/push-in. This reuses the inspected model instead of another unverified frontal drawing. It will be checked in the actual assembled-film samples.
+
+The blue-whale crop is corrected; the recap now contains four actual behavior illustrations; overhead eye patches are paired, with separate flukes/pectoral fins; the pup stays a whole cutout and rotates as a whole at capture. This is an internal inspection record, not a claim of artistic acceptance.
+
+## Complete-film review
+Pending production. Full AAC payload equality, exact frame counts, retained-picture fidelity and sampled assembled-film views are checked after assembly.
+
+## Surface staging refinement
+The source/middle-sample review also showed that the blue-whale surface scene's back remained too far beneath its depicted waterline. The rise is increased from 70 to 205 canvas pixels: the back reaches the water surface before the existing breath cue, with the unchanged blow particles now originating above the waterline. Only this 266-frame scene is re-rendered after the six-worker pass; the other 69 new scenes are reused, not redone. Final assembled-film images must be checked for this change.
+
+## Assembly recovery (no animation rerender loss)
+All six main rendering workers succeeded and their 70 units remain in run 42468147391. The first assembly failed before editing because stream-copy FFmpeg progress did not expose a numeric decoded-frame count; this was a verification-parser failure, not a discarded film. Replaced it with explicit ffprobe MP4 video-packet counting plus size/frame-rate validation. The refinement workflow now checks the six successful renderer jobs directly, reuses their artifacts, and does not require the obsolete assembly job to succeed.
+
+## Native R9 timing correction
+The next verification found 268 native frames available for the outro, not the 288 assumed by the old plan. Downloaded the original R9 master and analyzed its MP4 timing/sample tables (metadata only, no local media production): actual video is **15,949 frames / 664.541667 s**, while its untouched audio is **665.396333 s**. The older 15,969-frame static receipt was inaccurate. The revised request preserves the native picture EOF and complete original audio, including that existing 0.855 s audio-after-picture relationship. No extra frames, ending freeze, speed change, resynthesis or audio trimming is introduced. All preceding shot boundaries/new units remain unchanged.

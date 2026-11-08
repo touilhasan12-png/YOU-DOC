@@ -1,0 +1,17 @@
+{
+  "edition": "R15_ONLY_THREE_USER_REQUESTED_CORRECTIONS",
+  "approved_proof_commit": "96a09cad3724ef7a8b1e822eb598294653ed77ab",
+  "approved_proof_run": 42488508812,
+  "changed_shots": [
+    3,
+    4,
+    84
+  ],
+  "retained_R14_shots": 90,
+  "retained_frames_expected": 15383,
+  "total_frames": 15949,
+  "original_R9_AAC_required": true,
+  "four_existing_real_archives_only": true,
+  "no_other_picture_changes": true,
+  "no_audio_or_timing_changes": true
+}

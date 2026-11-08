@@ -1,0 +1,744 @@
+{
+  "frames": 15949,
+  "fps": 24,
+  "size": [
+    1920,
+    1080
+  ],
+  "all_retained_R14_decoded_frames_identical": true,
+  "retained_frames_checked": 15383,
+  "retained_picture_checks": [
+    {
+      "key": "canyon_deck",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 232,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "canyon_depth",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 70,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "hunt_rotation",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 286,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "canyon_exit",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 83,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "hunt_jaw",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 179,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "meal_exclusion",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 188,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "wild_human",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 245,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "decision_gaze",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 170,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "taxonomy",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 266,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "male_dimensions",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 121,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "mass_comparison",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 55,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "dentition",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 119,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "speed_tracking",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 207,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "hardware_software",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 97,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "pacific_ecotypes",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 278,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "resident_salmon",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 157,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "biggs_silence",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 184,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "tagged_alaska",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 165,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "listening_dark",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 182,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "fish_hearing",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 249,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "mammal_hearing",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 168,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "matriarch",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 230,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "scarcity_habitat",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 170,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "learning_observation",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 126,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "knowledge_bridge",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 89,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "seal_floe",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 200,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "seven_formation",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 139,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "floe_wave",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 119,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "floe_denial",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 182,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "seal_capture",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 51,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "patagonia_pup",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 267,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "patagonia_roll",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 91,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "patagonia_strand",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 60,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "patagonia_grab",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 184,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "patagonia_learning",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 68,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "tide_window",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 212,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "stranding_risk",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 231,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "white_shark",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 132,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "farallon_evidence",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 167,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "shark_departure",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 141,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "season_absence",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 150,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "port_starboard",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 165,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "shark_liver",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 96,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "sightings_change",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 267,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "blue_cases",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 281,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "blue_relays",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 265,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "young_victims",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 117,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "adult_victim",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 71,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "learned_strategy",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 222,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "twofold_arrival",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 290,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "whaler_view",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 85,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "whaling_cooperation",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 200,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "law_tongue",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 156,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "old_tom_intro",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 86,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "partnership_decline",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 280,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "tow_rope",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 55,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "worn_teeth",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 53,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "old_tom_end",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 198,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "surfer_incident",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 450,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "diver_entanglement",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 212,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "wild_record",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 120,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "captivity_context",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 151,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "iberian_region",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 153,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "yacht_stern",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 189,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "interaction_counts",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 143,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "iberian_population",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 304,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "rudder_detaches",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 200,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "helm_response",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 127,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "lisbon_context",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 89,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "five_rescued",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 90,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "hypothesis_play",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 284,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "hypothesis_imitation",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 252,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "human_not_target",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 232,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "open_water_pov",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 147,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "swim_comparison",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 165,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "ice_option",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 108,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "boat_option",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 76,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "power_option",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 160,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "distance_rule",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 259,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "wildlife_distance",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 133,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "boring_release",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 92,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "ecology_place",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 212,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "bronze_replacement",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 172,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "food_web_response",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 202,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "ocean_role",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 67,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "canyon_return",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 225,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "teamwork_final",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 235,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "plans_final",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 179,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "opinion_release",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 90,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    },
+    {
+      "key": "natural_outro",
+      "all_decoded_frames_identical": true,
+      "frames_checked": 268,
+      "first_differing_frames": [],
+      "full_1920x1080_uncropped": true,
+      "no_new_overlay": true
+    }
+  ],
+  "native_R9_AAC_adts_sha256": "590c27ac7de14c84be9963ddf8a0887620aac4cf5f16f916e5b70a0e6e14322f",
+  "delivered_AAC_adts_sha256": "590c27ac7de14c84be9963ddf8a0887620aac4cf5f16f916e5b70a0e6e14322f",
+  "audio_payload_identical": true,
+  "native_audio_picture_end_relationship_preserved": true,
+  "picture_duration": 664.5416666666666,
+  "native_R9_audio_duration": 665.3963333333334,
+  "added_outro_frames": 0,
+  "approved_capture_frames_unchanged": true,
+  "four_retained_archive_photographs": true,
+  "new_AI_images": 0,
+  "sampled_whale_dorsal_attachment_issues": [],
+  "caution": "All retained picture frames were decoded and hashed, not just sampled. Newly rendered pictures still require visual judgement; anatomy labels and dorsal-root tests are not universal collision or artistic guarantees."
+}

@@ -1,0 +1,12 @@
+{
+  "edition": "R5",
+  "sequence": 1,
+  "authorization": "User explicitly authorized restarting the entire film: اعد من البداية الان خطأ واحد و لن اغفر لك",
+  "purpose": "Verify acquired authored human and orca source metadata on GitHub before export or expensive rendering.",
+  "maximum_jobs": 1,
+  "timeout_minutes": 12,
+  "film_frames_requested": 0,
+  "execute_embedded_rig_scripts": false,
+  "full_render_authorized_by_this_request": false,
+  "automatic_rerender": false
+}
