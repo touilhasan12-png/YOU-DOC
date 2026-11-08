@@ -1,0 +1,82 @@
+name: R15 — only three corrections with exact R14 preservation
+on:
+  push:
+    branches: [r15-three-final-fixes]
+    paths: [ENGINE_SOURCE/r15/PRODUCTION_REQUEST.json]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: r15-full-original-audio
+  cancel-in-progress: false
+jobs:
+  new-animation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        worker: [0, 1, 2]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: ENGINE_SOURCE/three_engine/package-lock.json
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ubuntu24-playwright-1.48.2
+      - name: Install pinned rendering runtime
+        working-directory: ENGINE_SOURCE/three_engine
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Produce selectively refined 3D and original 2D scenes
+        run: |
+          python -m pip install imageio-ffmpeg==0.6.0
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node ENGINE_SOURCE/r15/render.mjs worker "${{ matrix.worker }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r15-animation-${{ matrix.worker }}
+          path: R15_UNITS/
+          if-no-files-found: error
+          retention-days: 30
+  assemble-original-audio:
+    needs: new-animation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: r15-animation-*
+          merge-multiple: true
+          path: R15_UNITS
+      - name: Install assembly and verification runtime
+        run: |
+          command -v ffprobe || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+          python -m pip install requests==2.32.3 imageio-ffmpeg==0.6.0 pillow==11.3.0
+      - name: Stream-copy the other 90 approved R14 shots; verify every retained decoded frame and native AAC
+        run: python ENGINE_SOURCE/r15/assemble.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r15-original-audio-complete-film
+          path: R15_DELIVERY/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r15-final-picture-review
+          path: R15_FINAL_REVIEW/
+          if-no-files-found: error
+          retention-days: 14

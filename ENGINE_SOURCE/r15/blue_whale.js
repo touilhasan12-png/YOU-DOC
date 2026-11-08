@@ -19,7 +19,7 @@ export function blueWhale(parent,L=16,age='adult'){
   o.material.onBeforeCompile=s=>{s.vertexShader='varying vec3 p15;\n'+s.vertexShader;s.vertexShader=s.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\np15=position;');s.fragmentShader=`varying vec3 p15;
 float hash15(vec3 p){return fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);}
 float noise15(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(mix(hash15(i),hash15(i+vec3(1,0,0)),f.x),mix(hash15(i+vec3(0,1,0)),hash15(i+vec3(1,1,0)),f.x),f.y),mix(mix(hash15(i+vec3(0,0,1)),hash15(i+vec3(1,0,1)),f.x),mix(hash15(i+vec3(0,1,1)),hash15(i+vec3(1,1,1)),f.x),f.y),f.z);}
-`+s.fragmentShader;s.fragmentShader=s.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\nfloat mottles=noise15(p15*2.6)+.32*noise15(p15*7.);diffuseColor.rgb*=.86+.22*mottles;');};o.material.customProgramCacheKey=()=>'r15-whale-mottles';}
+`+s.fragmentShader;s.fragmentShader=s.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\nfloat mottles=noise15(p15*2.6)+.32*noise15(p15*7.);diffuseColor.rgb*=.86+.22*mottles;float bellyAngle=atan(p15.x,-p15.y);float grooveDistance=abs(fract(bellyAngle/.105+.5)-.5)*.105;float aa=max(.001,fwidth(bellyAngle)*1.1);float groove=1.-smoothstep(.005-aa,.005+aa,grooveDistance);float pleatMask=(1.-smoothstep(.68,.79,abs(bellyAngle)))*smoothstep(-.9,-.35,p15.z)*(1.-smoothstep(6.65,7.16,p15.z));diffuseColor.rgb*=1.-.18*groove*pleatMask;');};o.material.customProgramCacheKey=()=>'r15-whale-mottles';}
  const pts=[],ix=[],nz=240,nr=64;for(let j=0;j<=nz;j++){let z=-8.03+(7.45+8.03)*j/nz;for(let k=0;k<=nr;k++){let p=skinPoint(z,k/nr*2*PI,0);pts.push(p.x,p.y,p.z);if(j<nz&&k<nr){let a=j*(nr+1)+k,b=a+nr+1;ix.push(a,b,a+1,a+1,b,b+1);}}}
  const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(pts,3));geo.setIndex(ix);geo.computeVertexNormals();const skin=mesh(body,geo,mat);shade(skin);
  function fin(sections,A,B){let o=loft(body,sections,A,B,mat,44,24);shade(o);return o;}
@@ -30,8 +30,8 @@ float noise15(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(
  }
  const dz=-4.30,base=Math.min(profile(dz-.62)[1]+profile(dz-.62)[2],profile(dz+.62)[1]+profile(dz+.62)[2])-.10;
  const dorsal=fin([[0,base,dz,.07,.62],[0,base+.20,dz-.09,.057,.38],[0,base+.43,dz-.30,.028,.18],[0,base+.51,dz-.45,.002,.005]],V(1,0,0),V(0,0,1));
- // Close, fine ventral pleats; no intersecting raised mesh grid or long tusk.
- for(let i=-13;i<=13;i++)curve(body,Array.from({length:42},(_,j)=>{let u=j/41,z=-.8+7.98*u,a=PI+i*.056*(.78+.22*Math.sin(u*PI));return skinPoint(z,a,.009);}),.0045,0x7c949b);
+ // Ventral pleats are analytically antialiased in the skin shader, never
+ // dozens of raised tubes that alias into a checkerboard at 1080p.
  for(const side of[-1,1]){
   curve(body,Array.from({length:38},(_,j)=>{let u=j/37,z=3.62+3.79*u,a=side*(PI/2+.17+.19*(1-u));return skinPoint(z,a,.008);}),.011,0x334d58);
   const eyeP=skinPoint(4.57,side*(PI/2+.05),.009),e=mesh(body,new T.SphereGeometry(.037,20,12),new T.MeshStandardMaterial({color:0x102b35,roughness:.32}));e.position.copy(eyeP);e.scale.x=.50;
@@ -42,6 +42,6 @@ float noise15(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(
  // treating length as a label that ignores protruding or detached parts.
  body.updateMatrixWorld(true);const bounds=new T.Box3().setFromObject(body),normalization=L/(bounds.max.z-bounds.min.z);body.scale.setScalar(normalization);body.position.z=-(bounds.min.z+bounds.max.z)*.5*normalization;
  function bend(z,t){let u=Math.max(0,Math.min(1,(-z-1.5)/6.8));return .23*u*u*Math.sin(t*1.35+z*.23);}
- const bh=skinPoint(5.16,0,.018);
- return{root,body,kind:'blue_whale',length:L,age,anatomy:'R15 broad U-rostrum, fuller jaw/throat, integrated sagittal dorsal, rooted volumetric flippers, horizontal flukes, unified whole-body vertical bend',dorsal_base_embedded_m:.10,blowholeWorld(){return body.localToWorld(bh.clone());},swim(t){for(const o of all){const p=o.geometry.attributes.position,r=o.geometry.userData.rest;for(let i=0;i<p.count;i++){let x=r[3*i],y=r[3*i+1],z=r[3*i+2];p.setXYZ(i,x,y+bend(z,t),z);}p.needsUpdate=true;o.geometry.computeVertexNormals();}root.updateMatrixWorld(true);}};
+ const bh=skinPoint(5.16,0,.018);let dorsalRootMaxClearance=-Infinity;const dr=dorsal.geometry.attributes.position;for(let i=0;i<=24;i++){let x=dr.getX(i),y=dr.getY(i),z=dr.getZ(i),[rx,ry,cy]=profile(z);dorsalRootMaxClearance=Math.max(dorsalRootMaxClearance,y-(cy+ry*Math.sqrt(Math.max(0,1-(x/rx)**2))));}dorsalRootMaxClearance*=normalization;
+ return{root,body,kind:'blue_whale',length:L,age,anatomy:'R15 broad U-rostrum, fuller jaw/throat, integrated sagittal dorsal, rooted volumetric flippers, horizontal flukes, unified whole-body vertical bend',dorsal_base_embedded_m:.10,dorsal_root_max_clearance_m:dorsalRootMaxClearance,blowholeWorld(){return body.localToWorld(bh.clone());},swim(t){for(const o of all){const p=o.geometry.attributes.position,r=o.geometry.userData.rest;for(let i=0;i<p.count;i++){let x=r[3*i],y=r[3*i+1],z=r[3*i+2];p.setXYZ(i,x,y+bend(z,t),z);}p.needsUpdate=true;o.geometry.computeVertexNormals();}root.updateMatrixWorld(true);}};
 }
