@@ -1,0 +1,26 @@
+[
+  {
+    "path": "Rothera-01.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Rothera-01.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/0/03/Rothera-01.jpg",
+    "author": "Carina Gsottbauer",
+    "license": "CC BY-SA4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "date_scope": "January2026 (caption says25January; EXIF24January)",
+    "use": "Unaltered full-frame site-context archive, not footage of the2003 incident; no animated reconstruction in section6.",
+    "bytes": 10519261,
+    "sha256": "43261123a251fc87d9b902c36cc1f1fe8a4b6fd02abb6450c94398eeede31a41"
+  },
+  {
+    "path": "Rothera-05.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Rothera-05.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Rothera-05.jpg",
+    "author": "Carina Gsottbauer",
+    "license": "CC BY-SA4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "date_scope": "January2026 (caption says25January; EXIF24January)",
+    "use": "Unaltered full-frame site-context archive, not footage of the2003 incident; no animated reconstruction in section6.",
+    "bytes": 10869396,
+    "sha256": "de7520c76b0604d44b9ef1703dfcfa920200c05133d7e01d4c38978d3cd387c7"
+  }
+]
