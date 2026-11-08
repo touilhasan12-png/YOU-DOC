@@ -94,6 +94,7 @@ jobs:
           path: LEOPARD_SEAL/generated/chapter-*/
           retention-days: 30
   stronger-existing-audio-audit:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     env:

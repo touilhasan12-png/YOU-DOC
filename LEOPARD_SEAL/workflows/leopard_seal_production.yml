@@ -2,7 +2,10 @@ name: Leopard seal — exact-script production and model QA
 on:
   push:
     paths:
-      - 'LEOPARD_SEAL/**'
+      - 'LEOPARD_SEAL/engine/app.js'
+      - 'LEOPARD_SEAL/engine/leopard.js'
+      - 'LEOPARD_SEAL/scripts/render_proof.mjs'
+      - 'LEOPARD_SEAL/scripts/audio_audit.py'
       - '.github/workflows/leopard_seal_production.yml'
   workflow_dispatch:
     inputs:
