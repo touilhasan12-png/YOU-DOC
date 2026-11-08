@@ -1,0 +1,37 @@
+{
+  "status": "EXECUTING_EXACT_SCRIPT_NARRATION9OF10_VISUAL_QA_STARTING",
+  "topic": "Leopard seal",
+  "script_language": "English",
+  "original_path": "SCRIPT_ORIGINAL.txt",
+  "original_sha256": "12e7342195250a4484ad32e7f4ad30a4b7a35025cb46d06f12d44e51b85568fe",
+  "narration_words_estimate": 1723,
+  "numbered_sections": 10,
+  "estimated_duration_minutes_with_pauses": [
+    11,
+    13
+  ],
+  "render_authorized": true,
+  "speech_generation_started": true,
+  "prior_project_protected": true,
+  "script_change_prohibited": true,
+  "script_original_byte_identical": true,
+  "approval_required_again": false,
+  "voice_id": "voice-00",
+  "speech_generated_sections": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "blocked_speech_sections": [
+    4
+  ],
+  "block_reason": "Speech synthesis tool moderation rejection; exact text retained without revision or bypass.",
+  "full_film_ready": false,
+  "internal_QA_without_additional_user_approval": true
+}
