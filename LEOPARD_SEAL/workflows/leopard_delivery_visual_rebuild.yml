@@ -59,7 +59,7 @@ jobs:
       fail-fast: false
       max-parallel: 10
       matrix:
-        section: [1,4]
+        section: [1,4,5]
     env:
       PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/PRODUCTION_KIT/vendor/browsers
       OPENBLAS_NUM_THREADS: '1'
@@ -132,20 +132,20 @@ jobs:
               p=r/('leopard-NEW-PICTURE-CHAPTER-'+str(i))
               if p.exists(): shutil.rmtree(p)
           PY
-      - name: Restore already-verified corrected new chapters3,5,8,9
+      - name: Restore already-verified corrected new chapters3,8,9
         uses: actions/download-artifact@v4
         with:
           github-token: ${{ github.token }}
           run-id: '42516449124'
           pattern: leopard-FINAL-PICTURE-CHAPTER-*
           path: LEOPARD_SEAL/generated/rebuilt-chapters/CURRENTBASE/
-      - name: Replace only the two last scene-clearance fixes, preserve all eight other NEW chapters
+      - name: Replace only the last scene-clearance and numerical-legibility fixes, preserve all eight other NEW chapters
         run: |
           python - <<'PY'
           from pathlib import Path
           import shutil
           r=Path('LEOPARD_SEAL/generated/rebuilt-chapters/CURRENTBASE')
-          for i in [1,4]:
+          for i in [1,4,5]:
               p=r/('leopard-FINAL-PICTURE-CHAPTER-'+str(i))
               if p.exists(): shutil.rmtree(p)
           PY
