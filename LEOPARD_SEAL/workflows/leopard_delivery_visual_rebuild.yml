@@ -1,0 +1,165 @@
+name: Leopard seal — DELIVERY complete native-QA corrected new picture edit
+on:
+  push:
+    paths:
+      - '.github/workflows/leopard_delivery_visual_rebuild.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  inspect-complete-new-director:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/PRODUCTION_KIT/vendor/browsers
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: '42514710258'
+          name: leopard-REAL-FOOTAGE-CUTS-AND-FOUR-PHOTOS
+          path: LEOPARD_SEAL/generated/real-camera-source/
+      - name: Restore pinned production tools and actual upstream libraries
+        working-directory: PRODUCTION_KIT
+        run: |
+          python scripts/rehydrate.py
+          python -m pip install imageio-ffmpeg==0.6.0 pillow==11.3.0
+          cd runtime
+          npm ci --offline --ignore-scripts --cache ../vendor/npm-cache --no-audit --no-fund
+          npm install --no-save --ignore-scripts --no-audit --no-fund zod@4.1.12
+          npx playwright install-deps chromium
+      - name: Hash-check authentic cuts, preserve all approved audio and prepare actual source-camera frames
+        run: python LEOPARD_SEAL/visual_rebuild/prepare_rebuilt.py 0
+      - name: Render all70 new compositions at start-middle-end and native3D motion
+        run: |
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node LEOPARD_SEAL/visual_rebuild/render_rebuilt.mjs 0
+          python LEOPARD_SEAL/visual_rebuild/preflight_review.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-FINAL-VISUAL-PREFLIGHT
+          path: LEOPARD_SEAL/generated/rebuilt-preflight/
+          retention-days: 30
+  render-all-new-chapters:
+    needs: inspect-complete-new-director
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        section: [1,4]
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/PRODUCTION_KIT/vendor/browsers
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: '42514710258'
+          name: leopard-REAL-FOOTAGE-CUTS-AND-FOUR-PHOTOS
+          path: LEOPARD_SEAL/generated/real-camera-source/
+      - name: Restore pinned renderer and actual source libraries
+        working-directory: PRODUCTION_KIT
+        run: |
+          python scripts/rehydrate.py
+          python -m pip install imageio-ffmpeg==0.6.0 pillow==11.3.0
+          cd runtime
+          npm ci --offline --ignore-scripts --cache ../vendor/npm-cache --no-audit --no-fund
+          npm install --no-save --ignore-scripts --no-audit --no-fund zod@4.1.12
+          npx playwright install-deps chromium
+      - run: python LEOPARD_SEAL/visual_rebuild/prepare_rebuilt.py ${{ matrix.section }}
+      - name: Render complete new chapter picture at native1080p24; no rejected chapter patches or reused film
+        run: |
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node LEOPARD_SEAL/visual_rebuild/render_rebuilt.mjs ${{ matrix.section }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-FINAL-PICTURE-CHAPTER-${{ matrix.section }}
+          path: LEOPARD_SEAL/generated/rebuilt-chapter-*/
+          retention-days: 30
+  assemble-new-full-film-and-verify-all-audio:
+    needs: render-all-new-chapters
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install imageio-ffmpeg==0.6.0 pillow==11.3.0 numpy==2.2.6
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: leopard-FINAL-PICTURE-CHAPTER-*
+          path: LEOPARD_SEAL/generated/rebuilt-chapters/
+      - name: Retrieve unchanged new-picture chapters from the first complete new render
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: '42515896138'
+          pattern: leopard-NEW-PICTURE-CHAPTER-*
+          path: LEOPARD_SEAL/generated/rebuilt-chapters/BASELINE/
+      - name: Keep only unaffected NEW chapters2,6,7,10; use corrected native renders for all others
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import shutil
+          r=Path('LEOPARD_SEAL/generated/rebuilt-chapters/BASELINE')
+          for i in [1,3,4,5,8,9]:
+              p=r/('leopard-NEW-PICTURE-CHAPTER-'+str(i))
+              if p.exists(): shutil.rmtree(p)
+          PY
+      - name: Restore already-verified corrected new chapters3,5,8,9
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: '42516449124'
+          pattern: leopard-FINAL-PICTURE-CHAPTER-*
+          path: LEOPARD_SEAL/generated/rebuilt-chapters/CURRENTBASE/
+      - name: Replace only the two last scene-clearance fixes, preserve all eight other NEW chapters
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import shutil
+          r=Path('LEOPARD_SEAL/generated/rebuilt-chapters/CURRENTBASE')
+          for i in [1,4]:
+              p=r/('leopard-FINAL-PICTURE-CHAPTER-'+str(i))
+              if p.exists(): shutil.rmtree(p)
+          PY
+      - name: Integrate10 unchanged voice sources, fully decode15624frames and inspect actual encoded temporal samples
+        run: python LEOPARD_SEAL/visual_rebuild/assemble_rebuilt.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-FINAL-VISUAL-REBUILD-MOVIE
+          path: LEOPARD_SEAL/generated/rebuilt-film-delivery/
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-FINAL-VISUAL-REBUILD-ENCODED-TEMPORAL-QA
+          path: LEOPARD_SEAL/generated/rebuilt-film-qa/
+          retention-days: 30
