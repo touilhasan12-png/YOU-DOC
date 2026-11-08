@@ -1,0 +1,22 @@
+name: R13 — temporal failure diagnosis
+on:
+  push:
+    branches: [r13-motion-diagnosis]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  temporal-diagnosis:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m pip install requests==2.32.3 imageio-ffmpeg==0.6.0 pillow==11.3.0
+      - run: python ENGINE_SOURCE/r13/diagnose.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r13-temporal-diagnosis
+          path: R13_DIAGNOSIS/
+          retention-days: 14
