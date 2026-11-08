@@ -1,0 +1,56 @@
+name: Leopard seal — assemble preserved chapters and verify actual movie
+on:
+  push:
+    paths:
+      - '.github/workflows/leopard_seal_assemble_recovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  assemble-ten-preserved-chapters:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      TARGET_RUN_ID: '42503608840'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install correctly separated dependency commands
+        working-directory: PRODUCTION_KIT
+        run: |
+          python -m pip install --no-index --find-links vendor/wheels imageio-ffmpeg==0.6.0 pillow==11.3.0
+          python -m pip install numpy==2.2.6
+      - name: Reuse all ten successful chapter renders; do not render them again
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: '42503608840'
+          pattern: leopard-fullfilm-chapter-*
+          path: LEOPARD_SEAL/generated/chapters/
+      - name: Assemble and verify all original audio in the delivered movie
+        run: |
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          python LEOPARD_SEAL/scripts/assemble_film.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-fullfilm-WORKPRINT-AUDIO04-MISSING
+          path: LEOPARD_SEAL/generated/delivery/
+          retention-days: 30
+      - name: Decode every delivered frame and extract all 71 actual encoded shot samples
+        run: |
+          mkdir -p LEOPARD_SEAL/generated/encoded-input
+          cp LEOPARD_SEAL/generated/delivery/* LEOPARD_SEAL/generated/encoded-input/
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          python LEOPARD_SEAL/scripts/qa_encoded_film.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-encoded-movie-QA
+          path: LEOPARD_SEAL/generated/encoded-film-qa/
+          retention-days: 30
