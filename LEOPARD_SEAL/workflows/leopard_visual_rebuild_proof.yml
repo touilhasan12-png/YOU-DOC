@@ -1,0 +1,61 @@
+name: Leopard rebuild — actual real-media cuts and new 2D-3D internal inspection
+on:
+  push:
+    paths:
+      - '.github/workflows/leopard_visual_rebuild_proof.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cut-real-videos-and-package-exactly-four-real-photos:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install imageio-ffmpeg==0.6.0 pillow==11.3.0
+      - run: python LEOPARD_SEAL/visual_rebuild/cut_real_footage.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-REAL-FOOTAGE-CUTS-AND-FOUR-PHOTOS
+          path: LEOPARD_SEAL/generated/real-footage-edited/
+          retention-days: 30
+  inspect-new-2d-repository-runtime-and-rebuilt-3d:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/PRODUCTION_KIT/vendor/browsers
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore pinned kit browser and rendering tools
+        working-directory: PRODUCTION_KIT
+        run: |
+          python scripts/rehydrate.py
+          python -m pip install imageio-ffmpeg==0.6.0 pillow==11.3.0
+      - name: Restore original libraries and exact required Rev2D schema dependency
+        working-directory: PRODUCTION_KIT/runtime
+        run: |
+          npm ci --offline --ignore-scripts --cache ../vendor/npm-cache --no-audit --no-fund
+          npm install --no-save --ignore-scripts --no-audit --no-fund zod@4.1.12
+          npx playwright install-deps chromium
+      - name: Render actual native2D sequences, upstream runtime checks and new3D anatomical views
+        run: |
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node LEOPARD_SEAL/visual_rebuild/render_internal_proof.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-NEW-2D-3D-INTERNAL-PROOF
+          path: LEOPARD_SEAL/generated/new-visual-proof/
+          retention-days: 30

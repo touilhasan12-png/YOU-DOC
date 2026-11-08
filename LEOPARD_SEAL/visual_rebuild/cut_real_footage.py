@@ -1,0 +1,30 @@
+"""Create actual edited REAL camera clips and four-photo assets on Actions. NOT the full film."""
+from pathlib import Path
+import os,json,hashlib,subprocess,shutil,re
+assert os.environ.get('GITHUB_ACTIONS')=='true'
+import imageio_ffmpeg
+from PIL import Image,ImageDraw,ImageFont
+R=Path(__file__).resolve().parents[1];F=imageio_ffmpeg.get_ffmpeg_exe();out=R/'generated/real-footage-edited';out.mkdir(parents=True,exist_ok=True)
+m=json.loads((R/'visual_rebuild/REAL_MEDIA_MANIFEST.json').read_text());sources={v['id']:v for v in m['real_video_candidates']}
+cuts=[{'id':'CUT01_ICE_EDGE','source':'V02','in':1.0,'frames':194,'crop':[640,428,0,26],'context':'Leopard seal at the ice edge; emperor-penguin research, not Adélie-specific footage.','suggested_shot':'04_01'}, {'id':'CUT02_ANIMAL_CAMERA','source':'V05','in':2.0,'frames':156,'crop':[640,360,0,60],'context':'Actual animal-borne research camera; opening non-graphic approach, not a displayed capture.','suggested_shot':'03_07'}, {'id':'CUT03_REEF_SEARCH','source':'V06','in':24.0,'frames':336,'crop':[640,360,0,60],'context':'Actual seal-camera view during the published rockcod-flushing observation.','suggested_shots':['03_08','03_09']}, {'id':'CUT04_SECOND_SEAL','source':'V09','in':12.0,'frames':240,'crop':[640,360,0,60],'context':'Actual seal-camera view during a published kleptoparasitic encounter; selected non-graphic interval.','suggested_shot':'03_10'}]
+credits=['# Four edited REAL wildlife video clips and exactly four REAL photographs','', '**This is a source-media/editing deliverable, NOT the corrected 10:51 film.** New 2D/3D direction and final montage are separate work. No approval of the rejected film is implied.','', 'The clips are real camera recordings, not AI-generated videos, animated photographs or reconstructed incidents. Source video is native640x480 archival material; letterbox-only cropping is recorded below. No fake1080p claim, image interpolation, invented field audio, slowing or looping. Source audio removed for later integration with the retained original narration. Cuts preserve real-time playback.','']
+all_frames=[]
+for cut in cuts:
+ s=sources[cut['source']];raw=R/s['repository_file'];assert hashlib.sha256(raw.read_bytes()).hexdigest()==s['sha256'];duration=cut['frames']/24;crop=':'.join(map(str,cut['crop']));p=out/(cut['id']+'.mp4')
+ args=[F,'-y','-v','error','-ss',str(cut['in']),'-i',str(raw),'-an','-vf',f'crop={crop},fps=24,setpts=PTS-STARTPTS','-frames:v',str(cut['frames']),'-t',str(duration),'-c:v','libx264','-crf','16','-preset','fast','-threads','2','-pix_fmt','yuv420p','-movflags','+faststart',str(p)];subprocess.run(args,check=True)
+ dec=subprocess.run([F,'-v','error','-progress','pipe:1','-nostats','-i',str(p),'-map','0:v:0','-an','-threads','2','-f','null','-'],capture_output=True,text=True,check=True);counts=re.findall(r'^frame=(\d+)$',dec.stdout,re.M);assert counts and int(counts[-1])==cut['frames'] and not dec.stderr.strip(),dec.stderr
+ cut.update(source_out=cut['in']+duration,duration_seconds=duration,source_page=s['page'],author=s['author'],license=s['license'],license_url=s['license_url'],source_sha256=s['sha256'],file=p.name,sha256=hashlib.sha256(p.read_bytes()).hexdigest(),bytes=p.stat().st_size,fully_decoded_frames=int(counts[-1]),real_time_rate=1.0,source_audio_removed=True,no_upscaling=True,integrated_into_full_movie=False)
+ credits += [f'## {cut["id"]}',f'- Source: {s["page"]}',f'- Author: {s["author"]}',f'- License: {s["license"]}: {s["license_url"]}',f'- Source in/out: {cut["in"]:.6f}–{cut["source_out"]:.6f}s; original source SHA256 `{s["sha256"]}`.',f'- Changes: time selection; black-letterbox crop `{crop}`; CFR24fps at unchanged real-time speed; source sound omitted; H.264 encoding. No subject cutout or invented motion.',f'- Context: {cut["context"]}','']
+ for i,t in enumerate([0,duration/2,max(0,duration-1/24)]):
+  frame=out/f'{cut["id"]}_ACTUAL_{i}.png';subprocess.run([F,'-y','-v','error','-ss',str(t),'-i',str(p),'-frames:v','1','-an','-threads','2',str(frame)],check=True);all_frames.append((frame,cut['id'],t))
+photos=m['acquired_still_candidates'];assert len(photos)==4
+for p in photos:
+ src=R/p['repository_file'];name=p['id']+'_'+src.name;shutil.copyfile(src,out/name);p.update(delivery_file=name,sha256=hashlib.sha256(src.read_bytes()).hexdigest(),bytes=src.stat().st_size,integrated_into_full_movie=False)
+ credits += [f'## {p["id"]} / {src.name}',f'- Author: {p["author"]}',f'- Source: {p.get("page","https://commons.wikimedia.org/wiki/File:Rothera-01.jpg")}',f'- License: {p["license"]}. {p.get("license_url","https://creativecommons.org/licenses/by-sa/4.0/")}', '- Delivered original photographic pixels, no AI restyling. Rothera is January2026 context, not the2003 incident. Share-alike obligations remain where applicable.','']
+font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',18);sheet=Image.new('RGB',(1920,1250),'#102d3a');d=ImageDraw.Draw(sheet);d.text((25,24),'FOUR ACTUAL EDITED CAMERA CLIPS / START - MIDDLE - END / NOT THE FULL FILM',font=font,fill='#f4edda')
+for i,(p,id,t)in enumerate(all_frames):
+ x=25+(i%3)*630;y=80+(i//3)*288
+ with Image.open(p)as im:im.thumbnail((595,245));sheet.paste(im,(x+(595-im.width)//2,y))
+ d.text((x,y+252),f'{id} / cut {t:.3f}s',font=font,fill='#f4edda')
+sheet.save(out/'ACTUAL_EDITED_FOOTAGE_CONTACT_SHEET.jpg',quality=94,subsampling=0)
+(out/'CREDITS_REAL_MEDIA.md').write_text('\n'.join(credits));report={'status':'FOUR_REAL_VIDEO_CUTS_ENCODED_AND_FULLY_DECODED_FOUR_ORIGINAL_REAL_PHOTOS_READY','full_film_visual_rebuild_complete':False,'not_a_full_film_delivery':True,'no_generated_wildlife_imagery':True,'real_video_clip_count':4,'real_still_photo_count':4,'real_video_cuts':cuts,'real_photos':photos,'new_full_movie_exists':False,'cloud_run_id':os.environ.get('GITHUB_RUN_ID'),'source_commit':os.environ.get('GITHUB_SHA')};(out/'REAL_MEDIA_EDIT_RECEIPT.json').write_text(json.dumps(report,indent=2));print('ACTUAL REAL FOOTAGE: 4 cuts, all926 frames fully decoded, native crop, 1.0x speed. Four original real photos included. NOT the completed film.')
