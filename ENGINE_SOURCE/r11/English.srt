@@ -1,0 +1,899 @@
+1
+00:00:00,383 --> 00:00:04,970
+It's March 2021, forty-five kilometers off Western Australia,
+
+2
+00:00:05,010 --> 00:00:07,450
+and you're on a boat drifting above a deep underwater
+
+3
+00:00:07,530 --> 00:00:11,490
+canyon. Two groups of orcas are circling.
+
+4
+00:00:11,610 --> 00:00:15,370
+Then something enormous breaks the surface and exhales.
+
+5
+00:00:15,730 --> 00:00:17,130
+A blue whale.
+
+6
+00:00:17,270 --> 00:00:21,290
+The largest animal that has ever lived, an estimated sixteen
+
+7
+00:00:21,347 --> 00:00:24,490
+meters long, nearly twice the length of the biggest orca
+
+8
+00:00:24,517 --> 00:00:25,210
+in the water.
+
+9
+00:00:25,500 --> 00:00:26,620
+You'd expect a chase.
+
+10
+00:00:27,020 --> 00:00:28,780
+It isn't one.
+
+11
+00:00:28,920 --> 00:00:31,260
+The orcas take turns.
+
+12
+00:00:31,356 --> 00:00:35,660
+Some swim alongside, some underneath, some drop back to
+
+13
+00:00:35,724 --> 00:00:37,020
+rest and rejoin.
+
+14
+00:00:37,244 --> 00:00:40,460
+Over the next few hours, they steer the whale out
+
+15
+00:00:40,487 --> 00:00:43,420
+of the canyon toward the shallows, going for its jaw
+
+16
+00:00:43,460 --> 00:00:44,380
+and its tongue.
+
+17
+00:00:44,668 --> 00:00:49,100
+Just before three in the afternoon, the blue whale dies.
+
+18
+00:00:49,485 --> 00:00:52,377
+The orcas share the meal, and drive off a hammerhead
+
+19
+00:00:52,457 --> 00:00:55,457
+shark and a few pilot whales hoping for a bite.
+
+20
+00:00:55,657 --> 00:00:57,097
+No walk-ins.
+
+21
+00:00:57,609 --> 00:00:59,257
+Here's the part that doesn't add up.
+
+22
+00:00:59,604 --> 00:01:02,857
+In the wild, there is no confirmed case of an
+
+23
+00:01:02,910 --> 00:01:04,457
+orca killing a human being.
+
+24
+00:01:04,750 --> 00:01:07,417
+So why would you never want one to notice you?
+
+25
+00:01:07,567 --> 00:01:11,017
+Because the more you learn about how it hunts, the
+
+26
+00:01:11,081 --> 00:01:13,977
+less that record feels like luck, and the more it
+
+27
+00:01:14,044 --> 00:01:15,337
+feels like a decision.
+
+28
+00:01:15,625 --> 00:01:17,305
+First, the hardware.
+
+29
+00:01:17,945 --> 00:01:22,265
+"Killer whale" originally meant a killer of whales, not people,
+
+30
+00:01:22,425 --> 00:01:25,785
+and it's technically a dolphin, the way a tiger is
+
+31
+00:01:25,818 --> 00:01:26,905
+technically a cat.
+
+32
+00:01:27,465 --> 00:01:30,585
+A big male reaches about nine and a half meters
+
+33
+00:01:30,685 --> 00:01:34,185
+and can weigh more than six tonnes, roughly four family
+
+34
+00:01:34,297 --> 00:01:38,985
+cars. Its jaws hold forty to fifty-six curved teeth,
+
+35
+00:01:39,033 --> 00:01:40,985
+each about ten centimeters long.
+
+36
+00:01:41,145 --> 00:01:44,505
+And in short bursts, it can pass fifty kilometers an
+
+37
+00:01:44,569 --> 00:01:49,225
+hour. That's a city speed limit, underwater, with teeth.
+
+38
+00:01:49,607 --> 00:01:51,462
+But the hardware isn't the problem.
+
+39
+00:01:51,682 --> 00:01:53,542
+The software is.
+
+40
+00:01:53,833 --> 00:01:56,313
+You might assume an orca is an orca.
+
+41
+00:01:56,606 --> 00:02:01,193
+It isn't. In the North Pacific alone, scientists describe
+
+42
+00:02:01,253 --> 00:02:06,113
+populations that look almost identical and live completely different lives.
+
+43
+00:02:06,197 --> 00:02:10,873
+Resident orcas eat fish, mostly salmon, chatter constantly,
+
+44
+00:02:10,913 --> 00:02:12,953
+and each family keeps its own dialect.
+
+45
+00:02:13,233 --> 00:02:16,793
+Bigg's orcas eat marine mammals, and they do something you
+
+46
+00:02:16,827 --> 00:02:21,353
+wouldn't expect from the biggest hunter around: they go quiet.
+
+47
+00:02:21,667 --> 00:02:25,347
+Researchers who tagged mammal-eating orcas in Alaska found they stay
+
+48
+00:02:25,393 --> 00:02:28,307
+nearly silent before a kill, and that they can find
+
+49
+00:02:28,371 --> 00:02:32,227
+prey in almost total darkness, probably by listening for it.
+
+50
+00:02:32,707 --> 00:02:36,307
+A predator that shuts up because its dinner has ears.
+
+51
+00:02:36,625 --> 00:02:39,745
+That silence is a tactic, not a limitation.
+
+52
+00:02:39,985 --> 00:02:44,225
+The fish-eaters talk and echolocate constantly, because salmon
+
+53
+00:02:44,285 --> 00:02:45,825
+don't care who's listening.
+
+54
+00:02:46,118 --> 00:02:48,065
+Seals and porpoises do.
+
+55
+00:02:48,345 --> 00:02:52,545
+One species, two playbooks, depending on who's on the
+
+56
+00:02:52,641 --> 00:02:53,185
+menu.
+
+57
+00:02:53,500 --> 00:02:55,020
+And all of it is learned.
+
+58
+00:02:55,580 --> 00:02:59,260
+A 2015 study found that female orcas lead their groups
+
+59
+00:02:59,308 --> 00:03:02,620
+more often than males, and that older females lead most
+
+60
+00:03:02,652 --> 00:03:06,220
+when salmon get scarce, as if experience is worth more
+
+61
+00:03:06,252 --> 00:03:09,820
+than muscle. The knowledge doesn't die with the hunter.
+
+62
+00:03:10,033 --> 00:03:11,580
+It's handed down.
+
+63
+00:03:11,860 --> 00:03:14,700
+Try getting your own family to follow its elders like
+
+64
+00:03:14,748 --> 00:03:15,020
+that.
+
+65
+00:03:15,537 --> 00:03:17,493
+Now watch what that knowledge turns into.
+
+66
+00:03:17,792 --> 00:03:20,352
+Say you're a seal, resting on a floating slab of
+
+67
+00:03:20,452 --> 00:03:22,352
+ice off the Antarctic Peninsula.
+
+68
+00:03:22,465 --> 00:03:25,472
+Researchers have watched what comes next.
+
+69
+00:03:25,672 --> 00:03:29,872
+The orcas line up, sometimes seven side by side, and
+
+70
+00:03:29,929 --> 00:03:31,392
+charge the floe together.
+
+71
+00:03:31,612 --> 00:03:34,592
+The wave they make either washes you into the water
+
+72
+00:03:34,779 --> 00:03:36,272
+or breaks the ice apart.
+
+73
+00:03:36,512 --> 00:03:40,352
+Then they stop you climbing onto another slab, churning the
+
+74
+00:03:40,405 --> 00:03:43,632
+water with their tails and blowing bubbles, until you're dragged
+
+75
+00:03:43,696 --> 00:03:46,192
+down by your hind flippers and drown.
+
+76
+00:03:46,500 --> 00:03:49,780
+Switch bodies. You're a sea lion pup on a beach
+
+77
+00:03:49,807 --> 00:03:52,500
+in Argentina, and for a few months each year, the
+
+78
+00:03:52,556 --> 00:03:54,900
+shoreline itself is the hunting ground.
+
+79
+00:03:55,160 --> 00:03:58,500
+Orcas approach swimming on their sides to hide their dorsal
+
+80
+00:03:58,580 --> 00:04:01,860
+fins, ride a wave right up onto the sand, grab
+
+81
+00:04:01,900 --> 00:04:04,340
+a pup, and wriggle back to deep water on the
+
+82
+00:04:04,388 --> 00:04:09,060
+next wave. Experienced orcas succeed about half the time,
+
+83
+00:04:09,100 --> 00:04:11,380
+and the young appear to learn it from their mothers.
+
+84
+00:04:11,667 --> 00:04:13,187
+Even the timing is planned.
+
+85
+00:04:13,427 --> 00:04:16,227
+They hunt in the couple of hours either side of
+
+86
+00:04:16,275 --> 00:04:18,867
+high tide, when the water is deep enough close to
+
+87
+00:04:18,887 --> 00:04:21,427
+the beach to get in and out, and strong winds
+
+88
+00:04:21,467 --> 00:04:24,467
+put them off, because bigger waves could leave them stranded
+
+89
+00:04:24,507 --> 00:04:25,827
+too high on the sand.
+
+90
+00:04:26,087 --> 00:04:28,987
+The orcas check the forecast.
+
+91
+00:04:29,097 --> 00:04:30,867
+The pups don't.
+
+92
+00:04:31,167 --> 00:04:33,567
+And if you're hoping the ocean's most famous predator is
+
+93
+00:04:33,620 --> 00:04:36,287
+at least safe, ask a great white.
+
+94
+00:04:36,634 --> 00:04:40,527
+In 2009, orcas turned up at the Farallon Islands off
+
+95
+00:04:40,592 --> 00:04:43,647
+California, where researchers were tracking great whites.
+
+96
+00:04:43,796 --> 00:04:48,047
+Within eight hours, all seventeen tagged sharks were gone.
+
+97
+00:04:48,239 --> 00:04:51,967
+Most didn't return until the following season, and the researchers
+
+98
+00:04:52,007 --> 00:04:54,527
+concluded that a visit from orcas can keep great whites
+
+99
+00:04:54,575 --> 00:04:55,887
+away for up to a year.
+
+100
+00:04:56,167 --> 00:05:00,407
+Off South Africa, two adult males nicknamed Port and Starboard
+
+101
+00:05:00,487 --> 00:05:03,767
+killed at least eight great whites, eating the livers of
+
+102
+00:05:03,824 --> 00:05:08,247
+almost all of them, and in some cases the hearts.
+
+103
+00:05:08,380 --> 00:05:11,447
+Daily shark sightings at the local hotspot fell from more
+
+104
+00:05:11,479 --> 00:05:13,927
+than six to about one within six months.
+
+105
+00:05:14,147 --> 00:05:17,287
+The most famous predator in the sea checks for orcas
+
+106
+00:05:17,333 --> 00:05:18,407
+before it unpacks.
+
+107
+00:05:18,708 --> 00:05:20,388
+Which brings us back to that canyon.
+
+108
+00:05:20,735 --> 00:05:25,268
+In 2019 and 2021, researchers documented three
+
+109
+00:05:25,332 --> 00:05:29,028
+blue whale kills by orcas off that stretch of Australia,
+
+110
+00:05:29,072 --> 00:05:31,108
+reported as the first of their kind.
+
+111
+00:05:31,368 --> 00:05:35,428
+The method was the same each time: chase the whale
+
+112
+00:05:35,468 --> 00:05:37,748
+until it tires, then rotate.
+
+113
+00:05:37,935 --> 00:05:41,748
+Small groups take turns biting while the others rest, until
+
+114
+00:05:41,788 --> 00:05:44,068
+the whale is forced under and drowns.
+
+115
+00:05:44,368 --> 00:05:48,148
+Two of the three victims were young, a calf and
+
+116
+00:05:48,196 --> 00:05:50,228
+what looked like a year-old juvenile.
+
+117
+00:05:50,388 --> 00:05:53,268
+The third was an apparently healthy adult.
+
+118
+00:05:53,785 --> 00:05:55,503
+Wave tricks. Beach tricks.
+
+119
+00:05:55,617 --> 00:05:58,303
+Silent stalking. Shift work.
+
+120
+00:05:58,543 --> 00:06:00,623
+None of that is a reflex.
+
+121
+00:06:00,836 --> 00:06:03,823
+It's strategy, and it's passed down.
+
+122
+00:06:04,125 --> 00:06:06,205
+So where do you fit in?
+
+123
+00:06:06,381 --> 00:06:08,605
+Once, as a business partner.
+
+124
+00:06:08,785 --> 00:06:13,005
+Imagine you're a whaler in Twofold Bay, southeastern Australia,
+
+125
+00:06:13,085 --> 00:06:16,045
+sometime between 1840 and 1930.
+
+126
+00:06:16,445 --> 00:06:19,645
+A pod of orcas is helping you hunt baleen whales.
+
+127
+00:06:19,789 --> 00:06:23,485
+They herd your targets toward the bay, sometimes swimming kilometers
+
+128
+00:06:23,512 --> 00:06:25,965
+to alert you, and after the kill they take their
+
+129
+00:06:26,065 --> 00:06:30,205
+cut. Your crew calls it the Law of the Tongue:
+
+130
+00:06:30,225 --> 00:06:32,925
+the orcas eat the carcass's tongue and lips, and you
+
+131
+00:06:32,985 --> 00:06:34,285
+tow the rest ashore.
+
+132
+00:06:34,805 --> 00:06:37,245
+A male named Old Tom is the face of the
+
+133
+00:06:37,365 --> 00:06:37,965
+pod.
+
+134
+00:06:38,250 --> 00:06:40,570
+That partnership didn't end with a fight.
+
+135
+00:06:40,717 --> 00:06:43,450
+After a stranded whale was stabbed to death on a
+
+136
+00:06:43,490 --> 00:06:47,450
+beach in 1901, the pod declined, and only seven of
+
+137
+00:06:47,490 --> 00:06:49,930
+about thirty orcas returned the next year.
+
+138
+00:06:50,303 --> 00:06:54,450
+By the mid-1920s, Old Tom had lost teeth gripping a
+
+139
+00:06:54,480 --> 00:06:58,890
+tow rope. When he died in 1930, his body washed
+
+140
+00:06:58,950 --> 00:07:03,210
+ashore with abscesses in his mouth, possibly from starvation, and
+
+141
+00:07:03,230 --> 00:07:05,050
+the partnership ended with him.
+
+142
+00:07:05,333 --> 00:07:08,693
+Since then, the wild record is mostly near misses.
+
+143
+00:07:09,066 --> 00:07:13,333
+In 1972, a surfer named Hans Kretschmer was bitten
+
+144
+00:07:13,373 --> 00:07:16,933
+off California and needed around a hundred stitches.
+
+145
+00:07:17,023 --> 00:07:19,893
+Experts think the orca mistook him for something else.
+
+146
+00:07:20,173 --> 00:07:23,253
+A hundred stitches for a case of mistaken identity.
+
+147
+00:07:23,693 --> 00:07:26,213
+A free diver in New Zealand was dragged under for
+
+148
+00:07:26,245 --> 00:07:28,613
+more than forty seconds by an orca tangled in his
+
+149
+00:07:28,709 --> 00:07:31,973
+line, which looks like an accident, not an attack.
+
+150
+00:07:32,146 --> 00:07:36,053
+Those are the closest calls, and no fatal wild attack
+
+151
+00:07:36,073 --> 00:07:37,173
+has been confirmed.
+
+152
+00:07:37,493 --> 00:07:40,933
+In captivity, orcas have been involved in the deaths of
+
+153
+00:07:41,004 --> 00:07:43,813
+trainers, and why is still debated.
+
+154
+00:07:44,125 --> 00:07:46,845
+If you sail off Spain or Portugal, you're in the
+
+155
+00:07:46,905 --> 00:07:49,805
+one place where orcas and people keep colliding.
+
+156
+00:07:50,005 --> 00:07:54,285
+Since May 2020, a small group of Iberian orcas has
+
+157
+00:07:54,317 --> 00:07:57,005
+been circling sailboats and ramming their rudders.
+
+158
+00:07:57,272 --> 00:08:01,565
+By recent counts, that's roughly seven hundred interactions,
+
+159
+00:08:01,605 --> 00:08:04,285
+and by one estimate about a fifth of them left
+
+160
+00:08:04,305 --> 00:08:05,565
+the boat disabled.
+
+161
+00:08:05,845 --> 00:08:10,045
+The whole population is under forty animals, critically endangered
+
+162
+00:08:10,085 --> 00:08:13,645
+since 2019, and only about fifteen of them are doing
+
+163
+00:08:13,725 --> 00:08:17,645
+it. Fifteen animals, seven hundred encounters.
+
+164
+00:08:17,805 --> 00:08:19,485
+Impressive work ethic.
+
+165
+00:08:19,792 --> 00:08:22,352
+Most of the time they leave once the rudder breaks.
+
+166
+00:08:22,492 --> 00:08:26,672
+Picture being aboard: the orcas drift away,
+
+167
+00:08:26,712 --> 00:08:28,672
+and you're the one left with a boat that won't
+
+168
+00:08:28,752 --> 00:08:33,312
+steer. Reports differ on how many boats have actually sunk,
+
+169
+00:08:33,352 --> 00:08:37,312
+but one went down off Lisbon in September 2025, and
+
+170
+00:08:37,372 --> 00:08:40,112
+all five people aboard were rescued unharmed.
+
+171
+00:08:40,417 --> 00:08:42,977
+Scientists still argue about why.
+
+172
+00:08:43,157 --> 00:08:46,497
+The International Whaling Commission says it looks more like play
+
+173
+00:08:46,550 --> 00:08:48,417
+or socializing than an attack.
+
+174
+00:08:48,777 --> 00:08:52,017
+One leading idea is that it started with a single
+
+175
+00:08:52,124 --> 00:08:55,937
+orca and spread by imitation, the same way wave-washing and
+
+176
+00:08:55,990 --> 00:09:00,337
+beach-stranding spread. Another suggests the boats are practice equipment
+
+177
+00:09:00,377 --> 00:09:02,177
+for young orcas learning to hunt.
+
+178
+00:09:02,417 --> 00:09:05,617
+What nobody has found is any sign that it's aimed
+
+179
+00:09:05,644 --> 00:09:06,897
+at the people on board.
+
+180
+00:09:07,057 --> 00:09:11,297
+Which is reassuring, and also a slightly strange thing to
+
+181
+00:09:11,361 --> 00:09:12,497
+find reassuring.
+
+182
+00:09:12,792 --> 00:09:15,032
+So suppose an orca is heading straight for you in
+
+183
+00:09:15,080 --> 00:09:17,272
+open water. Your options?
+
+184
+00:09:17,852 --> 00:09:20,863
+Swim away? It can pass fifty kilometers an hour.
+
+185
+00:09:21,223 --> 00:09:24,383
+A champion sprint swimmer manages under ten.
+
+186
+00:09:24,730 --> 00:09:27,103
+Climb onto a floating slab of ice?
+
+187
+00:09:27,303 --> 00:09:29,743
+You just saw how that goes for a seal.
+
+188
+00:09:29,983 --> 00:09:31,263
+Get in a boat?
+
+189
+00:09:31,483 --> 00:09:33,663
+Ask the sailors off Gibraltar.
+
+190
+00:09:33,836 --> 00:09:38,223
+Fight? Forty-odd teeth, six tonnes, and a species
+
+191
+00:09:38,239 --> 00:09:40,143
+that has taken apart a blue whale.
+
+192
+00:09:40,658 --> 00:09:43,498
+Which leaves the least dramatic option, and the one the
+
+193
+00:09:43,534 --> 00:09:46,298
+evidence supports: nothing.
+
+194
+00:09:46,725 --> 00:09:50,858
+In the wild, orcas have left people alone, and nobody
+
+195
+00:09:50,918 --> 00:09:52,458
+can fully explain why.
+
+196
+00:09:52,666 --> 00:09:56,858
+Keep your distance, follow local wildlife rules, and let it
+
+197
+00:09:56,927 --> 00:09:58,618
+decide you aren't interesting.
+
+198
+00:09:59,018 --> 00:10:03,338
+Be boring. You've been training for this your whole life.
+
+199
+00:10:03,625 --> 00:10:06,345
+To be fair to the orcas, they have more reason
+
+200
+00:10:06,372 --> 00:10:08,505
+to fear you than you have to fear them.
+
+201
+00:10:09,025 --> 00:10:12,265
+A population of fewer than forty animals can't afford to
+
+202
+00:10:12,313 --> 00:10:13,865
+pick fights with sailboats.
+
+203
+00:10:14,167 --> 00:10:17,447
+And what orcas do out there shapes everything around them.
+
+204
+00:10:17,655 --> 00:10:20,807
+When two orcas cleared great whites out of one South
+
+205
+00:10:20,857 --> 00:10:24,647
+African bay, smaller bronze whaler sharks moved into the role
+
+206
+00:10:24,667 --> 00:10:26,007
+the great whites had held.
+
+207
+00:10:26,327 --> 00:10:30,087
+Add or remove one top predator, and the whole food
+
+208
+00:10:30,147 --> 00:10:31,927
+web rearranges itself around it.
+
+209
+00:10:32,274 --> 00:10:36,007
+So no, you don't want an orca to notice you.
+
+210
+00:10:36,167 --> 00:10:38,647
+But the ocean you're swimming in works better with them
+
+211
+00:10:38,700 --> 00:10:39,207
+in it.
+
+212
+00:10:39,639 --> 00:10:42,460
+Go back to that canyon, March 2021.
+
+213
+00:10:42,940 --> 00:10:46,220
+A blue whale surfaces and the orcas arrive.
+
+214
+00:10:46,444 --> 00:10:49,420
+What's unsettling isn't the violence.
+
+215
+00:10:49,553 --> 00:10:53,820
+It's the teamwork: patience, rotation, teaching, a
+
+216
+00:10:53,866 --> 00:10:55,260
+shared meal at the end.
+
+217
+00:10:55,468 --> 00:10:58,060
+That's what's looking at you when an orca looks at
+
+218
+00:10:58,120 --> 00:10:59,900
+you. Not a monster.
+
+219
+00:11:00,004 --> 00:11:04,460
+Something that plans, and has decided, so far, that
+
+220
+00:11:04,500 --> 00:11:05,900
+you aren't worth the effort.
+
+221
+00:11:06,353 --> 00:11:07,968
+Let's hope it keeps that opinion.
+
+222
+00:11:08,357 --> 00:11:11,130
+If there's another predator you want us to investigate, tell
+
+223
+00:11:11,183 --> 00:11:12,610
+me in the comments.
+
+224
+00:11:12,740 --> 00:11:15,130
+And if you want to keep going deeper, the next
+
+225
+00:11:15,183 --> 00:11:16,410
+video is right here.

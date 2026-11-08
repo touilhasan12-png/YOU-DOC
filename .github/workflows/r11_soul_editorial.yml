@@ -1,0 +1,75 @@
+name: R11 — editorial soul and native Will narration
+on:
+  push:
+    branches: [r11-editorial-soul-will]
+    paths: [ENGINE_SOURCE/r11/REQUEST.json]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: r11-editorial-soul-will
+  cancel-in-progress: false
+jobs:
+  authored-vector:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        worker: [0, 1, 2, 3, 4, 5]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: ENGINE_SOURCE/three_engine/package-lock.json
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ubuntu24-playwright-1.48.2
+      - name: Install production runtime
+        working-directory: ENGINE_SOURCE/three_engine
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Render full-resolution authored scenes only
+        run: |
+          python -m pip install imageio-ffmpeg==0.6.0
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node ENGINE_SOURCE/r11/render.mjs "${{ matrix.worker }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r11-units-${{ matrix.worker }}
+          path: R11_UNITS/
+          if-no-files-found: error
+          retention-days: 30
+  assemble-and-deliver:
+    needs: authored-vector
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: r11-units-*
+          merge-multiple: true
+          path: R11_UNITS
+      - name: Install assembly runtime
+        run: python -m pip install requests==2.32.3 imageio-ffmpeg==0.6.0
+      - name: Preserve R9 3D and licensed footage, apply new type, assemble native-speed Will
+        run: python ENGINE_SOURCE/r11/assemble.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r11-editorial-soul-full-film
+          path: R11_DELIVERY/
+          if-no-files-found: error
+          retention-days: 30
