@@ -1,0 +1,53 @@
+name: R11 — final title spacing and film assembly
+on:
+  push:
+    branches: [r11-editorial-soul-will]
+    paths: [ENGINE_SOURCE/r11/LAYOUT_REVISION.json]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  final-film:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      R11_ONLY_KEYS: plans_final
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: r11-units-*
+          merge-multiple: true
+          path: R11_UNITS
+          github-token: ${{ github.token }}
+          run-id: 42462767024
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: ENGINE_SOURCE/three_engine/package-lock.json
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ubuntu24-playwright-1.48.2
+      - name: Install production runtime
+        run: |
+          cd ENGINE_SOURCE/three_engine
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          python -m pip install requests==2.32.3 imageio-ffmpeg==0.6.0
+      - name: Produce final separated title and illustration composition
+        run: |
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node ENGINE_SOURCE/r11/render.mjs 2
+      - name: Assemble complete movie with native-speed Will and R9 retained pictures
+        run: python ENGINE_SOURCE/r11/assemble.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r11-editorial-soul-full-film
+          path: R11_DELIVERY/
+          if-no-files-found: error
+          retention-days: 30

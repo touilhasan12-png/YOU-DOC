@@ -34,7 +34,7 @@ for row in q['shots']:
   args=['-ss',f'{a:.12f}','-t',f'{old_duration:.12f}','-i',base]
   vf=f"trim=duration={old_duration:.12f},setpts={ratio:.12f}*(PTS-STARTPTS),fps=24,tpad=stop_mode=clone:stop_duration=1"
   if row['mode']=='R9_3D':
-   args+=['-loop','1','-i',units/('overlay_'+row['key']+'.png'),'-filter_complex',f'[0:v]{vf}[v];[v][1:v]overlay=0:0:format=auto[out]','-map','[out]']
+   args+=['-i',units/('overlay_'+row['key']+'.png'),'-filter_complex',f'[0:v]{vf}[v];[v][1:v]overlay=0:0:format=auto:eof_action=repeat:repeatlast=1:shortest=0[out]','-map','[out]']
   else:
    if row['key']=='natural_outro':vf+=f",fade=t=out:st={max(0,row['duration']-.8):.12f}:d=0.8"
    args+=['-vf',vf,'-map','0:v:0']
@@ -51,7 +51,7 @@ shutil.copyfile(P/'English.srt',out/'English.srt');shutil.copyfile(P/'CREDITS_AN
 with zipfile.ZipFile(out/'R11_EDITABLE_SOURCE_AND_NARRATION.zip','w',zipfile.ZIP_DEFLATED) as z:
  for file in sorted(P.rglob('*')):
   if file.is_file() and '__pycache__' not in file.parts:z.write(file,'r11/'+str(file.relative_to(P)))
- for file in [P.parent/'script_original.txt',P.parent/'SOURCES.md',Path('.github/workflows/r11_soul_editorial.yml'),*parts.glob('R9_*CREDITS*.md')]:
+ for file in [P.parent/'script_original.txt',P.parent/'SOURCES.md',Path('.github/workflows/r11_soul_editorial.yml'),Path('.github/workflows/r11_final_spacing.yml'),*parts.glob('R9_*CREDITS*.md')]:
   if file.exists():z.write(file,'reference/'+file.name)
-receipt={'file':movie.name,'bytes':movie.stat().st_size,'sha256':hashlib.file_digest(movie.open('rb'),'sha256').hexdigest(),'github_run':os.environ['GITHUB_RUN_ID'],'frames':q['frames'],'fps':24,'duration':q['duration'],'width':1920,'height':1080,'scenes':93,'new_vector_scenes':70,'retained_R9_3D_scenes':17,'licensed_footage_scenes':6,'generated_secondary_animal_assets':2,'generated_principal_animal_images_used':False,'voice':'Will','model':'eleven_v3','performance_tags_submitted':True,'script_words_unchanged':True,'speech_speed_processing':False,'old_narrator_audio_used':False,'video_audio_inspection_performed':False,'artistic_acceptance_claimed':False,'previous_Drive_versions_modified':False}
+receipt={'file':movie.name,'bytes':movie.stat().st_size,'sha256':hashlib.file_digest(movie.open('rb'),'sha256').hexdigest(),'github_run':os.environ['GITHUB_RUN_ID'],'frames':q['frames'],'fps':24,'duration':q['duration'],'width':1920,'height':1080,'scenes':93,'new_vector_scenes':70,'retained_R9_3D_scenes':17,'licensed_footage_scenes':6,'generated_secondary_animal_assets':2,'generated_principal_animal_images_used':False,'voice':'Will','model':'eleven_v3','performance_tags_submitted':True,'script_words_unchanged':True,'speech_speed_processing':False,'old_narrator_audio_used':False,'video_audio_inspection_performed':False,'artistic_acceptance_claimed':False,'previous_Drive_versions_modified':False,'layout_revision':2,'vector_base_run':42462767024}
 (out/'DELIVERY.json').write_text(json.dumps(receipt,indent=2));print('COMPLETE FILM PRODUCED',movie.name,movie.stat().st_size,flush=True)

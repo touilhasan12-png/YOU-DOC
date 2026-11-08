@@ -8,7 +8,8 @@ const browser=await chromium.launch({headless:true,args:['--no-sandbox','--disab
 try{
  const page=await browser.newPage({viewport:{width:1920,height:1080},deviceScaleFactor:1});page.on('pageerror',e=>{console.error('PAGE ERROR',e.message)});await page.goto('http://127.0.0.1:'+server.address().port);await page.waitForFunction(()=>window.R11ready===true,null,{timeout:120000});await page.evaluate(()=>document.fonts.ready);
  const coverage=await page.evaluate(()=>window.coverage());for(const s of q.shots.filter(r=>r.mode==='authored_vector'))if(!coverage.includes(s.key))throw Error('Unauthored scene: '+s.key);
- for(const row of q.shots.filter(r=>r.mode==='authored_vector'&&r.worker===worker)){
+ const only=process.env.R11_ONLY_KEYS?new Set(process.env.R11_ONLY_KEYS.split(',')):null;
+ for(const row of q.shots.filter(r=>r.mode==='authored_vector'&&r.worker===worker&&(!only||only.has(r.key)))){
   await page.evaluate(r=>window.configure(r),row);const file=path.join(out,String(row.id).padStart(3,'0')+'.mp4');
   const ff=spawn(process.env.FFMPEG_EXE,['-y','-v','error','-f','image2pipe','-framerate','24','-c:v','mjpeg','-i','pipe:0','-an','-c:v','libx264','-preset','fast','-crf','17','-threads','2','-pix_fmt','yuv420p','-video_track_timescale','12288','-frames:v',String(row.frames),file],{stdio:['pipe','inherit','inherit']});let failed;ff.stdin.on('error',e=>failed=e);const exit=once(ff,'exit');
   for(let n=0;n<row.frames;n++){await page.evaluate(({t,g})=>window.draw(t,g),{t:n/24,g:row.start+n/24});const jpg=await page.screenshot({type:'jpeg',quality:95,animations:'disabled'});if(failed)throw failed;if(!ff.stdin.write(jpg))await once(ff.stdin,'drain');}
