@@ -15,8 +15,9 @@ for cut in cuts:
  dec=subprocess.run([F,'-v','error','-progress','pipe:1','-nostats','-i',str(p),'-map','0:v:0','-an','-threads','2','-f','null','-'],capture_output=True,text=True,check=True);counts=re.findall(r'^frame=(\d+)$',dec.stdout,re.M);assert counts and int(counts[-1])==cut['frames'] and not dec.stderr.strip(),dec.stderr
  cut.update(source_out=cut['in']+duration,duration_seconds=duration,source_page=s['page'],author=s['author'],license=s['license'],license_url=s['license_url'],source_sha256=s['sha256'],file=p.name,sha256=hashlib.sha256(p.read_bytes()).hexdigest(),bytes=p.stat().st_size,fully_decoded_frames=int(counts[-1]),real_time_rate=1.0,source_audio_removed=True,no_upscaling=True,integrated_into_full_movie=False)
  credits += [f'## {cut["id"]}',f'- Source: {s["page"]}',f'- Author: {s["author"]}',f'- License: {s["license"]}: {s["license_url"]}',f'- Source in/out: {cut["in"]:.6f}–{cut["source_out"]:.6f}s; original source SHA256 `{s["sha256"]}`.',f'- Changes: time selection; black-letterbox crop `{crop}`; CFR24fps at unchanged real-time speed; source sound omitted; H.264 encoding. No subject cutout or invented motion.',f'- Context: {cut["context"]}','']
- for i,t in enumerate([0,duration/2,max(0,duration-1/24)]):
-  frame=out/f'{cut["id"]}_ACTUAL_{i}.png';subprocess.run([F,'-y','-v','error','-ss',str(t),'-i',str(p),'-frames:v','1','-an','-threads','2',str(frame)],check=True);all_frames.append((frame,cut['id'],t))
+ for i,frame_index in enumerate([0,cut['frames']//2,cut['frames']-1]):
+  t=frame_index/24
+  frame=out/f'{cut["id"]}_ACTUAL_{i}.png';subprocess.run([F,'-y','-v','error','-i',str(p),'-vf',rf'select=eq(n\,{frame_index})','-frames:v','1','-an','-threads','2',str(frame)],check=True);all_frames.append((frame,cut['id'],t))
 photos=m['acquired_still_candidates'];assert len(photos)==4
 for p in photos:
  src=R/p['repository_file'];name=p['id']+'_'+src.name;shutil.copyfile(src,out/name);p.update(delivery_file=name,sha256=hashlib.sha256(src.read_bytes()).hexdigest(),bytes=src.stat().st_size,integrated_into_full_movie=False)

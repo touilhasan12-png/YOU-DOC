@@ -1,9 +1,11 @@
 name: Leopard rebuild — actual real-media cuts and new 2D-3D internal inspection
 on:
-  push:
-    paths:
-      - '.github/workflows/leopard_visual_rebuild_proof.yml'
   workflow_dispatch:
+    inputs:
+      real_media_only:
+        description: 'Run only the four real camera cuts / do not duplicate a running internal3D proof'
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -24,6 +26,7 @@ jobs:
           path: LEOPARD_SEAL/generated/real-footage-edited/
           retention-days: 30
   inspect-new-2d-repository-runtime-and-rebuilt-3d:
+    if: ${{ !inputs.real_media_only }}
     runs-on: ubuntu-24.04
     timeout-minutes: 35
     env:
