@@ -1,0 +1,123 @@
+name: Leopard seal — integrate approved fourth narration and conform complete movie
+on:
+  push:
+    paths:
+      - '.github/workflows/leopard_seal_audio_complete.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  align-approved-fourth-recording:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install faster-whisper==1.2.1
+      - name: Align the approved53.44-second recording, preserve all other chapter timings and texts
+        run: python LEOPARD_SEAL/scripts/prepare_audio_complete.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: leopard-audio-complete-plan
+          path: LEOPARD_SEAL/generated/audio-complete-plan/
+          retention-days: 30
+  conform-chapters:
+    needs: align-approved-fourth-recording
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        section: [1,2,3,4,5,6,7,8,9,10]
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/PRODUCTION_KIT/vendor/browsers
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: leopard-audio-complete-plan
+          path: LEOPARD_SEAL/generated/audio-complete-plan/
+      - name: Retrieve the preserved existing chapter picture
+        if: matrix.section != 4
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: '42503608840'
+          name: leopard-fullfilm-chapter-${{ matrix.section }}
+          path: LEOPARD_SEAL/generated/baseline/
+      - name: Restore approved assets and pinned encoder
+        working-directory: PRODUCTION_KIT
+        run: |
+          python scripts/rehydrate.py
+          python -m pip install --no-index --find-links vendor/wheels imageio-ffmpeg==0.6.0
+      - name: Restore pinned JavaScript and browser libraries
+        working-directory: PRODUCTION_KIT/runtime
+        run: |
+          npm ci --offline --ignore-scripts --cache ../vendor/npm-cache --no-audit --no-fund
+          npx playwright install-deps chromium
+      - name: Conform fourth chapter or restore clean source-rendered header of the preserved chapter
+        run: |
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node LEOPARD_SEAL/scripts/render_audio_complete.mjs ${{ matrix.section }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-audio-complete-chapter-${{ matrix.section }}
+          path: LEOPARD_SEAL/generated/audio-complete-chapter-*/
+          retention-days: 30
+  assemble-all-ten-recordings-and-verify:
+    needs: conform-chapters
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned mux, decoding and image-verification tools
+        working-directory: PRODUCTION_KIT
+        run: |
+          python -m pip install --no-index --find-links vendor/wheels imageio-ffmpeg==0.6.0 pillow==11.3.0
+          python -m pip install numpy==2.2.6
+      - uses: actions/download-artifact@v4
+        with:
+          name: leopard-audio-complete-plan
+          path: LEOPARD_SEAL/generated/audio-complete-plan/
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: leopard-audio-complete-chapter-*
+          path: LEOPARD_SEAL/generated/approved-chapters/
+      - name: Mux all ten native-speed recordings, decode complete movie and verify all ten audio correlations
+        run: |
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          python LEOPARD_SEAL/scripts/assemble_audio_complete.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-AUDIO-COMPLETE-MOVIE
+          path: LEOPARD_SEAL/generated/audio-complete-delivery/
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-audio-complete-encoded-QA
+          path: LEOPARD_SEAL/generated/audio-complete-qa/
+          retention-days: 30
