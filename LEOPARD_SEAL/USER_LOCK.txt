@@ -1,0 +1,6 @@
+USER LOCK — LATEST EXPLICIT DIRECTIVE
+The user forbids changing even one letter of the supplied script, including factual phrasing and ending CTA. No rewrites, editorial corrections, proposed substitutions or additional approval gates. The user has authorized production. Original upload and SCRIPT_ORIGINAL.txt remain byte-identical with SHA25612e7342195250a4484ad32e7f4ad30a4b7a35025cb46d06f12d44e51b85568fe. Stage directions/headings are preserved in the original and section map; narration extracts only the spoken lines without altering their words/punctuation.
+
+Selected original narrator voice-00 reused successfully for9 sections. Section4 synthesis was blocked by the speech tool. Do not modify it, hide the missing audio, or bypass the tool safeguard through another route. Full-film completion remains blocked by this exact-text audio issue; the other production work proceeds. No new ElevenLabs. Ten speech calls made this turn;9success/1toolblock.
+
+All image/audio processing, rendering and encoding take place on GitHub Actions. Local source authoring, source hashing, downloads, archive extraction and actual image inspection permitted. Same repositorytouilhasan12-png/YOU-DOC; isolatedbranchleopard-seal-v1. No changes to earlier films or main.

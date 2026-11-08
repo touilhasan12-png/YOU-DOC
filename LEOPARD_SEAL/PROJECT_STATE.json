@@ -1,5 +1,5 @@
 {
-  "status": "EXECUTING_EXACT_SCRIPT_NARRATION9OF10_VISUAL_QA_STARTING",
+  "status": "SECOND_MODEL_QA_AND_COMPATIBLE_AUDIO_AUDIT_RUNNING",
   "topic": "Leopard seal",
   "script_language": "English",
   "original_path": "SCRIPT_ORIGINAL.txt",
@@ -33,5 +33,9 @@
   ],
   "block_reason": "Speech synthesis tool moderation rejection; exact text retained without revision or bypass.",
   "full_film_ready": false,
-  "internal_QA_without_additional_user_approval": true
+  "internal_QA_without_additional_user_approval": true,
+  "active_run_id": 42500913935,
+  "source_commit": "5ddfa337abff127d223017e520d1273eb41df94e",
+  "active_monitor_process": "leopard-seal-corrected-anatomy-a-68f7cada",
+  "narration_policy": "Exact user text; no edits or approval requests"
 }
