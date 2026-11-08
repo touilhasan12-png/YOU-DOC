@@ -1,7 +1,7 @@
 # R12 editable production source
 
 ## Scope
-1920×1080 / 24 fps / 15,969 frames / 665.375 seconds. Seventy newly directed programmatic scenes, seventeen corrected R9 3D passages, six original real-footage passages. Complete original R9 AAC is copied unchanged; no ElevenLabs, new speech or timing filters.
+1920×1080 / 24 fps / 15,949 measured native picture frames (664.541667 s) / 665.396333 s unchanged native audio. The original R9 picture already ends about 0.855 s before its audio; that existing relationship is preserved without adding frames or slowing/holding the outro. Earlier static receipts claimed 15,969 frames; the actual MP4 sample table proves 15,949. Seventy newly directed programmatic scenes, seventeen corrected R9 3D passages, six original real-footage passages. Complete original R9 AAC is copied unchanged; no ElevenLabs, new speech or timing filters.
 
 `REQUEST.json` is authoritative for exact frame boundaries and six-worker distribution. `app.ts` contains scene direction, composition, typography and measured label placement. `animals.ts` contains authored programmatic geometry and actual Rev2D rigs. `models/*.r2d.json` are editable initial rig exports (the runtime builds the same models from `animals.ts`). `art/` contains only the two approved cohesive secondary seal/sea-lion cutouts. Font and vendored upstream licenses accompany their sources.
 

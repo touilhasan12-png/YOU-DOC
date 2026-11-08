@@ -22,3 +22,6 @@ The source/middle-sample review also showed that the blue-whale surface scene's 
 
 ## Assembly recovery (no animation rerender loss)
 All six main rendering workers succeeded and their 70 units remain in run 42468147391. The first assembly failed before editing because stream-copy FFmpeg progress did not expose a numeric decoded-frame count; this was a verification-parser failure, not a discarded film. Replaced it with explicit ffprobe MP4 video-packet counting plus size/frame-rate validation. The refinement workflow now checks the six successful renderer jobs directly, reuses their artifacts, and does not require the obsolete assembly job to succeed.
+
+## Native R9 timing correction
+The next verification found 268 native frames available for the outro, not the 288 assumed by the old plan. Downloaded the original R9 master and analyzed its MP4 timing/sample tables (metadata only, no local media production): actual video is **15,949 frames / 664.541667 s**, while its untouched audio is **665.396333 s**. The older 15,969-frame static receipt was inaccurate. The revised request preserves the native picture EOF and complete original audio, including that existing 0.855 s audio-after-picture relationship. No extra frames, ending freeze, speed change, resynthesis or audio trimming is introduced. All preceding shot boundaries/new units remain unchanged.

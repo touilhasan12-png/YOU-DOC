@@ -25,7 +25,9 @@ with zipfile.ZipFile(archive)as z:
  with z.open(q['base_member'])as src,base.open('wb')as dst:shutil.copyfileobj(src,dst)
  for n in ['CREDITS_AND_SOURCES.md','INSERT_ASSET_CREDITS.md','English.srt']:
   if n in z.namelist():(out/('R9_HISTORICAL_'+n if n!='English.srt' else n)).write_bytes(z.read(n))
-archive.unlink();segments=[]
+archive.unlink();native_baseline_frames=count_frames(base)
+if native_baseline_frames!=q['frames']:raise RuntimeError('Native R9 frame table differs from measured request')
+segments=[]
 for row in q['shots']:
  dest=parts/f"{row['id']:03d}.mp4"
  if row['mode']=='R12_new_animation':shutil.copyfile(Path('R12_UNITS')/dest.name,dest)
@@ -59,7 +61,7 @@ geometry=[]
 for report in Path('R12_UNITS').glob('layout_report_*.json'):geometry.extend(json.loads(report.read_text()))
 geometry_issues=[{'key':r['key'],'time':r['time'],'collisions':r['collisions'],'clipped':r['clipped']}for r in geometry if r['collisions']or r['clipped']]
 (review/'PRODUCTION_GEOMETRY.json').write_text(json.dumps({'samples':len(geometry),'issues':geometry_issues},indent=2))
-qa={'new_animation_geometry_samples':len(geometry),'sampled_geometry_issues':geometry_issues,'frames':frames,'fps':24,'size':[1920,1080],'native_R9_AAC_adts_sha256':original_audio,'delivered_AAC_adts_sha256':final_audio,'audio_payload_identical':True,'retained_picture_midpoint_checks':comparisons,'caution':'SSIM, frame counts, geometry and sampled views are technical checks, not a claim of artistic acceptance or continuous human playback.'};(out/'TECHNICAL_VERIFICATION.json').write_text(json.dumps(qa,indent=2));(review/'TECHNICAL_VERIFICATION.json').write_text(json.dumps(qa,indent=2))
+qa={'native_R9_video_frames':native_baseline_frames,'native_R9_picture_duration':q['picture_duration'],'native_R9_audio_duration':q['native_R9_audio_duration'],'native_audio_picture_end_relationship_preserved':True,'added_outro_frames':0,'new_animation_geometry_samples':len(geometry),'sampled_geometry_issues':geometry_issues,'frames':frames,'fps':24,'size':[1920,1080],'native_R9_AAC_adts_sha256':original_audio,'delivered_AAC_adts_sha256':final_audio,'audio_payload_identical':True,'retained_picture_midpoint_checks':comparisons,'caution':'SSIM, frame counts, geometry and sampled views are technical checks, not a claim of artistic acceptance or continuous human playback.'};(out/'TECHNICAL_VERIFICATION.json').write_text(json.dumps(qa,indent=2));(review/'TECHNICAL_VERIFICATION.json').write_text(json.dumps(qa,indent=2))
 (out/'PROVENANCE.json').write_text(json.dumps({'edition':q['edition'],'github_commit':os.environ['GITHUB_SHA'],'github_run':os.environ['GITHUB_RUN_ID'],'upstream_code':json.loads(Path('ENGINE_SOURCE/r12/vendor/UPSTREAM_PROVENANCE.json').read_text()),'shots':q['shots'],'original_R9_audio_copied_without_filtering':True,'new_AI_principal_animal_images':0,'retained_AI_secondary_images':['seal_grey_cutout.png','sea_lion_brown_cutout.png'],'Rev2D_usage':'ModelSchema, Rig, body warp, fin bone, deterministic swim keyframes, posed path geometry','anidoodle_usage':'deterministic RNG, text fit, reading time and geometry-probe API','lemo_usage':'plane, pressure-line ink, arrow and clock helpers','reelmimic_usage':'composition and motion guidance only; no runtime imported'},indent=2))
 shutil.copyfile('ENGINE_SOURCE/r12/CREDITS_AND_LICENSES.md',out/'CREDITS_AND_LICENSES.md')
 source=out/'R12_EDITABLE_SOURCE.zip'

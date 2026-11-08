@@ -5,8 +5,8 @@
   "fps": 24,
   "width": 1920,
   "height": 1080,
-  "frames": 15969,
-  "duration": 665.375,
+  "frames": 15949,
+  "duration": 665.3963333333334,
   "shots": [
     {
       "id": 1,
@@ -1931,12 +1931,13 @@
       "full_frame_repeat_group": null,
       "footer_bar": false,
       "progress_line": false,
-      "end": 665.375,
-      "duration": 12.034374999999955,
+      "end": 664.5416666666666,
+      "duration": 11.201041666666583,
       "frame_start": 15681,
-      "frame_end": 15969,
-      "frames": 288,
-      "mode": "licensed_real"
+      "frame_end": 15949,
+      "frames": 268,
+      "mode": "licensed_real",
+      "native_R9_video_eof": true
     }
   ],
   "voice": "Original R9 complete AAC audio, copied without any processing",
@@ -1955,5 +1956,10 @@
     1964,
     2016,
     2011
-  ]
+  ],
+  "legacy_planned_frame_count": 15969,
+  "picture_duration": 664.5416666666666,
+  "native_R9_video_frames_measured_from_mp4_sample_table": 15949,
+  "native_R9_audio_duration": 665.3963333333334,
+  "audio_picture_end_relationship": "Preserve native R9: picture ends at 664.5416667; untouched audio continues to 665.3963333. No added frames, hold, stretch, or speed change."
 }
