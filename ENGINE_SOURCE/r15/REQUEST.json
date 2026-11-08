@@ -1380,12 +1380,9 @@
   "text_panels_or_masks_over_3D": false,
   "analysis_authorized": true,
   "worker_frames": [
-    1961,
-    2012,
-    2010,
-    1964,
-    2016,
-    2011
+    266,
+    83,
+    217
   ],
   "legacy_planned_frame_count": 15969,
   "picture_duration": 664.5416666666666,
@@ -1404,12 +1401,17 @@
   ],
   "user_requested_repair": true,
   "shore_grip": "Whole approved brown cutout, rear-quarter image anchor UV(.85,.62), depth tested, one continuous event across cuts; never limb rigged.",
-  "geometry_scope": "Grounded whole-image support point; terrain-supported orca and solved jaw/prey contact. No universal collision or anatomical-accuracy guarantee.",
+  "geometry_scope": "Only two blue-whale shots: new anatomical body and horizontal flukes, continuously shared body/fin deformation, measured embedded dorsal root. All other R14 pictures remain immutable.",
   "r13_artifact_id": 13615907968,
   "r13_member": "Something_That_Plans_R13_ORIGINAL_AUDIO_1080p.mp4",
   "archive_still_count": 4,
   "selected_2D_scope": "Only shot84: boat and orcas use a shared legible illustration scale. All other R14 illustrations and four real archive stills retained pixel-identically.",
   "r14_artifact_id": 13619586576,
   "r14_member": "Something_That_Plans_R14_ORIGINAL_AUDIO_1080p.mp4",
-  "r14_master_sha256": "d43f65bce30a7bbdd60e285ffa821690dbb3a21a1e4f1d17d07294d64aa68535"
+  "r14_master_sha256": "d43f65bce30a7bbdd60e285ffa821690dbb3a21a1e4f1d17d07294d64aa68535",
+  "r15_worker_frames": [
+    266,
+    83,
+    217
+  ]
 }
