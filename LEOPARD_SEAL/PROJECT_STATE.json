@@ -1,5 +1,5 @@
 {
-  "status": "FULL_LENGTH_WORKPRINT_DELIVERED_NOT_FINAL_FILM",
+  "status": "USER_AUTHORIZED_NON_GRAPHIC_SECTION04_AUDIO_GENERATED_PENDING_FILM_CONFORM",
   "topic": "Leopard seal",
   "script_language": "English",
   "original_path": "SCRIPT_ORIGINAL.txt",
@@ -50,5 +50,11 @@
   "drive_movie_url": "https://drive.google.com/file/d/1dDW1rVugdCXUH-u9cPjTGsu8HBLXuzXo/view",
   "drive_folder_url": "https://drive.google.com/drive/folders/1n-8IYKVvuXRcWZoc8aNNvZsbSBksH_LD",
   "full_workprint_actual_duration_seconds": 658.5416666666666,
-  "full_workprint_actual_frames": 15805
+  "full_workprint_actual_frames": 15805,
+  "section04_authorized_variant_generated": true,
+  "section04_authorized_variant_audio": "LEOPARD_SEAL_PROJECT/audio/04_NON_GRAPHIC_USER_AUTHORIZED.wav",
+  "section04_authorized_variant_receipt": "SECTION04_AUTHORIZED_VARIANT_RECEIPT.json",
+  "section04_variant_integrated": false,
+  "original_script_still_preserved": true,
+  "script_exception_scope": "Only the two explicit predation-detail sentences in section04, replaced with one non-graphic sentence, per latest user authorization."
 }

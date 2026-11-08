@@ -176,5 +176,30 @@
     "Section04 narration remains unavailable after two exact-text refusals; no rewriting or bypass.",
     "Exact-word/pronunciation listening remains unverified; small.en flags possible initial Say in01 and Start with in03.",
     "Final wardrobe material gaps and full continuous-motion artistic review remain outstanding."
-  ]
+  ],
+  "latest_section04_authorized_non_graphic_variant": {
+    "status": "NON_GRAPHIC_SECTION04_VARIANT_GENERATED",
+    "authorization": "Latest user explicitly permitted changing only the suspected part and testing it.",
+    "section": 4,
+    "voice_id": "voice-00",
+    "language": "en-US",
+    "original_script_preserved": true,
+    "changed_original_span": "The seal grabs you by the head or the feet, swings you in a wide arc, and smacks you against the surface of the water, over and over, until your skin and feathers come off. Then it bites off chunks and swallows them.",
+    "replacement_span": "The seal catches the penguin in the water, then brings its prey to the surface to feed.",
+    "remainder_of_section_unchanged": true,
+    "variant_text_path": "LEOPARD_SEAL_PROJECT/narration_text/04_NON_GRAPHIC_USER_AUTHORIZED.txt",
+    "variant_text_sha256": "ac7b26adf968380bc21e78ea1101c2f22892be09fd2850b513639034338c731b",
+    "audio_path": "LEOPARD_SEAL_PROJECT/audio/04_NON_GRAPHIC_USER_AUTHORIZED.wav",
+    "audio_sha256": "8fa0d9a4b5bedb35f64d59e027f21b9ef6d5db0041657705091da1715045edc7",
+    "audio_metadata": {
+      "duration_seconds": 53.44,
+      "sample_rate": 24000,
+      "channels": 1,
+      "sample_width": 2
+    },
+    "tool_result": "success",
+    "integrated_into_movie": false,
+    "existing_Drive_movie_still_old_workprint": true,
+    "human_listening_or_word_verification_completed": false
+  }
 }

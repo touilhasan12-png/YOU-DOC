@@ -97,7 +97,11 @@ window.configureFilm=async (s,ch)=>{shot=s;chapter=ch;ice=[];anatomy=null;drawEx
 window.drawFilm=t=>{tick(t);S.scene.updateMatrixWorld(true);S.renderer.render(S.scene,S.camera);c.clearRect(0,0,1920,1080);drawExtra(t);
  if(shot.kind!=='archive'){label(chapter.title,90,98,43);small('Illustrative reconstruction',92,136,21);}
  // Status is explicit throughout the workprint. It is not a finished audio master.
- c.font='600 18px Body';c.textAlign='right';c.fillStyle=chapter.audio_missing?C.coral:'rgba(244,237,218,.80)';c.fillText(chapter.audio_missing?'WORKPRINT · SECTION 04 NARRATION MISSING':'WORKPRINT · INCOMPLETE AUDIO 04',1830,52);c.textAlign='left';
+ c.font='600 18px Body';c.textAlign='right';c.fillStyle=chapter.audio_missing?C.coral:'rgba(244,237,218,.80)';if(!window.hideProductionStatus)c.fillText(chapter.audio_missing?'WORKPRINT · SECTION 04 NARRATION MISSING':'WORKPRINT · INCOMPLETE AUDIO 04',1830,52);c.textAlign='left';
  if(chapter.audio_missing){let a=chapter.captions.find(x=>t+shot.start>=x.start&&t+shot.start<x.end);if(a)lines(a.text,100,992,1710,30,37);}
  return {shot:shot.id,kind:shot.kind,time:t,anatomy,audio_missing:chapter.audio_missing,artistic_approval:false};};
 await document.fonts.ready;window.filmReady=true;
+
+// Direct native-pixel capture avoids page-screenshot overhead; used only in Actions.
+const filmCapture=document.createElement('canvas');let filmCaptureContext=filmCapture.getContext('2d');
+window.captureFilmImage=box=>{let b=box||{x:0,y:0,width:1920,height:1080};if(filmCapture.width!==b.width||filmCapture.height!==b.height){filmCapture.width=b.width;filmCapture.height=b.height;}filmCaptureContext.clearRect(0,0,b.width,b.height);filmCaptureContext.drawImage(S.renderer.domElement,b.x,b.y,b.width,b.height,0,0,b.width,b.height);filmCaptureContext.drawImage(canvas,b.x,b.y,b.width,b.height,0,0,b.width,b.height);return filmCapture.toDataURL('image/png').split(',')[1];};
