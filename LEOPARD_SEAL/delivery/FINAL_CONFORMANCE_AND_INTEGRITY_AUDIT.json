@@ -1,0 +1,75 @@
+{
+  "scope": "Quantitative conformance and publication integrity; NOT a claim that every artistic, anatomical or scientific detail is flawless.",
+  "checks_passed": {
+    "full_movie_seconds": 651,
+    "frames": 15624,
+    "fps": 24,
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "chapters": 10,
+    "shots": 70,
+    "real_video_sources": 4,
+    "real_video_instances": 5,
+    "real_camera_frames": 924,
+    "real_camera_seconds": 38.5,
+    "real_photographs": 4,
+    "source_audio_chapters_verified": 10,
+    "minimum_decoded_audio_correlation": 0.9999059336161761,
+    "all_video_frames_decoded": true,
+    "original_master_unchanged": true,
+    "prior_deliveries_and_sharing_unchanged": true,
+    "github_all_5_asset_server_sha256_verified": true,
+    "drive_all_uploaded_md5_and_size_verified": true
+  },
+  "source_commit": "e8f613a9fbf3762311168621c1d8c621f9521973",
+  "render_run": 42518108918,
+  "movie_sha256": "849b0993976c78d8876a152f7ef2a7de354d39937fce46770d3c29cf7c79b5e7",
+  "movie_md5": "efda2182bb2096d7ac33ed0a70c161b1",
+  "chapter_render_provenance": [
+    {
+      "section": 4,
+      "source_commit": "e8f613a9fbf3762311168621c1d8c621f9521973"
+    },
+    {
+      "section": 2,
+      "source_commit": "76b81705ee58c6e94b8872632fb23a7f7d86f211"
+    },
+    {
+      "section": 10,
+      "source_commit": "76b81705ee58c6e94b8872632fb23a7f7d86f211"
+    },
+    {
+      "section": 7,
+      "source_commit": "76b81705ee58c6e94b8872632fb23a7f7d86f211"
+    },
+    {
+      "section": 6,
+      "source_commit": "76b81705ee58c6e94b8872632fb23a7f7d86f211"
+    },
+    {
+      "section": 5,
+      "source_commit": "e8f613a9fbf3762311168621c1d8c621f9521973"
+    },
+    {
+      "section": 1,
+      "source_commit": "e8f613a9fbf3762311168621c1d8c621f9521973"
+    },
+    {
+      "section": 9,
+      "source_commit": "a3faca66d823c4db4986f3956a20a87b73edcb4c"
+    },
+    {
+      "section": 3,
+      "source_commit": "a3faca66d823c4db4986f3956a20a87b73edcb4c"
+    },
+    {
+      "section": 8,
+      "source_commit": "a3faca66d823c4db4986f3956a20a87b73edcb4c"
+    }
+  ],
+  "continuous_human_listening_completed": false,
+  "artistic_approval": false,
+  "user_visual_acceptance": false
+}

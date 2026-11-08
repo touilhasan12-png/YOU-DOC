@@ -1,0 +1,22 @@
+{
+  "source_commit": "e8f613a9fbf3762311168621c1d8c621f9521973",
+  "workflow_name": "Leopard seal \u2014 DELIVERY complete native-QA corrected new picture edit",
+  "report_file": "FINAL_VISUAL_REBUILD_RUN_REPORT.json",
+  "wanted_artifacts": [
+    "leopard-FINAL-VISUAL-PREFLIGHT",
+    "leopard-FINAL-VISUAL-REBUILD-MOVIE",
+    "leopard-FINAL-VISUAL-REBUILD-ENCODED-TEMPORAL-QA"
+  ],
+  "approved_narration_preserved": true,
+  "baseline_new_picture_run": 42515896138,
+  "prior_corrected_run": 42516449124,
+  "run_id": 42518108918,
+  "run_url": "https://github.com/touilhasan12-png/YOU-DOC/actions/runs/42518108918",
+  "downloaded_artifacts": {
+    "leopard-FINAL-VISUAL-PREFLIGHT": "/home/user/.cache/leopard-visual-rebuild/42518108918/leopard-FINAL-VISUAL-PREFLIGHT",
+    "leopard-FINAL-VISUAL-REBUILD-ENCODED-TEMPORAL-QA": "/home/user/.cache/leopard-visual-rebuild/42518108918/leopard-FINAL-VISUAL-REBUILD-ENCODED-TEMPORAL-QA",
+    "leopard-FINAL-VISUAL-REBUILD-MOVIE": "/home/user/.cache/leopard-visual-rebuild/42518108918/leopard-FINAL-VISUAL-REBUILD-MOVIE"
+  },
+  "conclusion": "success",
+  "monitor_finished": true
+}

@@ -25,7 +25,7 @@
     ]
   ],
   "source_movie_integration_complete": false,
-  "full_film_rebuilt": false,
+  "full_film_rebuilt": true,
   "actual_2d_rendered": {
     "model_parts": 65,
     "native_size": [
@@ -70,5 +70,12 @@
   ],
   "no_approved_narration_changed": true,
   "no_new_tts_calls": true,
-  "do_not_replace_or_relabel_rejected_movie": "154HugfCVFk518rQcpxZcGMmwMCRhipQY"
+  "do_not_replace_or_relabel_rejected_movie": "154HugfCVFk518rQcpxZcGMmwMCRhipQY",
+  "full_film_published": true,
+  "full_film_uploaded_to_drive": true,
+  "completion_report": "delivery/FINAL_CONFORMANCE_AND_INTEGRITY_AUDIT.json",
+  "latest_film_source_commit": "e8f613a9fbf3762311168621c1d8c621f9521973",
+  "latest_film_render_run": 42518108918,
+  "artistic_approval": false,
+  "user_visual_acceptance": false
 }

@@ -1,0 +1,54 @@
+{
+  "release_id": 438495401,
+  "release_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/tag/leopard-full-visual-rebuild-e8f613a",
+  "run_id": 42518108918,
+  "render_source_commit": "e8f613a9fbf3762311168621c1d8c621f9521973",
+  "duration": 651,
+  "frames": 15624,
+  "real_video_sources": 4,
+  "real_video_seconds_integrated": 38.5,
+  "real_photographs": 4,
+  "prior_drive_movie_unchanged": true,
+  "assets": [
+    {
+      "id": 725078734,
+      "name": "LEOPARD_SEAL_VISUAL_REBUILD.mp4",
+      "bytes": 58276275,
+      "sha256": "849b0993976c78d8876a152f7ef2a7de354d39937fce46770d3c29cf7c79b5e7",
+      "download_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-full-visual-rebuild-e8f613a/LEOPARD_SEAL_VISUAL_REBUILD.mp4",
+      "server_digest_verified": true
+    },
+    {
+      "id": 725078835,
+      "name": "CREDITS_AND_LICENSES.md",
+      "bytes": 5454,
+      "sha256": "1bb43d856acf7b5d2d617e18c93d1baa087bb3c966f5af25406d2ef5fa21d4e4",
+      "download_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-full-visual-rebuild-e8f613a/CREDITS_AND_LICENSES.md",
+      "server_digest_verified": true
+    },
+    {
+      "id": 725078867,
+      "name": "NEW_FILM_INTEGRATION_REPORT.json",
+      "bytes": 7002,
+      "sha256": "519e8ee3bc7d2322f59d68f80a11a075bb884f2dc3bbdebcfdd0ca3e57bef0da",
+      "download_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-full-visual-rebuild-e8f613a/NEW_FILM_INTEGRATION_REPORT.json",
+      "server_digest_verified": true
+    },
+    {
+      "id": 725078890,
+      "name": "NARRATION_APPROVED.srt",
+      "bytes": 15797,
+      "sha256": "c02563a8f52e21a09a6c5a0e66b6d6950bcbad661aab953a3d4a3756c02c13a5",
+      "download_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-full-visual-rebuild-e8f613a/NARRATION_APPROVED.srt",
+      "server_digest_verified": true
+    },
+    {
+      "id": 725078942,
+      "name": "APPROVED_ACTIVE_NARRATION.txt",
+      "bytes": 9764,
+      "sha256": "4f10cfec6aab42ea33644a6169b9c2adce570ec7a00a566da20d43502331ed45",
+      "download_url": "https://github.com/touilhasan12-png/YOU-DOC/releases/download/leopard-full-visual-rebuild-e8f613a/APPROVED_ACTIVE_NARRATION.txt",
+      "server_digest_verified": true
+    }
+  ]
+}

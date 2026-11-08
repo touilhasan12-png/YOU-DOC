@@ -242,5 +242,17 @@
   "maximum_selected_real_video_sources": 4,
   "real_media_publication": "https://github.com/touilhasan12-png/YOU-DOC/releases/tag/leopard-real-media-edits-6c8d7c0",
   "published_real_video_edit_reel_seconds": 38.583333333333336,
-  "full_documentary_picture_rebuild_complete": false
+  "full_documentary_picture_rebuild_complete": false,
+  "completed_full_film_integration": {
+    "render_run": 42518108918,
+    "source_commit": "e8f613a9fbf3762311168621c1d8c621f9521973",
+    "full_film_seconds": 651,
+    "real_video_sources": 4,
+    "real_video_frames_integrated": 924,
+    "real_video_seconds_integrated": 38.5,
+    "real_photographs_integrated": 4,
+    "published_film_release": "https://github.com/touilhasan12-png/YOU-DOC/releases/tag/leopard-full-visual-rebuild-e8f613a",
+    "technical_decode_and_all_ten_audio_correlations_passed": true,
+    "artistic_approval": false
+  }
 }
