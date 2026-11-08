@@ -1,0 +1,56 @@
+{
+  "status": "USER_REJECTED_VISUALS_FULL_REBUILD_REQUIRED",
+  "rejected_movie_id": "154HugfCVFk518rQcpxZcGMmwMCRhipQY",
+  "rejected_movie_sha256": "99e34bd79b9eec04647afc1df7db13564056398254c69738a268a99fc12c99c3",
+  "technical_audio_completion_not_visual_acceptance": true,
+  "confirmed_failures": {
+    "real_video_clips_in_rejected_cut": 0,
+    "distinct_real_still_photos_in_rejected_cut": 1,
+    "photo_identity": "Rothera-01.jpg, station context only",
+    "main_visual_mode": "Repeated procedural3D staging; insufficient scene variety and cut structure",
+    "two_dimensional_work": "Some maps/text/figures exist, but substantial designed animated2D explanatory sequences are missing",
+    "provided_repositories_used_in_leopard_cut": false,
+    "human_wardrobe_defects_retained": true,
+    "incorrect_completion_framing": "Audio integration and technical decode success were presented without satisfying the requested visual mix."
+  },
+  "provided_repositories_located_in_existing_kit": [
+    {
+      "repository": "https://github.com/alexgreensh/anidoodle",
+      "revision_tree_sha": "4ae27d2c281fcfd01bce87ab13dc5ad4df81a795",
+      "license": "Apache-2.0"
+    },
+    {
+      "repository": "https://github.com/RevStudio/Rev2D",
+      "revision_tree_sha": "f144581cdf1f12d781379c4df90d262b8c2dfa3d",
+      "license": "MIT"
+    },
+    {
+      "repository": "https://github.com/lemomo-ai/lemo-opuscar",
+      "revision_tree_sha": "143f387ad774525dc9abc0ff05fb5f4bfbaa5f02",
+      "license": "MIT"
+    },
+    {
+      "repository": "https://github.com/edenfunf/reelmimic",
+      "revision_tree_sha": "311d835b623e1b6790d8823298dc0d5553661fe2",
+      "license": "MIT"
+    }
+  ],
+  "next_cut_must": {
+    "real_still_photo_hard_max": 4,
+    "real_video_required": true,
+    "video_actual_source_in_out_required": true,
+    "no_misrepresented_species_event_dates_or_native_resolution": true,
+    "animated2D_primary_explanatory_mode_not_just_labels": true,
+    "3D_all_rejected_geometry_environment_cast_and_motion_reviewed_before_full_render": true,
+    "provided_runtime_code_must_be_executed_in_actual_new_shots_not_just_downloaded": true,
+    "reelmimic_is_documented_composition_guidance_not_fake_runtime": true,
+    "use_existing_ten_voice_sources_without_regeneration": true,
+    "original_master_preserved": true,
+    "only_existing_section04_authorized_text_exception": true,
+    "all_rendering_and_editing_on_GitHub_Actions": true,
+    "no_full_movie_rerender_using_rejected_engine_unchanged": true,
+    "no_new_user_approval_or_script_request": true
+  },
+  "new_visual_rebuild_complete": false,
+  "new_full_movie_render_started": false
+}

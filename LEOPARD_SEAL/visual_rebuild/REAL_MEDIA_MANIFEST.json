@@ -1,0 +1,101 @@
+{
+  "status": "TWO_REAL_VIDEOS_AND_FOUR_STILLS_ACQUIRED_NOT_YET_IN_FILM",
+  "maximum_real_still_photos": 4,
+  "acquired_still_candidates": [
+    {
+      "id": "P01",
+      "file": "LEOPARD_SEAL_PROJECT/visual_rebuild/source_media/leopard_noaa_0367.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Anim0367_-_Flickr_-_NOAA_Photo_Library.jpg",
+      "author": "NOAA Photo Library",
+      "license": "CC BY2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "bytes": 403785,
+      "sha256": "25a6da33ee54430e23b00f7f0263727fc0cd9de6abfca71d5ea963fb67472803",
+      "downloaded": true,
+      "visually_inspected": true,
+      "integrated_in_new_movie": false,
+      "repository_file": "visual_rebuild/source_media/leopard_noaa_0367.jpg"
+    },
+    {
+      "id": "P02",
+      "file": "LEOPARD_SEAL_PROJECT/visual_rebuild/source_media/leopard_gilad_rom.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Curious_Leopard_seal.jpg",
+      "author": "Gilad Rom",
+      "license": "CC BY2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "bytes": 2867113,
+      "sha256": "065027d46bc6f09f54353deb1de97f115e2a15db8515dd05a7bf2a79b47f9b54",
+      "downloaded": true,
+      "visually_inspected": true,
+      "integrated_in_new_movie": false,
+      "repository_file": "visual_rebuild/source_media/leopard_gilad_rom.jpg"
+    },
+    {
+      "id": "P03",
+      "file": "assets/archive/Rothera-01.jpg",
+      "author": "Carina Gsottbauer",
+      "license": "CC BY-SA4.0",
+      "role": "January2026 context, not2003 incident",
+      "downloaded": true,
+      "visually_inspected": true,
+      "integrated_in_new_movie": false,
+      "repository_file": "assets/archive/Rothera-01.jpg"
+    },
+    {
+      "id": "P04",
+      "file": "LEOPARD_SEAL_PROJECT/visual_rebuild/source_media/leopard_noaa_0365.jpg",
+      "repository_file": "visual_rebuild/source_media/leopard_noaa_0365.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Anim0365_-_Flickr_-_NOAA_Photo_Library.jpg",
+      "author": "NOAA Photo Library",
+      "license": "CC BY 2.0; Commons also lists NOAA public-domain notice",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "downloaded": true,
+      "visually_inspected": false,
+      "bytes": 5049923,
+      "sha256": "8e071ed2cd94faa0423a23adc691e5275fd6d2db33e99dfc709a7eed662ae73b",
+      "integrated_in_new_movie": false
+    }
+  ],
+  "real_video_candidates": [
+    {
+      "id": "V01",
+      "file": "V01_paradise_bay.webm",
+      "page": "https://commons.wikimedia.org/wiki/File:Leopard_seal_(Hydrurga_leptonyx)_and_its_kill.webm",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Leopard_seal_%28Hydrurga_leptonyx%29_and_its_kill.webm",
+      "author": "Lauren Farmer",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "native_size": [
+        1280,
+        720
+      ],
+      "seconds": 101.293,
+      "sha256": "35a1dce364190482d684a35d95108b4a9a65541b0229599b0a58b2ed1c6ba2d5",
+      "downloaded": true,
+      "context": "Paradise Harbour2014; prey may be a cormorant, not established as a penguin. Not Nicklen/2003 incident footage.",
+      "selection_policy": "Inspect actual footage. Non-graphic cuts only. Keep native720p or smaller, no fake1080p claim.",
+      "integrated_in_new_movie": false
+    },
+    {
+      "id": "V02",
+      "file": "V02_penguin_edge.ogv",
+      "page": "https://commons.wikimedia.org/wiki/File:Activity-Time-Budget-during-Foraging-Trips-of-Emperor-Penguins-pone.0050357.s002.ogv",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Activity-Time-Budget-during-Foraging-Trips-of-Emperor-Penguins-pone.0050357.s002.ogv",
+      "author": "Watanabe S, Sato K, Ponganis P",
+      "license": "CC BY 2.5",
+      "license_url": "https://creativecommons.org/licenses/by/2.5/",
+      "native_size": [
+        640,
+        480
+      ],
+      "seconds": 10,
+      "sha256": "c1c4a228143b48ef192106a3004e7c017e3eda94431e8baea36db0402a9f856d",
+      "downloaded": true,
+      "context": "Movie S2, PLOS ONE2012, DOI10.1371/journal.pone.0050357. Leopard seal seeking emperor penguins at water edge, not Adelie-specific source.",
+      "selection_policy": "Native640x480 scientific archival inset, no upscaling/nativeHD claim, no false Ad\u00e9lie or2003 incident label.",
+      "integrated_in_new_movie": false
+    }
+  ],
+  "new_movie_exists": false,
+  "footage_inspection_required": true
+}

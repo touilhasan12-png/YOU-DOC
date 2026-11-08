@@ -1,5 +1,5 @@
 {
-  "status": "AUDIO_COMPLETE_UPDATED_MOVIE_VERIFIED_AND_UPLOADED",
+  "status": "USER_REJECTED_VISUALS_REBUILD_REQUIRED",
   "topic": "Leopard seal",
   "script_language": "English",
   "original_path": "SCRIPT_ORIGINAL.txt",
@@ -35,7 +35,7 @@
   "narration_policy": "Original exact text except the explicitly authorized section04 two-sentence non-graphic replacement; original master preserved.",
   "last_QA_run_conclusion": "success",
   "generated_speech_total_seconds": 650.72,
-  "full_film_complete": true,
+  "full_film_complete": false,
   "latest_fullfilm_run_id": 42508350609,
   "latest_fullfilm_run_url": "https://github.com/touilhasan12-png/YOU-DOC/actions/runs/42508350609",
   "full_workprint_ready": true,
@@ -74,5 +74,11 @@
   "technical_QA_passed": true,
   "encoded_sample_visual_review_completed": true,
   "continuous_human_listening_completed": false,
-  "artistic_approval": false
+  "artistic_approval": false,
+  "user_visual_acceptance": false,
+  "visual_rebuild_required": true,
+  "visual_rebuild_complete": false,
+  "visual_rebuild_full_render_started": false,
+  "visual_rebuild_audit": "visual_rebuild/VISUAL_FAILURE_AUDIT.json",
+  "current_delivered_cut_has_complete_audio_but_rejected_visuals": true
 }
