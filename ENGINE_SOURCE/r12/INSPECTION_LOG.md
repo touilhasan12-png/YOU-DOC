@@ -16,3 +16,6 @@ The blue-whale crop is corrected; the recap now contains four actual behavior il
 
 ## Complete-film review
 Pending production. Full AAC payload equality, exact frame counts, retained-picture fidelity and sampled assembled-film views are checked after assembly.
+
+## Surface staging refinement
+The source/middle-sample review also showed that the blue-whale surface scene's back remained too far beneath its depicted waterline. The rise is increased from 70 to 205 canvas pixels: the back reaches the water surface before the existing breath cue, with the unchanged blow particles now originating above the waterline. Only this 266-frame scene is re-rendered after the six-worker pass; the other 69 new scenes are reused, not redone. Final assembled-film images must be checked for this change.

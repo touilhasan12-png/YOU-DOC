@@ -1,0 +1,61 @@
+name: R12 — surface-exhale refinement
+on:
+  push:
+    branches: [r12-reviewed-animation-original-audio]
+    paths: [ENGINE_SOURCE/r12/REFINEMENT_REQUEST.json]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  surface-and-delivery:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preserve and reuse completed six-worker source units
+        run: gh run watch 42468147391 --exit-status --interval 30
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: r12-animation-*
+          merge-multiple: true
+          run-id: 42468147391
+          github-token: ${{ github.token }}
+          path: R12_UNITS
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: ENGINE_SOURCE/r12/package-lock.json
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ubuntu24-playwright-1.48.2
+      - name: Install rendering and assembly runtime
+        run: |
+          python -m pip install requests==2.32.3 imageio-ffmpeg==0.6.0 pillow==11.3.0
+          cd ENGINE_SOURCE/r12
+          npm ci --ignore-scripts --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          npx esbuild app.ts --bundle --format=esm --outfile=bundle.js
+      - name: Refine only blue-whale surface/exhale staging
+        run: |
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node ENGINE_SOURCE/r12/render.mjs worker 3 blue_surface
+      - name: Assemble unchanged original AAC and verify full-frame retained material
+        run: python ENGINE_SOURCE/r12/assemble.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r12-original-audio-complete-film
+          path: R12_DELIVERY/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r12-final-picture-review
+          path: R12_FINAL_REVIEW/
+          if-no-files-found: error
+          retention-days: 14
