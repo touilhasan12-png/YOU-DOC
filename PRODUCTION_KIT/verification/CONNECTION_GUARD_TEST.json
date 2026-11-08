@@ -1,0 +1,50 @@
+{
+  "connection_guard_cases": [
+    {
+      "case": "same repo authorized",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "pass": true
+    },
+    {
+      "case": "different repo rejected",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "pass": true
+    },
+    {
+      "case": "unauthorized key",
+      "expected_exit": 3,
+      "actual_exit": 3,
+      "pass": true
+    },
+    {
+      "case": "forbidden access",
+      "expected_exit": 4,
+      "actual_exit": 4,
+      "pass": true
+    },
+    {
+      "case": "private repo invisible",
+      "expected_exit": 4,
+      "actual_exit": 4,
+      "pass": true
+    },
+    {
+      "case": "rate limited",
+      "expected_exit": 4,
+      "actual_exit": 4,
+      "pass": true
+    },
+    {
+      "case": "wrong full_name",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "pass": true
+    }
+  ],
+  "network_requests_used": false,
+  "rendering_used": false,
+  "same_rendering_fingerprints_verified": true,
+  "bootstrap_sha256": "02fca844735310ba2d999e5f1ba27d770e12c2a8d3e222e5b3d84a901709aca6"
+}

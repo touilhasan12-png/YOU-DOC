@@ -97,16 +97,17 @@
       "identical_to_tested_commit": true
     }
   ],
-  "packaging_only_updates_after_test": [
+  "known_failure_solution_count": 54,
+  "real_credentials_included": false,
+  "visual_review_scope": "Four final encoded nine-position motion sheets; full-resolution surface last frame and shark midpoint; full-resolution whale and yacht proofs. Not continuous human playback. No claim of auditory human playback.",
+  "caution": "Self-contained production inputs and included runtimes do not replace a cloud account, OS, browser system libraries or permissions. No universal artistic/no-error guarantee.",
+  "non_rendering_updates_after_test": [
     "master priority clarification",
     "quick start",
     "safe cross-host artifact download and correct proof naming (successfully tested locally by downloading all actual artifacts)",
     "streaming Drive checksum utility",
     "package audit utility",
-    "test evidence"
-  ],
-  "known_failure_solution_count": 53,
-  "real_credentials_included": false,
-  "visual_review_scope": "Four final encoded nine-position motion sheets; full-resolution surface last frame and shark midpoint; full-resolution whale and yacht proofs. Not continuous human playback. No claim of auditory human playback.",
-  "caution": "Self-contained production inputs and included runtimes do not replace a cloud account, OS, browser system libraries or permissions. No universal artistic/no-error guarantee."
+    "test evidence",
+    "Latest confirmed user clarification: model requests supplied token and uses same fixed existing repository; bootstrap connection guard updated and tested separately without rendering."
+  ]
 }

@@ -7,8 +7,8 @@
   "files": [
     {
       "path": "00_MASTER_PROMPT.txt",
-      "bytes": 12621,
-      "sha256": "28a5e61508217c32f6f879d022263ec1a57689f2dfee46e258e2cd28398a1963"
+      "bytes": 13743,
+      "sha256": "9f73bd74471b4b2fb14807bd0426153bac2e2257ad86933bd7d86c445eabfb5a"
     },
     {
       "path": "01_VISUAL_IDENTITY_AND_STYLE_DNA.txt",
@@ -17,8 +17,8 @@
     },
     {
       "path": "02_TOOLS_AND_EXACT_PARAMETERS.txt",
-      "bytes": 10284,
-      "sha256": "ccbc13220da7d5aa0bc88b7d3aca5b2eb2f774a3076be615c08b3b98b898d0cb"
+      "bytes": 11658,
+      "sha256": "324e4eb156e912c040b5de4a2a58310980238130900da8aeb32628b51d31c413"
     },
     {
       "path": "03_MOTION_AND_SCENE_DYNAMICS.txt",
@@ -32,8 +32,8 @@
     },
     {
       "path": "05_TEMPLATES_PROMPTS_AND_SCRIPTS.txt",
-      "bytes": 8967,
-      "sha256": "c44b103cf8ccdd93c51f5a85d9cf8ccef604bfcdddadc61a5199dc9754d66812"
+      "bytes": 10231,
+      "sha256": "488e3fddd94623c179c7e94c23483bb913b6758fd69160b685eb29eca60f3054"
     },
     {
       "path": "06_QUALITY_GATE_AND_TROUBLESHOOTING.txt",
@@ -42,8 +42,8 @@
     },
     {
       "path": "07_KIT_OPENING_TEST_SPEC.txt",
-      "bytes": 4401,
-      "sha256": "7d1b8de55b4e8b9d305b3687e549a9be488d0d02452da6378d7d831fc5244da0"
+      "bytes": 4525,
+      "sha256": "eda809cc34da1187ee59330f6e4e779a7c63eb7fe9c38433d54ae29361fdeb6b"
     },
     {
       "path": "EXECUTABLES.json",
@@ -57,8 +57,8 @@
     },
     {
       "path": "README_FIRST.txt",
-      "bytes": 2769,
-      "sha256": "a913314391a03bf12e584ec2ed98d3fe5e0b62d252d0d3c43486d6a3da0e0d72"
+      "bytes": 2945,
+      "sha256": "65ec74927900fad132a957f19f89f22dbf13f4af968c2a525be80db9c13378ee"
     },
     {
       "path": "SPEC.json",
@@ -241,14 +241,19 @@
       "sha256": "efbe917848103c6272bf4059a4b44c1d9a4254dada746ba2be3b2df0ac65bcec"
     },
     {
+      "path": "docs/CREDENTIAL_AND_REPOSITORY_CLARIFICATION.txt",
+      "bytes": 1442,
+      "sha256": "5ca81c18f5137d8deb43f3a06ff12fd291a349a1b079ccbdd525ccdc703a54a0"
+    },
+    {
       "path": "docs/ERRORS_AND_SOLUTIONS.txt",
-      "bytes": 13430,
-      "sha256": "5a7ab99532b27183d3d656da85b550b7f74b5c19e5c12df273b3ee57a37cd117"
+      "bytes": 13998,
+      "sha256": "6ae29280c0b7878f5405330e25aa3112402bc5c0f583f95b95cedfa75ac9f3c1"
     },
     {
       "path": "docs/ERRORS_INDEX.json",
-      "bytes": 14004,
-      "sha256": "32a0ae904b3d0b084025c0e246d29c2c6fb7720d8245d207799c9f707a171303"
+      "bytes": 14536,
+      "sha256": "24e9d226e69767bdeecfba290161155340c58750cf1270ff5ffa074d8b23a54c"
     },
     {
       "path": "fonts/BarlowCondensed-SemiBold.ttf",
@@ -1947,8 +1952,8 @@
     },
     {
       "path": "scripts/bootstrap_github.sh",
-      "bytes": 3737,
-      "sha256": "3698d1e153a4c7ab5883f475c242e3ca1f9a9197b0934a11ba8cf0d9a9fdb7f2"
+      "bytes": 3666,
+      "sha256": "02fca844735310ba2d999e5f1ba27d770e12c2a8d3e222e5b3d84a901709aca6"
     },
     {
       "path": "scripts/package_kit.py",
@@ -2832,8 +2837,13 @@
     },
     {
       "path": "verification/BUILD_REPORT.json",
-      "bytes": 4620,
-      "sha256": "1ee170a35354c9a75f53ce5e6d3fd33abc255242c68e838770c806cc03c9e180"
+      "bytes": 4810,
+      "sha256": "d8c28bc1ab859c6db3b2ab30881959d34ec1f418ae0dc1893fc2b2ae6316a98d"
+    },
+    {
+      "path": "verification/CONNECTION_GUARD_TEST.json",
+      "bytes": 1059,
+      "sha256": "c07ee2155214c0f2e13961cfb8b502889ad9b06aadcb982805b9bd82ffdee771"
     },
     {
       "path": "verification/RUNTIME_FINGERPRINT.json",

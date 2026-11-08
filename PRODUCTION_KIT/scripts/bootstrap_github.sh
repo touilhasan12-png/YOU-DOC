@@ -8,21 +8,25 @@ TOKEN_FILE="${GH_TOKEN_FILE:-/tmp/gh_token}"
 chmod 600 "$TOKEN_FILE"
 export GH_TOKEN_FILE="$TOKEN_FILE"
 REPO="${1:-YOU-DOC}"
-[[ "$REPO" =~ ^[A-Za-z0-9_.-]+$ ]] || { echo 'Invalid repository name'; exit 2; }
+[[ "$REPO" == "YOU-DOC" ]] || { echo 'This kit uses the same existing repository touilhasan12-png/YOU-DOC only; do not create a replacement.'; exit 2; }
 HEADERS="$(mktemp)";ASKPASS="$(mktemp)";BODY="$(mktemp)"
 trap 'rm -f "$HEADERS" "$ASKPASS" "$BODY"' EXIT
 chmod 600 "$HEADERS" "$BODY"
 printf 'Authorization: Bearer %s\nAccept: application/vnd.github+json\n' "$(cat "$TOKEN_FILE")" > "$HEADERS"
 code=$(curl -sS -o "$BODY" -w '%{http_code}' -H @"$HEADERS" https://api.github.com/user)
 [[ "$code" == 200 ]] || { echo "GitHub authentication HTTP $code; check token permissions/expiry, not a missing connector."; exit 3; }
-OWNER=$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))["login"])' "$BODY")
+AUTH_LOGIN=$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))["login"])' "$BODY")
+OWNER="touilhasan12-png"
 code=$(curl -sS -o "$BODY" -w '%{http_code}' -H @"$HEADERS" "https://api.github.com/repos/$OWNER/$REPO")
-if [[ "$code" == 404 ]]; then
- python3 -c 'import json,sys;print(json.dumps({"name":sys.argv[1],"private":False,"auto_init":True}))' "$REPO" > "$BODY"
- code=$(curl -sS -o "$BODY.response" -w '%{http_code}' -X POST -H @"$HEADERS" -H 'Content-Type: application/json' https://api.github.com/user/repos --data-binary @"$BODY")
- rm -f "$BODY.response"
- [[ "$code" == 201 ]] || { echo "Repository creation HTTP $code; do not overwrite an existing repo."; exit 4; }
-elif [[ "$code" != 200 ]]; then echo "Repository lookup HTTP $code; do not interpret authentication/rate errors as missing repository.";exit 4;fi
+if [[ "$code" != 200 ]]; then
+ echo "Existing repository $OWNER/$REPO lookup HTTP $code; check token visibility, permissions, expiry or rate limit. Never create another repository."
+ exit 4
+fi
+python3 - "$BODY" <<'VERIFY_REPO'
+import json,sys
+actual=json.load(open(sys.argv[1])).get('full_name')
+assert actual=='touilhasan12-png/YOU-DOC','Unexpected repository identity; stop without creating or changing any repository'
+VERIFY_REPO
 BRANCH="${KIT_BRANCH:-kit-opening-test-$(date -u +%Y%m%d%H%M%S)}"
 WORK_BASE="${KIT_WORK_BASE:-$HOME/.cache/documentary-kit-runs}"
 mkdir -p "$WORK_BASE"
