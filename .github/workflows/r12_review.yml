@@ -1,0 +1,43 @@
+name: R12 — internal picture and layout review
+on:
+  push:
+    branches: [r12-reviewed-animation-original-audio]
+    paths: [ENGINE_SOURCE/r12/PROOF_REQUEST.json]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  picture-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: ENGINE_SOURCE/r12/package-lock.json
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ubuntu24-playwright-1.48.2
+      - name: Install reviewed rendering runtime
+        working-directory: ENGINE_SOURCE/r12
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          npx esbuild app.ts --bundle --format=esm --outfile=bundle.js
+      - name: Produce internal scene samples and geometry reports
+        run: node ENGINE_SOURCE/r12/render.mjs proof
+      - name: Extract untouched R9 retained views and review sheets
+        run: |
+          python -m pip install requests==2.32.3 imageio-ffmpeg==0.6.0 pillow==11.3.0
+          python ENGINE_SOURCE/r12/review_frames.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r12-internal-picture-review
+          path: R12_REVIEW/
+          if-no-files-found: error
+          retention-days: 14

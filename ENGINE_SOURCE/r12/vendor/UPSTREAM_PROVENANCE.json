@@ -1,0 +1,22 @@
+[
+  {
+    "repository": "https://github.com/alexgreensh/anidoodle",
+    "revision_tree_sha": "4ae27d2c281fcfd01bce87ab13dc5ad4df81a795",
+    "license": "Apache-2.0"
+  },
+  {
+    "repository": "https://github.com/RevStudio/Rev2D",
+    "revision_tree_sha": "f144581cdf1f12d781379c4df90d262b8c2dfa3d",
+    "license": "MIT"
+  },
+  {
+    "repository": "https://github.com/lemomo-ai/lemo-opuscar",
+    "revision_tree_sha": "143f387ad774525dc9abc0ff05fb5f4bfbaa5f02",
+    "license": "MIT"
+  },
+  {
+    "repository": "https://github.com/edenfunf/reelmimic",
+    "revision_tree_sha": "311d835b623e1b6790d8823298dc0d5553661fe2",
+    "license": "MIT"
+  }
+]
