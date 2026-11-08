@@ -1,0 +1,81 @@
+name: R12 — reviewed animation and original R9 audio
+on:
+  push:
+    branches: [r12-reviewed-animation-original-audio]
+    paths: [ENGINE_SOURCE/r12/PRODUCTION_REQUEST.json]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: r12-full-original-audio
+  cancel-in-progress: false
+jobs:
+  new-animation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        worker: [0, 1, 2, 3, 4, 5]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: ENGINE_SOURCE/r12/package-lock.json
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ubuntu24-playwright-1.48.2
+      - name: Install pinned rendering runtime
+        working-directory: ENGINE_SOURCE/r12
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          npx esbuild app.ts --bundle --format=esm --outfile=bundle.js
+      - name: Produce newly directed programmatic scenes
+        run: |
+          python -m pip install imageio-ffmpeg==0.6.0
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node ENGINE_SOURCE/r12/render.mjs worker "${{ matrix.worker }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r12-animation-${{ matrix.worker }}
+          path: R12_UNITS/
+          if-no-files-found: error
+          retention-days: 30
+  assemble-original-audio:
+    needs: new-animation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: r12-animation-*
+          merge-multiple: true
+          path: R12_UNITS
+      - name: Install assembly and verification runtime
+        run: python -m pip install requests==2.32.3 imageio-ffmpeg==0.6.0 pillow==11.3.0
+      - name: Keep full R9 3D frames and original AAC; assemble and verify
+        run: python ENGINE_SOURCE/r12/assemble.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r12-original-audio-complete-film
+          path: R12_DELIVERY/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r12-final-picture-review
+          path: R12_FINAL_REVIEW/
+          if-no-files-found: error
+          retention-days: 14

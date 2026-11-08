@@ -55,7 +55,7 @@ assign('blue_scale',t=>{paper();animal('blue',1090,315,1240,t);animal('orca',880
 function relay(t){backdrop(t,'canyon');animal('blue',1090,545,1080,t);for(let j=0;j<4;j++){let a=t*.32+j*PI/2;animal('orca',1060+555*Math.cos(a),600+275*Math.sin(a),290,t+j,{flip:Math.cos(a)<0});}caption('Take turns.','',{size:54});}
 assign('hunt_rotation blue_relays',relay);
 assign('canyon_exit',t=>{backdrop(t,'canyon');plane(g,[[0,1080],[0,970],[700,930],[1400,600],[1920,450],[1920,1080]],'#4f9b9c',{grain:.035});animal('blue',1050+t*20,495,1080,t);animal('orca',530+t*20,790,500,t);toonArrow(g,[1450,800],[1700,615],{color:C.gold,w:4});caption('Toward the shallows.','',{size:52});});
-assign('hunt_jaw',t=>{backdrop(t);animal('blue',1330,565,1260,t);animal('orca',900+30*Math.sin(t*.4),880,600,t,{angle:-.1});caption('Jaw. Tongue.','Non-graphic reconstruction',{size:56});});
+assign('hunt_jaw',t=>{backdrop(t);animal('blue',1220,550,1210,t);animal('orca',900+30*Math.sin(t*.4),880,600,t,{angle:-.1});caption('Jaw. Tongue.','Non-graphic reconstruction',{size:56});});
 assign('meal_exclusion',t=>{backdrop(t);animal('orca',950,445,1100,t);animal('hammer',1490+20*t,780,500,t);animal('pilot',490-18*t,830,480,t,{flip:true});caption('No walk-ins.','',{size:65});});
 assign('taxonomy',t=>{paper();animal('orca',1100,470,1190,t);animal('dolphin',1010,890,490,t);caption('Technically, a dolphin.','',{col:C.ink,size:60,at:[112,115]});});
 assign('male_dimensions',t=>{paper();number('9.5','metres','Approximate large-male length');animal('male',1310,610,850,t);});
@@ -77,7 +77,7 @@ function floe(t,k){surface(t,400,true);let u=smooth(t/row.duration),waveX=-200+u
  if(k==='seal_capture'){let v=smooth(t/row.duration);seal(1220+120*v,650+190*v,320,false,.08*v);}
  if(k==='seal_floe')caption('An island. For now.','',{at:[112,110],col:C.ink,size:55});if(k==='floe_wave')caption('One shared wave.','',{at:[112,110],col:C.ink,size:55});}
 assign('seal_floe floe_wave floe_denial seal_capture',t=>floe(t,row.key));
-assign('seven_formation',t=>{surface(t,280,true);ice(1330,350,430,t,true);for(let j=0;j<7;j++){g.save();g.translate(210+j*245,790-70*smooth(t/row.duration));g.scale(.72,.72);path('M0 -190 C-80 -170 -86 -50 -52 60 L-14 156 L0 180 L14 156 L52 60 C86 -50 80 -170 0 -190Z','#173c53',C.ink,2);path('M-42 -73 Q0 -118 42 -73 Q22 -38 0 -32 Q-22 -38 -42 -73Z',C.cream);path('M-20 90 L-80 142 L-5 128 L0 177 L5 128 L80 142 L20 90Z','#16374e');g.restore();}caption('Seven. Side by side.','',{at:[112,80],col:C.ink,size:52});});
+assign('seven_formation',t=>{surface(t,280,true);ice(1330,350,430,t,true);for(let j=0;j<7;j++){g.save();g.translate(210+j*245,790-70*smooth(t/row.duration));g.scale(.72,.72);path('M0 -190 C-80 -170 -86 -50 -52 60 L-14 130 L0 148 L14 130 L52 60 C86 -50 80 -170 0 -190Z','#173c53',C.ink,2);path('M-65 -20 Q-104 -5 -130 38 Q-99 48 -61 25Z M65 -20 Q104 -5 130 38 Q99 48 61 25Z','#16374e');path('M-59 -111 Q-49 -144 -33 -125 L-37 -96 Q-52 -87 -59 -111Z M59 -111 Q49 -144 33 -125 L37 -96 Q52 -87 59 -111Z',C.cream);path('M0 -28 Q-4 10 0 57 Q18 21 3 -28Z','#2c5266');path('M-12 126 Q-72 118 -103 166 Q-40 157 0 146 Q40 157 103 166 Q72 118 12 126Z','#16374e');record('actor','top_down_orca',[-130,-190,130,166]);g.restore();}caption('Seven. Side by side.','',{at:[112,80],col:C.ink,size:52});});
 function shore(t,k){surface(t,370);plane(g,[[0,600],[520,640],[1000,790],[1460,955],[1920,970],[1920,1080],[0,1080]],'#edc991',{grain:.045});for(let j=0;j<4;j++){let x=(t*50+j*480)%2400-200;ink(g,sample([[x,660],[x+250,715],[x+570,825]],false,12),3,{color:'#fff3d6',alpha:.8,wob:0});}
  let u=t/row.duration,go=Math.sin(u*PI),x=620+660*go,y=660+145*go;
  if(k==='patagonia_pup'){seal(1470,875,430,true);animal('orca',540,570,730,t);caption('Patagonia','Argentina',{at:[112,115],col:C.ink,size:55});return}
@@ -85,7 +85,7 @@ function shore(t,k){surface(t,370);plane(g,[[0,600],[520,640],[1000,790],[1460,9
  if(k==='patagonia_learning'){animal('orca',1240,610,910,t);animal('orca',500,850,430,t-.65);caption('Learned from mothers.','',{at:[112,110],col:C.ink,size:48});return}
  if(k==='tide_window'){seal(1470,875,390,true);let lev=690-70*Math.sin(t*.35);ink(g,sample([[0,lev],[500,lev+35],[1100,lev+150],[1750,lev+260]],false,10),5,{color:'#fff4d3',wob:0});toonArrow(g,[1250,780],[1250,590],{color:C.ink,w:3});caption('High tide opens the window.','',{at:[112,110],col:C.ink,size:49});return}
  if(k==='stranding_risk'){animal('orca',1170,800,1060,t,{angle:.06});caption('A dangerous return.','Wind and waves matter',{at:[112,110],col:C.ink,size:52});return}
- animal('orca',x,y,900,t);if(k==='patagonia_grab'&&u>.45)seal(x+475,y+45,280,true);else seal(1500,860,300,true);
+ const approaching=k==='patagonia_strand'||k==='patagonia_grab';let catchU=k==='patagonia_grab'?smooth((u-.36)/.28):0;const head=animal('orca',x,y,900,t);if(catchU>.02)seal(head.x+44,head.y+62,255,true,-1.2*catchU);else if(!approaching||go<.78)seal(1500,860,300,true);else seal(1510,880,280,true,-.8*smooth((go-.78)/.22));
 }
 assign('patagonia_pup patagonia_roll patagonia_strand patagonia_grab patagonia_learning tide_window stranding_risk',t=>shore(t,row.key));
 assign('white_shark port_starboard',t=>{backdrop(t,'kelp');animal('shark',1210,800,1060,t);animal(row.key==='port_starboard'?'bent':'orca',580,420,830,t);if(row.key==='port_starboard')animal('bent',1500,400,650,t+.6,{flip:true});caption(row.key==='port_starboard'?'Port & Starboard.':'Ask a great white.','',{size:53});});
@@ -95,7 +95,12 @@ assign('shark_liver',t=>{paper();animal('shark',1220,565,1100,t);g.save();g.glob
 assign('sightings_change',t=>{paper();number('6 → 1','average daily sightings','Reported change over six months');line(960,900,1770,900,C.ink,2);plane(g,[[1080,900],[1080,900-380*ease(t/.8)],[1280,900-380*ease(t/.8)],[1280,900]],'#286b86',{grain:.04});plane(g,[[1460,900],[1460,900-63*ease(t/.8)],[1660,900-63*ease(t/.8)],[1660,900]],C.coral,{grain:.04});text('BEFORE',1080,932,26,C.ink,250,600);text('AFTER',1460,932,26,C.ink,250,600);});
 assign('blue_cases',t=>{world([112,125,-39,-28],[['Bremer Canyon',119.5,-35.5,-280,25]],t);caption('Three documented kills.','2019 and 2021',{at:[112,100],col:C.ink,size:53});});
 assign('young_victims adult_victim',t=>{backdrop(t);if(row.key==='young_victims'){animal('blue',550,410,650,t);animal('blue',1310,790,900,t);caption('Two were young.','',{size:54});}else{animal('blue',1070,600,1480,t);caption('One healthy adult.','',{size:54});}});
-assign('learned_strategy',t=>{paper();let terms=['WAVES','SHORELINES','SILENCE','ROTATION'];for(let j=0;j<4;j++){let x=150+j%2*890,y=245+Math.floor(j/2)*360;let a=ease((t-j*.15)/.45);g.save();g.globalAlpha=a;dot(x+20,y+35,19,C.coral);text(String(j+1),x+10,y+19,25,C.cream,50,750);text(terms[j],x+80,y+2,66,C.ink,740);g.restore();}});
+assign('learned_strategy',t=>{paper();let terms=['WAVES','SHORELINES','SILENCE','ROTATION'];for(let j=0;j<4;j++){let x=150+j%2*890,y=155+Math.floor(j/2)*450;g.save();g.globalAlpha=ease((t-j*.15)/.45);text(terms[j],x,y,47,C.ink,740);const cy=y+245;
+ if(j===0){animal('orca',x+170,cy+30,290,t);ink(g,Array.from({length:60},(_,k)=>[x+50+k*10,cy-40-30*Math.exp(-((k*10-(t*70)%500)**2)/9000)]),3,{color:C.sea,wob:0});plane(g,[[x+400,cy-75],[x+580,cy-80],[x+620,cy-50],[x+420,cy-35]],'#83c6cc',{grain:.02});}
+ if(j===1){plane(g,[[x+40,cy+30],[x+610,cy-55],[x+610,cy+100],[x+40,cy+100]],'#dfbc80',{grain:.02});animal('orca',x+290,cy-10,360,t);}
+ if(j===2){animal('orca',x+230,cy,360,t);seal(x+610,cy+10,135);}
+ if(j===3){animal('blue',x+350,cy+5,440,t);for(let k=0;k<3;k++){let a=k*TAU/3+t*.3;animal('orca',x+350+260*Math.cos(a),cy+120*Math.sin(a),150,t+k,{flip:Math.cos(a)<0});}}
+ g.restore();}});
 assign('twofold_arrival',t=>{world([145,155,-40,-31],[['Twofold Bay',149.9,-37.1,-230,20]],t);caption('A business partner.','c. 1840–1930',{at:[112,100],col:C.ink,size:53});});
 assign('partnership_decline',t=>{paper();number('30 → 7','returning animals','1901–1902 · reported counts');for(let j=0;j<30;j++)animal('orca',1000+j%6*145,260+Math.floor(j/6)*150,100,t+j,{alpha:j<7?1:.16});});
 assign('old_tom_end',t=>{surface(t,410);boat(1370,710,1,t);animal('orca',500-t*15,850,580,t,{alpha:.22});caption('1930','The partnership ends',{at:[112,110],col:C.ink,size:68});});
@@ -104,7 +109,14 @@ assign('iberian_region',t=>{world([-12,1,34,45],[['Portugal',-8.7,39,-140,-20],[
 assign('interaction_counts',t=>{paper();number('≈700','reported interactions','Historical period count, not a live total');for(let j=0;j<70;j++){let x=1000+j%10*76,y=300+Math.floor(j/10)*83;dot(x,y,10,j<Math.floor(70*ease(t/1.3))?C.coral:'#c8c9ad')}});
 assign('iberian_population',t=>{paper();for(let j=0;j<38;j++)animal('orca',230+j%10*163,370+Math.floor(j/10)*167,115,t+j,{alpha:j<15?1:.16});caption('Fewer than forty.','About fifteen linked to the interactions',{at:[112,100],col:C.ink,size:54});});
 assign('lisbon_context',t=>{surface(t,390);boat(1210,730,1.4,t);caption('Off Lisbon','September 2025 · reported sinking',{at:[112,100],col:C.ink,size:54});});
-assign('open_water_pov',t=>{backdrop(t,'dark');g.save();g.translate(1090,640);let s=1.5+.18*smooth(t/row.duration);g.scale(s,s);path('M-215 0 Q-196 -170 0 -180 Q196 -170 215 0 Q190 140 0 148 Q-190 140 -215 0Z','#15374e','#2c5870',3);path('M-173 -45 Q-124 -83 -93 -41 Q-89 4 -130 10 Q-170 5 -173 -45Z M173 -45 Q124 -83 93 -41 Q89 4 130 10 Q170 5 173 -45Z',C.cream);path('M-100 88 Q0 115 100 88 Q0 180 -100 88Z',C.cream);dot(-166,-10,5,'#03111d');dot(166,-10,5,'#03111d');record('actor','frontal_orca',[-215,-180,215,148]);g.restore();caption('Your options?','',{size:64});});
+assign('open_water_pov',t=>{backdrop(t,'dark');g.save();g.translate(1250,680);let s=1.25+.2*smooth(t/row.duration);g.scale(s,s);
+ path('M-27 -145 Q-21 -275 6 -333 Q34 -238 45 -140Z','#0d2c3f','#2d586b',2);
+ path('M-150 20 Q-345 83 -411 192 Q-325 202 -160 119Z M150 20 Q345 83 411 192 Q325 202 160 119Z','#0b2638','#2a5264',2);
+ path('M-211 -7 Q-219 -125 -120 -164 Q0 -205 120 -164 Q219 -125 211 -7 L190 104 Q153 175 0 187 Q-153 175 -190 104Z','#163b50','#376174',3);
+ path('M-171 100 Q0 141 171 100 Q126 185 0 187 Q-126 185 -171 100Z','#d9e5d9');
+ path('M-201 -45 Q-174 -96 -139 -76 Q-139 -43 -181 -24Z M201 -45 Q174 -96 139 -76 Q139 -43 181 -24Z','#f4f0dc');
+ path('M-178 70 Q0 88 178 70',undefined,'#061a29',3);dot(-188,3,4,'#020f18');dot(188,3,4,'#020f18');path('M-35 -158 Q0 -171 35 -158',undefined,'#0b2333',4);
+ record('actor','frontal_orca',[-411,-333,411,202]);g.restore();caption('Your options?','',{size:64});});
 assign('ice_option',t=>{surface(t,350,true);ice(1290,455,560,t,false);animal('orca',1030,820,1210,t);caption('Ice?','You saw how that went.',{at:[112,110],col:C.ink,size:64});});
 assign('power_option',t=>{paper();number('6 t','plus forty-odd teeth','An animal that hunts blue whales');animal('male',1320,620,870,t);});
 assign('distance_rule wildlife_distance',t=>{surface(t,390);animal('orca',520,690,620,t);boat(1530,670,.85,t);g.setLineDash([10,12]);line(950,820,1230,820,C.cream,3);g.setLineDash([]);caption(row.key==='distance_rule'?'Be uninteresting.':'Give it space.','Follow local wildlife rules',{at:[112,100],col:C.ink,size:62});});
