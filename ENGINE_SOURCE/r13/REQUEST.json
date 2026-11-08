@@ -1140,7 +1140,7 @@
       "frames": 222,
       "mode": "R12_new_animation",
       "worker": 4,
-      "r13_mode": "keep_R12"
+      "r13_mode": "native_R9"
     },
     {
       "id": 52,
