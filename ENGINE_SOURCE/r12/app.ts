@@ -109,14 +109,7 @@ assign('iberian_region',t=>{world([-12,1,34,45],[['Portugal',-8.7,39,-140,-20],[
 assign('interaction_counts',t=>{paper();number('≈700','reported interactions','Historical period count, not a live total');for(let j=0;j<70;j++){let x=1000+j%10*76,y=300+Math.floor(j/10)*83;dot(x,y,10,j<Math.floor(70*ease(t/1.3))?C.coral:'#c8c9ad')}});
 assign('iberian_population',t=>{paper();for(let j=0;j<38;j++)animal('orca',230+j%10*163,370+Math.floor(j/10)*167,115,t+j,{alpha:j<15?1:.16});caption('Fewer than forty.','About fifteen linked to the interactions',{at:[112,100],col:C.ink,size:54});});
 assign('lisbon_context',t=>{surface(t,390);boat(1210,730,1.4,t);caption('Off Lisbon','September 2025 · reported sinking',{at:[112,100],col:C.ink,size:54});});
-assign('open_water_pov',t=>{backdrop(t,'dark');g.save();g.translate(1250,680);let s=1.25+.2*smooth(t/row.duration);g.scale(s,s);
- path('M-27 -145 Q-21 -275 6 -333 Q34 -238 45 -140Z','#0d2c3f','#2d586b',2);
- path('M-150 20 Q-345 83 -411 192 Q-325 202 -160 119Z M150 20 Q345 83 411 192 Q325 202 160 119Z','#0b2638','#2a5264',2);
- path('M-211 -7 Q-219 -125 -120 -164 Q0 -205 120 -164 Q219 -125 211 -7 L190 104 Q153 175 0 187 Q-153 175 -190 104Z','#163b50','#376174',3);
- path('M-171 100 Q0 141 171 100 Q126 185 0 187 Q-126 185 -171 100Z','#d9e5d9');
- path('M-201 -45 Q-174 -96 -139 -76 Q-139 -43 -181 -24Z M201 -45 Q174 -96 139 -76 Q139 -43 181 -24Z','#f4f0dc');
- path('M-178 70 Q0 88 178 70',undefined,'#061a29',3);dot(-188,3,4,'#020f18');dot(188,3,4,'#020f18');path('M-35 -158 Q0 -171 35 -158',undefined,'#0b2333',4);
- record('actor','frontal_orca',[-411,-333,411,202]);g.restore();caption('Your options?','',{size:64});});
+assign('open_water_pov',t=>{backdrop(t,'dark');let u=smooth(t/row.duration);animal('orca',1110,650,1140+260*u,t,{flip:true,angle:-.04+.04*u});caption('Your options?','',{size:64});});
 assign('ice_option',t=>{surface(t,350,true);ice(1290,455,560,t,false);animal('orca',1030,820,1210,t);caption('Ice?','You saw how that went.',{at:[112,110],col:C.ink,size:64});});
 assign('power_option',t=>{paper();number('6 t','plus forty-odd teeth','An animal that hunts blue whales');animal('male',1320,620,870,t);});
 assign('distance_rule wildlife_distance',t=>{surface(t,390);animal('orca',520,690,620,t);boat(1530,670,.85,t);g.setLineDash([10,12]);line(950,820,1230,820,C.cream,3);g.setLineDash([]);caption(row.key==='distance_rule'?'Be uninteresting.':'Give it space.','Follow local wildlife rules',{at:[112,100],col:C.ink,size:62});});
