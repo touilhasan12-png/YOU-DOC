@@ -17,7 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Preserve and reuse completed six-worker source units
-        run: gh run watch 42468147391 --exit-status --interval 30
+        run: |
+          gh api repos/"$GITHUB_REPOSITORY"/actions/runs/42468147391/jobs > "$RUNNER_TEMP/units-jobs.json"
+          python -c 'import json,os; j=json.load(open(os.environ["RUNNER_TEMP"]+"/units-jobs.json")); u=[x for x in j["jobs"] if x["name"].startswith("new-animation")]; assert len(u)==6 and all(x["conclusion"]=="success" for x in u), "Six completed renderer artifacts required"' 
       - uses: actions/download-artifact@v4
         with:
           pattern: r12-animation-*
@@ -36,6 +38,7 @@ jobs:
           key: ubuntu24-playwright-1.48.2
       - name: Install rendering and assembly runtime
         run: |
+          command -v ffprobe || (sudo apt-get update && sudo apt-get install -y ffmpeg)
           python -m pip install requests==2.32.3 imageio-ffmpeg==0.6.0 pillow==11.3.0
           cd ENGINE_SOURCE/r12
           npm ci --ignore-scripts --no-audit --no-fund

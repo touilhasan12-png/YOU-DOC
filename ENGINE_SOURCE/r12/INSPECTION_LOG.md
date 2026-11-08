@@ -19,3 +19,6 @@ Pending production. Full AAC payload equality, exact frame counts, retained-pict
 
 ## Surface staging refinement
 The source/middle-sample review also showed that the blue-whale surface scene's back remained too far beneath its depicted waterline. The rise is increased from 70 to 205 canvas pixels: the back reaches the water surface before the existing breath cue, with the unchanged blow particles now originating above the waterline. Only this 266-frame scene is re-rendered after the six-worker pass; the other 69 new scenes are reused, not redone. Final assembled-film images must be checked for this change.
+
+## Assembly recovery (no animation rerender loss)
+All six main rendering workers succeeded and their 70 units remain in run 42468147391. The first assembly failed before editing because stream-copy FFmpeg progress did not expose a numeric decoded-frame count; this was a verification-parser failure, not a discarded film. Replaced it with explicit ffprobe MP4 video-packet counting plus size/frame-rate validation. The refinement workflow now checks the six successful renderer jobs directly, reuses their artifacts, and does not require the obsolete assembly job to succeed.
