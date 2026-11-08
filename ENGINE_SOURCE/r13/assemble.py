@@ -4,7 +4,7 @@ from pathlib import Path
 import requests,imageio_ffmpeg
 from PIL import Image,ImageDraw,ImageFont
 assert os.environ.get('GITHUB_ACTIONS')=='true'
-q=json.loads(Path('ENGINE_SOURCE/r12/REQUEST.json').read_text());out=Path('R13_DELIVERY');out.mkdir(exist_ok=True);parts=Path('R13_PARTS');parts.mkdir(exist_ok=True);review=Path('R13_FINAL_REVIEW');review.mkdir(exist_ok=True);ff=imageio_ffmpeg.get_ffmpeg_exe();base=parts/'original_R9.mp4';temp=Path(os.environ['RUNNER_TEMP']);archive=temp/'r9.zip'
+q=json.loads(Path('ENGINE_SOURCE/r13/REQUEST.json').read_text());out=Path('R13_DELIVERY');out.mkdir(exist_ok=True);parts=Path('R13_PARTS');parts.mkdir(exist_ok=True);review=Path('R13_FINAL_REVIEW');review.mkdir(exist_ok=True);ff=imageio_ffmpeg.get_ffmpeg_exe();base=parts/'original_R9.mp4';temp=Path(os.environ['RUNNER_TEMP']);archive=temp/'r9.zip'
 def run(args,**kw):return subprocess.run([ff,'-y','-hide_banner',*map(str,args)],check=True,**kw)
 def sha(p):
  h=hashlib.sha256()
@@ -50,8 +50,8 @@ comparisons=[]
 for row in q['shots']:
  if row['r13_mode']=='new_3D':continue
  start=(row['frame_start']+row['frames']//2)/24
- result=run(['-ss',str(start),'-i',base,'-ss',str(start),'-i',movie,'-t','0.5','-an','-lavfi','[0:v][1:v]ssim','-f','null','-'],stderr=subprocess.PIPE,text=True)
- score=float(re.findall(r'All:([0-9.]+)',result.stderr)[-1]);comparisons.append({'key':row['key'],'midpoint_half_second_ssim':score,'full_1920x1080_frame_uncropped':True,'no_added_overlay':True})
+ result=run(['-ss',str(start),'-i',base if row['r13_mode']=='native_R9' else previous,'-ss',str(start),'-i',movie,'-t','0.5','-an','-lavfi','[0:v][1:v]ssim','-f','null','-'],stderr=subprocess.PIPE,text=True)
+ score=float(re.findall(r'All:([0-9.]+)',result.stderr)[-1]);comparisons.append({'key':row['key'],'midpoint_half_second_ssim':score,'full_1920x1080_frame_uncropped':True,'no_added_overlay':True,'reference_source':row['r13_mode']})
  if score<.97:raise RuntimeError('Retained-frame fidelity failed '+row['key']+' '+str(score))
 poster_files=[]
 for row in q['shots']:
@@ -79,7 +79,7 @@ geometry_issues=[r for r in geometry if r.get('grip_engaged') and r.get('grip_er
 (review/'PRODUCTION_GEOMETRY.json').write_text(json.dumps({'samples':len(geometry),'issues':geometry_issues,'scope':'Every frame of generated shoreline scenes checks the actual mouth/pup grip origin; recorded samples every six frames. Other collisions are not asserted universally clear.'},indent=2))
 qa={'native_R9_video_frames':native_baseline_frames,'native_R9_picture_duration':q['picture_duration'],'native_R9_audio_duration':q['native_R9_audio_duration'],'native_audio_picture_end_relationship_preserved':True,'added_outro_frames':0,'new_animation_geometry_samples':len(geometry),'sampled_geometry_issues':geometry_issues,'frames':frames,'fps':24,'size':[1920,1080],'native_R9_AAC_adts_sha256':original_audio,'delivered_AAC_adts_sha256':final_audio,'audio_payload_identical':True,'retained_picture_midpoint_checks':comparisons,'caution':'SSIM, frame counts, geometry and sampled views are technical checks, not a claim of artistic acceptance or continuous human playback.'};(out/'TECHNICAL_VERIFICATION.json').write_text(json.dumps(qa,indent=2));(review/'TECHNICAL_VERIFICATION.json').write_text(json.dumps(qa,indent=2))
 (out/'PROVENANCE.json').write_text(json.dumps({'edition':q['edition'],'github_commit':os.environ['GITHUB_SHA'],'github_run':os.environ['GITHUB_RUN_ID'],'shots':q['shots'],'new_scene_runtime':'Three.js r170; detailed source orca geometry with UV-preserving mandibular split; programmatic whale/shark geometry; whole approved seal cutout in 3D','unchanged_R12_scene_libraries':'Rev2D, anidoodle and Lemo in prior scene renders; reelmimic guidance only','original_R9_audio_copied_without_filtering':True,'new_AI_images':0,'retained_secondary_images':['seal_grey_cutout.png','sea_lion_brown_cutout.png']},indent=2))
-shutil.copyfile('ENGINE_SOURCE/r12/CREDITS_AND_LICENSES.md',out/'CREDITS_AND_LICENSES.md')
+shutil.copyfile('ENGINE_SOURCE/r13/CREDITS_AND_LICENSES.md',out/'CREDITS_AND_LICENSES.md')
 source=out/'R13_EDITABLE_SOURCE.zip'
 tracked=subprocess.check_output(['git','ls-files'],text=True).splitlines();omitted=[f for f in tracked if f.startswith(('ENGINE_SOURCE/media/','ENGINE_SOURCE/locked_audio/','ENGINE_SOURCE/reference_audio/'))];included=[f for f in tracked if f not in omitted];subprocess.run(['git','archive','--format=zip','-o',str(source.resolve()),'HEAD','--',*included],check=True)
 with zipfile.ZipFile(source,'a',compression=zipfile.ZIP_DEFLATED)as z:z.writestr('OMITTED_ARCHIVED_MEDIA.json',json.dumps({'reason':'Avoid duplicating archived original media/audio and an explicitly rejected old reference track. All editable code, timing, rigs, fonts and the two approved cutouts remain included. R9 complete native-audio master is already preserved on Drive; original media files remain at this immutable repository commit.','source_commit':os.environ['GITHUB_SHA'],'R9_master_drive':'https://drive.google.com/file/d/1R6i6mlIqVlIo_x-N027dczxBtf6eHKzL/view','omitted':omitted},indent=2))
