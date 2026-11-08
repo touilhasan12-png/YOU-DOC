@@ -1,0 +1,63 @@
+name: Leopard seal — encoded workprint verification
+on:
+  push:
+    paths:
+      - 'LEOPARD_SEAL/scripts/qa_encoded_film.py'
+      - '.github/workflows/leopard_seal_encoded_qa.yml'
+  workflow_dispatch:
+    inputs:
+      render_run_id:
+        description: Completed or currently running full-workprint render run to verify
+        type: string
+        default: '42503608840'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  decode-actual-delivered-movie:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      TARGET_RUN_ID: ${{ inputs.render_run_id || '42503608840' }}
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Wait for the existing full render, without starting it again
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import urllib.request,json,time,os
+          url=f"https://api.github.com/repos/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['TARGET_RUN_ID']}"
+          end=time.monotonic()+3600
+          while time.monotonic()<end:
+              with urllib.request.urlopen(urllib.request.Request(url,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'}),timeout=60)as r:run=json.load(r)
+              if run['status']=='completed':
+                  assert run['conclusion']=='success',f"Full render ended: {run['conclusion']}; do not certify an incomplete or failed delivery."
+                  print('Full workprint render completed successfully; checking the delivered MP4 itself.');break
+              time.sleep(30)
+          else:raise RuntimeError('Full render is still running; no completion claim.')
+          PY
+      - name: Install pinned decoding and contact-sheet tools
+        working-directory: PRODUCTION_KIT
+        run: python -m pip install --no-index --find-links vendor/wheels imageio-ffmpeg==0.6.0 pillow==11.3.0
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ env.TARGET_RUN_ID }}
+          name: leopard-fullfilm-WORKPRINT-AUDIO04-MISSING
+          path: LEOPARD_SEAL/generated/encoded-input/
+      - name: Decode every final video frame and extract actual encoded frames for all 71 shots
+        run: |
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          python LEOPARD_SEAL/scripts/qa_encoded_film.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leopard-encoded-movie-QA
+          path: LEOPARD_SEAL/generated/encoded-film-qa/
+          retention-days: 30

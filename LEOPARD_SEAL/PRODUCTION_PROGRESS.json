@@ -80,5 +80,83 @@
     "Resolve unchanged section4 speech tool block without rewriting or bypass",
     "Finish remaining script-directed scenes/assets and complete edit",
     "Full encoded-film visual/audio review and final Drive delivery"
-  ]
+  ],
+  "fullfilm_production": {
+    "source_commit": "19cba9ae4c8bc32fb76faa102ef6e8ce11009498",
+    "run_id": 42503608840,
+    "run_url": "https://github.com/touilhasan12-png/YOU-DOC/actions/runs/42503608840",
+    "state": "TEN_COMPLETE_CHAPTER_RENDERS_RUNNING_AFTER_ALL_213_CORRECTED_PROBES",
+    "chapters": 10,
+    "authored_shots": 71,
+    "target_frames": 15805,
+    "target_seconds": 658.5416666666666,
+    "fps": 24,
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "actual_complete_full_length_workprint_exists": false,
+    "final_film_complete": false,
+    "missing_audio_sections": [
+      4
+    ],
+    "section04_duration_estimated": true,
+    "first_fullfilm_source": "958484e93ea975e342e010fce933c5905ffcbdf8",
+    "first_fullfilm_run": 42503002557,
+    "first_actual_probe_count": 213,
+    "first_actual_contact_sheets_reviewed": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "first_pass_rejected_and_superseded": true,
+    "corrected_probe_review_pending": false,
+    "corrected_actual_probe_count": 213,
+    "corrected_contact_sheets_opened_so_far": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "actual_native_frames_opened": [
+      "01_05_0102.png",
+      "05_04_0100.png"
+    ],
+    "visual_acceptance": "Workprint only; not final artistic acceptance",
+    "outstanding_visual_issues": [
+      "Protective outer clothing still leaves visible native material/arm gaps in the standing cast; not certified final wardrobe.",
+      "Full-length rendered video still needs actual montage review; probes are not continuous motion proof."
+    ]
+  },
+  "stronger_audio_audit": {
+    "run_id": 42503002557,
+    "model": "small.en",
+    "all_nine_existing_audio_files_transcribed": true,
+    "asr_error": null,
+    "not_exact_word_or_listening_certificate": true,
+    "possible_unconfirmed_leading_omissions": {
+      "01": "Say",
+      "03": "Start with"
+    },
+    "no_speech_retry_or_safeguard_bypass": true
+  },
+  "section04_user_requested_exact_retry": {
+    "action": "One user-requested exact-text retry through the same speech tool and same registered voice",
+    "section": 4,
+    "voice_id": "voice-00",
+    "language": "en-US",
+    "text_source": "narration_text/04.txt",
+    "text_sha256": "62c60565224eb6fe8bf49598a5133b58666246485505a13c6867ce6da345ec1e",
+    "result": "BLOCKED_BY_CONTENT_MODERATION_NOT_GENERATED",
+    "audio_file_exists": false,
+    "text_modified": false,
+    "alternate_provider_used": false,
+    "further_retries_or_bypass_planned": false
+  },
+  "speech_generation_attempts_total": 11,
+  "successful_speech_files_total": 9,
+  "section04_attempts_total": 2
 }

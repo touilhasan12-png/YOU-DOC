@@ -1,0 +1,13 @@
+{
+  "action": "One user-requested exact-text retry through the same speech tool and same registered voice",
+  "section": 4,
+  "voice_id": "voice-00",
+  "language": "en-US",
+  "text_source": "narration_text/04.txt",
+  "text_sha256": "62c60565224eb6fe8bf49598a5133b58666246485505a13c6867ce6da345ec1e",
+  "result": "BLOCKED_BY_CONTENT_MODERATION_NOT_GENERATED",
+  "audio_file_exists": false,
+  "text_modified": false,
+  "alternate_provider_used": false,
+  "further_retries_or_bypass_planned": false
+}

@@ -1,5 +1,5 @@
 {
-  "status": "EXACT_SCRIPT_IN_PRODUCTION_WITH_SECTION4_SPEECH_TOOL_BLOCK",
+  "status": "FULL_71_SHOT_VISUAL_WORKPRINT_RENDERING_AUDIO04_MISSING",
   "topic": "Leopard seal",
   "script_language": "English",
   "original_path": "SCRIPT_ORIGINAL.txt",
@@ -35,9 +35,13 @@
   "full_film_ready": false,
   "internal_QA_without_additional_user_approval": true,
   "active_run_id": 42501345727,
-  "source_commit": "ff140a3fdc9f1fa9de653f08b31e565d4517eddb",
-  "active_monitor_process": null,
+  "source_commit": "19cba9ae4c8bc32fb76faa102ef6e8ce11009498",
+  "active_monitor_process": "corrected-full-leopard-seal-work-001e4719",
   "narration_policy": "Exact user text; no edits or approval requests",
   "last_QA_run_conclusion": "success",
-  "generated_speech_total_seconds": 597.28
+  "generated_speech_total_seconds": 597.28,
+  "full_film_complete": false,
+  "latest_fullfilm_run_id": 42503608840,
+  "latest_fullfilm_run_url": "https://github.com/touilhasan12-png/YOU-DOC/actions/runs/42503608840",
+  "full_workprint_ready": false
 }
