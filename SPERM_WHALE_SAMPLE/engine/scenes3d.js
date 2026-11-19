@@ -100,12 +100,15 @@ function setupSurfaceDive(row) {
       pf.mat.opacity = 0.42 * Math.sin(PI * Math.min(1, life * 1.1)) * (1 - life * 0.65);
     }
 
-    // Calm documentary tracking camera holding full 18m whale & rising flukes inside safe margins
-    const camX = 3.2 - t * 0.28;
-    const camY = 2.85 + 0.35 * ease((t - 7.0) / 5.0);
-    const lookX = -0.6 - t * 0.14;
-    const lookY = 1.15 + 0.65 * ease((t - 7.5) / 4.5);
-    cameraAt(V(camX, camY, 21.8), V(lookX, lookY, 0.0), 36);
+    // Calm documentary tracking camera that arcs slightly behind-3/4 during the fluke-up
+    // so the broad notched triangular tail fan is unmistakably readable above the waves.
+    const flukeArc = ease((t - 6.4) / 5.4);
+    const camX = 3.2 - t * 0.28 - 9.2 * flukeArc;
+    const camZ = 21.8 - 2.6 * flukeArc;
+    const camY = 2.85 + 0.45 * flukeArc;
+    const lookX = -0.6 - t * 0.16 - 1.2 * flukeArc;
+    const lookY = 1.15 + 0.85 * flukeArc;
+    cameraAt(V(camX, camY, camZ), V(lookX, lookY, 0.0), 36);
 
     const cueT = row.cue_s ?? row.default_cue_s ?? 11.2;
     if (t >= cueT) {
@@ -122,7 +125,7 @@ function setupSurfaceDive(row) {
 // Scene 2: Deep underwater true shared-world scale (18m whale vs 1.8m freediver vs 8m giant squid)
 function setupAbyssScale(row) {
   reset(true, false);
-  const updateUnder = buildUnderwater(8.5, false);
+  const updateUnder = buildUnderwater(12.5, false);
 
   const whale = buildSpermWhale(stage.scene, 18.0);
   whale.root.rotation.y = PI / 2 - 0.15;
@@ -213,10 +216,10 @@ function setupClick230dB(row) {
       opacity: 0.0,
       side: T.DoubleSide
     });
-    // Vertical arc spanning ~84 degrees ahead of the brow
-    const outerArc = mesh(grp, new T.TorusGeometry(1.0, 0.022, 10, 44, PI * 0.48), matPrimary);
-    outerArc.rotation.z = -PI * 0.24;
-    const innerArc = mesh(grp, new T.TorusGeometry(0.84, 0.012, 8, 36, PI * 0.36), matInner);
+    // Vertical razor-sharp editorial arcs spanning ~82 degrees ahead of the brow
+    const outerArc = mesh(grp, new T.TorusGeometry(1.0, 0.0065, 8, 56, PI * 0.46), matPrimary);
+    outerArc.rotation.z = -PI * 0.23;
+    const innerArc = mesh(grp, new T.TorusGeometry(0.86, 0.0040, 8, 44, PI * 0.36), matInner);
     innerArc.rotation.z = -PI * 0.18;
     wavePool.push({ grp, matPrimary, matInner, idx: i });
   }
@@ -228,7 +231,7 @@ function setupClick230dB(row) {
     opacity: 0.0,
     side: T.DoubleSide
   });
-  const echoRing = mesh(stage.scene, new T.TorusGeometry(1.0, 0.02, 8, 40, PI * 0.42), echoMat);
+  const echoRing = mesh(stage.scene, new T.TorusGeometry(1.0, 0.0085, 8, 44, PI * 0.42), echoMat);
   echoRing.rotation.z = PI - PI * 0.21;
 
   const baseSquidColor = new T.Color(0x9b5447);

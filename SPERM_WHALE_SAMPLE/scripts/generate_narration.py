@@ -42,7 +42,10 @@ def fmt_srt_time(sec: float) -> str:
 
 
 async def synth_scene_edge(text: str, voice: str, rate: str, pitch: str, mp3_path: Path):
-    communicate = edge_tts.Communicate(text=text, voice=voice, rate=rate, pitch=pitch)
+    try:
+        communicate = edge_tts.Communicate(text=text, voice=voice, rate=rate, pitch=pitch, boundary="WordBoundary")
+    except TypeError:
+        communicate = edge_tts.Communicate(text=text, voice=voice, rate=rate, pitch=pitch)
     words = []
     audio_chunks = bytearray()
     async for chunk in communicate.stream():
@@ -50,7 +53,6 @@ async def synth_scene_edge(text: str, voice: str, rate: str, pitch: str, mp3_pat
         if ctype == "audio":
             audio_chunks.extend(chunk["data"])
         elif ctype == "WordBoundary":
-            # edge-tts offsets/durations are in 100-nanosecond ticks (1e-7 s)
             start_s = chunk["offset"] / 1e7
             dur_s = chunk["duration"] / 1e7
             words.append({
@@ -85,17 +87,12 @@ def convert_and_pad_wav(mp3_path: Path, raw_wav: Path, padded_wav: Path, lead_in
         n_frames = w.getnframes()
 
     spoken_s = n_frames / SR
+    if spoken_s > SCENE_DUR - 0.15:
+        raise RuntimeError(f"Spoken clip too long ({spoken_s:.3f}s > {SCENE_DUR - 0.15:.2f}s) — refusing to clip words!")
     bytes_per_frame = CHANNELS * 2
     lead_frames = int(round(lead_in_s * SR))
-    # Ensure lead + spoken fits cleanly inside exact 15.0s window
     if lead_frames + n_frames > SCENE_SAMPLES:
         lead_frames = max(0, SCENE_SAMPLES - n_frames)
-    if lead_frames + n_frames > SCENE_SAMPLES:
-        # Trim trailing silence only if slightly over 15.0s
-        keep_frames = SCENE_SAMPLES - lead_frames
-        raw_bytes = raw_bytes[: keep_frames * bytes_per_frame]
-        n_frames = keep_frames
-        spoken_s = n_frames / SR
 
     tail_frames = SCENE_SAMPLES - lead_frames - n_frames
     lead_bytes = b"\x00" * (lead_frames * bytes_per_frame)
