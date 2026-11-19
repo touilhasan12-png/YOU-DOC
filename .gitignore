@@ -1,0 +1,6 @@
+node_modules/
+__pycache__/
+*.pyc
+SPERM_WHALE_SAMPLE/generated/
+SPERM_WHALE_SAMPLE/engine/bundle3d.js
+SPERM_WHALE_SAMPLE/engine/bundle2d.js

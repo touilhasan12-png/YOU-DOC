@@ -1,0 +1,118 @@
+name: Sperm Whale 60s Sample — 230 Decibels in the Dark
+on:
+  push:
+    branches:
+      - 'sperm-whale-sample-v1'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: sperm-whale-sample-${{ github.ref }}
+  cancel-in-progress: false
+env:
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+jobs:
+  narration:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install TTS & audio tools
+        run: pip install --quiet edge-tts imageio-ffmpeg==0.6.0
+      - name: Generate English documentary narration, word timestamps & SRT
+        working-directory: SPERM_WHALE_SAMPLE
+        run: python scripts/generate_narration.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sperm-whale-narration
+          path: SPERM_WHALE_SAMPLE/generated/audio/
+          retention-days: 30
+
+  render:
+    needs: narration
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        scene: [1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: sperm-whale-narration
+          path: SPERM_WHALE_SAMPLE/generated/audio
+      - name: Install FFmpeg wrapper
+        run: pip install --quiet imageio-ffmpeg==0.6.0
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ubuntu24-playwright-1.48.2-spermwhale
+      - name: Install Three.js, esbuild & Playwright Chromium
+        working-directory: SPERM_WHALE_SAMPLE
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Render 1080p@24fps scene ${{ matrix.scene }} (360 frames)
+        working-directory: SPERM_WHALE_SAMPLE
+        run: |
+          export FFMPEG_EXE="$(python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          node scripts/render_scene.mjs ${{ matrix.scene }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sperm-whale-unit-${{ matrix.scene }}
+          path: SPERM_WHALE_SAMPLE/generated/units/
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sperm-whale-proof-${{ matrix.scene }}
+          path: SPERM_WHALE_SAMPLE/generated/proof/
+          if-no-files-found: warn
+          retention-days: 30
+
+  assemble:
+    needs: [narration, render]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Pillow & FFmpeg wrapper
+        run: pip install --quiet pillow==11.3.0 imageio-ffmpeg==0.6.0
+      - uses: actions/download-artifact@v4
+        with:
+          name: sperm-whale-narration
+          path: SPERM_WHALE_SAMPLE/generated/audio
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: sperm-whale-unit-*
+          merge-multiple: true
+          path: SPERM_WHALE_SAMPLE/generated/units
+      - name: Assemble 60s master MP4, run full decode QA & extract review sheets
+        working-directory: SPERM_WHALE_SAMPLE
+        run: python scripts/assemble_and_qa.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sperm-whale-sample-delivery
+          path: SPERM_WHALE_SAMPLE/generated/delivery/
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sperm-whale-sample-review
+          path: SPERM_WHALE_SAMPLE/generated/review/
+          retention-days: 30

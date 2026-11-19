@@ -1,0 +1,23 @@
+{
+  "project": "YOU-DOC",
+  "film_id": "sperm-whale-230db-sample",
+  "title": "230 Decibels in the Dark — The Sperm Whale",
+  "language": "en",
+  "scene_count": 4,
+  "paragraph_count": 4,
+  "duration_seconds": 60,
+  "scene_duration_seconds": 15,
+  "width": 1920,
+  "height": 1080,
+  "fps": 24,
+  "total_frames": 1440,
+  "frames_per_scene": 360,
+  "intentional_blur": false,
+  "sample_rate": 48000,
+  "audio_channels": 2,
+  "encoding_crf": 17,
+  "encoding_preset": "fast",
+  "pixel_format": "yuv420p",
+  "branch": "sperm-whale-sample-v1",
+  "render_platform": "GitHub Actions ubuntu-24.04 x86_64"
+}

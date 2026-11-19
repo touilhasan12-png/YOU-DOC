@@ -1,0 +1,65 @@
+{
+  "title": "230 Decibels in the Dark — The Sperm Whale",
+  "language": "en",
+  "voice_primary": "en-US-AndrewMultilingualNeural",
+  "voice_rate": "-4%",
+  "voice_pitch": "-2Hz",
+  "scenes": [
+    {
+      "id": 1,
+      "key": "surface_dive",
+      "renderer": "3D",
+      "duration_s": 15.0,
+      "frames": 360,
+      "narration": "Two kilometers off the coast of Dominica, the ocean floor drops into darkness. Something enormous rests at the surface, exhaling an angled plume of mist. Then its broad tail lifts clear of the waves. A sperm whale.",
+      "cue_trigger_word": "sperm",
+      "default_cue_s": 11.2,
+      "opening_title": "Dominica · Eastern Caribbean",
+      "opening_detail": "Illustrative reconstruction",
+      "beat_title": "The sperm whale.",
+      "beat_detail": "Physeter macrocephalus"
+    },
+    {
+      "id": 2,
+      "key": "abyss_scale",
+      "renderer": "3D",
+      "duration_s": 15.0,
+      "frames": 360,
+      "narration": "An adult male reaches eighteen meters long and weighs more than fifty tonnes. Its massive rectangular head makes up a full third of its length, holding the largest brain of any animal that has ever lived.",
+      "cue_trigger_word": "eighteen",
+      "default_cue_s": 2.2,
+      "opening_title": "The largest toothed predator.",
+      "opening_detail": "Shared world scale · illustrative reconstruction",
+      "beat_title": "18 metres",
+      "beat_detail": "Up to 50 tonnes · head is one-third of its body"
+    },
+    {
+      "id": 3,
+      "key": "click_230db",
+      "renderer": "3D",
+      "duration_s": 15.0,
+      "frames": 360,
+      "narration": "Inside that head sits a biological sonar cannon. By forcing air past nasal lips through oil-filled chambers, a sperm whale fires clicks reaching two hundred and thirty decibels, loud enough to vibrate a diver's chest.",
+      "cue_trigger_word": "thirty",
+      "default_cue_s": 7.8,
+      "opening_title": "Biological sonar.",
+      "opening_detail": "Illustrative reconstruction · acoustic wavefront schematic",
+      "beat_title": "230 decibels",
+      "beat_detail": "Measured at 230 dB re 1 μPa at 1 metre · loudest biological sound"
+    },
+    {
+      "id": 4,
+      "key": "depth_evidence",
+      "renderer": "2D",
+      "duration_s": 15.0,
+      "frames": 360,
+      "narration": "On a single breath, it dives two thousand meters down into pitch darkness for ninety minutes, hunting giant squid by echo alone. And each family clan speaks its own dialect. Not blind in the dark. Built to see with sound.",
+      "cue_trigger_word": "blind",
+      "default_cue_s": 10.6,
+      "opening_title": "Built for the abyss.",
+      "opening_detail": "Single-breath dive profile · spermaceti acoustics · Caribbean clan data",
+      "beat_title": "Not blind in the dark.",
+      "beat_detail": "Built to see with sound."
+    }
+  ]
+}
